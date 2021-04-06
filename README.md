@@ -1,4 +1,4 @@
-# My App aaa
+# Cosmoiler
 
 ## Framework7 CLI Options
 
