@@ -1,0 +1,175 @@
+:root {
+  --f7-theme-color-tint: #504d4b;
+  --f7-theme-color-bg-color: #ecece0;
+  --f7-theme-color-bg-tint-color: #ecece060;
+  --f7-tabbar-icon-size: 20px;
+  --f7-tabbar-label-font-size: 13px;
+  --f7-theme-color-change-text: #c87137;
+  --color-subtitle-text: #9b4811;
+
+  --f7-theme-color: #5e3e29;
+  --f7-theme-color-rgb: 94, 62, 41;
+  --f7-theme-color-shade: #422b1d;
+  --f7-toggle-inactive-color: #504d4b20;
+  //--f7-theme-color-tint: #7a5135;
+/*   --f7-toolbar-border-color: #f81212; */
+  --theme-bg-color-light: #f8f8f3;
+
+}
+/* Invert navigation bars to fill style */
+:root,
+:root.theme-dark,
+:root .theme-dark {
+  --f7-bars-bg-color: var(--f7-theme-color);
+  --f7-bars-bg-color-rgb: var(--f7-theme-color-rgb);
+  --f7-bars-translucent-opacity: 0.9;
+  --f7-bars-text-color: #fff;
+  --f7-bars-link-color: #fff;
+  --f7-navbar-subtitle-text-color: rgba(255,255,255,0.85);
+  --f7-bars-border-color: transparent;
+  --f7-tabbar-link-active-color: #fff;
+  --f7-tabbar-link-inactive-color: rgba(255,255,255,0.54);
+  --f7-sheet-border-color: transparent;
+  --f7-tabbar-link-active-border-color: #fff;
+}
+.appbar,
+.navbar,
+.toolbar,
+.subnavbar,
+.calendar-header,
+.calendar-footer {
+  --f7-touch-ripple-color: var(--f7-touch-ripple-white);
+  --f7-link-highlight-color: var(--f7-link-highlight-white);
+  --f7-link-touch-ripple-color: var(--f7-touch-ripple-white);
+  --f7-button-text-color: #fff;
+  --f7-button-pressed-bg-color: rgba(255,255,255,0.1);
+}
+.navbar-large-transparent,
+.navbar-large.navbar-transparent {
+  --f7-navbar-large-title-text-color: #000;
+
+  --r: 0;
+  --g: 122;
+  --b: 255;
+  --progress: var(--f7-navbar-large-collapse-progress);
+  --f7-bars-link-color: rgb(
+    calc(var(--r) + (255 - var(--r)) * var(--progress)),
+    calc(var(--g) + (255 - var(--g)) * var(--progress)),
+    calc(var(--b) + (255 - var(--b)) * var(--progress))
+  );
+}
+.theme-dark .navbar-large-transparent,
+.theme-dark .navbar-large.navbar-transparent {
+  --f7-navbar-large-title-text-color: #fff;
+}
+
+/* Your app custom styles here */
+.page {
+  background-color: var( --f7-theme-color-bg-color)
+}
+.navbar-title {}
+.navbar-title__ver {
+  font-size: 12px;
+  margin-left: 0.5rem
+}
+
+.home-list-item{
+  font-weight: normal;
+  background-color: var(--theme-bg-color-light);
+}
+.home-list-item__subtitle-text_color{
+  color: #9b4811;
+  font-size: 13px;
+}
+.home-list-item__title_up-color{
+  color: #040404
+}
+.home-list-item__text_margin-1rem {
+  margin-top: 1rem
+}
+.home-list-item__text_margin-03rem {
+  margin-top: 0.3rem;
+}
+.home-list-item__badge_color {
+  background:#997760e7;
+}
+.home-media__icon2 {
+  margin-right: 0.4rem;
+  //color: #942f00;
+  //font-weight: 800;
+  transform-origin: 50% 80%;
+  transform: rotate(-55deg);
+}
+.home-media__text-icon2{
+  font-size: 10px;
+  background:#9b4811d3;
+  //font-weight: bold;
+}
+/*   .list-item{
+  font-weight: normal;
+  background-color: #f8f8f3//var(--f7-theme-color-bg-tint-color);
+}
+.list-item__subtitle-text_color{
+  color: #9b4811;
+  font-size: 12px;
+}
+.list-item__title_up-color{
+  color: #040404
+}
+.list-item__text_margin-03rem {
+  margin-top: 0.3rem
+} */
+/*   .list-item-settings__icon--size {
+  font-size: {size}px
+} */
+.col-param__logo {
+  vertical-align: bottom !important;
+  margin-right: 0.3rem !important
+}
+
+/* card-footer-tele */
+.card-header-tele {
+  background-color: var(--theme-bg-color-light);
+}
+.card-footer-tele {
+  justify-content: space-around;
+  --card-footer-icon-size: 24px;
+  background-color: var(--theme-bg-color-light);
+}
+.card-footer-tele__icon-text {
+  color: #040404;
+  display: inline-flex;
+}
+.card-footer-tele__text {
+  margin-top: calc(var(--card-footer-icon-size)/3);
+  //margin-right: 0.4rem;
+  color: var(--color-subtitle-text);
+}
+.card-footer-tele__icon {
+  margin-right: 0.2rem;
+  font-size: var(--card-footer-icon-size);
+}
+
+.settings-main__list-item,
+.sensor__list-item {
+  background-color: var(--theme-bg-color-light);
+}
+/*   .settings-main__icon_margin-top {
+  margin-bottom: calc(var(--icon-size)/3);
+} */
+
+.range__color {
+  --f7-theme-color: #c87137;
+  --f7-theme-color-rgb: 200, 113, 55;
+  --f7-theme-color-shade: #C15815;
+  --f7-theme-color-tint: #C88C60;
+}
+
+/* .color-deeporange {
+  --f7-theme-color: #ff6b22;
+  --f7-theme-color-rgb: 255, 107, 34;
+  --f7-theme-color-shade: #f85200;
+  --f7-theme-color-tint: #ff864b;
+
+
+} */

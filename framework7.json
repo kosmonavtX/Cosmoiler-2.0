@@ -1,0 +1,99 @@
+{
+  "cwd": "d:\\Cosmoiler\\Prog\\Frontend\\ver4",
+  "type": [
+    "capacitor"
+  ],
+  "name": "Cosmoiler",
+  "framework": "svelte",
+  "template": "tabs",
+  "bundler": "webpack",
+  "cssPreProcessor": "less",
+  "theming": {
+    "customColor": true,
+    "color": "#5e3e29",
+    "darkTheme": false,
+    "iconFonts": false,
+    "fillBars": true
+  },
+  "customBuild": true,
+  "customBuildConfig": {
+    "rtl": false,
+    "darkTheme": false,
+    "lightTheme": false,
+    "themes": [
+      "ios",
+      "md"
+    ],
+    "components": [
+      "appbar",
+      "dialog",
+      "popup",
+      "login-screen",
+      "popover",
+      "actions",
+      "sheet",
+      "toast",
+      "preloader",
+      "progressbar",
+      "sortable",
+      "swipeout",
+      "accordion",
+      "contacts-list",
+      "virtual-list",
+      "list-index",
+      "timeline",
+      "tabs",
+      "panel",
+      "card",
+      "chip",
+      "form",
+      "input",
+      "checkbox",
+      "radio",
+      "toggle",
+      "range",
+      "stepper",
+      "smart-select",
+      "grid",
+      "calendar",
+      "picker",
+      "infinite-scroll",
+      "pull-to-refresh",
+      "lazy",
+      "data-table",
+      "fab",
+      "searchbar",
+      "messages",
+      "messagebar",
+      "swiper",
+      "photo-browser",
+      "notification",
+      "autocomplete",
+      "tooltip",
+      "gauge",
+      "skeleton",
+      "menu",
+      "color-picker",
+      "treeview",
+      "text-editor",
+      "area-chart",
+      "pie-chart",
+      "elevation",
+      "typography"
+    ]
+  },
+  "webpack": {
+    "developmentSourceMap": true,
+    "productionSourceMap": false,
+    "hashAssets": false,
+    "preserveAssetsPaths": false,
+    "inlineAssets": true
+  },
+  "pkg": "com.cosmoiler.app",
+  "capacitor": {
+    "platforms": [
+      "ios",
+      "android"
+    ]
+  }
+}
