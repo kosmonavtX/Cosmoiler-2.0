@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2021-04-09T15:50:37.780Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36 Edg/89.0.774.68" etag="yXgTZZQc5X8JR3QH2MUW" version="14.5.9" type="github" pages="2">
+<mxfile host="app.diagrams.net" modified="2021-04-09T15:51:36.908Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36 Edg/89.0.774.68" etag="F4o_hzlnjU2y_ja4ePf5" version="14.5.9" type="github" pages="2">
   <diagram id="Kh1fttOilVS8rpwQo4ZU" name="FSM Main">
-    <mxGraphModel dx="661" dy="512" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="799" dy="618" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="Mee8KsufjIvIdAfqRodm-0" />
         <mxCell id="Mee8KsufjIvIdAfqRodm-1" parent="Mee8KsufjIvIdAfqRodm-0" />
@@ -85,6 +85,9 @@
         </mxCell>
         <mxCell id="M2GkOYfckAP8KD4HQ3nS-28" value="&lt;font style=&quot;font-size: 14px&quot;&gt;MAIN&lt;br&gt;CHECKFS&lt;br&gt;&lt;/font&gt;" style="text;html=1;resizable=0;autosize=1;align=center;verticalAlign=middle;points=[];fillColor=none;strokeColor=none;rounded=0;" vertex="1" parent="M2GkOYfckAP8KD4HQ3nS-26">
           <mxGeometry x="7.5" width="80" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="M2GkOYfckAP8KD4HQ3nS-71" value="&lt;font style=&quot;font-size: 10px&quot;&gt;CheckFS()&lt;br&gt;&lt;/font&gt;" style="text;html=1;resizable=0;autosize=1;align=center;verticalAlign=middle;points=[];fillColor=none;strokeColor=none;rounded=0;" vertex="1" parent="M2GkOYfckAP8KD4HQ3nS-26">
+          <mxGeometry x="17.99736842105267" y="40" width="60" height="20" as="geometry" />
         </mxCell>
         <mxCell id="M2GkOYfckAP8KD4HQ3nS-29" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=-0.008;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="Mee8KsufjIvIdAfqRodm-1" source="AEa5qKmtgpn162pWXhm2-1" target="M2GkOYfckAP8KD4HQ3nS-28">
           <mxGeometry relative="1" as="geometry" />
