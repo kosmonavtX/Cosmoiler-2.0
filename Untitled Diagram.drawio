@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-04-09T15:13:43.001Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36 Edg/89.0.774.68" etag="qeyI5kAaINMHP3Vh1TrI" version="14.5.9" type="github" pages="2">
+<mxfile host="app.diagrams.net" modified="2021-04-09T15:17:06.967Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36 Edg/89.0.774.68" etag="B3fXM_ojHST7OTOylRGN" version="14.5.9" type="github" pages="2">
   <diagram id="Kh1fttOilVS8rpwQo4ZU" name="FSM Main">
     <mxGraphModel dx="526" dy="397" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -168,6 +168,22 @@
         </mxCell>
         <mxCell id="M2GkOYfckAP8KD4HQ3nS-63" value="&lt;font style=&quot;font-size: 12px&quot;&gt;Cosm.handle()&lt;br&gt;mode=TIMER&lt;br&gt;&lt;/font&gt;" style="text;html=1;resizable=0;autosize=1;align=center;verticalAlign=middle;points=[];fillColor=none;strokeColor=none;rounded=0;" vertex="1" parent="M2GkOYfckAP8KD4HQ3nS-60">
           <mxGeometry x="10" y="45" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="M2GkOYfckAP8KD4HQ3nS-64" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=0.358;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="Mee8KsufjIvIdAfqRodm-1" source="M2GkOYfckAP8KD4HQ3nS-27" target="M2GkOYfckAP8KD4HQ3nS-57">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="M2GkOYfckAP8KD4HQ3nS-66" value="Err == P2 / &lt;br&gt;Cosm.begin(), &lt;br&gt;Cnfg.timer = 5 min" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="M2GkOYfckAP8KD4HQ3nS-64">
+          <mxGeometry x="0.427" y="-2" relative="1" as="geometry">
+            <mxPoint x="22.619999999999997" y="-3" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="M2GkOYfckAP8KD4HQ3nS-65" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="Mee8KsufjIvIdAfqRodm-1" source="M2GkOYfckAP8KD4HQ3nS-27" target="M2GkOYfckAP8KD4HQ3nS-61">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="M2GkOYfckAP8KD4HQ3nS-67" value="Err == P1 /&lt;br&gt;Cosm.begin()&lt;br&gt;Cnfg.timer = 60 sec" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="M2GkOYfckAP8KD4HQ3nS-65">
+          <mxGeometry x="0.3936" y="-27" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
         </mxCell>
       </root>
     </mxGraphModel>
