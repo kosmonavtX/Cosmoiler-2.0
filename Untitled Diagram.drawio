@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2021-04-09T15:22:05.690Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36 Edg/89.0.774.68" etag="2xzt5FHqRGVhlM4GmSmg" version="14.5.9" type="github" pages="2">
+<mxfile host="app.diagrams.net" modified="2021-04-09T15:35:07.863Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36 Edg/89.0.774.68" etag="oVF0zTjdjwbze5BX85_s" version="14.5.9" type="github" pages="2">
   <diagram id="Kh1fttOilVS8rpwQo4ZU" name="FSM Main">
-    <mxGraphModel dx="631" dy="477" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="526" dy="397" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="Mee8KsufjIvIdAfqRodm-0" />
         <mxCell id="Mee8KsufjIvIdAfqRodm-1" parent="Mee8KsufjIvIdAfqRodm-0" />
@@ -115,7 +115,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="M2GkOYfckAP8KD4HQ3nS-39" value="" style="group" vertex="1" connectable="0" parent="Mee8KsufjIvIdAfqRodm-1">
-          <mxGeometry x="460" y="640" width="130" height="105" as="geometry" />
+          <mxGeometry x="420" y="640" width="130" height="105" as="geometry" />
         </mxCell>
         <mxCell id="M2GkOYfckAP8KD4HQ3nS-40" value="" style="shape=lineEllipse;perimeter=ellipsePerimeter;whiteSpace=wrap;html=1;backgroundOutline=1;" vertex="1" parent="M2GkOYfckAP8KD4HQ3nS-39">
           <mxGeometry width="130" height="100" as="geometry" />
@@ -146,7 +146,7 @@
         <mxCell id="M2GkOYfckAP8KD4HQ3nS-46" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.506;entryY=0.018;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="Mee8KsufjIvIdAfqRodm-1" source="M2GkOYfckAP8KD4HQ3nS-35" target="M2GkOYfckAP8KD4HQ3nS-44">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="M2GkOYfckAP8KD4HQ3nS-48" value="ID ERROR" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="M2GkOYfckAP8KD4HQ3nS-46">
+        <mxCell id="M2GkOYfckAP8KD4HQ3nS-48" value="ID ERROR / &lt;br&gt;format FS" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="M2GkOYfckAP8KD4HQ3nS-46">
           <mxGeometry x="0.3782" y="-3" relative="1" as="geometry">
             <mxPoint as="offset" />
           </mxGeometry>
@@ -160,7 +160,7 @@
         <mxCell id="M2GkOYfckAP8KD4HQ3nS-58" value="&lt;font style=&quot;font-size: 14px&quot;&gt;MAIN&lt;br&gt;ERRORSYS&lt;br&gt;&lt;/font&gt;" style="text;html=1;resizable=0;autosize=1;align=center;verticalAlign=middle;points=[];fillColor=none;strokeColor=none;rounded=0;" vertex="1" parent="M2GkOYfckAP8KD4HQ3nS-56">
           <mxGeometry x="10" width="90" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="M2GkOYfckAP8KD4HQ3nS-59" value="&lt;font style=&quot;font-size: 12px&quot;&gt;Cosm.handle()&lt;br&gt;mode=TIMER&lt;br&gt;&lt;/font&gt;" style="text;html=1;resizable=0;autosize=1;align=center;verticalAlign=middle;points=[];fillColor=none;strokeColor=none;rounded=0;" vertex="1" parent="M2GkOYfckAP8KD4HQ3nS-56">
+        <mxCell id="M2GkOYfckAP8KD4HQ3nS-59" value="&lt;font style=&quot;font-size: 12px&quot;&gt;FSM Cosm&lt;br&gt;mode=TIMER&lt;br&gt;&lt;/font&gt;" style="text;html=1;resizable=0;autosize=1;align=center;verticalAlign=middle;points=[];fillColor=none;strokeColor=none;rounded=0;" vertex="1" parent="M2GkOYfckAP8KD4HQ3nS-56">
           <mxGeometry x="10" y="45" width="90" height="30" as="geometry" />
         </mxCell>
         <mxCell id="M2GkOYfckAP8KD4HQ3nS-60" value="" style="group" vertex="1" connectable="0" parent="Mee8KsufjIvIdAfqRodm-1">
