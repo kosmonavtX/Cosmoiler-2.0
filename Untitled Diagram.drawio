@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-04-09T18:41:56.380Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36 Edg/89.0.774.68" etag="Q-qWXas07JPGu6iqATXe" version="14.5.4" type="github" pages="6">
+<mxfile host="app.diagrams.net" modified="2021-04-09T18:57:23.657Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36 Edg/89.0.774.68" etag="kSBf125QriTqJnbg45wB" version="14.5.4" type="github" pages="6">
   <diagram id="G5NGnM2GY4aykBmWEyZv" name="Main">
     <mxGraphModel dx="763" dy="477" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -365,10 +365,27 @@
     </mxGraphModel>
   </diagram>
   <diagram id="t9ZC21nn5h5fp9ul1qjn" name="FSM Cosmoiler">
-    <mxGraphModel dx="1527" dy="953" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="523" dy="327" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="VIOac2n_Ewyky-d0UM8m-0" />
         <mxCell id="VIOac2n_Ewyky-d0UM8m-1" parent="VIOac2n_Ewyky-d0UM8m-0" />
+        <mxCell id="7q_De_2gwBjYjzBKXIyO-0" value="" style="group" vertex="1" connectable="0" parent="VIOac2n_Ewyky-d0UM8m-1">
+          <mxGeometry x="366" y="150" width="95" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="7q_De_2gwBjYjzBKXIyO-1" value="" style="shape=lineEllipse;perimeter=ellipsePerimeter;whiteSpace=wrap;html=1;backgroundOutline=1;" vertex="1" parent="7q_De_2gwBjYjzBKXIyO-0">
+          <mxGeometry width="95" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="7q_De_2gwBjYjzBKXIyO-2" value="&lt;font style=&quot;font-size: 14px&quot;&gt;COSM&lt;br&gt;BEGIN&lt;br&gt;&lt;/font&gt;" style="text;html=1;resizable=0;autosize=1;align=center;verticalAlign=middle;points=[];fillColor=none;strokeColor=none;rounded=0;" vertex="1" parent="7q_De_2gwBjYjzBKXIyO-0">
+          <mxGeometry x="17.5" y="5" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="7q_De_2gwBjYjzBKXIyO-3" value="" style="ellipse;html=1;shape=startState;fillColor=#000000;strokeColor=#ff0000;" vertex="1" parent="VIOac2n_Ewyky-d0UM8m-1">
+          <mxGeometry x="399" y="60" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="7q_De_2gwBjYjzBKXIyO-4" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#ff0000;" edge="1" source="7q_De_2gwBjYjzBKXIyO-3" parent="VIOac2n_Ewyky-d0UM8m-1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="414" y="150" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
