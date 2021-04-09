@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-04-09T18:39:50.309Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36 Edg/89.0.774.68" etag="EXnTpPgle77iCwNw577o" version="14.5.4" type="github" pages="3">
+<mxfile host="app.diagrams.net" modified="2021-04-09T18:41:56.380Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36 Edg/89.0.774.68" etag="Q-qWXas07JPGu6iqATXe" version="14.5.4" type="github" pages="6">
   <diagram id="G5NGnM2GY4aykBmWEyZv" name="Main">
     <mxGraphModel dx="763" dy="477" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -58,7 +58,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="Kh1fttOilVS8rpwQo4ZU" name="FSM Main">
-    <mxGraphModel dx="1832" dy="1144" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="763" dy="477" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="Mee8KsufjIvIdAfqRodm-0" />
         <mxCell id="Mee8KsufjIvIdAfqRodm-1" parent="Mee8KsufjIvIdAfqRodm-0" />
@@ -263,23 +263,11 @@
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="G5fgnAtS0TSSwu5vlQ2n-0" value="" style="rounded=1;absoluteArcSize=1;html=1;arcSize=10;" vertex="1" parent="Mee8KsufjIvIdAfqRodm-1">
-          <mxGeometry x="1150" y="760" width="540" height="290" as="geometry" />
-        </mxCell>
-        <mxCell id="G5fgnAtS0TSSwu5vlQ2n-1" value="main" style="html=1;shape=mxgraph.er.anchor;whiteSpace=wrap;" vertex="1" parent="G5fgnAtS0TSSwu5vlQ2n-0">
-          <mxGeometry width="270" height="290" as="geometry" />
-        </mxCell>
-        <mxCell id="G5fgnAtS0TSSwu5vlQ2n-2" value="FSM WiFi" style="rounded=1;absoluteArcSize=1;html=1;arcSize=10;whiteSpace=wrap;points=[];strokeColor=inherit;fillColor=inherit;" vertex="1" parent="G5fgnAtS0TSSwu5vlQ2n-0">
-          <mxGeometry x="389.50819672131155" y="14.5" width="123.49180327868854" height="45.5" as="geometry" />
-        </mxCell>
-        <mxCell id="G5fgnAtS0TSSwu5vlQ2n-3" value="Logger" style="rounded=1;absoluteArcSize=1;html=1;arcSize=10;whiteSpace=wrap;points=[];strokeColor=inherit;fillColor=inherit;" vertex="1" parent="G5fgnAtS0TSSwu5vlQ2n-0">
-          <mxGeometry x="389.50819672131155" y="70" width="123.49180327868854" height="45.5" as="geometry" />
-        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
   <diagram name="FSM WiFi" id="0783ab3e-0a74-02c8-0abd-f7b4e66b4bec">
-    <mxGraphModel dx="1309" dy="817" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" background="#ffffff" math="0" shadow="0">
+    <mxGraphModel dx="763" dy="477" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" background="#ffffff" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -373,6 +361,30 @@
             <mxPoint x="9.05" y="3" as="offset" />
           </mxGeometry>
         </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="t9ZC21nn5h5fp9ul1qjn" name="FSM Cosmoiler">
+    <mxGraphModel dx="1527" dy="953" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="VIOac2n_Ewyky-d0UM8m-0" />
+        <mxCell id="VIOac2n_Ewyky-d0UM8m-1" parent="VIOac2n_Ewyky-d0UM8m-0" />
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="5boWu_HUFCUCQj7RR6up" name="FSM Button">
+    <mxGraphModel dx="916" dy="572" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="bmkXz9MnbM7tEJ-oeRCn-0" />
+        <mxCell id="bmkXz9MnbM7tEJ-oeRCn-1" parent="bmkXz9MnbM7tEJ-oeRCn-0" />
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="vW1NBCc5YOTnmbg8BgBi" name="FSM Pump">
+    <mxGraphModel dx="916" dy="572" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="vihLuCZwOTI8HYyrsLmW-0" />
+        <mxCell id="vihLuCZwOTI8HYyrsLmW-1" parent="vihLuCZwOTI8HYyrsLmW-0" />
       </root>
     </mxGraphModel>
   </diagram>
