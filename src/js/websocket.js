@@ -1,5 +1,6 @@
 //const reopenTimeouts = [2000, 5000, 10000, 30000, 60000];
 import ReconnectingWebSocket from 'reconnecting-websocket'
+import log from 'debug'
 //import { decode, encode } from '@msgpack/msgpack'
 /**
  * Create a writable store based on a web-socket.
@@ -40,7 +41,7 @@ export function websocketStore(url, initialValue, protocols, socketOptions) {
 
     //const view = new DataView(event.data);
     //console.log(view.getInt32(0));
-    console.log('[Input]: ', initialValue);
+    log('[Input]: ', initialValue);
 
 /*     let arr = decodeFromBlob(event.data);
     console.log(arr); */
@@ -80,7 +81,7 @@ export function websocketStore(url, initialValue, protocols, socketOptions) {
     })
 
     socket.addEventListener('error', event => {
-      console.log(event);
+      log(event);
       subscriptions.forEach(subscription => subscription(event))
     })
 

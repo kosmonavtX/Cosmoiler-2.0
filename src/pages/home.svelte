@@ -67,7 +67,10 @@
   import store from '../js/store';
   import ModeItem from '../components/home-listitem.svelte'
   import { fade } from 'svelte/transition';
-
+  import log from '../js/debug.js'
+//import { debug } from 'console';
+  //logHome('kdsjhfkjshks')
+  log('123124234234')
 
   let gnssPresent = useStore('gnssPresent', (value) => gnssPresent = value.gps);
   let connected = useStore('connected', (value) => connected = value);
@@ -89,7 +92,8 @@
   }
 
   $: if (connected) {
-      console.log('Home -> connected: %s', gnssPresent)
+      //console.log('Home -> connected: %s', gnssPresent)
+      log('Home -> connected: %s', gnssPresent)
       fmodeOdometer = (mode.m === 1) ? true : false
       fmodeTimer = (mode.m === 2) ? true : false
   }

@@ -1,7 +1,10 @@
 
+
 import { createStore } from 'framework7/lite';
 //import { get } from 'svelte/store'
 import websocketStore from './websocket.js';
+import log from './debug.js'
+
 //import ReconnectingWebSocket from 'reconnecting-websocket'
 //import ws from './connect.js'
 
@@ -9,6 +12,7 @@ let testURI = 'ws://db39b18be10d.ngrok.io'
 let URI = testURI
 
 function getUrlVar() {
+   // debug("document.location.host")
     var urlVar = window.location.search; // получаем параметры из урла
     var arrayVar = []; // массив для хранения переменных
     var valueAndKey = []; // массив для временного хранения значения и имени переменной
@@ -28,6 +32,7 @@ function getUrlVar() {
  *          2. localhost:port/?ws=2506d4fb70a8.ngrok.io - для доступа к тестовому серверу ngrok.io
  */
 function uri() {
+   // debug(document.location.host)
     //console.log(document.location.host);
     //console.log(getUrlVar()['ws']);
     if (document.location.host.indexOf('localhost') + 1) {
@@ -46,7 +51,7 @@ function uri() {
 
 const wsStore = websocketStore('ws://' + uri(), {}, [],
   {
-    debug: true,
+    debug: false,
     reconnectionDelayGrowFactor: 1,
     maxReconnectionDelay: 5000,
     minReconnectionDelay: 1000,
@@ -177,7 +182,7 @@ const store = createStore({
   actions: {
     init({state}) {
       wsStore.subscribe((value) => {
-        console.log('[wsStore init]=> ', value)
+        log('[wsStore init]=> ', value)
 
         if (value) {
           //console.log('wsStore value', value)

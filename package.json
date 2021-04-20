@@ -25,6 +25,7 @@
     "@capacitor/android": "^2.4.6",
     "@capacitor/core": "^2.4.6",
     "@capacitor/ios": "^2.4.6",
+    "debug": "^4.3.1",
     "dom7": "^3.0.0",
     "framework7": "^6.0.6",
     "framework7-icons": "^3.0.1",
