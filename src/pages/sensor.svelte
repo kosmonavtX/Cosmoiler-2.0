@@ -92,6 +92,7 @@
     } from 'framework7-svelte';
     import {t} from '../services/i18n.js';
     import store from '../js/store.js';
+    import log from '../js/debug.js'
 
     const height = [22, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 90, 100] // профиль шины
     const dia = [16, 17, 18, 19, 21]  // диаметр
@@ -114,12 +115,12 @@
         store.dispatch('requestTelemetry')
         odometer.sensor.imp = telemetry.sp
         //trip = trip
-        console.log('clearImp ', odometer)
+        log('clearImp ', odometer)
       }, 1500);
     }
 
     function pageAfterOut () {
-      console.log('pageAfterOut', odometer);
+      log('pageAfterOut', odometer);
       clearInterval(interval)
       store.dispatch('modeWork', store.state.OILER_AUTO)
       if (odometer.sensor.imp == 0) odometer.sensor.imp = 16

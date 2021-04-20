@@ -8,7 +8,7 @@ import Framework7Svelte from 'framework7-svelte';
 import '../css/framework7-custom.less';
 
 // Import Icons and App Custom Styles
-import '../css/icons.css';
+//import '../css/icons.css';
 import '../css/app.less';
 import '../css/fontello-embedded.css';
 

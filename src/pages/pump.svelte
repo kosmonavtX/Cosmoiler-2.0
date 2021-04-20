@@ -2,7 +2,7 @@
   name="pump"
   class={`page`}
   on:pageBeforeIn={() => {
-    console.log('pageBeforeIn', pump)
+    log('pageBeforeIn', pump)
     /* включить режим настройки вязкости */
     store.dispatch('modeWork', store.state.OILER_SETTINGS)
   }}
@@ -34,6 +34,7 @@
     import {t} from '../services/i18n.js';
     import Ranges from '../components/range-param.svelte'
     import store from '../js/store.js';
+    import log from '../js/debug'
 
     let connected = useStore('connected', (value) => connected = value);
     let pump = useStore('pump', (value) => pump = value);
@@ -60,7 +61,7 @@
     }) */
 
     function pageAfterOut() {
-      console.log('pageAfterOut', tmpPump);
+      log('pageAfterOut', tmpPump);
       fOnOffPump = false
       /* Отключить режим управления насосом */
       store.dispatch('ctrlPump', [false, 0, {dpms: tmpPump.dpms, dpdp: T}])
@@ -89,7 +90,7 @@
         toggle: true,
         toggleCheck: fOnOffPump,
         onCtrlToggle: (e) => {
-          console.log(e.detail[0])
+          log(e.detail[0])
           fToggle = e.detail[0]
         }
       }],

@@ -20,7 +20,7 @@ var routes = [
     path: '/',
     component: HomePage,
     beforeEnter: function ({resolve, reject}) {
-      console.log('exec beforeenter')
+      //console.log('exec beforeenter')
     }
   },
   {

@@ -3,7 +3,7 @@
   class={`page`}
   on:pageTabHide={() => {}}
   on:pageBeforeIn={() => {
-    console.log('pageBeforeIn', odometer)
+    log('pageBeforeIn', odometer)
   }}
   on:pageAfterOut={pageAfteOut} >
 
@@ -48,6 +48,7 @@
   import {t} from '../services/i18n.js';
   import Ranges from '../components/range-param.svelte'
   import store from '../js/store.js';
+  import log from '../js/debug.js'
 //import { object_without_properties } from 'svelte/internal';
 
   let connected = useStore('connected', (value) => connected = value);
@@ -103,7 +104,7 @@
           tmpOdometer.presets[0].dst_m = e * 1000
           let arr = mapSettings.get('presets')
           mapSettings.set("presets", [tmpOdometer.presets[0], (arr)?arr[1]:null, (arr)?arr[2]:null]);
-          console.log(mapSettings)
+          log(mapSettings)
         }
       },
       {
@@ -119,7 +120,7 @@
           tmpOdometer.presets[0].num = e
           let arr = mapSettings.get('presets')
           mapSettings.set("presets", [tmpOdometer.presets[0], (arr)?arr[1]:null, (arr)?arr[2]:null]);
-          console.log(mapSettings)
+          log(mapSettings)
         }
       }],
       /* ТРАССА */
@@ -137,7 +138,7 @@
           tmpOdometer.presets[1].dst_m = e * 1000
           let arr = mapSettings.get('presets')
           mapSettings.set("presets", [(arr)?arr[0]:null, tmpOdometer.presets[1], (arr)?arr[2]:null]);
-          console.log(mapSettings)
+          log(mapSettings)
         }
       },
       {
@@ -153,7 +154,7 @@
           tmpOdometer.presets[1].num = e
           let arr = mapSettings.get('presets')
           mapSettings.set("presets", [(arr)?arr[0]:null, tmpOdometer.presets[1], (arr)?arr[2]:null]);
-          console.log(mapSettings)
+          log(mapSettings)
         }
       },
       {
@@ -169,7 +170,7 @@
         rangeChange: (e)=>{
           tmpOdometer.smart.maxsp = e
           mapSettings.set("smart", tmpOdometer.smart);
-          console.log(mapSettings)
+          log(mapSettings)
         }
       }],
       /* ОФФРОАД */
@@ -187,7 +188,7 @@
           tmpOdometer.presets[2].dst_m = e * 1000
           let arr = mapSettings.get('presets')
           mapSettings.set("presets", [(arr)?arr[0]:null, (arr)?arr[1]:null, tmpOdometer.presets[2]]);
-          console.log(mapSettings)
+          log(mapSettings)
         }
       },
       {
@@ -203,7 +204,7 @@
           tmpOdometer.presets[2].num = e
           let arr = mapSettings.get('presets')
           mapSettings.set("presets", [(arr)?arr[0]:null, (arr)?arr[1]:null, tmpOdometer.presets[2]]);
-          console.log(mapSettings)
+          log(mapSettings)
         }
       },
       {
@@ -219,7 +220,7 @@
           tmpOdometer.presets[2].cycles = e
           let arr = mapSettings.get('presets')
           mapSettings.set("presets", [(arr)?arr[0]:null, (arr)?arr[1]:null, tmpOdometer.presets[2]]);
-          console.log(mapSettings)
+          log(mapSettings)
         }
       }]
     ]

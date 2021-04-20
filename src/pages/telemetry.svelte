@@ -153,6 +153,7 @@
   import CardTelemetry from '../components/tele-card.svelte'
   import store from '../js/store';
   import { fade } from 'svelte/transition';
+  import log from '../js/debug.js'
 
   let telemetry = useStore('telemetry', (value) => telemetry = value)
   let odometer = useStore('odometer', (value) => odometer = value)

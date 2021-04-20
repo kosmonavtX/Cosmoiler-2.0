@@ -51,10 +51,10 @@ function uri() {
 
 const wsStore = websocketStore('ws://' + uri(), {}, [],
   {
-    debug: false,
+    debug: true,
     reconnectionDelayGrowFactor: 1,
     maxReconnectionDelay: 5000,
-    minReconnectionDelay: 1000,
+    minReconnectionDelay: 2000,
     connectionTimeout: 1000,
   })
 
@@ -218,13 +218,14 @@ const store = createStore({
 
           if (!state.system.gps) state.odometer.sensor.gnss = false
 
-          console.log('Store state', state)
+          log('Store state', state)
+
       }
     })
     },
     requestGNSS({state}) {
       wsStore.set({cmd: "get", param: ["gnss"]})
-      console.log('requestGNSS')
+      log('requestGNSS')
     },
     requestTelemetry({state}) {
       wsStore.set({cmd: "telemetry"})
@@ -235,7 +236,7 @@ const store = createStore({
     },
   // TODO: проверить правильность заполнения поля imp_m
     calcDistance({state}, _trip) {
-      console.log("_trip", _trip)
+      log("_trip", _trip)
       state.odometer.wheel.d = Number(_trip.wheel.d)
       state.odometer.wheel.h = Number(_trip.wheel.h)
       state.odometer.wheel.w = Number(_trip.wheel.w)
@@ -258,7 +259,7 @@ const store = createStore({
       state.mapSettings.clear()
                                                         // Данная запись прдотвращает попадание в массив повторяющихся значений id
       state.fChngSettings = { status: true, id: [...new Set([...state.fChngSettings.id, state.odometer.id])]}
-      console.log('Change Settings = ', state.fChngSettings)
+      log('Change Settings = ', state.fChngSettings)
     },
     sendTime({state}, data) {
       state.timer = data
@@ -266,7 +267,7 @@ const store = createStore({
       wsStore.set({cmd: "post", param: [state.timer.id, Object.fromEntries(state.mapSettings)]})
       state.mapSettings.clear()
       state.fChngSettings = { status: true, id: [...new Set([...state.fChngSettings.id, state.timer.id])]}
-      console.log("send Time = ", state.timer)
+      log("send Time = ", state.timer)
     },
     sendManual({state}, data) {
 /*       for (var key in data) {
@@ -280,7 +281,7 @@ const store = createStore({
       state.manual = state.manual
       wsStore.set({cmd: "post", param: [state.manual.id, state.manual]})
       state.fChngSettings = { status: true, id: [...new Set([...state.fChngSettings.id, state.manual.id])]}
-      console.log("send Pump = ", state.manual)
+      log("send Pump = ", state.manual)
     },
     sendPump({state}, data) {
       //console.log("sendPump: ", prop)
@@ -288,13 +289,13 @@ const store = createStore({
       state.pump = state.pump
       wsStore.set({cmd: "post", param: [state.pump.id, {dpms: data.dpms}]}) // отправляем в БУ только свойство dpms
       state.fChngSettings = { status: true, id: [...new Set([...state.fChngSettings.id, state.pump.id])]}
-      console.log("send Pump = ", state.pump)
+      log("send Pump = ", state.pump)
     },
     sendMode({state}, data) {
         state.mode.m = data.m
         state.mode = state.mode
         wsStore.set({cmd: "post", param: [state.mode.id, {m: data.m}]}) // отправляем в БУ только свойство m
-        console.log("send Mode = ", state.mode)
+        log("send Mode = ", state.mode)
      // }
     },
     modeWork({state}, mode) {

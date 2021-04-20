@@ -18,7 +18,7 @@
   </Toolbar>
 
   <Tabs >
-    <Tab id="tab-trip" tabActive on:tabShow={()=>{console.log('Tab Trip Show')}}>
+    <Tab id="tab-trip" tabActive on:tabShow={()=>{log('Tab Trip Show')}}>
       <List>
         {#each items_odo.slice(0,2) as {link, title, icon, size}}
           <ListItem link={link} title={title} class={`settings-main__list-item`}>
@@ -147,6 +147,7 @@
   import Ranges from '../components/range-param.svelte'
   import { onMount } from 'svelte';
   import store from '../js/store.js';
+  import log from '../js/debug.js'
 //import { f7router } from 'framework7-svelte/cjs/shared/f7';
 
 //export let f7router;

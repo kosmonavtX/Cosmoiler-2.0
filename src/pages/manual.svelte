@@ -20,6 +20,7 @@
   import {t} from '../services/i18n.js';
   import Ranges from '../components/range-param.svelte'
   import store from '../js/store.js';
+  import log from '../js/debug.js'
 
   //export let f7router;
 
@@ -30,11 +31,11 @@
   let dpms_rel = Math.trunc(tmpManual.pump.dpms * 100 / tmpManual.pump.dpdp);
 
   function pageBeforeIn() {
-    console.log('pageBeforeIn', manual)
+    log('pageBeforeIn', manual)
   }
 
   function pageAfterOut() {
-    console.log('pageAfterOut', tmpManual);
+    log('pageAfterOut', tmpManual);
     /* сохранить настройки */
     store.dispatch('sendManual', tmpManual)
   }

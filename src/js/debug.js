@@ -2,7 +2,7 @@ var debug = require('debug')
 var log = debug('cosmoiler:log')
 //var logHome = debug('home:log')
 
-//debug.disable()
+debug.disable()
 localStorage.debug = 'cosmoiler:*'
 //localStorage.debug = 'home:*'
 

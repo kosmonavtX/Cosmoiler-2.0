@@ -4,7 +4,7 @@
   on:pageTabHide={() => {}}
   on:pageAfterOut={pageAfteOut}
   on:pageBeforeIn={() => {
-    console.log('pageBeforeIn', timer)
+    log('pageBeforeIn', timer)
   }}
   >
   <Navbar title={$t('settings.presets.title')} backLink="Back" />
@@ -44,6 +44,7 @@
   //import {time} from '../store/store.js'
   import Ranges from '../components/range-param.svelte'
   import store from '../js/store.js';
+  import log from '../js/debug.js'
 
   let connected = useStore('connected', (value) => connected = value);
   let timer = useStore('timer', (value) => timer = value);
@@ -52,7 +53,7 @@
   let tmpTimer = timer;
 
   function pageAfteOut() {
-    console.log('pageAfterOut', tmpTimer);
+    log('pageAfterOut', tmpTimer);
     store.dispatch('sendTime', tmpTimer)
   }
 
@@ -74,7 +75,7 @@
         tmpTimer.presets[0].time = e
         let arr = mapSettings.get('presets')
         mapSettings.set("presets", [tmpTimer.presets[0], (arr)?arr[1]:null]);
-      console.log(mapSettings)
+      log(mapSettings)
       }
     },
     {
@@ -90,7 +91,7 @@
         tmpTimer.presets[0].num = e
         let arr = mapSettings.get('presets')
         mapSettings.set("presets", [tmpTimer.presets[0], (arr)?arr[1]:null]);
-      console.log(mapSettings)
+      log(mapSettings)
       }
     }],
     [{
@@ -108,7 +109,7 @@
         tmpTimer.presets[1].time = e
         let arr = mapSettings.get('presets')
         mapSettings.set("presets", [(arr)?arr[0]:null, tmpTimer.presets[1]]);
-      console.log(mapSettings)
+      log(mapSettings)
       }
     },
     {
@@ -124,7 +125,7 @@
         tmpTimer.presets[1].num = e
         let arr = mapSettings.get('presets')
         mapSettings.set("presets", [(arr)?arr[0]:null, tmpTimer.presets[1]]);
-      console.log(mapSettings)
+      log(mapSettings)
       }
     },
     {
@@ -140,7 +141,7 @@
         tmpTimer.presets[1].cycles = e
         let arr = mapSettings.get('presets')
         mapSettings.set("presets", [(arr)?arr[0]:null, tmpTimer.presets[1]]);
-      console.log(mapSettings)
+      log(mapSettings)
       }
     }]
   ]
