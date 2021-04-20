@@ -1,8 +1,8 @@
 
 import { createStore } from 'framework7/lite';
-import { get } from 'svelte/store'
+//import { get } from 'svelte/store'
 import websocketStore from './websocket.js';
-import ReconnectingWebSocket from 'reconnecting-websocket'
+//import ReconnectingWebSocket from 'reconnecting-websocket'
 //import ws from './connect.js'
 
 let testURI = 'ws://db39b18be10d.ngrok.io'
@@ -50,7 +50,7 @@ const wsStore = websocketStore('ws://' + uri(), {}, [],
     reconnectionDelayGrowFactor: 1,
     maxReconnectionDelay: 5000,
     minReconnectionDelay: 1000,
-    connectionTimeout: 2000,
+    connectionTimeout: 1000,
   })
 
 const store = createStore({
@@ -148,7 +148,8 @@ const store = createStore({
         },
       ]
     },
-    versw: "v3.2",
+    versw: "v4.0",
+
     OILER_SETTINGS: 2,
     OILER_MANUAL: 1,
     OILER_AUTO: 0,

@@ -159,12 +159,7 @@
   let timer = useStore('timer', (value) => timer = value)
   let gnssPresent = useStore('gnssPresent', (value) => gnssPresent = value)
 
-
-/*   let settingsTrip = params.trip/trip.presets[params.preset].trip_m
-  params.trip = 1200
-  let tripValueText = (params.trip/1000).toFixed(1) */
-  console.log('params', odometer)
-//$:  console.log(JSON.stringify(params))
+  //console.log('params', odometer)
 
   const MAXSPEED = 250
   const iconsPreset = ["icon-city", "icon-way", "icon-off-road"]
@@ -188,7 +183,7 @@
  // gnssPresent = false;
 
   let valueTimer = (data) => {
-    console.log('timer = ',data)
+    //console.log('timer = ',data)
    // let myDate
     //if (data.v != 0)
     let  myDate = new Date(0, 0, 0, 0, 0, 0, data.v);
@@ -233,7 +228,7 @@ $:  dataCardTele = [
       title: "ВЫКЛЮЧЕНО",
       gauge: [],
       icons: [
-        (gnssPresent) ? {icon: "icon-gps", value: telemetry.params[nameParams.GPS].sat} : null,
+        (gnssPresent.gps) ? {icon: "icon-gps", value: telemetry.params[nameParams.GPS].sat} : null,
         {icon: "icon-accum", value: voltage(telemetry.params[nameParams.VOLTAGE]) + $t("all.voltage")}
       ]
     },
@@ -247,8 +242,8 @@ $:  dataCardTele = [
           text: $t("all.speed"),
           units: $t("all.kmh") },
         {
-          value: remainsTrip(odometer, gnssPresent, telemetry.params[nameParams.ODOMETER])/odometer.presets[telemetry.params[nameParams.MODE].p].dst_m,
-          valueText: (remainsTrip(odometer, gnssPresent, telemetry.params[nameParams.ODOMETER])/1000).toFixed(1),
+          value: remainsTrip(odometer, gnssPresent.gps, telemetry.params[nameParams.ODOMETER])/odometer.presets[telemetry.params[nameParams.MODE].p].dst_m,
+          valueText: (remainsTrip(odometer, gnssPresent.gps, telemetry.params[nameParams.ODOMETER])/1000).toFixed(1),
           labelText: (telemetry.params[nameParams.ODOMETER].v / 1000).toFixed(1),
           text: $t("all.distance"),
           units: $t("all.km") }
@@ -301,7 +296,7 @@ $:  dataCardTele = [
       icons: [
         {icon: iconsPreset[telemetry.params[nameParams.MODE].p], value: timer.presets[telemetry.params[nameParams.MODE].p].time + $t("all.seconds")},
         {icon: "icon-pump", value: telemetry.params[nameParams.PUMP].v},
-        (gnssPresent) ? {icon: "icon-gps", value: telemetry.params[nameParams.GPS].sat} : null,
+        (gnssPresent.gps) ? {icon: "icon-gps", value: telemetry.params[nameParams.GPS].sat} : null,
         {
           icon: "icon-accum",
           value: voltage(telemetry.params[nameParams.VOLTAGE]) + $t("all.voltage"),
@@ -313,7 +308,7 @@ $:  dataCardTele = [
 ]
 
 
-$:  console.log('Data Telemetry', dataCardTele)
+//$:  console.log('Data Telemetry', dataCardTele)
 
   let interval;
 

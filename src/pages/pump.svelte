@@ -70,6 +70,8 @@
       store.dispatch('sendPump', tmpPump)
     }
 
+    $: if (!connected) document.location.reload()
+
     $:  rangeValues = [
       [{
         title: "Объем масла",

@@ -14,7 +14,7 @@
   {#if connected}
     <BlockTitle style='background-color: var( --f7-theme-color-bg-color)'>{$t('home.selectmode')}</BlockTitle>
   {:else}
-    <BlockTitle style='background-color: var( --f7-theme-color-bg-color)'>{$t('home.noconnect')}</BlockTitle>
+    <BlockTitle style='color: red'>{$t('home.noconnect')}</BlockTitle>
   {/if}
 
 {#if !connected}
@@ -48,83 +48,14 @@
         <ModeItem {...items[1]} />
     </List>
   </div>
-
-
-
-<!--   <List mediaList >
-       <ListItem on:click={fChecked} class={`list-item`} >
-         <div slot='title' class="list-item__title list-item__title_up-color">{$t('home.trip.title').toUpperCase()}</div>
-         <div slot="subtitle">
-           <div class="list-item__subtitle-text list-item__subtitle-text_color">{$t('home.trip.subtitle')}</div>
-           <div >
-             {#if gnssPresent}
-                <Badge color='blue'>GPS: отлично </Badge>
-             {/if}
-           </div>
-         </div>
-         <div slot='text' class="list-item__text list-item__text_margin-03rem">
-           <Row noGap>
-             <Col>
-               <Icon icon="icon-city" size="20px" class={`col-param__logo`}/>
-               <span>{$t('home.setting.city', {values: {p: trip.presets[0].trip_m / 1000}})}</span>
-             </Col>
-             <Col>
-               <Icon icon="icon-way" size="20px" class={`col-param__logo`} />
-               <span>{$t('home.setting.way', {values: {p: trip.presets[1].trip_m / 1000}})}</span>
-             </Col>
-             <Col>
-               <Icon icon="icon-off-road" size="20px" class={`col-param__logo`} />
-               <span>{$t('home.setting.way', {values: {p: trip.presets[2].trip_m / 1000}})}</span>
-             </Col>
-           </Row>
-         </div>
-         <div slot="after">
-           <Toggle checked={check} name='trip' />
-         </div>
-         <div slot='media'>
-           <Icon icon="icon-route" size={mediaIconSize} />
-         </div>
-       </ListItem>
-      <ListItem on:click={fChecked} class={`list-item`}  >
-        <div slot='title' class="list-item__title list-item__title_up-color">{$t('home.time.title').toUpperCase()}</div>
-        <div slot="subtitle">
-          <span class="list-item__subtitle-text list-item__subtitle-text_color">{$t('home.time.subtitle')}</span>
-        </div>
-
-         <div slot='text' class="list-item__text list-item__text_margin-03rem">
-           <Row noGap>
-             <Col class="col-param">
-               <Icon icon="icon-city" size="20px" class="col-param__logo" />
-               <span>{time.presets[0].dp_time} {$t('all.seconds')}</span>
-             </Col>
-             <Col>
-               <Icon icon="icon-off-road" size="20px" class="col-param__logo" />
-               <span>{time.presets[1].dp_time} {$t('all.seconds')}</span>
-             </Col>
-           </Row>
-         </div>
-         <span slot="after"><Toggle checked={fChecked} name='time' /></span>
-         <div slot='media'><Icon icon="icon-timer" size={mediaIconSize} /></div>
-      </ListItem>
-     </List> -->
 {/if}
 
 </Page>
 
 <script>
   import {
-    f7,
     Page,
     Navbar,
-    NavLeft,
-    NavTitle,
-    NavTitleLarge,
-    NavRight,
-    Link,
-    Toolbar,
-    Icon,
-    Badge,
-    Block,
     BlockTitle,
     List,
     ListItem,
@@ -139,7 +70,6 @@
 
 
   let gnssPresent = useStore('gnssPresent', (value) => gnssPresent = value.gps);
-  //let wsStore = useStore('wsStore', (value) => (wsStore = value));
   let connected = useStore('connected', (value) => connected = value);
   let odometer = useStore('odometer', (value) => odometer = value);
   let timer = useStore('timer', (value) => timer = value);

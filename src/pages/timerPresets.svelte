@@ -56,6 +56,8 @@
     store.dispatch('sendTime', tmpTimer)
   }
 
+  $: if (!connected) document.location.reload()
+
   $: rangeValues = [
     [{
       title: "Таймер",

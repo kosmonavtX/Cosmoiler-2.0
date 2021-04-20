@@ -1,4 +1,4 @@
-package io.framework7.myapp;
+package com.cosmoiler.app;
 
 import android.os.Bundle;
 

@@ -1,4 +1,3 @@
-{#if true}
 <Page
   name="settings"
   class={`page`}
@@ -115,7 +114,6 @@
     </Tab> -->
   </Tabs>
 </Page>
-{/if}
 
 <script>
   import {
@@ -180,6 +178,8 @@
     console.log('pump dpdp =', manual.pump.dpdp);
     console.log('pump dpms_rel =', dpms_rel);
   } */
+  //$: if (!connected) document.location.reload()
+
   $: gnss = (odometer.sensor.gnss) ? "GPS" : $t("settings.sensor.impulse")
 /*   onMount(() => {
     console.log(f7route)

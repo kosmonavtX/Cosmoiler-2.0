@@ -44,7 +44,6 @@
 <script>
     import {
         Icon,
-        Badge,
         ListItem,
         Row,
         Col,

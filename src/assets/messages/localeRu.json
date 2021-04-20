@@ -13,7 +13,7 @@
 
     "home.selectmode": "Выберите режим работы",
     "home.connect": "Соединение...",
-    "home.noconnect": "Нет связи с блоком управления",
+    "home.noconnect": "Нет связи с блоком управления!",
 
     "home.telemetry": "Телеметрия",
     "home.settings": "Настройки",

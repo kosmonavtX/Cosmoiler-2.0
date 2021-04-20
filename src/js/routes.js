@@ -1,9 +1,7 @@
 
 import HomePage from '../pages/home.svelte';
 import AboutPage from '../pages/about.svelte';
-import FormPage from '../pages/form.svelte';
-import CatalogPage from '../pages/catalog.svelte';
-import ProductPage from '../pages/product.svelte';
+/* import ProductPage from '../pages/product.svelte'; */
 
 import TelemetryPage from '../pages/telemetry.svelte';
 import SettingsPage from '../pages/settings.svelte';
@@ -57,18 +55,10 @@ var routes = [
     path: '/about/',
     component: AboutPage,
   },
-  {
-    path: '/form/',
-    component: FormPage,
-  },
-  {
-    path: '/catalog/',
-    component: CatalogPage,
-  },
-  {
+/*   {
     path: '/product/:id/',
     component: ProductPage,
-  },
+  }, */
 
 /*   {
     path: '/dynamic-route/blog/:blogId/post/:postId/',

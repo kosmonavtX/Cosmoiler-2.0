@@ -1,4 +1,4 @@
-import { t, register, init, getLocaleFromNavigator, addMessages, locale } from 'svelte-i18n'
+import { t, init, getLocaleFromNavigator, addMessages } from 'svelte-i18n'
 
 import en from '../assets/messages/localeEn.json'
 import ru from '../assets/messages/localeRu.json'

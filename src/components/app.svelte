@@ -43,7 +43,7 @@
     </Router>
   </View> -->
 
-  <LoginScreen id="my-login-screen">
+<!--   <LoginScreen id="my-login-screen">
     <View>
       <Page loginScreen>
         <LoginScreenTitle>Login</LoginScreenTitle>
@@ -69,7 +69,7 @@
         </BlockFooter>
       </Page>
     </View>
-  </LoginScreen>
+  </LoginScreen> -->
 </App>
 <script>
   import { onMount } from 'svelte';
@@ -78,24 +78,10 @@
     f7,
     f7ready,
     App,
-    Panel,
     Views,
     View,
-    Popup,
-    Page,
-    Navbar,
     Toolbar,
-    NavRight,
     Link,
-    Block,
-    BlockTitle,
-    LoginScreen,
-    LoginScreenTitle,
-    List,
-    ListItem,
-    ListInput,
-    ListButton,
-    BlockFooter,
     useStore
   } from 'framework7-svelte';
   import { fade, fly, slide } from 'svelte/transition';
@@ -116,18 +102,18 @@
     theme: 'auto', // Automatic theme detection
 
 
-    id: 'io.framework7.myapp', // App bundle ID
+    id: 'com.cosmoiler.app', // App bundle ID
     // App store
     store: store,
     // App routes
     routes: routes,
 
-    // Input settings
+    // TODO Input settings
     input: {
       scrollIntoViewOnFocus: device.capacitor,
       scrollIntoViewCentered: device.capacitor,
     },
-    // Capacitor Statusbar settings
+    // TODO Capacitor Statusbar settings
     statusbar: {
       iosOverlaysWebView: true,
       androidOverlaysWebView: false,
@@ -138,11 +124,11 @@
   let password = '';
   let url = window.location.pathname;
 
-  function alertLoginData() {
+/*   function alertLoginData() {
     f7.dialog.alert('Username: ' + username + '<br>Password: ' + password, () => {
       f7.loginScreen.close();
     });
-  }
+  } */
   /* let connected = f7.useStore('connected', (value) => connected = value);
  */
 /*  const doSomething = () => {

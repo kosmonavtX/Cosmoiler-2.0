@@ -39,6 +39,8 @@
     store.dispatch('sendManual', tmpManual)
   }
 
+  $: if (!connected) document.location.reload()
+
   $: rangeValues = [
       {
           title: "Объем масла",

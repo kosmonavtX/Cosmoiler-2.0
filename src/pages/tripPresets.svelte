@@ -37,9 +37,6 @@
 </Page>
 <script>
   import {
-    BlockTitle,
-    List,
-    ListItem,
     Page,
     Navbar,
     Toolbar,
@@ -59,13 +56,13 @@
   let mapSettings = useStore('mapSettings', (value) => mapSettings = value);
  // let chngSettings = useStore('chngSettings', (value) => chngSettings = value)
 
-  function pageTabHide() {
+/*   function pageTabHide() {
     //f7router.back()
     //store.dispatch('sendTrip')
-  }
+  } */
 
   function pageAfteOut() {
-    console.log('pageAfterOut', tmpOdometer);
+    //console.log('pageAfterOut', tmpOdometer);
     store.dispatch('calcDistance', odometer)
     store.dispatch('sendDistance', tmpOdometer)
   }
@@ -88,6 +85,7 @@
       }
     }) */
 
+  $: if (!connected) document.location.reload()
 
   $: rangeValues = [
       /* ГОРОД */
