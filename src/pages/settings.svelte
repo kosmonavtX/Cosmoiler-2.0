@@ -117,29 +117,15 @@
 
 <script>
   import {
-    f7,
     Page,
     Navbar,
     List,
-    ListInput,
     ListItem,
-    ListItemCell,
-    ListItemRow,
-    Toggle,
-    BlockTitle,
-    BlockFooter,
-    Row,
-    Button,
-    Range,
-    Block,
-    BlockHeader,
     Toolbar,
     Link,
     Tabs,
     Tab,
     Icon,
-    View,
-    Views,
     useStore
   } from 'framework7-svelte';
   import {t} from '../services/i18n.js';

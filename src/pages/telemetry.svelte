@@ -134,19 +134,6 @@
   import {
     Page,
     Navbar,
-    Card,
-    CardHeader,
-    CardContent,
-    CardFooter,
-    Link,
-    Gauge,
-    Row,
-    Col,
-    Icon,
-    BlockTitle,
-    Block,
-    BlockHeader,
-    BlockFooter,
     useStore
   } from 'framework7-svelte';
   import {t} from '../services/i18n.js';

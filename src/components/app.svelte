@@ -116,12 +116,12 @@
     // TODO Capacitor Statusbar settings
     statusbar: {
       iosOverlaysWebView: true,
-      androidOverlaysWebView: false,
+      androidOverlaysWebView: true,
     },
   };
   // Login screen demo data
-  let username = '';
-  let password = '';
+/*   let username = '';
+  let password = ''; */
   let url = window.location.pathname;
 
 /*   function alertLoginData() {
