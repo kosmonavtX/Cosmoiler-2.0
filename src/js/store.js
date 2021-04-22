@@ -118,7 +118,7 @@ const store = createStore({
    /*  pn: { pn: null, ssid: "Cosmoiler_", psw: null }, */
     ver: {
       id: "/ver.json",
-      fw: null, hw: ""
+      fw: "1.0", hw: "XY"
     },
     telemetry: {
       id: "telemetry",
@@ -176,6 +176,8 @@ const store = createStore({
     pump:         ({state}) => state.pump,
     telemetry:    ({state}) => state.telemetry,
     mode:         ({state}) => state.mode,
+    system:       ({state}) => state.system,
+    ver:          ({state}) => state.ver,
     chngSettings: ({state}) => state.fChngSettings,
     mapSettings:  ({state}) => state.mapSettings,
   },
@@ -187,6 +189,7 @@ const store = createStore({
         if (value) {
           //console.log('wsStore value', value)
           state.connect = value.connect
+          state.connect = true
           delete value.connect
           //let obj = value.data
 

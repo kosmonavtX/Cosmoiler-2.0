@@ -40,11 +40,10 @@
     Tab,
     useStore
   } from 'framework7-svelte';
-  import {t} from '../services/i18n.js';
-  //import {time} from '../store/store.js'
-  import Ranges from '../components/range-param.svelte'
-  import store from '../js/store.js';
-  import log from '../js/debug.js'
+  import {t} from '../../services/i18n.js';
+  import Ranges from '../../components/range-param.svelte'
+  import store from '../../js/store.js';
+  import log from '../../js/debug.js'
 
   let connected = useStore('connected', (value) => connected = value);
   let timer = useStore('timer', (value) => timer = value);

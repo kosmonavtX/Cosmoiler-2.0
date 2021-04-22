@@ -72,7 +72,7 @@
   //logHome('kdsjhfkjshks')
   log('123124234234')
 
-  let gnssPresent = useStore('gnssPresent', (value) => gnssPresent = value.gps);
+  let gnssPresent = useStore('gnssPresent', (value) => gnssPresent = value);
   let connected = useStore('connected', (value) => connected = value);
   let odometer = useStore('odometer', (value) => odometer = value);
   let timer = useStore('timer', (value) => timer = value);
@@ -93,7 +93,7 @@
 
   $: if (connected) {
       //console.log('Home -> connected: %s', gnssPresent)
-      log('Home -> connected: %s', gnssPresent)
+      log('Home -> connected: %s', gnssPresent.gps)
       fmodeOdometer = (mode.m === 1) ? true : false
       fmodeTimer = (mode.m === 2) ? true : false
   }
@@ -131,7 +131,7 @@
         subtitle: $t("home.trip.subtitle"),
         titleIcon: "icon-route",
         gpsIcon: "icon-gps",
-        gnss: gnssPresent,
+        gnss: gnssPresent.gps,
         icons: [
           {name: "icon-city", text: $t('home.setting.trip', {values: {p: odometer.presets[0].dst_m / 1000}})},
           {name: "icon-way", text: $t('home.setting.trip', {values: {p: odometer.presets[1].dst_m / 1000}})},

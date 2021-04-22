@@ -63,6 +63,11 @@
     "settings.sensor.wheel.width": "Ширина шины",
     "settings.sensor.wheel.height": "Высота шины",
 
+    "more.wifi.title": "WiFi",
+    "more.system.title": "Система",
+    "more.update.title": "Обновление ПО",
+    "more.about.title": "О приложении",
+
     "ctrlpump.title": "Заполнение системы",
 
     "button.reset": "Сброс",

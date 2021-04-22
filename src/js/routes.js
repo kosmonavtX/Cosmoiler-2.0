@@ -1,12 +1,12 @@
 
 import HomePage from '../pages/home.svelte';
-import AboutPage from '../pages/about.svelte';
+import MorePage from '../pages/more.svelte';
 /* import ProductPage from '../pages/product.svelte'; */
 
 import TelemetryPage from '../pages/telemetry.svelte';
 import SettingsPage from '../pages/settings.svelte';
-import TripPresetsPage from '../pages/tripPresets.svelte';
-import TimerPresetsPage from '../pages/timerPresets.svelte';
+import TripPresetsPage from '../pages/settings/tripPresets.svelte';
+import TimerPresetsPage from '../pages/settings/timerPresets.svelte';
 import ManualPage from  '../pages/manual.svelte';
 import PumpPage from '../pages/pump.svelte';
 import SensorPage from '../pages/sensor.svelte';
@@ -52,8 +52,8 @@ var routes = [
       component: SensorPage
   },
   {
-    path: '/about/',
-    component: AboutPage,
+    path: '/more/',
+    component: MorePage,
   },
 /*   {
     path: '/product/:id/',
