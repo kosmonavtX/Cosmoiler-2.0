@@ -18,6 +18,7 @@ var capacitorApp = {
   handleAndroidBackButton: function () {
     var f7 = capacitorApp.f7;
     const $ = f7.$;
+
     if (f7.device.electron || !window.Capacitor) return;
 
     window.Capacitor.Plugins.App.addListener('backButton', function () {
@@ -68,11 +69,18 @@ var capacitorApp = {
         currentView.router.back();
         return;
       }
+      //const currentView = f7.views.current;
+/*       const currentPage = currentView.router.currentRoute.name;
+      console.log('handleAndroidBackButton',currentView.name);
+      if (currentPage == 'main') window.Capacitor.Plugins.App.exitApp(); */
 
       if ($('.panel.panel-in').length) {
         f7.panel.close('.panel.panel-in');
         return;
       }
+
+      window.Capacitor.Plugins.App.exitApp();
+
     }, false);
   },
   /*
@@ -125,6 +133,8 @@ var capacitorApp = {
 
     // Handle Keyboard
     capacitorApp.handleKeyboard();
+
+    //window.Capacitor.Plugins.StatusBar.show();
   },
 };
 

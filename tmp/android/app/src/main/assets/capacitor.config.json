@@ -1,0 +1,14 @@
+{
+  "appId": "com.cosmoiler.app",
+  "appName": "Cosmoiler",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www",
+  "hideLogs": false,
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0
+    }
+  },
+  "cordova": {}
+}

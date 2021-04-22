@@ -147,6 +147,10 @@ Capacitor assets are located in `resources` folder which is intended to be used 
 npx cordova-res
 ```
 
+Init Android
+
+* npx cap add android
+
 Check out [official cordova-res documentation](https://github.com/ionic-team/cordova-res) for more usage examples.
 
 ## Documentation & Resources

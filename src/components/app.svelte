@@ -115,8 +115,8 @@
     },
     // TODO Capacitor Statusbar settings
     statusbar: {
-      iosOverlaysWebView: true,
-      androidOverlaysWebView: true,
+      iosOverlaysWebView: false,
+      androidOverlaysWebView: false,
     },
   };
   // Login screen demo data
