@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-04-15T21:14:27.250Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36 Edg/89.0.774.68" etag="Bu0azPyKqe0nJ3cpMHTX" version="14.5.4" type="github" pages="7">
+<mxfile host="app.diagrams.net" modified="2021-04-23T20:25:18.663Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.128 Safari/537.36 Edg/89.0.774.77" etag="KZRvkKhrDuMsvgRshf1d" version="14.6.3" type="github" pages="7">
   <diagram id="G5NGnM2GY4aykBmWEyZv" name="Main">
     <mxGraphModel dx="916" dy="572" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -267,7 +267,7 @@
     </mxGraphModel>
   </diagram>
   <diagram name="FSM WiFi" id="0783ab3e-0a74-02c8-0abd-f7b4e66b4bec">
-    <mxGraphModel dx="916" dy="572" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" background="#ffffff" math="0" shadow="0">
+    <mxGraphModel dx="523" dy="327" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" background="#ffffff" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -320,9 +320,9 @@
         <mxCell id="iV2ezndy51BptqNiU3A5-22" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.625;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="iV2ezndy51BptqNiU3A5-15" target="iV2ezndy51BptqNiU3A5-3" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="iV2ezndy51BptqNiU3A5-23" value="timeout &amp;amp; clients == 0" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];rotation=0;" parent="iV2ezndy51BptqNiU3A5-22" vertex="1" connectable="0">
+        <mxCell id="iV2ezndy51BptqNiU3A5-23" value="timeout &amp;amp; &lt;br&gt;clients == 0 &amp;amp; &lt;br&gt;HWVER != A" style="edgeLabel;html=1;align=left;verticalAlign=middle;resizable=0;points=[];rotation=0;" parent="iV2ezndy51BptqNiU3A5-22" vertex="1" connectable="0">
           <mxGeometry x="-0.0145" y="11" relative="1" as="geometry">
-            <mxPoint x="11.2" y="-9" as="offset" />
+            <mxPoint x="-19" y="1" as="offset" />
           </mxGeometry>
         </mxCell>
         <mxCell id="iV2ezndy51BptqNiU3A5-25" value="" style="group" parent="1" vertex="1" connectable="0">
@@ -340,9 +340,9 @@
         <mxCell id="iV2ezndy51BptqNiU3A5-28" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" source="iV2ezndy51BptqNiU3A5-3" target="iV2ezndy51BptqNiU3A5-26" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="iV2ezndy51BptqNiU3A5-32" value="CLICK / t = 10 sec" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];rotation=0;" parent="iV2ezndy51BptqNiU3A5-28" vertex="1" connectable="0">
+        <mxCell id="iV2ezndy51BptqNiU3A5-32" value="CLICK /&lt;br&gt;t = 10 sec" style="edgeLabel;html=1;align=left;verticalAlign=middle;resizable=0;points=[];rotation=0;" parent="iV2ezndy51BptqNiU3A5-28" vertex="1" connectable="0">
           <mxGeometry x="-0.3647" y="3" relative="1" as="geometry">
-            <mxPoint x="26.189999999999998" y="-7" as="offset" />
+            <mxPoint x="-14" y="3" as="offset" />
           </mxGeometry>
         </mxCell>
         <mxCell id="iV2ezndy51BptqNiU3A5-29" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.492;entryY=-0.02;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="iV2ezndy51BptqNiU3A5-26" target="iV2ezndy51BptqNiU3A5-4" edge="1">
