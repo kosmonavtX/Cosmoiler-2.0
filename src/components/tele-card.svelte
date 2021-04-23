@@ -1,6 +1,6 @@
 {#if title != undefined}
 <div transition:fade="{{delay: 100, duration: 200}}">
-<Card >
+<Card class='elevation-3' >
     <CardHeader class={`card-header-tele`} >
       <span>{title}</span>
     </CardHeader>

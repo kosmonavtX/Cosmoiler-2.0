@@ -143,18 +143,18 @@
 
 
   let items_odo = [
-    {link: '/trip-presets/', title: $t('settings.presets.title'), icon: 'icon-preset', size: 24},
-    {link: '/pump/', title: 'Насос', icon: 'icon-pump', size: 28},
-    {link: '/sensor/', title: 'Датчик', icon: 'icon-sensor', size: 28},
+    {link: '/settings/odometer/presets/', title: $t('settings.presets.title'), icon: 'icon-preset', size: 24},
+    {link: '/settings/pump/', title: 'Насос', icon: 'icon-pump', size: 28},
+    {link: '/settings/odometer/sensor/', title: 'Датчик', icon: 'icon-sensor', size: 28},
   ]
 
   let items_timer = [
-    {link: '/timer-presets/', title: $t('settings.presets.title'), icon: 'icon-preset', size: 24},
-    {link: '/pump/', title: 'Насос', icon: 'icon-pump', size: 28},
+    {link: '/settings/timer/presets/', title: $t('settings.presets.title'), icon: 'icon-preset', size: 24},
+    {link: '/settings/pump/', title: 'Насос', icon: 'icon-pump', size: 28},
   ]
 
   let items_manual = [
-    {link: '/manual/', title: $t('settings.presets.title'), icon: 'icon-preset', size: 24},
+    {link: '/settings/manual/', title: $t('settings.presets.title'), icon: 'icon-preset', size: 24},
   ]
 
 /*   function tabShowManual(){

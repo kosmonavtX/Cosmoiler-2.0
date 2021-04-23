@@ -1,16 +1,19 @@
-
+// Main pages
 import HomePage from '../pages/home.svelte';
-import MorePage from '../pages/more.svelte';
-/* import ProductPage from '../pages/product.svelte'; */
-
 import TelemetryPage from '../pages/telemetry.svelte';
 import SettingsPage from '../pages/settings.svelte';
+import MorePage from '../pages/more.svelte';
+// Settings pages
 import TripPresetsPage from '../pages/settings/tripPresets.svelte';
 import TimerPresetsPage from '../pages/settings/timerPresets.svelte';
-import ManualPage from  '../pages/manual.svelte';
-import PumpPage from '../pages/pump.svelte';
-import SensorPage from '../pages/sensor.svelte';
-
+import ManualPage from  '../pages/settings/manual.svelte';
+import PumpPage from '../pages/settings/pump.svelte';
+import SensorPage from '../pages/settings/sensor.svelte';
+// More pages
+import WifiPage from '../pages/more/wifi.svelte';
+import SystemPage from '../pages/more/system.svelte';
+import UpdatePage from '../pages/more/update.svelte';
+import AboutPage from '../pages/more/about.svelte';
 //import DynamicRoutePage from '../pages/dynamic-route.svelte';
 import RequestAndLoad from '../pages/request-and-load.svelte';
 import NotFoundPage from '../pages/404.svelte';
@@ -24,36 +27,52 @@ var routes = [
     }
   },
   {
-      path: '/telemetry/',
-      component: TelemetryPage,
+    path: '/telemetry/',
+    component: TelemetryPage,
   },
   {
-      path: '/settings/',
-      component: SettingsPage,
-  },
-  {
-      path: '/trip-presets/',
-      component: TripPresetsPage,
-  },
-  {
-      path: '/timer-presets/',
-      component: TimerPresetsPage,
-  },
-  {
-      path: '/manual/',
-      component: ManualPage,
-  },
-  {
-      path: '/pump/',
-      component: PumpPage
-  },
-  {
-      path: '/sensor/',
-      component: SensorPage
+    path: '/settings/',
+    component: SettingsPage,
   },
   {
     path: '/more/',
     component: MorePage,
+  },
+  {
+    path: '/settings/odometer/presets',// '/trip-presets/',
+    component: TripPresetsPage,
+  },
+  {
+    path: '/settings/odometer/sensor/',
+    component: SensorPage
+  },
+  {
+    path: '/settings/timer/presets',// '/timer-presets/',
+    component: TimerPresetsPage,
+  },
+  {
+      path: '/settings/manual/',
+      component: ManualPage,
+  },
+  {
+      path: '/settings/pump/',
+      component: PumpPage
+  },
+  {
+    path: '/more/wifi',
+    component: WifiPage,
+  },
+  {
+    path: '/more/system',
+    component: SystemPage,
+  },
+  {
+    path: '/more/update',
+    component: UpdatePage,
+  },
+  {
+    path: '/more/about',
+    component: AboutPage,
   },
 /*   {
     path: '/product/:id/',

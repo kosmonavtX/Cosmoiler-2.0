@@ -4,13 +4,13 @@
       <span style="color: var(--f7-theme-color-change-text)">{value} {name_value}</span>
     {/if}
   </BlockTitle>
-  <List simpleList>
+  <List simpleList class='elevation-0'>
     <ListItem style="background-color: var(--f7-theme-color-bg-tint-color)">
       <ListItemCell class="width-auto flex-shrink-0">
         <Icon icon={icon} style="font-size: 25px" />
       </ListItemCell>
       <ListItemCell class="flex-shrink-3">
-        <Range class="range__color"
+        <Range class="range__color !range__margin-bottom"
         min={minValue}
         max={maxValue}
         label={true}

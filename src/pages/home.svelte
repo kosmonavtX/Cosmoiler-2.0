@@ -7,7 +7,7 @@
   <Navbar sliding={true}>
     <div sliding slot="title" class="navbar-title">
       <span>Cosmoiler</span>
-      <span class="navbar-title__ver">v4.0</span>
+      <span class="navbar-title__ver"></span>
     </div>
   </Navbar>
 
@@ -43,7 +43,7 @@
   </div>
 {:else}
   <div transition:fade="{{delay: 250, duration: 300}}">
-    <List mediaList >
+    <List mediaList class='elevation-0'>
         <ModeItem {...items[0]} />
         <ModeItem {...items[1]} />
     </List>

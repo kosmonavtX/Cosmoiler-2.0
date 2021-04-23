@@ -90,9 +90,9 @@
       BlockTitle,
       useStore
     } from 'framework7-svelte';
-    import {t} from '../services/i18n.js';
-    import store from '../js/store.js';
-    import log from '../js/debug.js'
+    import {t} from '../../services/i18n.js';
+    import store from '../../js/store.js';
+    import log from '../../js/debug.js';
 
     const height = [22, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 90, 100] // профиль шины
     const dia = [16, 17, 18, 19, 21]  // диаметр

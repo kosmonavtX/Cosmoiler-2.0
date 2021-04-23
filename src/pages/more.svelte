@@ -7,9 +7,9 @@
 
  <!--  <BlockTitle>About My App</BlockTitle> -->
 
-  <List mediaList inset>
-    <ListItem
-      after="2.0"
+  <List mediaList inset class='elevation-3'>
+    <ListItem class={`settings-main__list-item`}
+      after={store.state.versw}
 
     >
     <div slot='title' class="home-list-item__title home-list-item__title_up-color">
@@ -42,6 +42,7 @@
     useStore
   } from 'framework7-svelte';
   import {t} from '../services/i18n.js';
+  import store from '../js/store';
 
   let connected = useStore('connected', (value) => connected = value);
   let system = useStore('system', (value) => system = value);
@@ -49,10 +50,10 @@
 
 
   let items = [
-    {link: '/wifi/', title: $t('more.wifi.title')},
-    {link: '/system/', title: $t('more.system.title')},
-    {link: '/update/', title: $t('more.update.title')},
-    {link: '/about/', title: $t('more.about.title')},
+    {link: '/more/wifi/', title: $t('more.wifi.title')},
+    {link: '/more/system/', title: $t('more.system.title')},
+    {link: '/more/update/', title: $t('more.update.title')},
+    {link: '/more/about/', title: $t('more.about.title')},
   ]
 
 </script>

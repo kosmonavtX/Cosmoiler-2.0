@@ -122,7 +122,7 @@
     </CardFooter>
   </Card> -->
 
-  <CardTelemetry {...dataCardTele[telemetry.params[3].m]} />
+  <CardTelemetry {...dataCardTele[telemetry.params[3].m]}  />
 
 <!--   <CardTelemetry {...dataCardTele[1]} />
   <CardTelemetry {...dataCardTele[2]} />

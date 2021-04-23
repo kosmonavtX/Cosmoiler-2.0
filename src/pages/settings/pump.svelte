@@ -31,10 +31,10 @@
       Navbar,
       useStore
     } from 'framework7-svelte';
-    import {t} from '../services/i18n.js';
-    import Ranges from '../components/range-param.svelte'
-    import store from '../js/store.js';
-    import log from '../js/debug'
+    import {t} from '../../services/i18n.js';
+    import Ranges from '../../components/range-param.svelte'
+    import store from '../../js/store.js';
+    import log from '../../js/debug'
 
     let connected = useStore('connected', (value) => connected = value);
     let pump = useStore('pump', (value) => pump = value);
