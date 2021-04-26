@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'fontello';
-    src: url('font/fontello.woff?15245680') format('woff');
+    src: url('font/fontello.woff?34861543') format('woff');
     font-weight: normal;
     font-style: normal;
 }
@@ -49,7 +49,7 @@
     /* Uncomment for 3D effect */
     text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3);
 }
-
+.icon-info-circled:before { content: '\e802'; } /* '' */
 .icon-gps:before { content: '\e800'; } /* '' */
 .icon-accum:before { content: '\e801'; } /* '' */
 .icon-dropfill:before { content: '\e803'; } /* '' */
