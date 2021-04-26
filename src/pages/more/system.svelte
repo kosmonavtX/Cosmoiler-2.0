@@ -1,7 +1,8 @@
 <Page
   name="system"
   class={`page`}
-  pageContent={true}>
+  pageContent={true}
+  on:pageAfterOut={pageAfteOut} >
 
   <Navbar title={$t('home.settings')} backLink="Back" />
 
@@ -11,7 +12,7 @@
   <List >
     <ListItem>
       <ListItemCell class="width-auto flex-shrink-0 list-input__label-text_color">Заполнение системы маслом:</ListItemCell>
-      <ListItemCell class="width-auto flex-shrink-4"><Toggle bind:checked={system.ap.pwr}  /></ListItemCell>
+      <!-- <ListItemCell class="width-auto flex-shrink-4"><Toggle bind:checked={false}  /></ListItemCell> -->
       <!-- <div slot='title' class="list-input__label-text_color">Прокачка системы</div> -->
 <!--       <span slot="after">
         <Toggle bind:checked={system.ap.pwr}  />
@@ -23,10 +24,11 @@
     <span>Заводские настройки</span>
   </BlockTitle>
 
+  {#if true}
   <List mediaList class='elevation-0'>
     <ListItem>
       <ListItemCell class="width-auto flex-shrink-0 list-input__label-text_color"><Icon icon="icon-info-circled" style="font-size: 28px; color: orange" /></ListItemCell>
-      <ListItemCell class="width-auto flex-shrink-3 list-input__label-text_color"><Button fill small onClick={() => log("Button")}>
+      <ListItemCell class="width-auto flex-shrink-3 list-input__label-text_color"><Button fill small on:click={() => log("Button")}>
         Сброс
       </Button></ListItemCell>
       <!-- <ListItemCell class="width-auto flex-shrink-0 list-input__label-text_color">Заполнение системы маслом:</ListItemCell> -->
@@ -48,7 +50,7 @@
         <Icon icon="icon-info-circled" style="font-size: 28px; color: orange" />
       </div>
       <div slot='after'>
-        <Button fill small click={clickB}>Сброс</Button>
+        <Button fill small on:click={clickB}>Сброс</Button>
       </div>
       <!-- <ListItemCell class="width-auto flex-shrink-0 list-input__label-text_color">Заполнение системы маслом:</ListItemCell> -->
 
@@ -66,7 +68,7 @@
   <Block strong><Icon icon="icon-info-circled" style="font-size: 28px; color: orange" />
     <Button fill preloader >Сброс</Button>
   </Block>
-
+{/if}
 <!--   <Block strong inset class="display-flex">
     <img src="static/img/icon.png" width="32" />
     <p>dsfsdgsg</p>
@@ -94,24 +96,29 @@
     } from 'framework7-svelte';
     import {t} from '../../services/i18n.js';
     import Ranges from '../../components/range-param.svelte'
+    import { f7 } from 'framework7-svelte/cjs/shared/f7';
+    import store from '../../js/store.js';
     import log from '../../js/debug.js';
 
     let connected = useStore('connected', (value) => connected = value);
     let system = useStore('system', (value) => system = value);
 
+    let tmpSystem = system
+
     $: rangeValues = [
       [{
         title: "Яркость светодиода",
-        value: 50,
+        value: tmpSystem.bright * 100 / 255,
        // name_value: "%",
         minValue: 1,
         maxValue: 100,
-        stepValue: 10,
+        stepValue: 1,
         scale: false,
         icon: "icon-light",
         icon2: "icon-dropfill",
         rangeChange: (e)=>{
-          system.bright = e
+          tmpSystem.bright = Math.trunc(e * 255 / 100)
+          store.dispatch('ctrlBright', tmpSystem.bright)
           //log(tmpPump.dpms)
         },
         toggle: false,
@@ -127,6 +134,11 @@
   function clickB() {
     log("Button")
     f7.dialog.confirm('Are you sure that your name is ', () => { f7.dialog.alert('Ok, your name is ');})
+  }
+
+  function pageAfteOut() {
+    //console.log('pageAfterOut', tmpOdometer);
+    store.dispatch('sendSystem', tmpSystem)
   }
 
 </script>

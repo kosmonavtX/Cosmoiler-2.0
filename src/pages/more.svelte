@@ -13,10 +13,10 @@
 
     >
     <div slot='title' class="home-list-item__title home-list-item__title_up-color">
-      COSMOILER-2
+      COSMOILER
     </div>
     <div slot="subtitle">
-      <div class="home-list-item__subtitle-text home-list-item__subtitle-text_color">FW: {ver.fw}, HW: {ver.hw}</div>
+      <div class="home-list-item__subtitle-text home-list-item__subtitle-text_color">FW: {ver.fw}   HW: {ver.hw}</div>
     </div>
     <div slot='text' class="home-list-item__text">S/N: {system.pn}</div>
       <img slot="media" src="static/img/icon.png" width="64" />

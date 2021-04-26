@@ -190,7 +190,7 @@ const store = createStore({
         if (value) {
           //console.log('wsStore value', value)
           state.connect = value.connect
-          state.connect = true
+         // state.connect = true
           delete value.connect
           //let obj = value.data
 
@@ -303,11 +303,21 @@ const store = createStore({
         log("send Mode = ", state.mode)
      // }
     },
+    sendSystem({state}, data) {
+      state.system = data
+      state.system = state.system
+      wsStore.set({cmd: "post", param: [state.system.id, state.system]}) // TODO проверить!
+      state.fChngSettings = { status: true, id: [...new Set([...state.fChngSettings.id, state.system.id])]}
+      log("send System = ", state.system)
+    },
     modeWork({state}, mode) {
       state.wsStore.set({cmd: "work", param: mode})
     },
     ctrlPump({state}, settings) {
       state.wsStore.set({cmd: "pump", param: settings})
+    },
+    ctrlBright({state}, data) {
+      state.wsStore.set({cmd: "bright", param: data})
     }
   },
 })
