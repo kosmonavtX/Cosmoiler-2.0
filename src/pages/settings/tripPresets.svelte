@@ -57,20 +57,11 @@
   let mapSettings = useStore('mapSettings', (value) => mapSettings = value);
  // let chngSettings = useStore('chngSettings', (value) => chngSettings = value)
 
-/*   function pageTabHide() {
-    //f7router.back()
-    //store.dispatch('sendTrip')
-  } */
-
   function pageAfteOut() {
     //console.log('pageAfterOut', tmpOdometer);
-    store.dispatch('calcDistance', odometer)
+    store.dispatch('calcDistance', tmpOdometer)
     store.dispatch('sendDistance', tmpOdometer)
   }
-/*   function pageBeforeRemove() {
-    console.log('pageBeforeRemove')
-  } */
-  //let presets = trip.presets;
 
   let tmpOdometer = odometer
 

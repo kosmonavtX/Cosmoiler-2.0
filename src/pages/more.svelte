@@ -7,19 +7,19 @@
 
  <!--  <BlockTitle>About My App</BlockTitle> -->
 
-  <List mediaList inset class='elevation-3'>
+  <List mediaList inset class='elevation-3' style="border-radius: 6px;">
     <ListItem class={`settings-main__list-item`}
       after={store.state.versw}
 
     >
     <div slot='title' class="home-list-item__title home-list-item__title_up-color">
-      COSMOILER
+      COSMOILER-2
     </div>
     <div slot="subtitle">
       <div class="home-list-item__subtitle-text home-list-item__subtitle-text_color">FW: {ver.fw}, HW: {ver.hw}</div>
     </div>
     <div slot='text' class="home-list-item__text">S/N: {system.pn}</div>
-      <img slot="media" src="https://cdn.framework7.io/placeholder/people-160x160-1.jpg" width="64" />
+      <img slot="media" src="static/img/icon.png" width="64" />
     </ListItem>
   </List>
 

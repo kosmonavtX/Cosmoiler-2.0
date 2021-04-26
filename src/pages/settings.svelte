@@ -140,6 +140,7 @@
 
   let connected = useStore('connected', (value) => connected = value);
   let odometer = useStore('odometer', (value) => odometer = value);
+  let gnssPresent = useStore('gnssPresent', (value) => gnssPresent = value);
 
 
   let items_odo = [
@@ -167,7 +168,7 @@
   } */
   //$: if (!connected) document.location.reload()
 
-  $: gnss = (odometer.sensor.gnss) ? "GPS" : $t("settings.sensor.impulse")
+  $: gnss = (odometer.sensor.gnss && gnssPresent.gps) ? "GPS" : $t("settings.sensor.impulse")
 /*   onMount(() => {
     console.log(f7route)
   }) */

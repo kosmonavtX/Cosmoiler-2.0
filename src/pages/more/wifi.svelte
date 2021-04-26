@@ -5,10 +5,105 @@
 
   <Navbar title={$t('home.settings')} backLink="Back" />
 
-  <Block strong>
+<!--   <Block strong>
     <p>1. Название точки доступа блока</p>
     <p>2. Точка доступа для обновления</p>
-  </Block>
+    <p>3. Переключатель "WiFi всегда включен" ( system.json: ap:  pwr: true )</p>
+  </Block> -->
+
+  <BlockTitle class="display-flex justify-content-space-between">
+    <span>Точка доступа WiFi блока</span>
+  </BlockTitle>
+
+  <List >
+    <ListInput
+      type="text"
+      placeholder="Введите имя"
+      bind:value={system.ap.ssid}
+      clearButton
+    >
+      <div slot='label' class="list-input__label list-input__label-text_color">SSID</div>
+    </ListInput>
+    <ListInput
+      type="password"
+      placeholder="Введите пароль"
+      bind:value={system.ap.psw}
+      clearButton
+    >
+      <div slot='label' class="list-input__label list-input__label-text_color">Пароль</div>
+    </ListInput>
+    <ListItem>
+      <div slot='title' class="list-input__label list-input__label-text_color">WiFi всегда включен:</div>
+      <span slot="after">
+        <Toggle bind:checked={system.ap.pwr}  /> <!-- on:toggleChange={() => log(system.ap.pwr)} -->
+      </span>
+    </ListItem>
+  </List>
+
+  <BlockTitle class="display-flex justify-content-space-between">
+    <span>Точка доступа для обновления</span>
+  </BlockTitle>
+
+  <List>
+    <ListInput
+      type="text"
+      placeholder="Введите имя"
+      bind:value={system.sta.ssid}
+    >
+      <div slot='label' class="list-input__label list-input__label-text_color">SSID</div>
+    </ListInput>
+    <ListInput
+      type="password"
+      placeholder="Введите пароль"
+      bind:value={system.sta.psw}>
+      <div slot='label' class="list-input__label list-input__label-text_color">Пароль</div>
+    </ListInput>
+  </List>
+
+<!--   <List> -->
+<!--     <ListInput
+      label="E-mail"
+      type="email"
+      placeholder="E-mail"
+    ></ListInput>
+
+    <ListInput
+      label="URL"
+      type="url"
+      placeholder="URL"
+    ></ListInput> -->
+
+
+<!--     <ListInput
+      label="Gender"
+      type="select"
+      >
+      <option>Male</option>
+      <option>Female</option>
+    </ListInput>
+
+
+    <ListInput
+      label="Range"
+      input={false}
+    >
+      <span slot="input">
+        <Range value={50} min={0} max={100} step={1} />
+      </span>
+    </ListInput>
+
+    <ListInput
+      type="textarea"
+      label="Textarea"
+      placeholder="Bio"
+    ></ListInput>
+    <ListInput
+      type="textarea"
+      label="Resizable"
+      placeholder="Bio"
+      resizable
+    ></ListInput>
+  </List> -->
 
 </Page>
 
@@ -17,12 +112,16 @@
       Page,
       List,
       ListItem,
+      ListInput,
       Navbar,
       Block,
       BlockTitle,
+      Range,
+      Toggle,
       useStore
     } from 'framework7-svelte';
     import {t} from '../../services/i18n.js';
+    import log from '../../js/debug.js'
 
     let connected = useStore('connected', (value) => connected = value);
     let system = useStore('system', (value) => system = value);

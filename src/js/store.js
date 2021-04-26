@@ -84,7 +84,7 @@ const store = createStore({
     odometer: {
       id: "/trip.json",
       smart: { predict: 5, avgsp: 80, maxsp: 150 },
-      sensor: { gnss: false, imp: 16, hdop: 5000 },
+      sensor: { gnss: true, imp: 16, hdop: 5000 },
       presets: [
           { dst_m: 4000, num: 5, imp_m: 0, n: 5, cycles: 0 },
           { dst_m: 7000, num: 2, imp_m: 0, n: 10, cycles: 0 },
@@ -111,7 +111,8 @@ const store = createStore({
     system: {
       id: "/system.json",
       pn: null,
-      ap: {},
+      ap: {ssid: "Cosmoiler-NNNN", psw: "", pwr: true},
+      sta: {ssid: "", psw: ""},
       bright: 255,
       gps: false
     },
@@ -206,20 +207,20 @@ const store = createStore({
             state.manual = value
           else if (value.id == '/pump.json')
             state.pump = value
-          else if (value.id == '/system.json')
+          else if (value.id == '/system.json') {
             state.system = value
+            // Если модуль GPS в блоке управления остуствует
+            if (!state.system.gps) state.odometer.sensor.gnss = false
+          }
           else if (value.id == '/ver.json') {
             state.ver = value
-            if (state.ver.hw[0] == 'B') state.pump.period = 3000
+            if (state.ver.hw[0] == 'B' || state.ver.hw[0] == 'A') state.pump.period = 3000
             else if (state.ver.hw[0] == 'C') state.pump.period = 2000
           }
           else if (value.id == 'telemetry')
             state.telemetry = value
 
 
-          //state.pn = {...state.pn, pn: value}
-
-          if (!state.system.gps) state.odometer.sensor.gnss = false
 
           log('Store state', state)
 
@@ -258,6 +259,7 @@ const store = createStore({
       state.odometer = data
       state.odometer = state.odometer
       //wsStore.set({cmd: "post", param: [state.odometer.id, state.odometer]}) // отправляем в БУ
+      //log(Object.fromEntries(state.mapSettings));
       wsStore.set({cmd: "post", param: [state.odometer.id, Object.fromEntries(state.mapSettings)]}) // отправляем в БУ
       state.mapSettings.clear()
                                                         // Данная запись прдотвращает попадание в массив повторяющихся значений id

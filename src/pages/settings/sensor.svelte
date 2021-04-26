@@ -1,7 +1,10 @@
 <Page
   name="sensor"
   class={`page`}
-  on:pageAfterOut={pageAfterOut}>
+  on:pageAfterOut={pageAfterOut}
+  on:pageBeforeIn={() => {
+    log('page SENSOR BeforeIn', odometer)
+  }}>
 
   <Navbar title={$t('settings.pump.title')} backLink="Back" />
 
@@ -16,7 +19,9 @@
         title={$t('settings.sensor.gnss')}
         checked={fGPS}
         on:change={() => {
-           odometer.sensor.gnss = true
+          tmpOdometer.sensor.gnss = true
+          //mapSettings.set("sensor", tmpOdometer.sensor);
+          //log(mapSettings)
         }}
         class={`sensor__list-item`}>
       </ListItem>
@@ -29,7 +34,9 @@
       title={$t('settings.sensor.impulse')}
       checked={fIMP}
       on:change={() => {
-         odometer.sensor.gnss = false
+        tmpOdometer.sensor.gnss = false
+        //mapSettings.set("sensor", tmpOdometer.sensor);
+        //log(mapSettings)
       }}
       class={`sensor__list-item`}>
     </ListItem>
@@ -43,7 +50,7 @@
         label={$t('settings.sensor.imprev')}
         type="number"
         required
-        bind:value={odometer.sensor.imp}
+        bind:value={tmpOdometer.sensor.imp}
         clearButton
         on:inputClear={clearImp}
         class={`sensor__list-item`}>
@@ -53,14 +60,14 @@
         label={$t('settings.sensor.wheel.width')}
         type="number"
         placeholder={`[${$t('all.mm')}]`}
-        bind:value={odometer.wheel.w}
+        bind:value={tmpOdometer.wheel.w}
         class={`sensor__list-item`}>
       </ListInput>
       <!-- Профиль -->
       <ListInput
         label={$t('settings.sensor.wheel.height')}
         type="select"
-        bind:value={odometer.wheel.h}
+        bind:value={tmpOdometer.wheel.h}
         class={`sensor__list-item`}>
           {#each height as value}
             <option value={value}>{`${value}`}</option>
@@ -70,7 +77,7 @@
       <ListInput
         label={$t('settings.sensor.wheel.rimdia')}
         type="select"
-        bind:value={odometer.wheel.d}
+        bind:value={tmpOdometer.wheel.d}
         class={`sensor__list-item`}>
           {#each dia as value}
             <option value={value}>{`${value}"`}</option>
@@ -100,40 +107,36 @@
     let connected = useStore('connected', (value) => connected = value);
     let gnssPresent = useStore('gnssPresent', (value) => gnssPresent = value);
     let odometer = useStore('odometer', (value) => odometer = value);
-    let telemetry = useStore('telemetry', (value) => telemetry = value)
+    let telemetry = useStore('telemetry', (value) => telemetry = value);
+    let mapSettings = useStore('mapSettings', (value) => mapSettings = value);
 
     let interval
+    let tmpOdometer = odometer
 
-    $: fGPS = (odometer.sensor.gnss && gnssPresent.gps) ? true : false
-    $: fIMP = (!odometer.sensor.gnss || !gnssPresent.gps) ? true : false
+    $: fGPS = (tmpOdometer.sensor.gnss && gnssPresent.gps) ? true : false
+    $: fIMP = (!tmpOdometer.sensor.gnss || !gnssPresent.gps) ? true : false
     $: if (!connected) document.location.reload()
 
     function clearImp() {
-      odometer.sensor.imp = 0
+      tmpOdometer.sensor.imp = 0
       store.dispatch('modeWork', store.state.OILER_MANUAL)
       interval = setInterval(() => {
         store.dispatch('requestTelemetry')
-        odometer.sensor.imp = telemetry.sp
+        tmpOdometer.sensor.imp = telemetry.sp
         //trip = trip
-        log('clearImp ', odometer)
+        log('clearImp ', tmpOdometer)
       }, 1500);
     }
 
     function pageAfterOut () {
-      log('pageAfterOut', odometer);
+      log('pageAfterOut', tmpOdometer);
       clearInterval(interval)
       store.dispatch('modeWork', store.state.OILER_AUTO)
-      if (odometer.sensor.imp == 0) odometer.sensor.imp = 16
-      store.dispatch('calcDistance', odometer)
-      store.dispatch('sendDistance', odometer)
+      if (tmpOdometer.sensor.imp == 0) tmpOdometer.sensor.imp = 16
+      store.dispatch('calcDistance', tmpOdometer)
+      mapSettings.set("sensor", tmpOdometer.sensor)
+      if (!tmpOdometer.sensor.gnss) mapSettings.set("wheel", tmpOdometer.wheel)
+      store.dispatch('sendDistance', tmpOdometer)
     }
-
-/*     function onChangeRadioGPS(e) {
-      trip.sensor.gnss = true
-    }
-
-    function onChangeRadioIMP(e) {
-      trip.sensor.gnss = false
-    } */
 
 </script>

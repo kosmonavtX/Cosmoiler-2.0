@@ -2,7 +2,7 @@
   name="pump"
   class={`page`}
   on:pageBeforeIn={() => {
-    log('pageBeforeIn', pump)
+    //log('pageBeforeIn', pump)
     /* включить режим настройки вязкости */
     store.dispatch('modeWork', store.state.OILER_SETTINGS)
   }}
@@ -46,6 +46,8 @@
     let tmpPump = pump
     let fToggle = false
     let fOnOffPump = false
+
+   // log(tmpPump);
 /*     let prx = undefined;
 
     tmpPump = new Proxy(pump, {
@@ -61,7 +63,7 @@
     }) */
 
     function pageAfterOut() {
-      log('pageAfterOut', tmpPump);
+     // log('pageAfterOut', tmpPump);
       fOnOffPump = false
       /* Отключить режим управления насосом */
       store.dispatch('ctrlPump', [false, 0, {dpms: tmpPump.dpms, dpdp: T}])
@@ -73,7 +75,7 @@
 
     $: if (!connected) document.location.reload()
 
-    $:  rangeValues = [
+    $: rangeValues = [
       [{
         title: "Объем масла",
         value: tmpPump.dpms * 100 / T,
@@ -86,6 +88,7 @@
         icon2: "icon-dropfill",
         rangeChange: (e)=>{
           tmpPump.dpms = T * e/100
+          //log(tmpPump.dpms)
         },
         toggle: true,
         toggleCheck: fOnOffPump,
