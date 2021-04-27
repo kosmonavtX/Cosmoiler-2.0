@@ -23,8 +23,11 @@
   <BlockTitle >
     <span>Заводские настройки</span>
   </BlockTitle>
+  <Block>
+  <Button fill small on:click={clickB}>Сброс</Button>
+</Block>
 
-  {#if true}
+  {#if false}
   <List mediaList class='elevation-0'>
     <ListItem>
       <ListItemCell class="width-auto flex-shrink-0 list-input__label-text_color"><Icon icon="icon-info-circled" style="font-size: 28px; color: orange" /></ListItemCell>
@@ -84,11 +87,11 @@
     import {
       Page,
       Button,
+      Block,
       List,
       ListItem,
       ListItemCell,
       Navbar,
-      Block,
       BlockTitle,
       Toggle,
       Icon,
@@ -96,7 +99,7 @@
     } from 'framework7-svelte';
     import {t} from '../../services/i18n.js';
     import Ranges from '../../components/range-param.svelte'
-    import { f7 } from 'framework7-svelte/cjs/shared/f7';
+    import { f7 } from 'framework7-svelte';
     import store from '../../js/store.js';
     import log from '../../js/debug.js';
 
@@ -115,7 +118,7 @@
         stepValue: 1,
         scale: false,
         icon: "icon-light",
-        icon2: "icon-dropfill",
+        //icon2: "icon-dropfill",
         rangeChange: (e)=>{
           tmpSystem.bright = Math.trunc(e * 255 / 100)
           store.dispatch('ctrlBright', tmpSystem.bright)
@@ -125,20 +128,31 @@
       }],
     ]
 
-    function signIn() {
+/*     function signIn() {
     f7.dialog.alert(`Username: <br>Password: `, () => {
       f7.loginScreen.close();
     });
-  }
+  } */
 
-  function clickB() {
-    log("Button")
-    f7.dialog.confirm('Are you sure that your name is ', () => { f7.dialog.alert('Ok, your name is ');})
-  }
+    function clickB() {
+      log("Button")
+      f7.dialog.confirm('Все текущие настройки будут заменены заводскими. Вы уверены?', "Cosmoiler",
+        () => {
+          f7.preloader.show();
+          f7.request.get('192.168.4.1/status')
+          .then((res) => {
+              f7.preloader.hide()
+              log('192.168.4.1/status', res.data)
+          })
+          .catch((err) => {
+            log(err)
+          })
+        })
+    }
 
-  function pageAfteOut() {
-    //console.log('pageAfterOut', tmpOdometer);
-    store.dispatch('sendSystem', tmpSystem)
-  }
+    function pageAfteOut() {
+      //console.log('pageAfterOut', tmpOdometer);
+      store.dispatch('sendSystem', tmpSystem)
+    }
 
 </script>

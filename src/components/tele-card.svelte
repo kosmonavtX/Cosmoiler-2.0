@@ -50,11 +50,11 @@
                 {#if icon.alarm}
                     {#if visbl}
                         <div transition:fade="{{delay: 500, duration: 700}}">
-                            <Icon icon={icon.icon} class={`card-footer-tele__icon`}/>
+                            <Icon icon={icon.icon} class={`card-footer-tele__icon`} style='color: red;'/>
                         </div>
                     {/if}
                 {:else}
-                    <Icon icon={icon.icon} class={`card-footer-tele__icon`}/>
+                    <Icon icon={icon.icon} class={`card-footer-tele__icon`} />
                 {/if}
                 <!-- <Icon icon={icon.icon} size=var(--card-footer-icon-size) class={`card-footer-tele__icon`}/> -->
                 <span class="card-footer-tele__text">{icon.value}</span>

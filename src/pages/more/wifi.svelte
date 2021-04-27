@@ -1,7 +1,8 @@
 <Page
   name="wifi"
   class={`page`}
-  pageContent={true}>
+  pageContent={true}
+  on:pageAfterOut={pageAfteOut}>
 
   <Navbar title={$t('home.settings')} backLink="Back" />
 
@@ -58,6 +59,12 @@
       bind:value={system.sta.psw}>
       <div slot='label' class="list-input__label list-input__label-text_color">Пароль</div>
     </ListInput>
+<!--     <ListInput
+      type="file"
+      placeholder="Введите пароль"
+      bind:value={system.sta.psw}>
+      <div slot='label' class="list-input__label list-input__label-text_color">Пароль</div>
+    </ListInput> -->
   </List>
 
 <!--   <List> -->
@@ -121,10 +128,12 @@
       useStore
     } from 'framework7-svelte';
     import {t} from '../../services/i18n.js';
+    import store from '../../js/store.js';
     import log from '../../js/debug.js'
 
     let connected = useStore('connected', (value) => connected = value);
     let system = useStore('system', (value) => system = value);
+    let mapSettings = useStore('mapSettings', (value) => mapSettings = value);
 
     let items = [
       {link: '/wifi/', title: $t('more.wifi.title')},
@@ -133,4 +142,10 @@
       {link: '/about/', title: $t('more.about.title')},
     ]
 
+    function pageAfteOut() {
+      mapSettings.set("ap", system.ap)
+      mapSettings.set("sta", system.sta)
+      log(mapSettings)
+      store.dispatch('sendSystem', system)
+    }
   </script>

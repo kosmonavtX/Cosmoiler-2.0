@@ -6,123 +6,50 @@
 
   <Navbar title="Телеметрия" />
 
-  <!-- <Card > -->
-<!--     <CardHeader >
-      <span>ОДОМЕТР</span>
-    </CardHeader> -->
-<!--     <CardContent padding={true}>
-      <Row>
-        <Col class="text-align-center">
-
-          <Gauge
+{#if false}
+  <Block strong  inset class='elevation-3'>
+    <BlockHeader class="block-header_text text-align-center">СКОРОСТЬ</BlockHeader>
+    {#each dataCardTele[2].gauge as {value, valueText, labelText, text, units}}
+    <Col class="text-align-center">
+        <!-- <span style="color: #888888" >{text}</span> -->
+        <Gauge
             type="semicircle"
-            value={0.6}
-            valueText="100"
-            valueFontSize = "34"
+            value={value}
+            valueText={valueText}
+            valueFontSize="34"
             valueTextColor=var(--f7-theme-color-subtitle-text)
-
             borderColor=var(--f7-theme-color)
-            labelText={`${params.avgspeed}`}
+            labelText={labelText}
             labelFontSize = "18"
             labelTextColor=var(--f7-theme-color-change-text) />
-            <span style="color: #888888" >Скорость, км/ч</span>
-        </Col> -->
-<!--         <Col class="text-align-center">
-          <Gauge
-            type="semicircle"
-            value={params.trip/2}
-            valueText={`${tripValueText}`}
-            valueFontSize = "34"
-            valueTextColor=var(--f7-theme-color)
-            borderColor=var(--f7-theme-color)
-            labelText = {`${params.odo}`}
-            labelFontSize = "18"
-            labelTextColor=var(--f7-theme-color-change-text) />
-             <span style="color: #888888">Расстояние, км</span>
-        </Col> -->
-<!--       </Row>
-    </CardContent>
-    <CardFooter class="card-footer-tele"> -->
-<!--       <div class="card-footer-tele__logo-text">
-        <Icon icon="icon-route" size=var(--card-footer-icon-size) class={`col-param__logo`}/>
-      </div> -->
-<!--       <div class="card-footer-tele__logo-text">
-        <Icon icon="icon-city" size=var(--card-footer-icon-size) class={`col-param__logo`}/>
-        <span class="card-footer__text_margin-top">4 km</span>
-      </div>
-      <div class="card-footer-tele__logo-text">
-        <Icon icon="icon-pump" size=var(--card-footer-icon-size) class={`col-param__logo`} />
-        <span class="card-footer__text_margin-top">1246</span>
-      </div>
-      <div class="card-footer-tele__logo-text">
-        <Icon icon="icon-gps" size=var(--card-footer-icon-size) class={`col-param__logo`} />
-        <span class="card-footer__text_margin-top">10</span>
-      </div>
-      <div class="card-footer-tele__logo-text">
-        <Icon icon="icon-accum" size=var(--card-footer-icon-size) class={`col-param__logo`} />
-        <span class="card-footer__text_margin-top">12.5 V</span>
-      </div>
-    </CardFooter>
-  </Card> -->
-
-<!--   <Card >
-    <CardHeader >
-      <span>ТАЙМЕР</span>
-    </CardHeader>
-    <CardContent padding={true}>
-      <Row>
-        <Col class="text-align-center">
-          <div>
-          <Gauge
-            type="semicircle"
-            value={0.6}
-            valueText="02:00"
-            valueFontSize = "34"
-            valueTextColor=var(--f7-theme-color-subtitle-text)
-
-            borderColor=var(--f7-theme-color)
- />
+       <!--  <span style="color: #888888" >{units}</span> -->
+    </Col>
+    <BlockFooter class="text-align-center">км/ч</BlockFooter>
+    <CardFooter class="card-footer-tele">
+      {#each dataCardTele[1].icons as icon}
+      {#if icon}
+          <div class="card-footer-tele__icon-text">
+              {#if icon.alarm}
+                  {#if false}
+                      <div transition:fade="{{delay: 500, duration: 700}}">
+                          <Icon icon={icon.icon} class={`card-footer-tele__icon`}/>
+                      </div>
+                  {/if}
+              {:else}
+                  <Icon icon={icon.icon} class={`card-footer-tele__icon`}/>
+              {/if}
+              <!-- <Icon icon={icon.icon} size=var(--card-footer-icon-size) class={`card-footer-tele__icon`}/> -->
+              <span class="card-footer-tele__text">{icon.value}</span>
           </div>
-        </Col>
-      </Row>
-    </CardContent>
-    <CardFooter class="card-footer-tele">
-      <div class="card-footer-tele__text-color">
-        <Icon icon="icon-city" size="24px" class={`col-param__logo`}/>
-        <span>{$t('home.setting.city', {values: {p: time.time.presets[0].dp_time}})}</span>
-      </div>
-      <div class="card-footer-tele__text-color">
-        <Icon icon="icon-pump" size="24px" class={`col-param__logo`} />
-        <span>{params.non}</span>
-      </div>
-      <div class="card-footer-tele__text-color">
-        <Icon icon="icon-gps" size="24px" class={`col-param__logo`} />
-        <span>{params.sat}</span>
-      </div>
-      <div class="card-footer-tele__text-color">
-        <Icon icon="icon-accum" size="22px" class={`col-param__logo`} />
-        <span>{params.voltage}</span>
-      </div>
-    </CardFooter>
-  </Card> -->
+      {/if}
+      {/each}
+  </CardFooter>
+    {/each}
+  </Block>
+{/if}
 
-<!--   <Card >
-    <CardHeader >
-      <span>ВЫКЛЮЧЕНО</span>
-    </CardHeader>
-    <CardFooter class="card-footer-tele">
-      <div class="card-footer-tele__text-color">
-        <Icon icon="icon-gps" size="24px" class={`col-param__logo`} />
-        <span>{params.sat}</span>
-      </div>
-      <div class="card-footer-tele__text-color">
-        <Icon icon="icon-accum" size="22px" class={`col-param__logo`} />
-        <span>{params.voltage}</span>
-      </div>
-    </CardFooter>
-  </Card> -->
-
-  <CardTelemetry {...dataCardTele[telemetry.params[3].m]}  />
+<!--   <CardTelemetry {...dataCardTele[telemetry.params[3].m]}  /> -->
+  <CardTelemetry {...dataCardTele[md]}  />
 
 <!--   <CardTelemetry {...dataCardTele[1]} />
   <CardTelemetry {...dataCardTele[2]} />
@@ -134,6 +61,13 @@
   import {
     Page,
     Navbar,
+    Block,
+    BlockHeader,
+    BlockFooter,
+    CardFooter,
+    Icon,
+    Col,
+    Gauge,
     useStore
   } from 'framework7-svelte';
   import {t} from '../services/i18n.js';
@@ -209,18 +143,23 @@
     if (data > 11.9 && data <= 14.8) return false
     if (data > 14.8) return true
   }
+$:  md = (!telemetry.params[nameParams.GPS].fix && telemetry.params[nameParams.MODE].m == 1) ? 5 : telemetry.params[nameParams.MODE].m
 
 $:  dataCardTele = [
     /** Выключено (mode = 0) */
-    {
+    { //#0
       title: "ВЫКЛЮЧЕНО",
       gauge: [],
       icons: [
         (gnssPresent.gps) ? {icon: "icon-gps", value: telemetry.params[nameParams.GPS].sat} : null,
-        {icon: "icon-accum", value: voltage(telemetry.params[nameParams.VOLTAGE]) + $t("all.voltage")}
+        {
+          icon: "icon-accum",
+          value: voltage(telemetry.params[nameParams.VOLTAGE]) + $t("all.voltage"),
+          alarm: voltAlarm(voltage(telemetry.params[nameParams.VOLTAGE]))
+        }
       ]
     },
-    {
+    { //#1
       title: "ОДОМЕТР",
       gauge: [
         {
@@ -254,7 +193,21 @@ $:  dataCardTele = [
         }
       ]
     },
-    {
+/*     {
+      title: "СКОРОСТЬ",
+      gauge: [
+        {
+          value: telemetry.params[nameParams.ODOMETER].spd/MAXSPEED,
+          valueText: (telemetry.params[nameParams.ODOMETER].spd).toFixed(0),
+          labelText: (telemetry.params[nameParams.ODOMETER].avgsp).toFixed(0),
+          text: $t("all.speed"),
+          units: $t("all.kmh") },
+      ],
+      icons: [
+
+      ]
+    }, */
+    { //#2
       title: "ТАЙМЕР",
       gauge: [
         {
@@ -267,11 +220,15 @@ $:  dataCardTele = [
       icons: [
         {icon: iconsPreset[telemetry.params[nameParams.MODE].p], value: timer.presets[telemetry.params[nameParams.MODE].p].time + $t("all.seconds")},
         {icon: "icon-pump", value: telemetry.params[nameParams.PUMP].v},
-        {icon: "icon-accum", value: voltage(telemetry.params[nameParams.VOLTAGE]) + $t("all.voltage")}
+        {
+          icon: "icon-accum",
+          value: voltage(telemetry.params[nameParams.VOLTAGE]) + $t("all.voltage"),
+          alarm: voltAlarm(voltage(telemetry.params[nameParams.VOLTAGE]))
+        }
       ]
     },
     {},{},
-    {
+    { //#5
       title: "ТАЙМЕР (поиск спутников)",
       gauge: [
         {

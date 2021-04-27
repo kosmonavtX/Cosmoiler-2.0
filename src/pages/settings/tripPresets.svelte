@@ -57,12 +57,6 @@
   let mapSettings = useStore('mapSettings', (value) => mapSettings = value);
  // let chngSettings = useStore('chngSettings', (value) => chngSettings = value)
 
-  function pageAfteOut() {
-    //console.log('pageAfterOut', tmpOdometer);
-    store.dispatch('calcDistance', tmpOdometer)
-    store.dispatch('sendDistance', tmpOdometer)
-  }
-
   let tmpOdometer = odometer
 
 /*   tmpTrip = new Proxy(tmpTrip, {
@@ -215,5 +209,11 @@
         }
       }]
     ]
+
+  function pageAfteOut() {
+    //console.log('pageAfterOut', tmpOdometer);
+    store.dispatch('calcDistance', tmpOdometer)
+    store.dispatch('sendDistance', tmpOdometer)
+  }
 
 </script>
