@@ -4,7 +4,7 @@
   pageContent={true}
   on:pageAfterOut={pageAfteOut}>
 
-  <Navbar title={$t('home.settings')} backLink="Back" />
+  <Navbar title="WiFI" backLink="Back" />
 
 <!--   <Block strong>
     <p>1. Название точки доступа блока</p>

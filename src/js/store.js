@@ -190,7 +190,7 @@ const store = createStore({
         if (value) {
           //console.log('wsStore value', value)
           state.connect = value.connect
-         state.connect = true
+         //state.connect = true
           delete value.connect
           //let obj = value.data
 
@@ -307,6 +307,7 @@ const store = createStore({
       state.system = data
       state.system = state.system
       wsStore.set({cmd: "post", param: [state.system.id, Object.fromEntries(state.mapSettings)]}) // TODO проверить!
+      state.mapSettings.clear()
       state.fChngSettings = { status: true, id: [...new Set([...state.fChngSettings.id, state.system.id])]}
       log("send System = ", state.system)
     },

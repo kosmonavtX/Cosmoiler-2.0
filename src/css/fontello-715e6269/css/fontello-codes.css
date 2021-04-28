@@ -1,9 +1,9 @@
 
 .icon-gps:before { content: '\e800'; } /* '' */
 .icon-accum:before { content: '\e801'; } /* '' */
+.icon-info-circled:before { content: '\e802'; } /* '' */
 .icon-dropfill:before { content: '\e803'; } /* '' */
 .icon-wifi-logo:before { content: '\e807'; } /* '' */
-.icon-wrench:before { content: '\e80c'; } /* '' */
 .icon-ellipsis-outline:before { content: '\e813'; } /* '' */
 .icon-telemetry-outline:before { content: '\e81c'; } /* '' */
 .icon-hand:before { content: '\e82d'; } /* '' */
@@ -23,3 +23,4 @@
 .icon-pump:before { content: '\e83f'; } /* '' */
 .icon-repeat:before { content: '\e841'; } /* '' */
 .icon-sensor:before { content: '\e842'; } /* '' */
+.icon-light-fill:before { content: '\e853'; } /* '' */

@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'fontello';
-    src: url('font/fontello.woff?34861543') format('woff');
+    src: url('font/fontello.woff?89881161') format('woff');
     font-weight: normal;
     font-style: normal;
 }
@@ -62,6 +62,7 @@
 .icon-timer:before { content: '\e82f'; } /* '' */
 .icon-off-road:before { content: '\e831'; } /* '' */
 .icon-light:before { content: '\e832'; } /* '' */
+.icon-light-fill:before { content: '\e853'; } /* '' */
 .icon-way:before { content: '\e833'; } /* '' */
 .icon-city:before { content: '\e835'; } /* '' */
 .icon-rocket:before { content: '\e836'; } /* '' */

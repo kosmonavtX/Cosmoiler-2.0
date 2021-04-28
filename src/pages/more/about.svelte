@@ -3,9 +3,9 @@
   class={`page`}
   pageContent={true}>
 
-  <Navbar title={$t('home.settings')} backLink="Back" />
+  <Navbar title="О приложении" backLink="Back" />
 
-  <Block strong>
+  <Block>
     <p>Приложение-клиент для задания параметров автоматического смазчика цепи.</p>
   </Block>
 

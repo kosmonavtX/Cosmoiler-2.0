@@ -3,7 +3,7 @@
   class={`page`}
   pageContent={true}>
 
-  <Navbar title={$t('home.settings')} backLink="Back" />
+  <Navbar title="Обновление" backLink="Back" />
 
   <Block strong>
     <p>1. Обновление ПО</p>

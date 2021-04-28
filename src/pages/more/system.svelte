@@ -4,7 +4,7 @@
   pageContent={true}
   on:pageAfterOut={pageAfteOut} >
 
-  <Navbar title={$t('home.settings')} backLink="Back" />
+  <Navbar title="Системные" backLink="Back" />
 
   <BlockTitle >
     <span>Прокачка</span>
@@ -103,8 +103,10 @@
     import store from '../../js/store.js';
     import log from '../../js/debug.js';
 
+
     let connected = useStore('connected', (value) => connected = value);
     let system = useStore('system', (value) => system = value);
+    let mapSettings = useStore('mapSettings', (value) => mapSettings = value);
 
     let tmpSystem = system
 
@@ -118,7 +120,7 @@
         stepValue: 1,
         scale: false,
         icon: "icon-light",
-        //icon2: "icon-dropfill",
+        icon2: "icon-light-fill",
         rangeChange: (e)=>{
           tmpSystem.bright = Math.trunc(e * 255 / 100)
           store.dispatch('ctrlBright', tmpSystem.bright)
@@ -152,6 +154,7 @@
 
     function pageAfteOut() {
       //console.log('pageAfterOut', tmpOdometer);
+      mapSettings.set("bright", tmpSystem.bright)
       store.dispatch('sendSystem', tmpSystem)
     }
 

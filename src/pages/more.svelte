@@ -3,7 +3,7 @@
   class={`page`}
   pageContent={true}>
 
-  <Navbar title={$t('home.settings')} />
+  <Navbar title="Система" />
 
  <!--  <BlockTitle>About My App</BlockTitle> -->
 
