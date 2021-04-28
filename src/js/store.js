@@ -3,7 +3,7 @@
 import { createStore } from 'framework7/lite';
 //import { get } from 'svelte/store'
 import websocketStore from './websocket.js';
-import log from './debug.js'
+import {log, debug} from './debug.js'
 
 //import ReconnectingWebSocket from 'reconnecting-websocket'
 //import ws from './connect.js'
@@ -51,7 +51,7 @@ function uri() {
 
 const wsStore = websocketStore('ws://' + uri(), {}, [],
   {
-    debug: false,
+    debug: debug.enabled('test'),
     reconnectionDelayGrowFactor: 1,
     maxReconnectionDelay: 5000,
     minReconnectionDelay: 2000,
@@ -189,8 +189,8 @@ const store = createStore({
 
         if (value) {
           //console.log('wsStore value', value)
-          state.connect = value.connect
-         //state.connect = true
+          //state.connect = value.connect
+          state.connect = debug.enabled('test') ? true : value.connect
           delete value.connect
           //let obj = value.data
 

@@ -133,7 +133,7 @@
   import Ranges from '../components/range-param.svelte'
   import { onMount } from 'svelte';
   import store from '../js/store.js';
-  import log from '../js/debug.js'
+  import {log} from '../js/debug.js'
 //import { f7router } from 'framework7-svelte/cjs/shared/f7';
 
 //export let f7router;

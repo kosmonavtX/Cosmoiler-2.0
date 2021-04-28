@@ -67,7 +67,7 @@
   import store from '../js/store';
   import ModeItem from '../components/home-listitem.svelte'
   import { fade } from 'svelte/transition';
-  import log from '../js/debug.js'
+  import {log} from '../js/debug.js'
 //import { debug } from 'console';
   //logHome('kdsjhfkjshks')
   log('123124234234')

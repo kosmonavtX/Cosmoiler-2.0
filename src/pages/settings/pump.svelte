@@ -34,15 +34,17 @@
     import {t} from '../../services/i18n.js';
     import Ranges from '../../components/range-param.svelte'
     import store from '../../js/store.js';
-    import log from '../../js/debug'
+    import {log} from '../../js/debug'
 
     let connected = useStore('connected', (value) => connected = value);
     let pump = useStore('pump', (value) => pump = value);
+    let ver = useStore('ver', (value) => ver = value);
 
     //console.log('connect:', connected)
 /* TODO: максимальный объем выдаваемый насосом 2 мл/мин для KAMOER */
 
     let T = pump.period // используется для режима настройки - пауза между каплями (фиксированное)
+    if (ver.hw[0] == 'X') T = 500 // для версии HW: Ax период меньше, чтобы dpms был от 5 мс (1%) до 450 мс (90%)
     let tmpPump = pump
     let fToggle = false
     let fOnOffPump = false
@@ -61,17 +63,6 @@
         return Reflect.set(target, prop, value);
       }
     }) */
-
-    function pageAfterOut() {
-     // log('pageAfterOut', tmpPump);
-      fOnOffPump = false
-      /* Отключить режим управления насосом */
-      store.dispatch('ctrlPump', [false, 0, {dpms: tmpPump.dpms, dpdp: T}])
-      /* включить автоматический режим работы смазчика */
-      store.dispatch('modeWork', store.state.OILER_AUTO)
-      /* сохранить настройки */
-      store.dispatch('sendPump', tmpPump)
-    }
 
     $: if (!connected) document.location.reload()
 
@@ -101,9 +92,20 @@
 
     $: {
       //store.wsStore = {cmd: "pump", param: [fToggle, tmpPump.dpms, T, 0]}
-      store.dispatch('ctrlPump', [fToggle, 0, {dpms: tmpPump.dpms, dpdp: T}])
+      store.dispatch('ctrlPump', [fToggle, 0, {dpms: tmpPump.dpms, dpdp: 2000}])
      // store.ctrlPump()
      // console.log('ctrlPump ', [fToggle, tmpPump.dpms, T, 0])
+    }
+
+    function pageAfterOut() {
+     // log('pageAfterOut', tmpPump);
+      fOnOffPump = false
+      /* Отключить режим управления насосом */
+      store.dispatch('ctrlPump', [false, 0, {dpms: tmpPump.dpms, dpdp: 800}])
+      /* включить автоматический режим работы смазчика */
+      store.dispatch('modeWork', store.state.OILER_AUTO)
+      /* сохранить настройки */
+      store.dispatch('sendPump', tmpPump)
     }
 /*     $: {
         console.log('dpms: ', pump.dpms)

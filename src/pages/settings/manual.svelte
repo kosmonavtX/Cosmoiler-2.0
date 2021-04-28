@@ -20,7 +20,7 @@
   import {t} from '../../services/i18n.js';
   import Ranges from '../../components/range-param.svelte'
   import store from '../../js/store.js';
-  import log from '../../js/debug.js'
+  import {log} from '../../js/debug.js'
 
   //export let f7router;
 

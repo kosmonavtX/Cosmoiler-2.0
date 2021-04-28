@@ -129,7 +129,7 @@
     } from 'framework7-svelte';
     import {t} from '../../services/i18n.js';
     import store from '../../js/store.js';
-    import log from '../../js/debug.js'
+    import {log} from '../../js/debug.js'
 
     let connected = useStore('connected', (value) => connected = value);
     let system = useStore('system', (value) => system = value);

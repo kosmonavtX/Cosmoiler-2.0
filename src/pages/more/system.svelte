@@ -12,7 +12,7 @@
   <List >
     <ListItem>
       <ListItemCell class="width-auto flex-shrink-0 list-input__label-text_color">Заполнение системы маслом:</ListItemCell>
-      <!-- <ListItemCell class="width-auto flex-shrink-4"><Toggle bind:checked={false}  /></ListItemCell> -->
+      <ListItemCell class="width-auto flex-shrink-4"><Toggle disabled bind:checked={ctrlpump}  /></ListItemCell>
       <!-- <div slot='title' class="list-input__label-text_color">Прокачка системы</div> -->
 <!--       <span slot="after">
         <Toggle bind:checked={system.ap.pwr}  />
@@ -101,7 +101,7 @@
     import Ranges from '../../components/range-param.svelte'
     import { f7 } from 'framework7-svelte';
     import store from '../../js/store.js';
-    import log from '../../js/debug.js';
+    import {log, logger} from '../../js/debug.js';
 
 
     let connected = useStore('connected', (value) => connected = value);
@@ -109,6 +109,7 @@
     let mapSettings = useStore('mapSettings', (value) => mapSettings = value);
 
     let tmpSystem = system
+    let ctrlpump = false
 
     $: rangeValues = [
       [{
@@ -137,7 +138,7 @@
   } */
 
     function clickB() {
-      log("Button")
+      logger("Button")
       f7.dialog.confirm('Все текущие настройки будут заменены заводскими. Вы уверены?', "Cosmoiler",
         () => {
           f7.preloader.show();
