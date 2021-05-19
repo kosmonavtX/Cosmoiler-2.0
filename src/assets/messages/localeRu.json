@@ -63,12 +63,25 @@
     "settings.sensor.wheel.width": "Ширина шины",
     "settings.sensor.wheel.height": "Высота шины",
 
-    "more.wifi.title": "WiFi",
-    "more.system.title": "Система",
-    "more.update.title": "Обновление ПО",
-    "more.about.title": "О приложении",
+    "service.title": "Сервис",
+    "service.wifi.title": "Точка доступа Wi-Fi",
+    "service.wifi.ap.title": "Точка доступа блока",
+    "service.wifi.sta.title": "Точка доступа для обновления",
 
-    "ctrlpump.title": "Заполнение системы",
+    "service.system.title": "Система",
+    "service.update.title": "Обновление",
+    "service.about.title": "О приложении",
+
+    "service.system.pumping.title": "Прокачка",
+    "service.system.pumping.text_toggle": "Заполнение системы",
+    "service.system.diag.title": "Диагностика",
+    "service.system.diag.acord.title1": "Возможные неисправности",
+    "service.system.diag.acord.title2": "Обратная связь",
+
+    "service.update.fw.title": "Обновление ПО блока",
+    "service.update.cnfg.title": "Заводские настройки",
+    "service.update.cnfg.button.title": "Сброс",
+    "service.update.cnfg.confirm.text": "Все текущие настройки будут заменены заводскими. Вы уверены?",
 
     "button.reset": "Сброс",
     "button.start": "Старт",

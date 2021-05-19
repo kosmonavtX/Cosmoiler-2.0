@@ -2,18 +2,18 @@
 import HomePage from '../pages/home.svelte';
 import TelemetryPage from '../pages/telemetry.svelte';
 import SettingsPage from '../pages/settings.svelte';
-import MorePage from '../pages/more.svelte';
+import ServicePage from '../pages/service.svelte';
 // Settings pages
 import TripPresetsPage from '../pages/settings/tripPresets.svelte';
 import TimerPresetsPage from '../pages/settings/timerPresets.svelte';
 import ManualPage from  '../pages/settings/manual.svelte';
 import PumpPage from '../pages/settings/pump.svelte';
 import SensorPage from '../pages/settings/sensor.svelte';
-// More pages
-import WifiPage from '../pages/more/wifi.svelte';
-import SystemPage from '../pages/more/system.svelte';
-import UpdatePage from '../pages/more/update.svelte';
-import AboutPage from '../pages/more/about.svelte';
+// Service pages
+import WifiPage from '../pages/service/wifi.svelte';
+import SystemPage from '../pages/service/system.svelte';
+import UpdatePage from '../pages/service/update.svelte';
+import AboutPage from '../pages/service/about.svelte';
 //import DynamicRoutePage from '../pages/dynamic-route.svelte';
 import RequestAndLoad from '../pages/request-and-load.svelte';
 import NotFoundPage from '../pages/404.svelte';
@@ -35,8 +35,8 @@ var routes = [
     component: SettingsPage,
   },
   {
-    path: '/more/',
-    component: MorePage,
+    path: '/service/',
+    component: ServicePage,
   },
   {
     path: '/settings/odometer/presets',// '/trip-presets/',
@@ -59,19 +59,19 @@ var routes = [
       component: PumpPage
   },
   {
-    path: '/more/wifi',
+    path: '/service/wifi',
     component: WifiPage,
   },
   {
-    path: '/more/system',
+    path: '/service/system',
     component: SystemPage,
   },
   {
-    path: '/more/update',
+    path: '/service/update',
     component: UpdatePage,
   },
   {
-    path: '/more/about',
+    path: '/service/about',
     component: AboutPage,
   },
 /*   {

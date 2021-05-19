@@ -43,7 +43,7 @@
   import {t} from '../../services/i18n.js';
   import Ranges from '../../components/range-param.svelte'
   import store from '../../js/store.js';
-  import {log} from '../../js/debug.js'
+  import log from '../../js/debug.js'
 
   let connected = useStore('connected', (value) => connected = value);
   let timer = useStore('timer', (value) => timer = value);
@@ -59,6 +59,7 @@
   $: if (!connected) document.location.reload()
 
   $: rangeValues = [
+    /* ГОРОД */
     [{
       title: "Таймер",
       value: tmpTimer.presets[0].time,
@@ -73,7 +74,7 @@
       rangeChange: (e)=>{
         tmpTimer.presets[0].time = e
         let arr = mapSettings.get('presets')
-        mapSettings.set("presets", [tmpTimer.presets[0], (arr)?arr[1]:null]);
+        mapSettings.set("presets", [tmpTimer.presets[0], (arr)?arr[1]:null, (arr)?arr[2]:null]);
       log(mapSettings)
       }
     },
@@ -89,13 +90,14 @@
       rangeChange: (e)=>{
         tmpTimer.presets[0].num = e
         let arr = mapSettings.get('presets')
-        mapSettings.set("presets", [tmpTimer.presets[0], (arr)?arr[1]:null]);
+        mapSettings.set("presets", [tmpTimer.presets[0], (arr)?arr[1]:null, (arr)?arr[2]:null]);
       log(mapSettings)
       }
     }],
+    /* ОФФРОАД */
     [{
       title: "Таймер",
-      value: tmpTimer.presets[1].time,
+      value: tmpTimer.presets[2].time,
       name_value: "сек",
       minValue: 10,
       maxValue: 600,
@@ -105,15 +107,15 @@
       icon: "icon-clock",
       frmtScaleLabel: outScaleLabel,
       rangeChange: (e)=>{
-        tmpTimer.presets[1].time = e
+        tmpTimer.presets[2].time = e
         let arr = mapSettings.get('presets')
-        mapSettings.set("presets", [(arr)?arr[0]:null, tmpTimer.presets[1]]);
+        mapSettings.set("presets", [(arr)?arr[0]:null, (arr)?arr[1]:null, tmpTimer.presets[2]]);
       log(mapSettings)
       }
     },
     {
       title: "Количество",
-      value: tmpTimer.presets[1].num,
+      value: tmpTimer.presets[2].num,
       minValue: 0,
       maxValue: 10,
       stepValue: 1,
@@ -121,15 +123,15 @@
       scaleSubSteps: 2,
       icon: "icon-drop",
       rangeChange: (e)=>{
-        tmpTimer.presets[1].num = e
+        tmpTimer.presets[2].num = e
         let arr = mapSettings.get('presets')
-        mapSettings.set("presets", [(arr)?arr[0]:null, tmpTimer.presets[1]]);
+        mapSettings.set("presets", [(arr)?arr[0]:null, (arr)?arr[1]:null, tmpTimer.presets[2]]);
       log(mapSettings)
       }
     },
     {
       title: "Количество циклов",
-      value: tmpTimer.presets[1].cycles,
+      value: tmpTimer.presets[2].cycles,
       minValue: 0,
       maxValue: 10,
       stepValue: 1,
@@ -137,9 +139,9 @@
       scaleSubSteps: 2,
       icon: "icon-repeat",
       rangeChange: (e)=>{
-        tmpTimer.presets[1].cycles = e
+        tmpTimer.presets[2].cycles = e
         let arr = mapSettings.get('presets')
-        mapSettings.set("presets", [(arr)?arr[0]:null, tmpTimer.presets[1]]);
+        mapSettings.set("presets", [(arr)?arr[0]:null, (arr)?arr[1]:null, tmpTimer.presets[2]]);
       log(mapSettings)
       }
     }]

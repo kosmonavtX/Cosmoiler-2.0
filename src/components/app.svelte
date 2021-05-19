@@ -2,19 +2,19 @@
 
 
   <Views init={false} tabs class="safe-areas">
-    {#if connected}
+  <!--   {#if connected} -->
 
     <Toolbar tabbar labels bottom>
   <!--     <div style="display: contents" transition:fade="{{delay: 250, duration: 300}}"> -->
       <Link tabLink="#view-home" tabLinkActive icon="icon-rocket" text="Cosmoiler" />
       <Link tabLink="#view-telemetry" icon="icon-telemetry-outline" text="Телеметрия" />
       <Link tabLink="#view-settings" icon="icon-settings" text="Настройки" />
-      <Link tabLink="#view-more" icon="icon-ellipsis-outline" text="Ещё" />
+      <Link tabLink="#view-more" icon="icon-service" text="Сервис" />
    <!--  </div> -->
     </Toolbar>
 
 
-    {/if}
+<!--     {/if} -->
 
     <View id="view-home" name="main" main tab tabActive url="/" />
 
@@ -22,7 +22,7 @@
 
     <View id="view-settings" name="settings" tab url="/settings/" />
 
-    <View id="view-more" name="more" tab url="/more/" />
+    <View id="view-more" name="service" tab url="/service/" />
 
   </Views>
 

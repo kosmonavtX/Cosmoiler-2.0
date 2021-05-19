@@ -8,111 +8,54 @@
 
   <!-- <Block strong style='background-color: var( --f7-theme-color-bg-color)'>{$t('home.selectmode')}</Block> -->
 
-
-  <Toolbar top tabbar >
-    <Link tabLink="#tab-trip" tabLinkActive>Одометр</Link>
-    <Link tabLink="#tab-time">Таймер</Link>
-    <Link tabLink="#tab-manual">Вручную</Link>
-   <!--  <Link tabLink="#tab-4">Насос</Link> -->
-<!--     <Link tabLink="#tab-4">Прокачка</Link> -->
-  </Toolbar>
-
-  <Tabs >
-    <Tab id="tab-trip" tabActive on:tabShow={()=>{log('Tab Trip Show')}}>
-      <List>
-        {#each items_odo.slice(0,2) as {link, title, icon, size}}
-          <ListItem link={link} title={title} class={`settings-main__list-item`}>
-          <div slot='media'>
-            <Icon icon={icon} style="font-size: {size}px" />
-          </div>
+{#if !connected}
+  <div transition:fade="{{delay: 100, duration: 200}}">
+    <BlockTitle class={`block-title-noconnection__text`} >{$t('home.noconnect')}</BlockTitle>
+  </div>
+{:else}
+ <!--  <div transition:fade="{{delay: 250, duration: 300}}"> -->
+    <Toolbar top tabbar >
+      <Link tabLink="#tab-trip" tabLinkActive>Одометр</Link>
+      <Link tabLink="#tab-time">Таймер</Link>
+      <Link tabLink="#tab-manual">Вручную</Link>
+    </Toolbar>
+    <div transition:fade="{{delay: 250, duration: 300}}">
+    <Tabs >
+      <Tab id="tab-trip" tabActive on:tabShow={()=>{log('Tab Trip Show')}}>
+        <List>
+          {#each items_odo.slice(0,2) as {link, title, icon, size}}
+            <ListItem link={link} title={title} class={`settings-main__list-item`}>
+              <div slot='media'><Icon icon={icon} style="font-size: {size}px" /></div>
+            </ListItem>
+          {/each}
+          <ListItem title={items_odo[2].title} link={items_odo[2].link} class={`settings-main__list-item`}>
+            <div slot='media'><Icon icon={items_odo[2].icon} style="font-size: {items_odo[2].size}px" /></div>
+            <div slot='after'><span>{gnss}</span></div>
           </ListItem>
-        {/each}
-        <ListItem title={items_odo[2].title} link={items_odo[2].link} class={`settings-main__list-item`}>
-          <div slot='media'>
-            <Icon icon={items_odo[2].icon} style="font-size: {items_odo[2].size}px" />
-          </div>
-          <div slot='after'>
-            <span>{gnss}</span>
-          </div>
-        </ListItem>
-      </List>
-<!--       <BlockTitle>Brightness</BlockTitle>
-      <List simpleList>
-        <ListItem>
-          <ListItemCell class="width-auto flex-shrink-0">
-            <Icon ios="f7:sun_min" aurora="f7:sun_min" md="material:brightness_low" />
-          </ListItemCell>
-          <ListItemCell class="flex-shrink-3">
-            <Range min={0} max={100} step={1} value={50} label={true} color="orange" />
-          </ListItemCell>
-          <ListItemCell class="width-auto flex-shrink-0">
-            <Icon ios="f7:sun_max_fill" aurora="f7:sun_max_fill" md="material:brightness_high" />
-          </ListItemCell>
-        </ListItem>
-      </List>
+        </List>
+      </Tab>
+      <Tab id="tab-time">
+        <List>
+          {#each items_timer as {link, title, icon, size}}
+            <ListItem link={link} title={title} class={`settings-main__list-item`}>
+              <div slot='media'><Icon icon={icon} style="font-size: {size}px" /></div>
+            </ListItem>
+          {/each}
+        </List>
+      </Tab>
+      <Tab id="tab-manual">
+        <List>
+          {#each items_manual as {link, title, icon, size}}
+            <ListItem link={link} title={title} class={`settings-main__list-item`}>
+              <div slot='media'><Icon icon={icon} style="font-size: {size}px" /></div>
+            </ListItem>
+          {/each}
+        </List>
+      </Tab>
+    </Tabs>
+  </div>
+{/if}
 
-      <List simpleList>
-        <ListItem>
-          <ListItemRow >
-            <Icon ios="f7:sun_min" aurora="f7:sun_min" md="material:brightness_low" />
-          </ListItemRow>
-          <ListItemRow >
-            <Range min={0} max={100} step={1} value={50} label={true} color="orange" />
-          </ListItemRow>
-          <ListItemRow >
-            <Icon ios="f7:sun_max_fill" aurora="f7:sun_max_fill" md="material:brightness_high" />
-          </ListItemRow>
-        </ListItem>
-      </List> -->
-<!--       <List>
-        <ListItem divider title="Расстояние"></ListItem>
-        <ListItem>
-          <div slot="title">
-            <Range
-            min={0}
-            max={100}
-            label={true}
-            step={5}
-            value={25}
-            scale={true}
-            scaleSteps={5}
-            scaleSubSteps={4} />
-          </div>
-        </ListItem>
-        <ListItem divider title="Капли"></ListItem>
-        <ListItem title="Item 3" after="шт" />
-      </List> -->
-<!--       <BlockTitle medium>Трасса</BlockTitle>
-      <Block><p></p></Block> -->
-    </Tab>
-    <Tab id="tab-time">
-      <List>
-        {#each items_timer as {link, title, icon, size}}
-          <ListItem link={link} title={title} class={`settings-main__list-item`}>
-          <div slot='media'>
-            <Icon icon={icon} style="font-size: {size}px" />
-          </div>
-          </ListItem>
-        {/each}
-      </List>
-    </Tab>
-    <Tab id="tab-manual">
-      <List>
-        {#each items_manual as {link, title, icon, size}}
-          <ListItem link={link} title={title} class={`settings-main__list-item`}>
-          <div slot='media'>
-            <Icon icon={icon} style="font-size: {size}px" />
-          </div>
-          </ListItem>
-        {/each}
-      </List>
-    </Tab>
-<!--     <Tab id="tab-4" class="page-content">
-      <Block>
-        <p>Здесь будут настройки для насоса</p>
-      </Block>
-    </Tab> -->
-  </Tabs>
 </Page>
 
 <script>
@@ -126,14 +69,15 @@
     Tabs,
     Tab,
     Icon,
+    BlockTitle,
     useStore
   } from 'framework7-svelte';
   import {t} from '../services/i18n.js';
-  //import {manual} from '../store/store.js'
+  import { fade } from 'svelte/transition';
   import Ranges from '../components/range-param.svelte'
   import { onMount } from 'svelte';
   import store from '../js/store.js';
-  import {log} from '../js/debug.js'
+  import log from '../js/debug.js'
 //import { f7router } from 'framework7-svelte/cjs/shared/f7';
 
 //export let f7router;

@@ -14,7 +14,7 @@
   {#if connected}
     <BlockTitle style='background-color: var( --f7-theme-color-bg-color)'>{$t('home.selectmode')}</BlockTitle>
   {:else}
-    <BlockTitle style='color: red'>{$t('home.noconnect')}</BlockTitle>
+    <BlockTitle class={`block-title-noconnection__text`} >{$t('home.noconnect')}</BlockTitle>
   {/if}
 
 {#if !connected}
@@ -67,7 +67,7 @@
   import store from '../js/store';
   import ModeItem from '../components/home-listitem.svelte'
   import { fade } from 'svelte/transition';
-  import {log} from '../js/debug.js'
+  import log from '../js/debug.js'
 //import { debug } from 'console';
   //logHome('kdsjhfkjshks')
   log('123124234234')
@@ -158,7 +158,7 @@
         icons: [
           {name: "icon-city", text: $t('home.setting.time', {values: {p: timer.presets[0].time}})},
          /*  {name: "icon-way", text: $t('home.setting.time', {values: {p: time.presets[1].dp_time}})}, */
-          {name: "icon-off-road", text: $t('home.setting.time', {values: {p: timer.presets[1].time}})},
+          {name: "icon-off-road", text: $t('home.setting.time', {values: {p: timer.presets[2].time}})},
         ],
         toggleCheck: fmodeTimer,
         onSelectModeToggle: (e) => {

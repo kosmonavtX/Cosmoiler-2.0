@@ -1,5 +1,5 @@
 <Page
-  name="фищге"
+  name="about"
   class={`page`}
   pageContent={true}>
 

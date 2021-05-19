@@ -6,12 +6,11 @@
 
   <Navbar title="Телеметрия" />
 
-{#if false}
+<!-- {#if false}
   <Block strong  inset class='elevation-3'>
     <BlockHeader class="block-header_text text-align-center">СКОРОСТЬ</BlockHeader>
     {#each dataCardTele[2].gauge as {value, valueText, labelText, text, units}}
     <Col class="text-align-center">
-        <!-- <span style="color: #888888" >{text}</span> -->
         <Gauge
             type="semicircle"
             value={value}
@@ -22,7 +21,6 @@
             labelText={labelText}
             labelFontSize = "18"
             labelTextColor=var(--f7-theme-color-change-text) />
-       <!--  <span style="color: #888888" >{units}</span> -->
     </Col>
     <BlockFooter class="text-align-center">км/ч</BlockFooter>
     <CardFooter class="card-footer-tele">
@@ -38,7 +36,6 @@
               {:else}
                   <Icon icon={icon.icon} class={`card-footer-tele__icon`}/>
               {/if}
-              <!-- <Icon icon={icon.icon} size=var(--card-footer-icon-size) class={`card-footer-tele__icon`}/> -->
               <span class="card-footer-tele__text">{icon.value}</span>
           </div>
       {/if}
@@ -46,14 +43,19 @@
   </CardFooter>
     {/each}
   </Block>
+{/if} -->
+
+{#if !connected}
+  <div transition:fade="{{delay: 100, duration: 200}}">
+    <BlockTitle class={`block-title-noconnection__text`} >{$t('home.noconnect')}</BlockTitle>
+  </div>
+{:else}
+<!--   <CardTelemetry {...dataCardTele[telemetry.params[3].m]}  /> -->
+  <div transition:fade="{{delay: 250, duration: 300}}">
+    <CardTelemetry {...dataCardTele[md]}  />
+  </div>
 {/if}
 
-<!--   <CardTelemetry {...dataCardTele[telemetry.params[3].m]}  /> -->
-  <CardTelemetry {...dataCardTele[md]}  />
-
-<!--   <CardTelemetry {...dataCardTele[1]} />
-  <CardTelemetry {...dataCardTele[2]} />
-  <CardTelemetry {...dataCardTele[5]} /> -->
 
 </Page>
 
@@ -61,25 +63,20 @@
   import {
     Page,
     Navbar,
-    Block,
-    BlockHeader,
-    BlockFooter,
-    CardFooter,
-    Icon,
-    Col,
-    Gauge,
+    BlockTitle,
     useStore
   } from 'framework7-svelte';
   import {t} from '../services/i18n.js';
   import CardTelemetry from '../components/tele-card.svelte'
   import store from '../js/store';
   import { fade } from 'svelte/transition';
-  import {log} from '../js/debug.js'
+  import log from '../js/debug.js'
 
   let telemetry = useStore('telemetry', (value) => telemetry = value)
   let odometer = useStore('odometer', (value) => odometer = value)
   let timer = useStore('timer', (value) => timer = value)
   let gnssPresent = useStore('gnssPresent', (value) => gnssPresent = value)
+  let connected = useStore('connected', (value) => connected = value);
 
   //console.log('params', odometer)
 
@@ -143,7 +140,27 @@
     if (data > 11.9 && data <= 14.8) return false
     if (data > 14.8) return true
   }
+
+  let iconOdometerSensor = () => {
+    if (odometer.sensor.gnss) {
+      if (!telemetry.params[nameParams.GPS].fix)
+        return {
+          icon: "icon-clock",
+          value: timer.presets[telemetry.params[nameParams.MODE].p].time + $t("all.seconds")
+        }
+      return {
+          icon: "icon-gps",
+          value: telemetry.params[nameParams.GPS].sat
+      }
+    }
+    return {
+      icon: "icon-sensor",
+      value: telemetry.params[nameParams.ODOMETER].imp
+    }
+  }
+
 $:  md = (!telemetry.params[nameParams.GPS].fix && telemetry.params[nameParams.MODE].m == 1) ? 5 : telemetry.params[nameParams.MODE].m
+//$:  md = telemetry.params[nameParams.MODE].m
 
 $:  dataCardTele = [
     /** Выключено (mode = 0) */
@@ -184,12 +201,11 @@ $:  dataCardTele = [
           icon: "icon-pump",
           value: telemetry.params[nameParams.PUMP].v
         },
-        (odometer.sensor.gnss) ?
-          {icon: "icon-gps", value: telemetry.params[nameParams.GPS].sat} :
-          {icon: "icon-sensor", value: telemetry.params[nameParams.ODOMETER].imp},
+        iconOdometerSensor(),
         {
           icon: "icon-accum",
-          value: voltage(telemetry.params[nameParams.VOLTAGE]) + $t("all.voltage")
+          value: voltage(telemetry.params[nameParams.VOLTAGE]) + $t("all.voltage"),
+          alarm: voltAlarm(voltage(telemetry.params[nameParams.VOLTAGE]))
         }
       ]
     },
@@ -261,7 +277,7 @@ $:  dataCardTele = [
     store.dispatch('requestTelemetry')
     interval = setInterval(() => {
                       store.dispatch('requestTelemetry')
-                    }, 1000);
+                    }, 500);
   }
   function pageTabHide() {
     clearInterval(interval)

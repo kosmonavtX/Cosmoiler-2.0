@@ -3,7 +3,7 @@
 import { createStore } from 'framework7/lite';
 //import { get } from 'svelte/store'
 import websocketStore from './websocket.js';
-import {log, debug} from './debug.js'
+import log from './debug.js'
 
 //import ReconnectingWebSocket from 'reconnecting-websocket'
 //import ws from './connect.js'
@@ -40,9 +40,7 @@ function uri() {
         if (!getUrlVar()['ws'])
             return '192.168.4.1/ws'
         else
-            return getUrlVar()['ws'] // sn = 971186
-                //return '192.168.1.224'  // sn = D7DDFB
-                //return '192.168.1.89' // sn = 6904496
+            return getUrlVar()['ws']
     } else if (document.location.host === "")
         return '192.168.4.1/ws'
     else
@@ -51,11 +49,11 @@ function uri() {
 
 const wsStore = websocketStore('ws://' + uri(), {}, [],
   {
-    debug: debug.enabled('test'),
+    debug: false,
     reconnectionDelayGrowFactor: 1,
-    maxReconnectionDelay: 5000,
-    minReconnectionDelay: 2000,
-    connectionTimeout: 1000,
+    maxReconnectionDelay: 6000,
+    minReconnectionDelay: 3000,
+    connectionTimeout: 2000,
   })
 
 const store = createStore({
@@ -97,6 +95,7 @@ const store = createStore({
       smart: { trail: true, predict: 600 },
       presets: [
           { time: 120, num: 3, cycles: 0 },
+          { time: 0, num: 0, cycles: 0 },
           { time: 60, num: 3, cycles: 0 }
       ]
     },
@@ -110,7 +109,7 @@ const store = createStore({
     },
     system: {
       id: "/system.json",
-      pn: null,
+      pn: "",
       ap: {ssid: "Cosmoiler-NNNN", psw: "", pwr: true},
       sta: {ssid: "", psw: ""},
       bright: 255,
@@ -119,7 +118,7 @@ const store = createStore({
    /*  pn: { pn: null, ssid: "Cosmoiler_", psw: null }, */
     ver: {
       id: "/ver.json",
-      fw: "1.0", hw: "XY"
+      fw: "   ", hw: "   "
     },
     telemetry: {
       id: "telemetry",
@@ -189,8 +188,8 @@ const store = createStore({
 
         if (value) {
           //console.log('wsStore value', value)
-          //state.connect = value.connect
-          state.connect = debug.enabled('test') ? true : value.connect
+          state.connect = value.connect
+          //state.connect = true //debug.enabled('test') ? true : value.connect
           delete value.connect
           //let obj = value.data
 
@@ -319,6 +318,12 @@ const store = createStore({
     },
     ctrlBright({state}, data) {
       state.wsStore.set({cmd: "bright", param: data})
+    },
+    cmdUpdate({state}) {
+      state.wsStore.set({cmd: "update"})
+    },
+    cmdReset({state}) {
+      state.wsStore.set({cmd: "resetCnfg"})
     }
   },
 })

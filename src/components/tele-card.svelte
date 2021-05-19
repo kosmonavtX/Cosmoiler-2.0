@@ -48,11 +48,12 @@
         {#if icon}
             <div class="card-footer-tele__icon-text">
                 {#if icon.alarm}
-                    {#if visbl}
+                    <Icon icon={icon.icon} class={`card-footer-tele__icon`} style='color: red;'/>
+<!--                     {#if visbl}
                         <div transition:fade="{{delay: 500, duration: 700}}">
                             <Icon icon={icon.icon} class={`card-footer-tele__icon`} style='color: red;'/>
                         </div>
-                    {/if}
+                    {/if} -->
                 {:else}
                     <Icon icon={icon.icon} class={`card-footer-tele__icon`} />
                 {/if}
@@ -76,7 +77,7 @@
         Row,
         Col,
         Icon
-    }from 'framework7-svelte';
+    } from 'framework7-svelte';
     import { fly, fade } from 'svelte/transition';
 
     export let title = undefined

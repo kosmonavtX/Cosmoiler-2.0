@@ -4,7 +4,7 @@
   pageContent={true}
   on:pageAfterOut={pageAfteOut}>
 
-  <Navbar title="WiFI" backLink="Back" />
+  <Navbar title={$t('service.wifi.title')} backLink="Back" />
 
 <!--   <Block strong>
     <p>1. Название точки доступа блока</p>
@@ -12,10 +12,7 @@
     <p>3. Переключатель "WiFi всегда включен" ( system.json: ap:  pwr: true )</p>
   </Block> -->
 
-  <BlockTitle class="display-flex justify-content-space-between">
-    <span>Точка доступа WiFi блока</span>
-  </BlockTitle>
-
+  <BlockTitle><span>{$t('service.wifi.ap.title')}</span></BlockTitle>
   <List >
     <ListInput
       type="text"
@@ -36,15 +33,12 @@
     <ListItem>
       <div slot='title' class="list-input__label list-input__label-text_color">WiFi всегда включен:</div>
       <span slot="after">
-        <Toggle bind:checked={system.ap.pwr}  /> <!-- on:toggleChange={() => log(system.ap.pwr)} -->
+        <Toggle bind:checked={system.ap.pwr}  />
       </span>
     </ListItem>
   </List>
 
-  <BlockTitle class="display-flex justify-content-space-between">
-    <span>Точка доступа для обновления</span>
-  </BlockTitle>
-
+  <BlockTitle><span>{$t('service.wifi.sta.title')}</span></BlockTitle>
   <List>
     <ListInput
       type="text"
@@ -129,18 +123,18 @@
     } from 'framework7-svelte';
     import {t} from '../../services/i18n.js';
     import store from '../../js/store.js';
-    import {log} from '../../js/debug.js'
+    import log from '../../js/debug.js'
 
     let connected = useStore('connected', (value) => connected = value);
     let system = useStore('system', (value) => system = value);
     let mapSettings = useStore('mapSettings', (value) => mapSettings = value);
 
-    let items = [
+/*     let items = [
       {link: '/wifi/', title: $t('more.wifi.title')},
       {link: '/system/', title: $t('more.system.title')},
       {link: '/update/', title: $t('more.update.title')},
       {link: '/about/', title: $t('more.about.title')},
-    ]
+    ] */
 
     function pageAfteOut() {
       mapSettings.set("ap", system.ap)

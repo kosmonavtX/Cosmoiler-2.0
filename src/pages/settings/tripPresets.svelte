@@ -48,7 +48,7 @@
   import {t} from '../../services/i18n.js';
   import Ranges from '../../components/range-param.svelte'
   import store from '../../js/store.js';
-  import {log} from '../../js/debug.js'
+  import log from '../../js/debug.js'
 //import { object_without_properties } from 'svelte/internal';
 
   let connected = useStore('connected', (value) => connected = value);

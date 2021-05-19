@@ -1,11 +1,7 @@
 <Page
   name="pump"
   class={`page`}
-  on:pageBeforeIn={() => {
-    //log('pageBeforeIn', pump)
-    /* включить режим настройки вязкости */
-    store.dispatch('modeWork', store.state.OILER_SETTINGS)
-  }}
+  on:pageBeforeIn={pageBeforeIn}
   on:pageAfterOut={pageAfterOut}
   >
     <Navbar title={$t('settings.pump.title')} backLink="Back" />
@@ -34,7 +30,7 @@
     import {t} from '../../services/i18n.js';
     import Ranges from '../../components/range-param.svelte'
     import store from '../../js/store.js';
-    import {log} from '../../js/debug'
+    import log from '../../js/debug'
 
     let connected = useStore('connected', (value) => connected = value);
     let pump = useStore('pump', (value) => pump = value);
@@ -44,7 +40,7 @@
 /* TODO: максимальный объем выдаваемый насосом 2 мл/мин для KAMOER */
 
     let T = pump.period // используется для режима настройки - пауза между каплями (фиксированное)
-    if (ver.hw[0] == 'X') T = 500 // для версии HW: Ax период меньше, чтобы dpms был от 5 мс (1%) до 450 мс (90%)
+    if (ver.hw[0] == 'A') T = 500 // для версии HW: Ax период меньше, чтобы dpms был от 5 мс (1%) до 450 мс (90%)
     let tmpPump = pump
     let fToggle = false
     let fOnOffPump = false
@@ -95,6 +91,12 @@
       store.dispatch('ctrlPump', [fToggle, 0, {dpms: tmpPump.dpms, dpdp: 2000}])
      // store.ctrlPump()
      // console.log('ctrlPump ', [fToggle, tmpPump.dpms, T, 0])
+    }
+
+    function pageBeforeIn() {
+    //log('pageBeforeIn', pump)
+      /* включить режим настройки вязкости */
+      store.dispatch('modeWork', store.state.OILER_SETTINGS)
     }
 
     function pageAfterOut() {
