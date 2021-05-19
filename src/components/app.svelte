@@ -6,10 +6,12 @@
 
     <Toolbar tabbar labels bottom>
   <!--     <div style="display: contents" transition:fade="{{delay: 250, duration: 300}}"> -->
-      <Link tabLink="#view-home" tabLinkActive icon="icon-rocket" text="Cosmoiler" />
-      <Link tabLink="#view-telemetry" icon="icon-telemetry-outline" text="Телеметрия" />
-      <Link tabLink="#view-settings" icon="icon-settings" text="Настройки" />
-      <Link tabLink="#view-more" icon="icon-service" text="Сервис" />
+    {#each items as {link, icon, text, active}}
+      <Link tabLink={link} active icon={icon} text={text} />
+<!--       <Link tabLink={link} icon="icon-telemetry-outline" text="Телеметрия" />
+      <Link tabLink={link} icon="icon-settings" text="Настройки" />
+      <Link tabLink={link} icon="icon-service" text="Сервис" /> -->
+      {/each}
    <!--  </div> -->
     </Toolbar>
 
@@ -94,6 +96,9 @@
   import capacitorApp from '../js/capacitor-app';
   import routes from '../js/routes';
   import store from '../js/store';
+  import {t} from '../services/i18n.js';
+//import { link } from 'fs';
+//import { isContext, isContext } from 'vm';
 
   const device = getDevice();
   // Framework7 Parameters
@@ -124,6 +129,20 @@
   let password = ''; */
   let url = window.location.pathname;
 
+ // let connected = useStore('connected', (value) => connected = value);
+
+  $: link = (link) => {
+    return (store.connected) ? link : '#'
+  }
+
+  $: items = [
+    {link: '#view-home', text: $t('Cosmoiler'), icon: "icon-rocket", active: "tabLinkActive"},
+    {link: link('#view-telemetry'), text: $t('Телеметрия'), icon: "icon-telemetry-outline"},
+    {link: '/', text: $t('Настройки'), icon: "icon-settings"},
+    {link: '/', text: $t('Сервис'), icon: "icon-service"},
+  ]
+
+  console.log(items)
 /*   function alertLoginData() {
     f7.dialog.alert('Username: ' + username + '<br>Password: ' + password, () => {
       f7.loginScreen.close();
@@ -155,8 +174,6 @@
 
 
   //console.log(document.getElementById('app'))
-
-  let connected = useStore(store, 'connected', (value) => connected = value)
 
 
 

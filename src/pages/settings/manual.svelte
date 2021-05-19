@@ -22,7 +22,6 @@
   import store from '../../js/store.js';
   import log from '../../js/debug.js'
 
-  //export let f7router;
 
   let connected = useStore('connected', (value) => connected = value);
   let manual = useStore('manual', (value) => manual = value);

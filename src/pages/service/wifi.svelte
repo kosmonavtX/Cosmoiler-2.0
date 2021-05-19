@@ -115,9 +115,7 @@
       ListItem,
       ListInput,
       Navbar,
-      Block,
       BlockTitle,
-      Range,
       Toggle,
       useStore
     } from 'framework7-svelte';
@@ -125,7 +123,7 @@
     import store from '../../js/store.js';
     import log from '../../js/debug.js'
 
-    let connected = useStore('connected', (value) => connected = value);
+    //let connected = useStore('connected', (value) => connected = value);
     let system = useStore('system', (value) => system = value);
     let mapSettings = useStore('mapSettings', (value) => mapSettings = value);
 

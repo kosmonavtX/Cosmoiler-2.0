@@ -39,23 +39,18 @@
 <script>
     import {
       Page,
-      List,
-      ListItem,
       Navbar,
       Block,
       BlockTitle,
       Button,
-      Col,
-      Row,
-      useStore
+      Col
     } from 'framework7-svelte';
     import {t} from '../../services/i18n.js';
     import { f7 } from 'framework7-svelte';
-    import store from '../../js/store.js';
     import log from '../../js/debug.js';
 
-    let connected = useStore('connected', (value) => connected = value);
-    let system = useStore('system', (value) => system = value);
+/*     let connected = useStore('connected', (value) => connected = value);
+    let system = useStore('system', (value) => system = value); */
 
     let files;
     let browseInput;

@@ -189,7 +189,7 @@ const store = createStore({
         if (value) {
           //console.log('wsStore value', value)
           state.connect = value.connect
-          //state.connect = true //debug.enabled('test') ? true : value.connect
+          state.connect = true //debug.enabled('test') ? true : value.connect
           delete value.connect
           //let obj = value.data
 
