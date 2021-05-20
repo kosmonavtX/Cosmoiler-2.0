@@ -4,22 +4,24 @@
   pageContent={true}
   on:pageTabShow={() => {console.log('Page Settings Show')}}
 >
-  <Navbar title={$t('home.settings')} />
+
 
   <!-- <Block strong style='background-color: var( --f7-theme-color-bg-color)'>{$t('home.selectmode')}</Block> -->
 
 {#if !connected}
-  <div transition:fade="{{delay: 100, duration: 200}}">
+<Navbar title={$t('home.settings')} />
+  <!-- <div transition:fade="{{delay: 100, duration: 200}}"> -->
     <BlockTitle class={`block-title-noconnection__text`} >{$t('home.noconnect')}</BlockTitle>
-  </div>
+<!--   </div> -->
 {:else}
+<Navbar title={$t('home.settings')} />
  <!--  <div transition:fade="{{delay: 250, duration: 300}}"> -->
     <Toolbar top tabbar >
       <Link tabLink="#tab-trip" tabLinkActive>Одометр</Link>
       <Link tabLink="#tab-time">Таймер</Link>
       <Link tabLink="#tab-manual">Вручную</Link>
     </Toolbar>
-    <div transition:fade="{{delay: 250, duration: 300}}">
+    <!-- <div transition:fade="{{delay: 250, duration: 300}}"> -->
     <Tabs >
       <Tab id="tab-trip" tabActive on:tabShow={()=>{log('Tab Trip Show')}}>
         <List>
@@ -53,7 +55,7 @@
         </List>
       </Tab>
     </Tabs>
-  </div>
+<!--   </div> -->
 {/if}
 
 </Page>

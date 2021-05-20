@@ -14,6 +14,7 @@ import WifiPage from '../pages/service/wifi.svelte';
 import SystemPage from '../pages/service/system.svelte';
 import UpdatePage from '../pages/service/update.svelte';
 import AboutPage from '../pages/service/about.svelte';
+import DiagPage from '../pages/service/diag.svelte';
 //import DynamicRoutePage from '../pages/dynamic-route.svelte';
 import RequestAndLoad from '../pages/request-and-load.svelte';
 import NotFoundPage from '../pages/404.svelte';
@@ -69,6 +70,10 @@ var routes = [
   {
     path: '/service/update',
     component: UpdatePage,
+  },
+  {
+    path: '/service/diag',
+    component: DiagPage,
   },
   {
     path: '/service/about',

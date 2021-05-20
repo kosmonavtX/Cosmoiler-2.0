@@ -2,77 +2,28 @@
 
 
   <Views init={false} tabs class="safe-areas">
-  <!--   {#if connected} -->
-
     <Toolbar tabbar labels bottom>
-  <!--     <div style="display: contents" transition:fade="{{delay: 250, duration: 300}}"> -->
-    {#each items as {link, icon, text, active}}
-      <Link tabLink={link} active icon={icon} text={text} />
-<!--       <Link tabLink={link} icon="icon-telemetry-outline" text="Телеметрия" />
-      <Link tabLink={link} icon="icon-settings" text="Настройки" />
-      <Link tabLink={link} icon="icon-service" text="Сервис" /> -->
-      {/each}
-   <!--  </div> -->
+      <Link tabLink={items[0].link} icon={items[0].icon} text={items[0].text} tabLinkActive />
+      <Link tabLink={items[1].link} icon={items[1].icon} text={items[1].text} />
+      <Link tabLink={items[2].link} icon={items[2].icon} text={items[2].text} />
+      <Link tabLink={items[3].link} icon={items[3].icon} text={items[3].text} />
+<!--       {#each items as {link, icon, text}, i}
+      {#if i == 0}
+        <Link tabLink={link} tabLinkActive icon={icon} text={text} />
+        {:else}
+        <Link tabLink={link} icon={icon} text={text} />
+        {/if}
+      {/each} -->
     </Toolbar>
 
 
-<!--     {/if} -->
-
-    <View id="view-home" name="main" main tab tabActive url="/" />
-
+    <View id="view-home" name="main" main tab tabActive url="/" animate={false} />
     <View id="view-telemetry" name="telemetry" tab url="/telemetry/" />
-
     <View id="view-settings" name="settings" tab url="/settings/" />
-
-    <View id="view-more" name="service" tab url="/service/" />
-
+    <View id="view-service" name="service" tab url="/service/" />
   </Views>
-
-
-<!--
-  <View id="view-home" main>
-    <Router url="{url}">
-      <Route path="/about/">
-          <div transition:scale={{duration:200}}>
-            <AboutPage/>
-          </div>
-      </Route>
-      <Route path="/**">
-        <div transition:scale={{duration:200}}>
-          <HomePage/>
-        </div>
-      </Route>
-    </Router>
-  </View> -->
-
-<!--   <LoginScreen id="my-login-screen">
-    <View>
-      <Page loginScreen>
-        <LoginScreenTitle>Login</LoginScreenTitle>
-        <List form>
-          <ListInput
-            type="text"
-            name="username"
-            placeholder="Your username"
-            bind:value={username}
-          />
-          <ListInput
-            type="password"
-            name="password"
-            placeholder="Your password"
-            bind:value={password}
-          />
-        </List>
-        <List>
-          <ListButton title="Sign In" onClick={() => alertLoginData()} />
-        </List>
-        <BlockFooter>
-          Some text about login information.<br />Click "Sign In" to close Login Screen
-        </BlockFooter>
-      </Page>
-    </View>
-  </LoginScreen> -->
 </App>
+
 <script>
   import { onMount } from 'svelte';
   import { getDevice }  from '../js/framework7-custom.js';
@@ -131,18 +82,17 @@
 
  // let connected = useStore('connected', (value) => connected = value);
 
-  $: link = (link) => {
-    return (store.connected) ? link : '#'
-  }
+/*   $: link = (link) => {
+    return (store.state.connect) ? link : '#'
+  } */
 
   $: items = [
-    {link: '#view-home', text: $t('Cosmoiler'), icon: "icon-rocket", active: "tabLinkActive"},
-    {link: link('#view-telemetry'), text: $t('Телеметрия'), icon: "icon-telemetry-outline"},
-    {link: '/', text: $t('Настройки'), icon: "icon-settings"},
-    {link: '/', text: $t('Сервис'), icon: "icon-service"},
+    {link: '#view-home', text: $t('Cosmoiler'), icon: "icon-rocket"},
+    {link: '#view-telemetry', text: $t('Телеметрия'), icon: "icon-telemetry-outline"},
+    {link: '#view-settings', text: $t('Настройки'), icon: "icon-settings"},
+    {link: '#view-service', text: $t('Сервис'), icon: "icon-service"},
   ]
 
-  console.log(items)
 /*   function alertLoginData() {
     f7.dialog.alert('Username: ' + username + '<br>Password: ' + password, () => {
       f7.loginScreen.close();

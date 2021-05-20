@@ -1,12 +1,7 @@
 
-
 import { createStore } from 'framework7/lite';
-//import { get } from 'svelte/store'
 import websocketStore from './websocket.js';
 import log from './debug.js'
-
-//import ReconnectingWebSocket from 'reconnecting-websocket'
-//import ws from './connect.js'
 
 let testURI = 'ws://db39b18be10d.ngrok.io'
 let URI = testURI
@@ -32,9 +27,6 @@ function getUrlVar() {
  *          2. localhost:port/?ws=2506d4fb70a8.ngrok.io - для доступа к тестовому серверу ngrok.io
  */
 function uri() {
-   // debug(document.location.host)
-    //console.log(document.location.host);
-    //console.log(getUrlVar()['ws']);
     if (document.location.host.indexOf('localhost') + 1) {
         /*store.state.connect = true;*/
         if (!getUrlVar()['ws'])
@@ -189,7 +181,7 @@ const store = createStore({
         if (value) {
           //console.log('wsStore value', value)
           state.connect = value.connect
-          state.connect = true //debug.enabled('test') ? true : value.connect
+          //state.connect = true //debug.enabled('test') ? true : value.connect
           delete value.connect
           //let obj = value.data
 
@@ -274,13 +266,6 @@ const store = createStore({
       log("send Time = ", state.timer)
     },
     sendManual({state}, data) {
-/*       for (var key in data) {
-        // этот код будет вызван для каждого свойства объекта
-        // ..и выведет имя свойства и его значение
-
-        //alert( "Ключ: " + key + " значение: " + data[key] );
-        console.log(`${key} : ${data[key]}`)
-      } */
       state.manual = data
       state.manual = state.manual
       wsStore.set({cmd: "post", param: [state.manual.id, state.manual]})

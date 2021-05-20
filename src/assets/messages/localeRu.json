@@ -74,14 +74,15 @@
 
     "service.system.pumping.title": "Прокачка",
     "service.system.pumping.text_toggle": "Заполнение системы",
-    "service.system.diag.title": "Диагностика",
-    "service.system.diag.acord.title1": "Возможные неисправности",
-    "service.system.diag.acord.title2": "Обратная связь",
 
     "service.update.fw.title": "Обновление ПО блока",
     "service.update.cnfg.title": "Заводские настройки",
     "service.update.cnfg.button.title": "Сброс",
     "service.update.cnfg.confirm.text": "Все текущие настройки будут заменены заводскими. Вы уверены?",
+
+    "service.diag.title": "Диагностика",
+    "service.diag.acord.title1": "Возможные неисправности",
+    "service.diag.acord.title2": "Обратная связь",
 
     "button.reset": "Сброс",
     "button.start": "Старт",

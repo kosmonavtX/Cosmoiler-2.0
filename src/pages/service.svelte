@@ -5,7 +5,9 @@
 
   <Navbar title={$t('service.title')} />
 
-  <BlockTitle class={`block-title-noconnection__text`} >{$t('home.noconnect')}</BlockTitle>
+  {#if !connected}
+    <BlockTitle class={`block-title-noconnection__text`} >{$t('home.noconnect')}</BlockTitle>
+  {/if}
 
   <List mediaList inset class='elevation-3' style="border-radius: 6px;">
     <ListItem class={`settings-main__list-item`}
@@ -55,8 +57,9 @@
 
   $: items = [
     {link: '/service/wifi/', title: $t('service.wifi.title'), view: connected},
-    {link: '/service/system/', title: $t('service.system.title'), view: true},
+    {link: '/service/system/', title: $t('service.system.title'), view: connected},
     {link: '/service/update/', title: $t('service.update.title'), view: connected},
+    {link: '/service/diag/', title: $t('service.diag.title'), view: true},
     {link: '/service/about/', title: $t('service.about.title'), view: true},
   ]
 

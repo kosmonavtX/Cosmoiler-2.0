@@ -24,11 +24,10 @@
         onRangeChange={rangeChange}
         />
       </ListItemCell>
-  <!--     formatScaleLabel={(e)=>{return Math.round(e/10)*10}} -->
-  {#if icon2}
-          <ListItemCell class="width-auto flex-shrink-0">
-            <Icon icon={icon2} style="font-size: 25px" />
-      </ListItemCell>
+      {#if icon2}
+        <ListItemCell class="width-auto flex-shrink-0">
+          <Icon icon={icon2} style="font-size: 25px" />
+        </ListItemCell>
       {/if}
       {#if toggle}
         <ListItemCell class="width-auto flex-shrink-0">
@@ -49,7 +48,6 @@
     Toggle
   } from 'framework7-svelte';
 
- // export let rangeValue = {
   export let title = ""
   export let value = 0
   export let  name_value = ""
@@ -68,23 +66,4 @@
   export let toggle = false
   export let toggleCheck = undefined
   export let onCtrlToggle = undefined
- /*  let value_current;
-
-
-  $: {
-      console.log('val_current')
-      value_current = value
-    } */
-  /*   function outScaleLabel(value) {
-    return Math.round(value/10) * 10
-  } */
-
-/*   let check = false
-
-  function onCtrlToggle(e) {
-    check = !check
-      console.log('ctrlPump', e.detail[0])
-
-    } */
-
-  </script>
+</script>

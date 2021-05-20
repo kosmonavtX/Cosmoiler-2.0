@@ -13,8 +13,8 @@
   </Block> -->
 
   <BlockTitle><span>{$t('service.wifi.ap.title')}</span></BlockTitle>
-  <List >
-    <ListInput
+  <List class={`settings-main__list-item`}>
+    <ListInput class={`settings-main__list-item`}
       type="text"
       placeholder="Введите имя"
       bind:value={system.ap.ssid}
@@ -22,7 +22,7 @@
     >
       <div slot='label' class="list-input__label list-input__label-text_color">SSID</div>
     </ListInput>
-    <ListInput
+    <ListInput class={`settings-main__list-item`}
       type="password"
       placeholder="Введите пароль"
       bind:value={system.ap.psw}
@@ -30,7 +30,7 @@
     >
       <div slot='label' class="list-input__label list-input__label-text_color">Пароль</div>
     </ListInput>
-    <ListItem>
+    <ListItem class={`settings-main__list-item`}>
       <div slot='title' class="list-input__label list-input__label-text_color">WiFi всегда включен:</div>
       <span slot="after">
         <Toggle bind:checked={system.ap.pwr}  />
@@ -40,72 +40,20 @@
 
   <BlockTitle><span>{$t('service.wifi.sta.title')}</span></BlockTitle>
   <List>
-    <ListInput
+    <ListInput class={`settings-main__list-item`}
       type="text"
       placeholder="Введите имя"
       bind:value={system.sta.ssid}
     >
       <div slot='label' class="list-input__label list-input__label-text_color">SSID</div>
     </ListInput>
-    <ListInput
+    <ListInput class={`settings-main__list-item`}
       type="password"
       placeholder="Введите пароль"
       bind:value={system.sta.psw}>
       <div slot='label' class="list-input__label list-input__label-text_color">Пароль</div>
     </ListInput>
-<!--     <ListInput
-      type="file"
-      placeholder="Введите пароль"
-      bind:value={system.sta.psw}>
-      <div slot='label' class="list-input__label list-input__label-text_color">Пароль</div>
-    </ListInput> -->
   </List>
-
-<!--   <List> -->
-<!--     <ListInput
-      label="E-mail"
-      type="email"
-      placeholder="E-mail"
-    ></ListInput>
-
-    <ListInput
-      label="URL"
-      type="url"
-      placeholder="URL"
-    ></ListInput> -->
-
-
-<!--     <ListInput
-      label="Gender"
-      type="select"
-      >
-      <option>Male</option>
-      <option>Female</option>
-    </ListInput>
-
-
-    <ListInput
-      label="Range"
-      input={false}
-    >
-      <span slot="input">
-        <Range value={50} min={0} max={100} step={1} />
-      </span>
-    </ListInput>
-
-    <ListInput
-      type="textarea"
-      label="Textarea"
-      placeholder="Bio"
-    ></ListInput>
-    <ListInput
-      type="textarea"
-      label="Resizable"
-      placeholder="Bio"
-      resizable
-    ></ListInput>
-  </List> -->
-
 </Page>
 
 <script>
@@ -126,13 +74,6 @@
     //let connected = useStore('connected', (value) => connected = value);
     let system = useStore('system', (value) => system = value);
     let mapSettings = useStore('mapSettings', (value) => mapSettings = value);
-
-/*     let items = [
-      {link: '/wifi/', title: $t('more.wifi.title')},
-      {link: '/system/', title: $t('more.system.title')},
-      {link: '/update/', title: $t('more.update.title')},
-      {link: '/about/', title: $t('more.about.title')},
-    ] */
 
     function pageAfteOut() {
       mapSettings.set("ap", system.ap)

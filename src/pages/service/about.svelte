@@ -5,16 +5,18 @@
 
   <Navbar title="О приложении" backLink="Back" />
 
-  <Block>
-    <p><b>Приложение-клиент для задания параметров автоматического смазчика цепи "Cosmoiler".</b></p>
-  </Block>
+  <Block strong class={`settings-main__list-item`}>
+    <Block>
+      <p><b>Приложение-клиент для задания параметров автоматического смазчика цепи "Cosmoiler".</b></p>
+    </Block>
 
-  <Block>
-    <p>Для работы приложения и смазчика выход в интернет не требуется (кроме действий при обновлении прошивки блока управления).</p>
-  </Block>
+    <Block>
+      <p>Для работы приложения и смазчика выход в интернет не требуется (кроме действий при обновлении прошивки блока управления).</p>
+    </Block>
 
-  <Block>
-    <p>Более подробная информация доступна по адресу: <Link href="https://vk.com/cosmoiler" external>Cosmoiler</Link></p>
+    <Block>
+      <p>Более подробная информация доступна по адресу: <Link href="https://vk.com/cosmoiler" external>Cosmoiler</Link></p>
+    </Block>
   </Block>
 
 </Page>

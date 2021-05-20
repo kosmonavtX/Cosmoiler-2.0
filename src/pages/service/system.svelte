@@ -22,45 +22,6 @@
   {/each}
 {/if}
 
-<!-- Диагностика -->
-  <BlockTitle ><span>{$t('service.system.diag.title')}</span></BlockTitle>
-  <List accordionList>
-    <ListItem accordionItem class={`settings-main__list-item`}>
-      <div slot='title' class={`list-input__label list-input__label-text_color`}>
-        <span>{$t('service.system.diag.acord.title1')}</span>
-      </div>
-      <AccordionContent>
-        <Block>
-          <p><b>1. Частое мигание светодиода. Название точки доступа блока "Cosmoiler_NA" или только цифры</b></p>
-          <p>а) выполните пп. 1-5 раздела "Обратная связь";</p>
-          <p>б) настройте в смартфоне точку доступа с именем <b>сosmoiler</b> и паролем <b>12345678</b>;</p>
-          <p>в) выполните команду id;</p>
-          <p>г) если частое миагание светодиода сохраняется, см. "Руководство по эксплуатации", либо свяжитесь с разработчиками.</p>
-          <p><b>2. Отсутствует Wi-Fi блока (не является неисправностью, см. "Руководство по эксплуатации").</b></p>
-          <p>Выключите и включите зажигание. В течение 60 сек подключитесь к блоку.
-            Возможно включение Wi-Fi с помощью кнопки управления без выключения зажигания:
-            сделайте 4 коротких нажатия на кнопку.</p>
-        </Block>
-      </AccordionContent>
-    </ListItem>
-    <ListItem accordionItem class={`settings-main__list-item`}>
-      <div slot='title' class={`list-input__label list-input__label-text_color`}>
-        <span>{$t('service.system.diag.acord.title2')}</span>
-      </div>
-      <AccordionContent>
-        <Block>
-          <p>1. Установите приложение Mobile Telnet (MT) через Google Play.</p>
-          <p>2. В меню MT выберите Telnet Settings и установите следующие значения: Remote Host Name or IP - 192.168.4.1, Telnet Port - 23.</p>
-          <p>3. Подключитесь к точке доступа Wi-Fi блока управления.</p>
-          <p>4. В меню MT выберите Connect.</p>
-          <p>5. Нажмите кнопку 4 раза. Пауза между нажатиями не должна быть более 10 секунд.</p>
-          <p>5. Введите пароль 123 и нажмите Send</p>
-          <p>6. В MT скопируте текст и отправьте, указав серийный номер Вашего смазчика в теме письма, на e-mail: cosmoiler@gmail.com</p>
-        </Block>
-      </AccordionContent>
-    </ListItem>
-  </List>
-
 </Page>
 
 <script>
