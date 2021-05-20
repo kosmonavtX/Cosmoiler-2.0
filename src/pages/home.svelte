@@ -1,6 +1,8 @@
 <Page
   name="home"
   class={`page`}
+  ptr
+  on:ptrRefresh={loadMore}
   on:pageTabShow={pageTabShow}>
 
   <!-- Top Navbar -->
@@ -13,8 +15,10 @@
 
   {#if connected}
     <BlockTitle style='background-color: var( --f7-theme-color-bg-color)'>{$t('home.selectmode')}</BlockTitle>
+    <Button on:click={() => { store.state.connect =  !store.state.connect}}>Connect = {store.state.connect}</Button>
   {:else}
     <BlockTitle class={`block-title-noconnection__text`} >{$t('home.noconnect')}</BlockTitle>
+    <Button on:click={() => { store.state.connect =  !store.state.connect}}>Connect = {store.state.connect}</Button>
   {/if}
 
 {#if !connected}
@@ -59,15 +63,18 @@
     BlockTitle,
     List,
     ListItem,
+    Button,
     useStore,
     SkeletonBlock
   } from 'framework7-svelte';
-
+  import { f7 } from 'framework7-svelte';
   import {t} from '../services/i18n.js';
   import store from '../js/store';
   import ModeItem from '../components/home-listitem.svelte'
   import { fade } from 'svelte/transition';
   import log from '../js/debug.js'
+  import connecting from '../js/storeconn'
+
 //import { debug } from 'console';
   //logHome('kdsjhfkjshks')
   log('123124234234')
@@ -81,22 +88,14 @@
   let fmodeOdometer
   let fmodeTimer
 
-  function pageTabShow() {
-    //console.log('Change Settings = ', store.state.fChngSettings)
-    if (store.state.fChngSettings.status) {
-      // Если были изменения настроек, то запросить нужный файл
-      store.dispatch('requestConfig', store.state.fChngSettings.id);
-      store.state.fChngSettings.status = false
-      store.state.fChngSettings.id = []
-    }
-  }
-
   $: if (connected) {
       //console.log('Home -> connected: %s', gnssPresent)
       log('Home -> connected: %s', gnssPresent.gps)
       fmodeOdometer = (mode.m === 1) ? true : false
       fmodeTimer = (mode.m === 2) ? true : false
   }
+
+  //$: $connecting = connected
 /*   function onPageInit() {
     console.log('OnPageInit')
     fmodeTrip = (mode.m === 1) ? true : false
@@ -185,6 +184,23 @@
           store.dispatch('sendMode', tmpMode)
       }
     }
+
+  function pageTabShow() {
+    //console.log('Change Settings = ', store.state.fChngSettings)
+    if (store.state.fChngSettings.status) {
+      // Если были изменения настроек, то запросить нужный файл
+      store.dispatch('requestConfig', store.state.fChngSettings.id);
+      store.state.fChngSettings.status = false
+      store.state.fChngSettings.id = []
+    }
+  }
+
+  function loadMore(e, done) {
+    document.location.reload()
+    setTimeout(() => {
+      f7.ptr.done()
+    }, 2000)
+  }
 
 </script>
 

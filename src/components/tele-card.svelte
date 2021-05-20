@@ -84,10 +84,10 @@
     export let gauge = undefined
     export let icons = undefined
 
-    let visbl = true
+/*     let visbl = true
 
     setInterval(() => {
       visbl = !visbl
-    }, 1000)
+    }, 1000) */
 
 </script>

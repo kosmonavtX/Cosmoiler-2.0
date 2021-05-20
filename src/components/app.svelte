@@ -18,7 +18,7 @@
 
 
     <View id="view-home" name="main" main tab tabActive url="/" animate={false} />
-    <View id="view-telemetry" name="telemetry" tab url="/telemetry/" />
+    <View id="view-telemetry" name="telemetry" tab url="/telemetry/" /> <!--  -->
     <View id="view-settings" name="settings" tab url="/settings/" />
     <View id="view-service" name="service" tab url="/service/" />
   </Views>
@@ -34,10 +34,9 @@
     Views,
     View,
     Toolbar,
-    Link,
-    useStore
+    Link
   } from 'framework7-svelte';
-  import { fade, fly, slide } from 'svelte/transition';
+/*   import { fade, fly, slide } from 'svelte/transition'; */
 /*   import {Router, Route} from 'svelte-routing'; */
 /*   import { scale } from 'svelte/transition'; */
 /*   import HomePage from '../pages/home.svelte';
@@ -48,6 +47,7 @@
   import routes from '../js/routes';
   import store from '../js/store';
   import {t} from '../services/i18n.js';
+  import connecting from '../js/storeconn.js'
 //import { link } from 'fs';
 //import { isContext, isContext } from 'vm';
 
@@ -56,7 +56,6 @@
   let f7params = {
     name: 'Cosmoiler 2.0', // App name
     theme: 'auto', // Automatic theme detection
-
 
     id: 'com.cosmoiler.app', // App bundle ID
     // App store
@@ -71,40 +70,27 @@
     },
     // TODO Capacitor Statusbar settings
     statusbar: {
-      iosOverlaysWebView: false,
-      androidOverlaysWebView: false,
-    },
+      iosOverlaysWebView: true,
+      androidOverlaysWebView: true,
+    }
   };
   // Login screen demo data
 /*   let username = '';
   let password = ''; */
   let url = window.location.pathname;
 
- // let connected = useStore('connected', (value) => connected = value);
-
 /*   $: link = (link) => {
     return (store.state.connect) ? link : '#'
   } */
 
-  $: items = [
-    {link: '#view-home', text: $t('Cosmoiler'), icon: "icon-rocket"},
-    {link: '#view-telemetry', text: $t('Телеметрия'), icon: "icon-telemetry-outline"},
-    {link: '#view-settings', text: $t('Настройки'), icon: "icon-settings"},
-    {link: '#view-service', text: $t('Сервис'), icon: "icon-service"},
+  let items = [
+    {link: '#view-home',      text: $t('Cosmoiler'),  icon: "icon-rocket"},
+    {link: '', text: $t('Телеметрия'), icon: "icon-telemetry-outline"},
+    {link: '#view-settings',  text: $t('Настройки'),  icon: "icon-settings"},
+    {link: '#view-service',   text: $t('Сервис'),     icon: "icon-service"},
   ]
 
-/*   function alertLoginData() {
-    f7.dialog.alert('Username: ' + username + '<br>Password: ' + password, () => {
-      f7.loginScreen.close();
-    });
-  } */
-  /* let connected = f7.useStore('connected', (value) => connected = value);
- */
-/*  const doSomething = () => {
-    f7.dialog.alert('Hello world');
-  }
-
-  doSomething() */
+  $: console.log(store.getters.connected)
 
   onMount(() => {
 
@@ -116,15 +102,13 @@
       }
       // Call F7 APIs here
       store.dispatch('init')
+      items[1].link = '#view-telemetry'
+      console.log(store.getters.connected)
       //f7.views.main.router.navigate({ name: 'telemetry' });
 
     });
   })
 
-
-
-  //console.log(document.getElementById('app'))
-
-
+ // $: items[1].link = (connected)?'#view-telemetry' : ''
 
 </script>
