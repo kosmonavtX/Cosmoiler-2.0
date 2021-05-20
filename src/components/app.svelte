@@ -102,7 +102,7 @@
       }
       // Call F7 APIs here
       store.dispatch('init')
-      items[1].link = '#view-telemetry'
+      items[1].link = (store.getters.connected) ? items[1].link = '#view-telemetry' : ''
       console.log(store.getters.connected)
       //f7.views.main.router.navigate({ name: 'telemetry' });
 
