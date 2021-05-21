@@ -1,27 +1,21 @@
 <App { ...f7params } >
 
-
-  <Views init={false} tabs class="safe-areas">
-    <Toolbar tabbar labels bottom>
-      <Link tabLink={items[0].link} icon={items[0].icon} text={items[0].text} tabLinkActive />
-      <Link tabLink={items[1].link} icon={items[1].icon} text={items[1].text} />
-      <Link tabLink={items[2].link} icon={items[2].icon} text={items[2].text} />
-      <Link tabLink={items[3].link} icon={items[3].icon} text={items[3].text} />
-<!--       {#each items as {link, icon, text}, i}
-      {#if i == 0}
-        <Link tabLink={link} tabLinkActive icon={icon} text={text} />
-        {:else}
-        <Link tabLink={link} icon={icon} text={text} />
-        {/if}
-      {/each} -->
-    </Toolbar>
+<!--   <Views init={false} tabs class="safe-areas">
+      <Toolbar tabbar labels bottom>
+        <Link tabLink={items[0].link} icon={items[0].icon} text={items[0].text} tabLinkActive />
+        <Link tabLink={items[1].link} icon={items[1].icon} text={items[1].text} />
+        <Link tabLink={items[2].link} icon={items[2].icon} text={items[2].text} />
+        <Link tabLink={items[3].link} icon={items[3].icon} text={items[3].text} />
+      </Toolbar>
 
 
-    <View id="view-home" name="main" main tab tabActive url="/" animate={false} />
-    <View id="view-telemetry" name="telemetry" tab url="/telemetry/" /> <!--  -->
-    <View id="view-settings" name="settings" tab url="/settings/" />
-    <View id="view-service" name="service" tab url="/service/" />
-  </Views>
+      <View id="view-home" name="main" main tab tabActive url="/" animate={false} />
+      <View id="view-telemetry" name="telemetry" tab url="/telemetry/" />
+      <View id="view-settings" name="settings" tab url="/settings/" />
+      <View id="view-service" name="service" tab url="/service/" />
+  </Views> -->
+  <Main/>
+
 </App>
 
 <script>
@@ -36,6 +30,7 @@
     Toolbar,
     Link
   } from 'framework7-svelte';
+
 /*   import { fade, fly, slide } from 'svelte/transition'; */
 /*   import {Router, Route} from 'svelte-routing'; */
 /*   import { scale } from 'svelte/transition'; */
@@ -43,11 +38,13 @@
   import AboutPage from '../pages/about.svelte'; */
 
 
+
   import capacitorApp from '../js/capacitor-app';
   import routes from '../js/routes';
   import store from '../js/store';
   import {t} from '../services/i18n.js';
   import connecting from '../js/storeconn.js'
+  import Main from '../pages/appview.svelte';
 //import { link } from 'fs';
 //import { isContext, isContext } from 'vm';
 
@@ -102,8 +99,11 @@
       }
       // Call F7 APIs here
       store.dispatch('init')
-      items[1].link = (store.getters.connected) ? items[1].link = '#view-telemetry' : ''
+      items[1].link = (store.getters.connected.value) ? items[1].link = '#view-telemetry' : ''
       console.log(store.getters.connected)
+      //f7.views.main.router.navigate('/home/')
+      //f7.views.create('.safe-areas',{url: '/'})
+     // this.$f7router.navigate('/home/')
       //f7.views.main.router.navigate({ name: 'telemetry' });
 
     });

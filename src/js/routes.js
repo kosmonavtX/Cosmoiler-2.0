@@ -1,4 +1,5 @@
 // Main pages
+//import Main from '../pages/appview.svelte'
 import HomePage from '../pages/home.svelte';
 import TelemetryPage from '../pages/telemetry.svelte';
 import SettingsPage from '../pages/settings.svelte';
@@ -20,12 +21,13 @@ import RequestAndLoad from '../pages/request-and-load.svelte';
 import NotFoundPage from '../pages/404.svelte';
 
 var routes = [
+/*   {
+    path: '/',
+    component: Main,
+  }, */
   {
     path: '/',
-    component: HomePage,
-    beforeEnter: function ({resolve, reject}) {
-      //console.log('exec beforeenter')
-    }
+    component: HomePage
   },
   {
     path: '/telemetry/',

@@ -1,5 +1,5 @@
 {#if title != undefined}
-<div transition:fade="{{delay: 100, duration: 200}}">
+<!-- <div transition:fade="{{delay: 100, duration: 200}}"> -->
 <Card class='elevation-3' >
     <CardHeader class={`card-header-tele`} >
       <span>{title}</span>
@@ -64,7 +64,7 @@
         {/each}
     </CardFooter>
 </Card>
-</div>
+<!-- </div> -->
 {/if}
 
 <script>

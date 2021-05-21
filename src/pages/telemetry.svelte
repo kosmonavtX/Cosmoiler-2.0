@@ -5,7 +5,7 @@
   on:pageTabHide={pageTabHide}>
 
   <Navbar title="Телеметрия" />
-
+  <Button on:click={() => { store.state.connect =  !store.state.connect}}>Connect = {store.state.connect}</Button>
 <!-- {#if false}
   <Block strong  inset class='elevation-3'>
     <BlockHeader class="block-header_text text-align-center">СКОРОСТЬ</BlockHeader>
@@ -46,12 +46,13 @@
 {/if} -->
 
 {#if !connected}
-  <div transition:fade="{{delay: 100, duration: 200}}">
+<!--   <div transition:fade="{{delay: 250, duration: 30}}"> -->
     <BlockTitle class={`block-title-noconnection__text`} >{$t('home.noconnect')}</BlockTitle>
-  </div>
-{:else}
+<!--   </div> -->
+  {/if}
+{#if connected}
 <!--   <CardTelemetry {...dataCardTele[telemetry.params[3].m]}  /> -->
-  <div transition:fade="{{delay: 250, duration: 300}}">
+<div transition:fade="{{delay: 50, duration: 300}}">
     <CardTelemetry {...dataCardTele[md]}  />
   </div>
 {/if}
@@ -64,6 +65,7 @@
     Page,
     Navbar,
     BlockTitle,
+    Button,
     useStore
   } from 'framework7-svelte';
   import {t} from '../services/i18n.js';
