@@ -1,12 +1,8 @@
 <Page
   name="timepresets"
   class={`page`}
-  on:pageTabHide={() => {}}
-  on:pageAfterOut={pageAfteOut}
-  on:pageBeforeIn={() => {
-    log('pageBeforeIn', timer)
-  }}
-  >
+  on:pageAfterOut={pageAfteOut}>
+
   <Navbar title={$t('settings.presets.title')} backLink="Back" />
 
   <Toolbar top tabbar >
@@ -148,36 +144,8 @@
   ]
 
 
-/*   $: {
-    time.presets = presets;
-    console.log('presets: ', time)
-  } */
-
-/*   let onTimerChange = [
-    value => {
-      console.log(value);
-      presets[0].dp_time = value
-    },
-    value => {
-      console.log(value);
-      presets[1].dp_time = value
-    }];
-
-  let onDropsChange = [
-    value => {
-      console.log(value);
-      presets[0].dp_num = value
-    },
-    value => {
-      console.log(value);
-      presets[1].dp_num = value
-    }]; */
-/*     function changeTimer(e) {
-      presets[0].dp_time = e
-      console.log(e)
-    } */
-
   function outScaleLabel(e) {
     return Math.round(e/10) * 10
   }
+
 </script>

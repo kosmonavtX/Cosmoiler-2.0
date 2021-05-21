@@ -1,31 +1,25 @@
-<Page>
+<Page
+  name="root"
+  class={`page`}>
+
     <Views
-        init={false}
+        init={true}
         tabs
-        class="safe-areas"
-        browserHistoryStoreHistory={false}>
+        class="safe-areas">
 
         <Toolbar tabbar labels bottom>
-          <Link tabLink={items[0].link} icon={items[0].icon} text={items[0].text} tabLinkActive />
-          <Link tabLink={items[1].link} icon={items[1].icon} text={items[1].text} />
-          <Link tabLink={items[2].link} icon={items[2].icon} text={items[2].text} />
-          <Link tabLink={items[3].link} icon={items[3].icon} text={items[3].text} />
-    <!--       {#each items as {link, icon, text}, i}
-          {#if i == 0}
-            <Link tabLink={link} tabLinkActive icon={icon} text={text} />
-            {:else}
-            <Link tabLink={link} icon={icon} text={text} />
-            {/if}
-          {/each} -->
+          {#each itemsToolbar as {link, icon, text, active}}
+            <Link tabLink={link} icon={icon} text={text} tabLinkActive={active} />
+          {/each}
         </Toolbar>
 
-
-        <View id="view-home" name="main" main tab tabActive url="/" animate={false} />
-       <!--  {#if connected} -->
+        {#each itemsViews as {id, name, main, tab, tabActive, url}}
+          <View id={id} name={name} main={main} tab={tab} tabActive={tabActive} url={url} animate={true} class="safe-areas"/>
+        {/each}
+<!--         <View id="view-home" name="main" main tab tabActive url="/" animate={false} />
         <View id={idtele} name="telemetry" tab url="/telemetry/" />
         <View id="view-settings" name="settings" tab url="/settings/" />
-      <!--   {/if} -->
-        <View id="view-service" name="service" tab url="/service/" />
+        <View id="view-service" name="service" tab url="/service/" /> -->
     </Views>
 </Page>
 
@@ -39,25 +33,23 @@
         Link,
         useStore
     } from 'framework7-svelte';
-import { f7 } from 'framework7-svelte';
     import {t} from '../services/i18n.js';
 
 
-    let items = [
-        {link: '#view-home',      text: 'Cosmoiler',  icon: "icon-rocket"},
-        {link: '#view-telemetry', text: 'Телеметрия', icon: "icon-telemetry-outline"},
-        {link: '#view-settings',  text: 'Настройки',  icon: "icon-settings"},
-        {link: '#view-service',   text: 'Сервис',     icon: "icon-service"},
-    ]
-
     let connected = useStore('connected', (value) => connected = value);
 
-    let idtele = ""
-    $: console.log(connected);
-    $: if (connected) {
-            idtele = 'view-telemetry'
-           // f7.views.main.router.navigate('/')
-           // if (f7.views.telemetry) f7.views.telemetry.el.remove()
-    } else {idtele = ""; }
+    let itemsToolbar = [
+        {link: '#view-home',      text: $t('Cosmoiler'),  icon: "icon-rocket",            tabLinkActive: true},
+        {link: '#view-telemetry', text: $t('Телеметрия'), icon: "icon-telemetry-outline", tabLinkActive: false},
+        {link: '#view-settings',  text: $t('Настройки'),  icon: "icon-settings",          tabLinkActive: false},
+        {link: '#view-service',   text: $t('Сервис'),     icon: "icon-service",           tabLinkActive: false},
+    ]
+
+    $: itemsViews = [
+      {id: 'view-home',                         name: 'main',       url: '/',           main: true,   tab: true, tabActive: true},
+      {id: (connected) ? 'view-telemetry' : '', name: 'telemetry',  url: '/telemetry/', main: false,  tab: true, tabActive: false},
+      {id: (connected) ? 'view-settings'  : '', name: 'settings',   url: '/settings/',  main: false,  tab: true, tabActive: false},
+      {id: 'view-service',                      name: 'service',    url: '/service/',   main: false,  tab: true, tabActive: false},
+    ]
 
 </script>

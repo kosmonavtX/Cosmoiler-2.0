@@ -151,13 +151,6 @@ const store = createStore({
     OILER_MANUAL: 1,
     OILER_AUTO: 0,
 
-/*     obj: () => { return new Proxy(obj, {
-      set: (target, prop, value) => {
-        console.log("PROXY obj ===> ", prop, value)
-        return Reflect.set(target, prop, value);
-      }
-    })}, */
-
   },
   getters: {
     gnssPresent:  ({state}) => state.system,
@@ -185,9 +178,6 @@ const store = createStore({
           delete value.connect
           //let obj = value.data
 
-/*           if (value.hasOwnProperty('main_gnss')) {
-            state.gnssPresent = value.main_gnss
-          } */
           if (value.id == '/mode.json')
             state.mode = value
           else if (value.id == '/trip.json')
@@ -211,10 +201,7 @@ const store = createStore({
           else if (value.id == 'telemetry')
             state.telemetry = value
 
-
-
           log('Store state', state)
-
       }
     })
     },
@@ -249,8 +236,6 @@ const store = createStore({
     sendDistance({state}, data) {
       state.odometer = data
       state.odometer = state.odometer
-      //wsStore.set({cmd: "post", param: [state.odometer.id, state.odometer]}) // отправляем в БУ
-      //log(Object.fromEntries(state.mapSettings));
       wsStore.set({cmd: "post", param: [state.odometer.id, Object.fromEntries(state.mapSettings)]}) // отправляем в БУ
       state.mapSettings.clear()
                                                         // Данная запись прдотвращает попадание в массив повторяющихся значений id

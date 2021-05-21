@@ -6,12 +6,6 @@
 
   <Navbar title={$t('service.wifi.title')} backLink="Back" />
 
-<!--   <Block strong>
-    <p>1. Название точки доступа блока</p>
-    <p>2. Точка доступа для обновления</p>
-    <p>3. Переключатель "WiFi всегда включен" ( system.json: ap:  pwr: true )</p>
-  </Block> -->
-
   <BlockTitle><span>{$t('service.wifi.ap.title')}</span></BlockTitle>
   <List class={`settings-main__list-item`}>
     <ListInput class={`settings-main__list-item`}
@@ -71,9 +65,11 @@
     import store from '../../js/store.js';
     import log from '../../js/debug.js'
 
-    //let connected = useStore('connected', (value) => connected = value);
+    let connected = useStore('connected', (value) => connected = value);
     let system = useStore('system', (value) => system = value);
     let mapSettings = useStore('mapSettings', (value) => mapSettings = value);
+
+    $: if (!connected) document.location.reload()
 
     function pageAfteOut() {
       mapSettings.set("ap", system.ap)

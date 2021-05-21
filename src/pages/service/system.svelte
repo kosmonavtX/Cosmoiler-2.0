@@ -40,7 +40,6 @@
     } from 'framework7-svelte';
     import {t} from '../../services/i18n.js';
     import Ranges from '../../components/range-param.svelte'
-    import { f7 } from 'framework7-svelte';
     import store from '../../js/store.js';
     import log from '../../js/debug.js';
 
@@ -51,6 +50,9 @@
 
     let tmpSystem = system
     let ctrlpump = false
+
+    $: if (!connected) document.location.reload()
+    $: store.dispatch('ctrlPump', [ctrlpump, 0, {dpms: 1000, dpdp: 100}])
 
     $: rangeValues = [
       [{
@@ -72,12 +74,6 @@
       }],
     ]
 
-$:  store.dispatch('ctrlPump', [ctrlpump, 0, {dpms: 1000, dpdp: 100}])
-/*     function signIn() {
-    f7.dialog.alert(`Username: <br>Password: `, () => {
-      f7.loginScreen.close();
-    });
-  } */
     function pageBeforeIn() {
     //log('pageBeforeIn', pump)
       /* включить режим настройки вязкости */

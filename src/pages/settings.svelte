@@ -1,29 +1,22 @@
 <Page
   name="settings"
-  class={`page`}
-  pageContent={true}
-  on:pageTabShow={() => {console.log('Page Settings Show')}}
->
-
-
-  <!-- <Block strong style='background-color: var( --f7-theme-color-bg-color)'>{$t('home.selectmode')}</Block> -->
+  class={`page`}>
 
 {#if !connected}
-<Navbar title={$t('home.settings')} />
-  <!-- <div transition:fade="{{delay: 100, duration: 200}}"> -->
+    <Navbar title={$t('home.settings')} />
     <BlockTitle class={`block-title-noconnection__text`} >{$t('home.noconnect')}</BlockTitle>
-<!--   </div> -->
 {:else}
-<Navbar title={$t('home.settings')} />
- <!--  <div transition:fade="{{delay: 250, duration: 300}}"> -->
+
+    <Navbar title={$t('home.settings')} />
+
     <Toolbar top tabbar >
-      <Link tabLink="#tab-trip" tabLinkActive>Одометр</Link>
-      <Link tabLink="#tab-time">Таймер</Link>
-      <Link tabLink="#tab-manual">Вручную</Link>
+      <Link tabLink="#tab-trip" tabLinkActive>{$t('Одометр')}</Link>
+      <Link tabLink="#tab-time">{$t('Таймер')}</Link>
+      <Link tabLink="#tab-manual">{$t('Вручную')}</Link>
     </Toolbar>
-    <!-- <div transition:fade="{{delay: 250, duration: 300}}"> -->
+
     <Tabs >
-      <Tab id="tab-trip" tabActive on:tabShow={()=>{log('Tab Trip Show')}}>
+      <Tab id="tab-trip" tabActive >
         <List>
           {#each items_odo.slice(0,2) as {link, title, icon, size}}
             <ListItem link={link} title={title} class={`settings-main__list-item`}>
@@ -36,7 +29,7 @@
           </ListItem>
         </List>
       </Tab>
-      <Tab id="tab-time">
+      <Tab id="tab-time" >
         <List>
           {#each items_timer as {link, title, icon, size}}
             <ListItem link={link} title={title} class={`settings-main__list-item`}>
@@ -45,7 +38,7 @@
           {/each}
         </List>
       </Tab>
-      <Tab id="tab-manual">
+      <Tab id="tab-manual" >
         <List>
           {#each items_manual as {link, title, icon, size}}
             <ListItem link={link} title={title} class={`settings-main__list-item`}>
@@ -55,7 +48,6 @@
         </List>
       </Tab>
     </Tabs>
-<!--   </div> -->
 {/if}
 
 </Page>
@@ -75,10 +67,10 @@
     useStore
   } from 'framework7-svelte';
   import {t} from '../services/i18n.js';
-  import { fade } from 'svelte/transition';
+/*   import { fade } from 'svelte/transition';
   import Ranges from '../components/range-param.svelte'
   import { onMount } from 'svelte';
-  import store from '../js/store.js';
+  import store from '../js/store.js'; */
   import log from '../js/debug.js'
 //import { f7router } from 'framework7-svelte/cjs/shared/f7';
 
@@ -104,73 +96,6 @@
     {link: '/settings/manual/', title: $t('settings.presets.title'), icon: 'icon-preset', size: 24},
   ]
 
-/*   function tabShowManual(){
-    console.log(trip)
-  } */
-/*   $: {
-    console.log('pump dpms =', manual.pump.dpms);
-    console.log('pump dpdp =', manual.pump.dpdp);
-    console.log('pump dpms_rel =', dpms_rel);
-  } */
-  //$: if (!connected) document.location.reload()
-
   $: gnss = (odometer.sensor.gnss && gnssPresent.gps) ? "GPS" : $t("settings.sensor.impulse")
-/*   onMount(() => {
-    console.log(f7route)
-  }) */
-/*   $: console.log(trip)
-  $: console.log(gnss) */
 
-  $: if (connected) {
-    //console.log(f7.views.main.router.navigate({path: '/'}))
-    //console.log(f7.views.main)
-    //f7router.navigate({path: '/'})
-   // f7.views.main.router.refreshPage()
-    //console.log()
-    //window.location.reload()
-  }
-
-//   let dpms_rel = manual.pump.dpms * 100 / manual.pump.dpdp;
-
-//   $: rangeValuesManual = [
-//     {
-//         title: "Объем масла",
-//         value: manual.pump.dpms * 100 / manual.pump.dpdp,
-//         name_value: "%",
-//         minValue: 1, // 0.1
-//         maxValue: 100,// 1.1
-//         stepValue: 5, // 0.05
-//        // sacaleSubSteps: 1,
-//         scale: false,
-//        // frmtScaleLabel: outScaleLabel,
-// /*         scaleStep: ,
-//         sacaleSubSteps: 2, */
-//         icon: "icon-drop",
-//         icon2: "icon-dropfill",
-//         rangeChange: (e)=>{dpms_rel = e}
-//     },
-//     {
-//         title: "Таймер",
-//         value: (manual.pump.dpdp/1000).toFixed(1), //Math.round(/10) * 10,
-//         name_value: "сек",
-//         minValue: 0.500,
-//         maxValue: 2.000,
-//         stepValue: 0.100,
-//         scale: true,
-// /*          scaleStep: 5,
-//         sacaleSubSteps: 2, */
-//         icon: "icon-clock",
-//  /*        icon2: "icon-drop", */
-//         rangeChange: (e)=>{
-//           manual.pump.dpdp = (e * 1000).toFixed(0);
-//         }
-//     }
-//   ]
-
-/*   $: manual.pump.dpms = manual.pump.dpdp * (dpms_rel / 100); */
-
-/*   function outScaleLabel(e) {
-    console.log(e)
-    return Math.round(e*10)/10
-  } */
   </script>

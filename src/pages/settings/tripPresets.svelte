@@ -1,10 +1,6 @@
 <Page
   name="trippresets"
   class={`page`}
-  on:pageTabHide={() => {}}
-  on:pageBeforeIn={() => {
-    log('pageBeforeIn', odometer)
-  }}
   on:pageAfterOut={pageAfteOut} >
 
   <Navbar title={$t('settings.presets.title')} backLink="Back" />
@@ -14,6 +10,7 @@
     <Link tabLink="#tab-way">{$t('settings.presets.way')}</Link>
     <Link tabLink="#tab-rain">{$t('settings.presets.user')}</Link>
   </Toolbar>
+
   <Tabs >
 <!-- ГОРОД -->
     <Tab id="tab-city" tabActive>
@@ -35,6 +32,7 @@
     </Tab>
   </Tabs>
 </Page>
+
 <script>
   import {
     Page,

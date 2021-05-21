@@ -3,7 +3,7 @@
   class={`page`}
   pageContent={true}>
 
-  <Navbar title="О приложении" backLink="Back" />
+  <Navbar title={$t('О приложении')} backLink="Back" />
 
   <Block strong class={`settings-main__list-item`}>
     <Block>

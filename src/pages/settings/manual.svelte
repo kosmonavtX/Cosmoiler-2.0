@@ -77,7 +77,5 @@
   ]
 
   $: tmpManual.pump.dpms = tmpManual.pump.dpdp * (dpms_rel / 100);
-/*     $: {
-      console.log('dpms: ', pump.dpms)
-  } */
+
 </script>

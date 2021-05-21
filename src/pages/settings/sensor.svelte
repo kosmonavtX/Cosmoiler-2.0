@@ -1,10 +1,7 @@
 <Page
   name="sensor"
   class={`page`}
-  on:pageAfterOut={pageAfterOut}
-  on:pageBeforeIn={() => {
-    log('page SENSOR BeforeIn', odometer)
-  }}>
+  on:pageAfterOut={pageAfterOut}>
 
   <Navbar title={$t('settings.pump.title')} backLink="Back" />
 

@@ -11,9 +11,8 @@
 
   <List mediaList inset class='elevation-3' style="border-radius: 6px;">
     <ListItem class={`settings-main__list-item`}
-      after={store.state.versw}
+      after={store.state.versw}>
 
-    >
       <div slot='title' class="home-list-item__title home-list-item__title_up-color">
         COSMOILER
       </div>
@@ -28,8 +27,7 @@
   <List>
     {#each items as {link, title, view}}
       {#if view}
-      <ListItem link={link} title={title} class={`settings-main__list-item`}>
-      </ListItem>
+        <ListItem link={link} title={title} class={`settings-main__list-item`}></ListItem>
       {/if}
     {/each}
   </List>
@@ -42,9 +40,7 @@
     List,
     ListItem,
     Navbar,
-    Block,
     BlockTitle,
-    SkeletonBlock,
     useStore
   } from 'framework7-svelte';
   import {t} from '../services/i18n.js';
@@ -56,11 +52,11 @@
 
 
   $: items = [
-    {link: '/service/wifi/', title: $t('service.wifi.title'), view: connected},
-    {link: '/service/system/', title: $t('service.system.title'), view: connected},
-    {link: '/service/update/', title: $t('service.update.title'), view: connected},
-    {link: '/service/diag/', title: $t('service.diag.title'), view: true},
-    {link: '/service/about/', title: $t('service.about.title'), view: true},
+    {link: '/service/wifi/',    title: $t('service.wifi.title'),    view: connected},
+    {link: '/service/system/',  title: $t('service.system.title'),  view: connected},
+    {link: '/service/update/',  title: $t('service.update.title'),  view: connected},
+    {link: '/service/diag/',    title: $t('service.diag.title'),    view: true},
+    {link: '/service/about/',   title: $t('service.about.title'),   view: true},
   ]
 
 </script>

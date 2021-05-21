@@ -6,7 +6,6 @@
   <Navbar title={$t('service.diag.title')} backLink="Back" />
 
 <!-- Диагностика -->
-<!-- <BlockTitle ><span>{$t('service.system.diag.title')}</span></BlockTitle> -->
 <List accordionList>
   <ListItem accordionItem class={`settings-main__list-item`}>
     <div slot='title' class={`list-input__label list-input__label-text_color`}>
@@ -62,10 +61,8 @@
 <script>
     import {
       Page,
-      Link,
       Navbar,
       Block,
-      BlockTitle,
       List,
       ListItem,
       AccordionContent

@@ -6,44 +6,6 @@
 
   <Navbar title="Телеметрия" />
   <Button on:click={() => { store.state.connect =  !store.state.connect}}>Connect = {store.state.connect}</Button>
-<!-- {#if false}
-  <Block strong  inset class='elevation-3'>
-    <BlockHeader class="block-header_text text-align-center">СКОРОСТЬ</BlockHeader>
-    {#each dataCardTele[2].gauge as {value, valueText, labelText, text, units}}
-    <Col class="text-align-center">
-        <Gauge
-            type="semicircle"
-            value={value}
-            valueText={valueText}
-            valueFontSize="34"
-            valueTextColor=var(--f7-theme-color-subtitle-text)
-            borderColor=var(--f7-theme-color)
-            labelText={labelText}
-            labelFontSize = "18"
-            labelTextColor=var(--f7-theme-color-change-text) />
-    </Col>
-    <BlockFooter class="text-align-center">км/ч</BlockFooter>
-    <CardFooter class="card-footer-tele">
-      {#each dataCardTele[1].icons as icon}
-      {#if icon}
-          <div class="card-footer-tele__icon-text">
-              {#if icon.alarm}
-                  {#if false}
-                      <div transition:fade="{{delay: 500, duration: 700}}">
-                          <Icon icon={icon.icon} class={`card-footer-tele__icon`}/>
-                      </div>
-                  {/if}
-              {:else}
-                  <Icon icon={icon.icon} class={`card-footer-tele__icon`}/>
-              {/if}
-              <span class="card-footer-tele__text">{icon.value}</span>
-          </div>
-      {/if}
-      {/each}
-  </CardFooter>
-    {/each}
-  </Block>
-{/if} -->
 
 {#if !connected}
 <!--   <div transition:fade="{{delay: 250, duration: 30}}"> -->

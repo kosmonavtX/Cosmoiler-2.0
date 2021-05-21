@@ -45,21 +45,6 @@
     let fToggle = false
     let fOnOffPump = false
 
-   // log(tmpPump);
-/*     let prx = undefined;
-
-    tmpPump = new Proxy(pump, {
-      set: (target, prop, value) => {
-        console.log("PROXY obj PUMP ===> ", target, prop, value)
-        //target[prop] = value
-       // prx = target[prop]
-       // prx[prop] = value
-        prx = {...{[prop]: value}}
-        console.log("PROXY obj PUMP prx ===> ", prx)
-        return Reflect.set(target, prop, value);
-      }
-    }) */
-
     $: if (!connected) document.location.reload()
 
     $: rangeValues = [
@@ -86,12 +71,7 @@
       }],
     ]
 
-    $: {
-      //store.wsStore = {cmd: "pump", param: [fToggle, tmpPump.dpms, T, 0]}
-      store.dispatch('ctrlPump', [fToggle, 0, {dpms: tmpPump.dpms, dpdp: 2000}])
-     // store.ctrlPump()
-     // console.log('ctrlPump ', [fToggle, tmpPump.dpms, T, 0])
-    }
+    $: store.dispatch('ctrlPump', [fToggle, 0, {dpms: tmpPump.dpms, dpdp: 2000}])
 
     function pageBeforeIn() {
     //log('pageBeforeIn', pump)
@@ -109,7 +89,5 @@
       /* сохранить настройки */
       store.dispatch('sendPump', tmpPump)
     }
-/*     $: {
-        console.log('dpms: ', pump.dpms)
-    } */
+
   </script>
