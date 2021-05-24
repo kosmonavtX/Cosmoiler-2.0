@@ -24,7 +24,7 @@ import Card from 'framework7/components/card';
 //import Form from 'framework7/components/form';
 import Input from 'framework7/components/input';
 //import Checkbox from 'framework7/components/checkbox';
-//import Radio from 'framework7/components/radio';
+import Radio from 'framework7/components/radio';
 import Toggle from 'framework7/components/toggle';
 import Range from 'framework7/components/range';
 //import Stepper from 'framework7/components/stepper';
@@ -88,7 +88,7 @@ Framework7.use([
   //Form,
 
   //Checkbox,
-  //Radio,
+  Radio,
 
 
   //Stepper,

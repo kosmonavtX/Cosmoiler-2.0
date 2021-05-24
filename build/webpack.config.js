@@ -6,6 +6,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
+const CompressionPlugin = require("compression-webpack-plugin");
+const zlib = require("zlib");
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const path = require('path');
 
@@ -26,8 +29,8 @@ module.exports = {
   },
   output: {
     path: resolvePath('www'),
-    filename: 'js/[name].js',
-    chunkFilename: 'js/[name].js',
+    filename: '[name].js', // 'js/[name].js'
+    chunkFilename: '[name].js', // 'js/[name].js'
     publicPath: '',
     hotUpdateChunkFilename: 'hot/hot-update.js',
     hotUpdateMainFilename: 'hot/hot-update.json',
@@ -138,7 +141,7 @@ module.exports = {
         loader: 'url-loader',
         options: {
           limit: 10000,
-          name: 'images/[name].[ext]',
+          name: '[name].[ext]', // 'images/[name].[ext]'
 
         },
         type: 'javascript/auto'
@@ -154,11 +157,11 @@ module.exports = {
         type: 'javascript/auto'
       },
       {
-        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+        test: /\.(woff?|woff2?|eot|ttf|otf)(\?.*)?$/,
         loader: 'url-loader',
         options: {
           limit: 10000,
-          name: 'fonts/[name].[ext]',
+          name: 'www/[name].[ext]', // 'fonts/[name].[ext]'
 
         },
         type: 'javascript/auto'
@@ -170,9 +173,18 @@ module.exports = {
       'process.env.NODE_ENV': JSON.stringify(env),
       'process.env.TARGET': JSON.stringify(target),
     }),
-
+    new BundleAnalyzerPlugin(),
     ...(env === 'production' ? [
       new CssMinimizerPlugin(),
+      //new BundleAnalyzerPlugin()
+
+      new CompressionPlugin({
+        algorithm: "gzip",
+        test: /\.(js|css)$/,
+        threshold: 300000,
+        minRatio: 0.8,
+        deleteOriginalAssets: false,
+      })
     ] : [
       // Development only plugins
       new webpack.HotModuleReplacementPlugin(),
@@ -192,14 +204,14 @@ module.exports = {
       } : false,
     }),
     new MiniCssExtractPlugin({
-      filename: 'css/[name].css',
+      filename: '[name].css',// 'css/[name].css'
     }),
     new CopyWebpackPlugin({
       patterns: [
         {
           noErrorOnMissing: true,
           from: resolvePath('src/static'),
-          to: resolvePath('www/static'),
+          to: resolvePath('www/'), //'www/static'
         },
 
       ],

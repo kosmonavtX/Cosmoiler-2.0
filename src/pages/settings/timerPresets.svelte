@@ -75,13 +75,13 @@
       }
     },
     {
-      title: "Количество",
+      title: $t('all.count'),
       value: tmpTimer.presets[0].num,
-      minValue: 0,
-      maxValue: 10,
+      minValue: 1,
+      maxValue: 5,
       stepValue: 1,
-      scaleStep: 5,
-      scaleSubSteps: 2,
+      scaleStep: 4,
+      scaleSubSteps: 1,
       icon: "icon-drop",
       rangeChange: (e)=>{
         tmpTimer.presets[0].num = e
@@ -110,13 +110,13 @@
       }
     },
     {
-      title: "Количество",
+      title: $t('all.count'),
       value: tmpTimer.presets[2].num,
-      minValue: 0,
-      maxValue: 10,
+      minValue: 1,
+      maxValue: 5,
       stepValue: 1,
-      scaleStep: 5,
-      scaleSubSteps: 2,
+      scaleStep: 4,
+      scaleSubSteps: 1,
       icon: "icon-drop",
       rangeChange: (e)=>{
         tmpTimer.presets[2].num = e

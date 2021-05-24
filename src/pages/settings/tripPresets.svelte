@@ -94,10 +94,10 @@
         title: $t('all.count'),
         value: tmpOdometer.presets[0].num,
         minValue: 1,
-        maxValue: 11,
+        maxValue: 5,
         stepValue: 1,
-        scaleStep: 5,
-        scaleSubSteps: 2,
+        scaleStep: 4,
+        scaleSubSteps: 1,
         icon: "icon-drop",
         rangeChange: (e)=>{
           tmpOdometer.presets[0].num = e
@@ -128,10 +128,10 @@
         title:  $t('all.count'),
         value: tmpOdometer.presets[1].num,
         minValue: 1,
-        maxValue: 11,
+        maxValue: 5,
         stepValue: 1,
-        scaleStep: 5,
-        scaleSubSteps: 2,
+        scaleStep: 4,
+        scaleSubSteps: 1,
         icon: "icon-drop",
         rangeChange: (e)=>{
           tmpOdometer.presets[1].num = e
@@ -178,10 +178,10 @@
         title:  $t('all.count'),
         value: tmpOdometer.presets[2].num,
         minValue: 1,
-        maxValue: 11,
+        maxValue: 5,
         stepValue: 1,
-        scaleStep: 5,
-        scaleSubSteps: 2,
+        scaleStep: 4,
+        scaleSubSteps: 1,
         icon: "icon-drop",
         rangeChange: (e)=>{
           tmpOdometer.presets[2].num = e

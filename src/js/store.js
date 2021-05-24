@@ -76,9 +76,9 @@ const store = createStore({
       smart: { predict: 5, avgsp: 80, maxsp: 150 },
       sensor: { gnss: true, imp: 16, hdop: 5000 },
       presets: [
-          { dst_m: 4000, num: 5, imp_m: 0, n: 5, cycles: 0 },
-          { dst_m: 7000, num: 2, imp_m: 0, n: 10, cycles: 0 },
-          { dst_m: 3000, num: 3, imp_m: 0, n: 3, cycles: 0 }
+          { dst_m: 4000, num: 2, imp_m: 0, n: 5, cycles: 0 },
+          { dst_m: 7000, num: 5, imp_m: 0, n: 10, cycles: 0 },
+          { dst_m: 3000, num: 1, imp_m: 0, n: 3, cycles: 0 }
       ],
       wheel: { d: 17, w: 150, h: 70, l: 2016 }
     },
@@ -86,9 +86,9 @@ const store = createStore({
       id: "/time.json",
       smart: { trail: true, predict: 600 },
       presets: [
-          { time: 120, num: 3, cycles: 0 },
+          { time: 120, num: 2, cycles: 0 },
           { time: 0, num: 0, cycles: 0 },
-          { time: 60, num: 3, cycles: 0 }
+          { time: 60, num: 1, cycles: 0 }
       ]
     },
     manual: {
@@ -97,7 +97,8 @@ const store = createStore({
     },
     pump: {
       id: "/pump.json",
-      dpms: null, dpdp: null, period: 2000
+      dpms: null, dpdp: null, period: 2000,
+      usr: false
     },
     system: {
       id: "/system.json",

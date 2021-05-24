@@ -6,10 +6,6 @@
   >
     <Navbar title={$t('settings.pump.title')} backLink="Back" />
 
-    {#each rangeValues[0] as rangeValue}
-        <Ranges {...rangeValue} />
-    {/each}
-
     <Block>
       <BlockHeader>Настройка насоса под вязкость залитого масла</BlockHeader>
       <p>
@@ -17,7 +13,52 @@
         задании такого объема масла, чтобы при срабатывании насоса из форсунки вытекала одна капля.
       </p>
     </Block>
-  </Page>
+
+
+    <List>
+        <ListItem
+          radio
+          name="std"
+          value="std"
+          title={$t('Штатный насос')}
+          checked={fStd}
+          on:change={() => {
+            tmpPump.usr = false
+            //mapSettings.set("sensor", tmpOdometer.sensor);
+            //log(mapSettings)
+          }}
+          class={`sensor__list-item`}>
+        </ListItem>
+
+{#if false} <!-- TODO Сделать настройки пользовательского насоса (версия 4.1) -->
+      <ListItem
+        radio
+        name="user"
+        value="usr"
+        title={$t('Пользовательский насос')}
+        checked={fUsr}
+        on:change={() => {
+          tmpPump.usr = true
+          //mapSettings.set("sensor", tmpOdometer.sensor);
+          //log(mapSettings)
+        }}
+        class={`sensor__list-item`}>
+      </ListItem>
+{/if}
+    </List>
+
+
+    {#if !tmpPump.usr}
+      {#each rangeValues[0] as rangeValue}
+          <Ranges {...rangeValue} />
+      {/each}
+    {:else}
+      {#each rangeValues[1] as rangeValue}
+      <Ranges {...rangeValue} />
+      {/each}
+    {/if}
+
+</Page>
 
   <script>
     import {
@@ -25,6 +66,8 @@
       BlockHeader,
       Page,
       Navbar,
+      List,
+      ListItem,
       useStore
     } from 'framework7-svelte';
     import {t} from '../../services/i18n.js';
@@ -40,19 +83,64 @@
 /* TODO: максимальный объем выдаваемый насосом 2 мл/мин для KAMOER */
 
     let T = pump.period // используется для режима настройки - пауза между каплями (фиксированное)
-    if (ver.hw[0] == 'A') T = 500 // для версии HW: Ax период меньше, чтобы dpms был от 5 мс (1%) до 450 мс (90%)
+    if (ver.hw[0] == 'A') T = 500 // для версии [0HW: Ax] период меньше, чтобы dpms был от 5 мс (1%) до 450 мс (90%)
+    if (ver.hw[0] == 'C') T = 300 // для версии [0HW: Ax] период меньше, чтобы dpms был от 5 мс (1%) до 450 мс (90%)
     let tmpPump = pump
     let fToggle = false
     let fOnOffPump = false
 
     $: if (!connected) document.location.reload()
+    $: fStd = (!tmpPump.usr)? true : false
+    $: fUsr = (tmpPump.usr)? true : false
 
     $: rangeValues = [
       [{
         title: "Объем масла",
         value: tmpPump.dpms * 100 / T,
        // name_value: "%",
-        minValue: 1,
+        minValue: (ver.hw[0] == 'C')? 2 : 1,
+        maxValue: 90,
+        stepValue: 1,
+        scale: false,
+        icon: "icon-drop",
+        icon2: "icon-dropfill",
+        rangeChange: (e)=>{
+          tmpPump.dpms = T * e/100
+          //log(tmpPump.dpms)
+        },
+        toggle: true,
+        toggleCheck: fOnOffPump,
+        onCtrlToggle: (e) => {
+          log(e.detail[0])
+          fToggle = e.detail[0]
+        }
+      }],
+      [{
+        title: "Время вкл.",
+        value: tmpPump.dpms * 100 / T,
+       // name_value: "%",
+        minValue: (ver.hw[0] == 'C')? 2 : 1,
+        maxValue: 90,
+        stepValue: 1,
+        scale: false,
+        icon: "icon-drop",
+        icon2: "icon-dropfill",
+        rangeChange: (e)=>{
+          tmpPump.dpms = T * e/100
+          //log(tmpPump.dpms)
+        },
+        toggle: true,
+        toggleCheck: fOnOffPump,
+        onCtrlToggle: (e) => {
+          log(e.detail[0])
+          fToggle = e.detail[0]
+        }
+      },
+      {
+        title: "Время выкл.",
+        value: tmpPump.dpms * 100 / T,
+       // name_value: "%",
+        minValue: (ver.hw[0] == 'C')? 2 : 1,
         maxValue: 90,
         stepValue: 1,
         scale: false,

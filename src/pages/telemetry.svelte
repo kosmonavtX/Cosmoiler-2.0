@@ -9,12 +9,13 @@
 
 {#if !connected}
 <!--   <div transition:fade="{{delay: 250, duration: 30}}"> -->
+  <div in:fade="{{delay: 50, duration: 300}}" out:fly="{{duration: 300}}">
     <BlockTitle class={`block-title-noconnection__text`} >{$t('home.noconnect')}</BlockTitle>
-<!--   </div> -->
+  </div>
   {/if}
 {#if connected}
 <!--   <CardTelemetry {...dataCardTele[telemetry.params[3].m]}  /> -->
-<div transition:fade="{{delay: 50, duration: 300}}">
+<div in:fade="{{delay: 50, duration: 300}}" out:fly="{{duration: 300}}">
     <CardTelemetry {...dataCardTele[md]}  />
   </div>
 {/if}
@@ -33,7 +34,7 @@
   import {t} from '../services/i18n.js';
   import CardTelemetry from '../components/tele-card.svelte'
   import store from '../js/store';
-  import { fade } from 'svelte/transition';
+  import { fade, fly } from 'svelte/transition';
   import log from '../js/debug.js'
 
   let telemetry = useStore('telemetry', (value) => telemetry = value)
