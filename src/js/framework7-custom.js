@@ -66,6 +66,7 @@ Framework7.use([
   PullToRefresh,
   Input,
   Skeleton,
+  Radio,
   //Popup,
  // LoginScreen,
  // Popover,
@@ -88,7 +89,7 @@ Framework7.use([
   //Form,
 
   //Checkbox,
-  Radio,
+
 
 
   //Stepper,

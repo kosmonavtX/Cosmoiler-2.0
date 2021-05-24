@@ -30,7 +30,7 @@
           class={`sensor__list-item`}>
         </ListItem>
 
-{#if false} <!-- TODO Сделать настройки пользовательского насоса (версия 4.1) -->
+{#if true} <!-- TODO Сделать настройки пользовательского насоса (версия 4.1) -->
       <ListItem
         radio
         name="user"
@@ -117,16 +117,18 @@
       }],
       [{
         title: "Время вкл.",
-        value: tmpPump.dpms * 100 / T,
-       // name_value: "%",
-        minValue: (ver.hw[0] == 'C')? 2 : 1,
-        maxValue: 90,
-        stepValue: 1,
-        scale: false,
-        icon: "icon-drop",
-        icon2: "icon-dropfill",
+        value: tmpPump.dpms,
+        name_value: $t('ms'),
+        minValue: 10,
+        maxValue: 1000,
+        stepValue: 10,
+        scale: true,
+/*         scaleStep: 6,
+        sacaleSubSteps: 2, */
+/*         icon: "icon-drop",
+        icon2: "icon-dropfill", */
         rangeChange: (e)=>{
-          tmpPump.dpms = T * e/100
+          tmpPump.dpms = e
           //log(tmpPump.dpms)
         },
         toggle: true,
@@ -138,24 +140,19 @@
       },
       {
         title: "Время выкл.",
-        value: tmpPump.dpms * 100 / T,
+        value: tmpPump.dpdp,
+        name_value: $t('ms'),
        // name_value: "%",
-        minValue: (ver.hw[0] == 'C')? 2 : 1,
-        maxValue: 90,
-        stepValue: 1,
-        scale: false,
-        icon: "icon-drop",
-        icon2: "icon-dropfill",
+        minValue: 10,
+        maxValue: 1000,
+        stepValue: 10,
+        scale: true,
+/*         icon: "icon-drop",
+        icon2: "icon-dropfill", */
         rangeChange: (e)=>{
-          tmpPump.dpms = T * e/100
+          tmpPump.dpdp = e
           //log(tmpPump.dpms)
         },
-        toggle: true,
-        toggleCheck: fOnOffPump,
-        onCtrlToggle: (e) => {
-          log(e.detail[0])
-          fToggle = e.detail[0]
-        }
       }],
     ]
 

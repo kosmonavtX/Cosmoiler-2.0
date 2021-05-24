@@ -98,7 +98,7 @@ const store = createStore({
     pump: {
       id: "/pump.json",
       dpms: null, dpdp: null, period: 2000,
-      usr: false
+      usr: false // пользовательский насос
     },
     system: {
       id: "/system.json",

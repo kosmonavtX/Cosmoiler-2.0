@@ -80,8 +80,8 @@
         minValue: 2,
         maxValue: 20,
         stepValue: 1,
-        scaleStep: 6,
-        sacaleSubSteps: 2,
+        scaleStep: 9,
+/*         sacaleSubSteps: 3, */
         icon: "icon-route",
         rangeChange: (e)=>{
           tmpOdometer.presets[0].dst_m = e * 1000
@@ -114,8 +114,7 @@
         minValue: 2,
         maxValue: 20,
         stepValue: 1,
-        scaleStep: 6,
-        sacaleSubSteps: 2,
+        scaleStep: 9,
         icon: "icon-route",
         rangeChange: (e)=>{
           tmpOdometer.presets[1].dst_m = e * 1000
