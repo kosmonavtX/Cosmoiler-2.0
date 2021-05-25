@@ -6,15 +6,19 @@
   >
     <Navbar title={$t('settings.pump.title')} backLink="Back" />
 
-    <Block>
-      <BlockHeader>Настройка насоса под вязкость залитого масла</BlockHeader>
-      <p>
+    <BlockTitle>Настройка насоса под вязкость залитого масла</BlockTitle>
+    <Block mediumInset>
+      <!-- <BlockHeader>Настройка насоса под вязкость залитого масла</BlockHeader> -->
+      <p><i>
         Оптимальная настройка заключается в
         задании такого объема масла, чтобы при срабатывании насоса из форсунки вытекала одна капля.
+        </i>
       </p>
     </Block>
 
-
+    <BlockTitle>
+        {$t('Выберите тип насоса')}
+    </BlockTitle>
     <List>
         <ListItem
           radio
@@ -53,6 +57,12 @@
           <Ranges {...rangeValue} />
       {/each}
     {:else}
+    <Block>
+      <p>
+        Задайте временные параметры работы для конкретного типа насоса (клапана).
+        Параметры будут определять объем выдаваемого насосом количества масла.
+      </p>
+    </Block>
       {#each rangeValues[1] as rangeValue}
       <Ranges {...rangeValue} />
       {/each}
@@ -64,6 +74,7 @@
     import {
       Block,
       BlockHeader,
+      BlockTitle,
       Page,
       Navbar,
       List,

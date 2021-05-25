@@ -92,7 +92,7 @@ Framework7.use([
 
 
 
-  Stepper,
+  //Stepper,
  // SmartSelect,
 
  // Calendar,
