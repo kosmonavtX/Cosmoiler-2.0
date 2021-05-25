@@ -63,7 +63,7 @@
       minValue: 10,
       maxValue: 600,
       stepValue: 10,
-      scaleStep: 3,
+      scaleStep: 4,
       sacaleSubSteps: 2,
       icon: "icon-clock",
       frmtScaleLabel: outScaleLabel,

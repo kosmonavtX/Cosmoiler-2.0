@@ -2,6 +2,14 @@
     <span>{title}</span>
     {#if name_value}
       <span style="color: var(--f7-theme-color-change-text)">{value} {name_value}</span>
+<!--       <Input class={`settings-main__list-item`}
+      type="text"
+      placeholder="Введите имя"
+      bind:value={value}
+    >
+    </Input>
+
+    <span style="color: var(--f7-theme-color-change-text)">{name_value}</span> -->
     {/if}
   </BlockTitle>
   <List simpleList class='elevation-0'>
@@ -34,6 +42,10 @@
           <Toggle checked={toggleCheck} on:toggleChange={onCtrlToggle} />
         </ListItemCell>
       {/if}
+<!--       <ListItemCell class="width-auto flex-shrink-0">
+        <Stepper small bind:value={value} buttonsOnly min={minValue} max={maxValue} step={stepValue} style="color: var(--f7-theme-color-change-text)"></Stepper>
+      </ListItemCell> -->
+
     </ListItem>
   </List>
 
@@ -45,6 +57,8 @@
     BlockTitle,
     Range,
     Icon,
+    Input,
+    Stepper,
     Toggle
   } from 'framework7-svelte';
 

@@ -35,7 +35,7 @@
         radio
         name="user"
         value="usr"
-        title={$t('Пользовательский насос')}
+        title={$t('Дополнительный насос')}
         checked={fUsr}
         on:change={() => {
           tmpPump.usr = true
