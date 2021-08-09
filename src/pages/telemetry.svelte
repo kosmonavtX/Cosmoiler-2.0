@@ -5,7 +5,7 @@
   on:pageTabHide={pageTabHide}>
 
   <Navbar title="Телеметрия" />
-  <Button on:click={() => { store.state.connect =  !store.state.connect}}>Connect = {store.state.connect}</Button>
+  <!-- <Button on:click={() => { store.state.connect =  !store.state.connect}}>Connect = {store.state.connect}</Button> -->
 
 {#if !connected}
 <!--   <div transition:fade="{{delay: 250, duration: 30}}"> -->

@@ -28,18 +28,17 @@ function getUrlVar() {
  */
 function uri() {
     if (document.location.host.indexOf('localhost') + 1) {
-        /*store.state.connect = true;*/
         if (!getUrlVar()['ws'])
-            return '192.168.4.1/ws'
+            return '192.168.4.1'
         else
             return getUrlVar()['ws']
     } else if (document.location.host === "")
-        return '192.168.4.1/ws'
+        return '192.168.4.1'
     else
         return document.location.host
 }
 
-const wsStore = websocketStore('ws://' + uri(), {}, [],
+const wsStore = websocketStore('ws://' + uri() + '/ws', {}, [],
   {
     debug: false,
     reconnectionDelayGrowFactor: 1,
@@ -174,7 +173,7 @@ const store = createStore({
 
         if (value) {
           //console.log('wsStore value', value)
-          //state.connect = value.connect
+          state.connect = value.connect
          // state.connect = true //debug.enabled('test') ? true : value.connect
           delete value.connect
           //let obj = value.data

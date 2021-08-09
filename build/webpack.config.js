@@ -161,7 +161,7 @@ module.exports = {
         loader: 'url-loader',
         options: {
           limit: 10000,
-          name: 'www/[name].[ext]', // 'fonts/[name].[ext]'
+          name: './[name].[ext]', // 'fonts/[name].[ext]'
 
         },
         type: 'javascript/auto'
@@ -173,15 +173,15 @@ module.exports = {
       'process.env.NODE_ENV': JSON.stringify(env),
       'process.env.TARGET': JSON.stringify(target),
     }),
-    new BundleAnalyzerPlugin(),
+    //new BundleAnalyzerPlugin(),
     ...(env === 'production' ? [
       new CssMinimizerPlugin(),
       //new BundleAnalyzerPlugin()
 
       new CompressionPlugin({
         algorithm: "gzip",
-        test: /\.(js|css)$/,
-        threshold: 300000,
+        test: /\.(js|css|woff|png)$/,
+        threshold: 10000,
         minRatio: 0.8,
         deleteOriginalAssets: false,
       })
@@ -210,8 +210,8 @@ module.exports = {
       patterns: [
         {
           noErrorOnMissing: true,
-          from: resolvePath('src/static'),
-          to: resolvePath('www/'), //'www/static'
+          from: resolvePath('src/static/img'),
+          to: resolvePath('./www'), //'www/static'
         },
 
       ],
