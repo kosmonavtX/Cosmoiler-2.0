@@ -73,7 +73,7 @@
 
   $: rangeValues = [
       /* ГОРОД */
-      [{
+      [{ // Расстояние
         title: $t('all.distance'),
         value: tmpOdometer.presets[0].dst_m/1000,
         name_value: $t('all.km'),
@@ -90,7 +90,7 @@
           log(mapSettings)
         }
       },
-      {
+      { // Количество
         title: $t('all.count'),
         value: tmpOdometer.presets[0].num,
         minValue: 1,
@@ -107,7 +107,7 @@
         }
       }],
       /* ТРАССА */
-      [{
+      [{ // Расстояние
         title: $t('all.distance'),
         value: tmpOdometer.presets[1].dst_m/1000,
         name_value: $t('all.km'),
@@ -123,7 +123,7 @@
           log(mapSettings)
         }
       },
-      {
+      { // Количество
         title:  $t('all.count'),
         value: tmpOdometer.presets[1].num,
         minValue: 1,
@@ -139,7 +139,7 @@
           log(mapSettings)
         }
       },
-      {
+      { // Скорость
         title: $t('all.maxspeed'),
         value: tmpOdometer.smart.maxsp,
         name_value: $t('all.kmh'),
@@ -156,7 +156,7 @@
         }
       }],
       /* ОФФРОАД */
-      [{
+      [{ // Расстояние
         title: $t('all.distance'),
         value: tmpOdometer.presets[2].dst_m/1000,
         name_value: $t('all.km'),
@@ -173,7 +173,7 @@
           log(mapSettings)
         }
       },
-      {
+      { // Количество
         title:  $t('all.count'),
         value: tmpOdometer.presets[2].num,
         minValue: 1,
@@ -189,7 +189,7 @@
           log(mapSettings)
         }
       },
-      {
+      { // Циклы
         title: $t('all.count.cycles'),
         value: tmpOdometer.presets[2].cycles,
         minValue: 0,
