@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-10-17T13:18:18.319Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.81 Safari/537.36 Edg/94.0.992.50" etag="Z8JYIEUKSES8ib6RUWte" version="14.6.13" type="github" pages="8">
+<mxfile host="app.diagrams.net" modified="2021-10-17T13:19:42.358Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.81 Safari/537.36 Edg/94.0.992.50" etag="B0SQEIbpRv64Dp4-sN-W" version="14.6.13" type="github" pages="8">
   <diagram id="G5NGnM2GY4aykBmWEyZv" name="Main">
     <mxGraphModel dx="916" dy="619" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -179,7 +179,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="M2GkOYfckAP8KD4HQ3nS-38" value="&lt;b style=&quot;font-size: 9px;&quot;&gt;FS OK&lt;/b&gt; /&lt;br style=&quot;font-size: 9px;&quot;&gt;&lt;div style=&quot;font-size: 9px;&quot;&gt;{FSM Cosm init,&lt;/div&gt;FSM Tele init,&lt;br style=&quot;font-size: 9px;&quot;&gt;FSM Flasher init,&lt;br style=&quot;font-size: 9px;&quot;&gt;save /system.json}" style="edgeLabel;html=1;align=left;verticalAlign=middle;resizable=0;points=[];fontSize=9;" parent="M2GkOYfckAP8KD4HQ3nS-37" vertex="1" connectable="0">
+        <mxCell id="M2GkOYfckAP8KD4HQ3nS-38" value="&lt;b style=&quot;font-size: 9px&quot;&gt;FS OK&lt;/b&gt; /&lt;br style=&quot;font-size: 9px&quot;&gt;&lt;div style=&quot;font-size: 9px&quot;&gt;{FSM Cosm init,&lt;/div&gt;FSM Tele init,&lt;br style=&quot;font-size: 9px&quot;&gt;FSM Flasher set params,&lt;br style=&quot;font-size: 9px&quot;&gt;save /system.json}" style="edgeLabel;html=1;align=left;verticalAlign=middle;resizable=0;points=[];fontSize=9;" parent="M2GkOYfckAP8KD4HQ3nS-37" vertex="1" connectable="0">
           <mxGeometry x="-0.4507" relative="1" as="geometry">
             <mxPoint x="-24" as="offset" />
           </mxGeometry>
@@ -250,7 +250,7 @@
         <mxCell id="M2GkOYfckAP8KD4HQ3nS-64" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=0.358;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;" parent="Mee8KsufjIvIdAfqRodm-1" source="M2GkOYfckAP8KD4HQ3nS-27" target="M2GkOYfckAP8KD4HQ3nS-57" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="M2GkOYfckAP8KD4HQ3nS-66" value="&lt;b style=&quot;font-size: 9px;&quot;&gt;Err FS == P2&lt;/b&gt; / &lt;br style=&quot;font-size: 9px;&quot;&gt;{FSM Cosm init, &lt;br style=&quot;font-size: 9px;&quot;&gt;Cnfg.timer = 5 min,&lt;br style=&quot;font-size: 9px;&quot;&gt;Flasher params}" style="edgeLabel;html=1;align=left;verticalAlign=middle;resizable=0;points=[];fontSize=9;" parent="M2GkOYfckAP8KD4HQ3nS-64" vertex="1" connectable="0">
+        <mxCell id="M2GkOYfckAP8KD4HQ3nS-66" value="&lt;b style=&quot;font-size: 9px&quot;&gt;Err FS == P2&lt;/b&gt; / &lt;br style=&quot;font-size: 9px&quot;&gt;{FSM Cosm init, &lt;br style=&quot;font-size: 9px&quot;&gt;Cnfg.timer = 5 min,&lt;br style=&quot;font-size: 9px&quot;&gt;FSM Flasher set params}" style="edgeLabel;html=1;align=left;verticalAlign=middle;resizable=0;points=[];fontSize=9;" parent="M2GkOYfckAP8KD4HQ3nS-64" vertex="1" connectable="0">
           <mxGeometry x="0.427" y="-2" relative="1" as="geometry">
             <mxPoint x="-18" y="-5" as="offset" />
           </mxGeometry>
