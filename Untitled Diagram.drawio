@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-10-17T12:22:16.590Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.81 Safari/537.36 Edg/94.0.992.50" etag="QRmBRhpyZfbQCXfnpwAU" version="14.6.13" type="github" pages="8">
+<mxfile host="app.diagrams.net" modified="2021-10-17T12:26:44.656Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.81 Safari/537.36 Edg/94.0.992.50" etag="2gtpWWWhPIXkqmDpdGBE" version="14.6.13" type="github" pages="8">
   <diagram id="G5NGnM2GY4aykBmWEyZv" name="Main">
     <mxGraphModel dx="916" dy="619" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -518,7 +518,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="d9qjxewt9clU5WlW1Wwa-15" value="&lt;span style=&quot;text-align: center&quot;&gt;present GPS &amp;amp;&amp;amp; &lt;br&gt;odometer.sensor.gnss == 1&lt;/span&gt;" style="edgeLabel;html=1;align=left;verticalAlign=middle;resizable=0;points=[];rotation=0;" parent="d9qjxewt9clU5WlW1Wwa-14" vertex="1" connectable="0">
+        <mxCell id="d9qjxewt9clU5WlW1Wwa-15" value="&lt;span style=&quot;text-align: center&quot;&gt;present GPS &amp;amp;&amp;amp; &lt;br&gt;cnfg.odometer.sensor.gnss == 1&lt;/span&gt;" style="edgeLabel;html=1;align=left;verticalAlign=middle;resizable=0;points=[];rotation=0;" parent="d9qjxewt9clU5WlW1Wwa-14" vertex="1" connectable="0">
           <mxGeometry x="-0.0145" y="11" relative="1" as="geometry">
             <mxPoint x="-57" y="11" as="offset" />
           </mxGeometry>
@@ -543,7 +543,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="d9qjxewt9clU5WlW1Wwa-25" value="odometer.sensor.gnss == 0" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];rotation=0;" parent="d9qjxewt9clU5WlW1Wwa-24" vertex="1" connectable="0">
+        <mxCell id="d9qjxewt9clU5WlW1Wwa-25" value="cnfg.odometer.sensor.gnss == 0" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];rotation=0;" parent="d9qjxewt9clU5WlW1Wwa-24" vertex="1" connectable="0">
           <mxGeometry x="0.2133" y="7" relative="1" as="geometry">
             <mxPoint x="27" y="-17" as="offset" />
           </mxGeometry>
@@ -555,7 +555,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="s-yVR4tOKAbQiHzRGz39-4" value="present GPS &amp;amp;&amp;amp;&lt;br&gt;odometer.sensor.gnss == 1" style="edgeLabel;html=1;align=left;verticalAlign=middle;resizable=0;points=[];" parent="s-yVR4tOKAbQiHzRGz39-1" vertex="1" connectable="0">
+        <mxCell id="s-yVR4tOKAbQiHzRGz39-4" value="present GPS &amp;amp;&amp;amp;&lt;br&gt;cnfg.odometer.sensor.gnss == 1" style="edgeLabel;html=1;align=left;verticalAlign=middle;resizable=0;points=[];" parent="s-yVR4tOKAbQiHzRGz39-1" vertex="1" connectable="0">
           <mxGeometry x="-0.3536" relative="1" as="geometry">
             <mxPoint x="-72" y="-15" as="offset" />
           </mxGeometry>
