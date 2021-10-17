@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-10-17T13:25:02.651Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.81 Safari/537.36 Edg/94.0.992.50" etag="NyXqcxkSihSDktIP_qR4" version="14.6.13" type="github" pages="8">
+<mxfile host="app.diagrams.net" modified="2021-10-17T13:25:44.217Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.81 Safari/537.36 Edg/94.0.992.50" etag="BApHnZros1zltEmLZG6c" version="14.6.13" type="github" pages="8">
   <diagram id="G5NGnM2GY4aykBmWEyZv" name="Main">
     <mxGraphModel dx="916" dy="619" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -185,16 +185,16 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="M2GkOYfckAP8KD4HQ3nS-39" value="" style="group" parent="Mee8KsufjIvIdAfqRodm-1" vertex="1" connectable="0">
-          <mxGeometry x="420" y="630" width="130" height="140" as="geometry" />
+          <mxGeometry x="420" y="630" width="120" height="110" as="geometry" />
         </mxCell>
         <mxCell id="M2GkOYfckAP8KD4HQ3nS-40" value="" style="shape=lineEllipse;perimeter=ellipsePerimeter;whiteSpace=wrap;html=1;backgroundOutline=1;" parent="M2GkOYfckAP8KD4HQ3nS-39" vertex="1">
-          <mxGeometry width="130" height="133.33384615384614" as="geometry" />
+          <mxGeometry width="119.99999999999999" height="104.7623076923077" as="geometry" />
         </mxCell>
         <mxCell id="M2GkOYfckAP8KD4HQ3nS-41" value="&lt;font style=&quot;font-size: 14px&quot;&gt;MAIN&lt;br&gt;WORK&lt;br&gt;&lt;/font&gt;" style="text;html=1;resizable=0;autosize=1;align=center;verticalAlign=middle;points=[];fillColor=none;strokeColor=none;rounded=0;" parent="M2GkOYfckAP8KD4HQ3nS-39" vertex="1">
-          <mxGeometry x="35.003157894736844" y="10.769230769230768" width="60" height="40" as="geometry" />
+          <mxGeometry x="30.00151637835848" y="0.002538461538460357" width="60" height="40" as="geometry" />
         </mxCell>
         <mxCell id="M2GkOYfckAP8KD4HQ3nS-68" value="&lt;font style=&quot;font-size: 10px&quot;&gt;FSM Telemetry,&lt;br&gt;FSM Cosmoiler&lt;br&gt;&lt;/font&gt;" style="text;html=1;resizable=0;autosize=1;align=center;verticalAlign=middle;points=[];fillColor=none;strokeColor=none;rounded=0;shadow=0;" parent="M2GkOYfckAP8KD4HQ3nS-39" vertex="1">
-          <mxGeometry x="25.002388663967594" y="74.9979487179487" width="80" height="40" as="geometry" />
+          <mxGeometry x="19.99912799750855" y="54.9999597069597" width="80" height="40" as="geometry" />
         </mxCell>
         <mxCell id="M2GkOYfckAP8KD4HQ3nS-42" value="" style="group" parent="Mee8KsufjIvIdAfqRodm-1" vertex="1" connectable="0">
           <mxGeometry x="640" y="640" width="117.50238866396762" height="100" as="geometry" />
