@@ -19,6 +19,7 @@ function resolvePath(dir) {
 const env = process.env.NODE_ENV || 'development';
 const target = process.env.TARGET || 'web';
 
+//const path_data = 'c:/Users/Cosmoiler/Documents/Prog/Firmware/ESP32/Cosmoiler/data/';
 
 
 module.exports = {
@@ -212,7 +213,15 @@ module.exports = {
           noErrorOnMissing: true,
           from: resolvePath('src/static/img'),
           to: resolvePath('./www'), //'www/static'
-        },
+        }
+/*         {
+          from: resolvePath('/www/'),
+          to: path_data,
+          force: true,
+          globOptions: {
+            ignore: ["app.js.LICENSE.txt", "*.css"]
+          }
+        } */
 
       ],
     }),

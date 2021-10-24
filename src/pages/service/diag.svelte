@@ -33,7 +33,7 @@
 
         <p><b>2. Отсутствует Wi-Fi блока (не является неисправностью, см. "Руководство по эксплуатации").</b></p>
         <p> - выключите и включите зажигание. В течение 60 сек подключитесь к блоку;</p>
-        <p> - возможно включение Wi-Fi с помощью кнопки управления без выключения зажигания (только для версий выше HW: А6):
+        <p> - возможно включение Wi-Fi с помощью кнопки управления без выключения зажигания:
           сделайте 4 или более коротких нажатия на кнопку.</p>
       </Block>
     </AccordionContent>
@@ -54,6 +54,26 @@
       </Block>
     </AccordionContent>
   </ListItem>
+  <ListItem accordionItem class={`settings-main__list-item`}>
+    <div slot='title' class={`list-input__label list-input__label-text_color`}>
+      <span>{$t('service.diag.acord.title3')}</span>
+    </div>
+    <AccordionContent>
+      <Block>
+        <p>Для обновления ПО блока управления необходимо:</p>
+        <p>1. Скачать и сохранить в смартфоне два файла: </p>
+        <p>- файл прошивки с именем firmware_ESP32@XYYZm.bin, где XYYZm - номер версии</p>
+        <p>- файл настроек с именем spiffs_ESP32@Zm.img, где Zm - номер версии</p>
+        <p><b>Примечание:</b> Цифра Z в именах скачиваемых файлов должна быть одинаковая.</p>
+        <Button outline lager href="http://cosmoiler.ru/download/stable/ESP32/" external>Скачать файлы</Button>
+        <p></p>
+        <p>2. В разделе <Link href="/service/update/"><b>Обновление</b></Link> выполнить следующие действия: </p>
+        <p>- выбрать сохраненный файл spiffs_ESP32@Zm.img и нажать кнопку "Обновить"</p>
+        <p>- выбрать сохраненный файл firmware_ESP32@XYYZm.bin и нажать кнопку "Обновить"</p>
+        <p><b>Примечание: </b>Кроме полного обновления также возможно обновление прошивки или настроек отдельно.</p>
+      </Block>
+    </AccordionContent>
+  </ListItem>
 </List>
 
 </Page>
@@ -65,6 +85,8 @@
       Block,
       List,
       ListItem,
+      Link,
+      Button,
       AccordionContent
     } from 'framework7-svelte';
     import {t} from '../../services/i18n.js';

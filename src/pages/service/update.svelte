@@ -75,13 +75,14 @@
         cache: false,
         //processData: false,
         success: function(response) {
-          f7.dialog.close();
-          f7.dialog.alert('Обновлено успешно. Перезагрузите устройство.', "Cosmoiler")
+          log(response)
+          f7.dialog.close()
+          f7.dialog.alert($t('service.update.fw.success'), "Cosmoiler")
         },
         error: function(xhr, status) {
           log(status)
-          f7.dialog.close();
-          f7.dialog.alert('Ошибка обновления. Повторите  попытку.', "Cosmoiler")
+          f7.dialog.close()
+          f7.dialog.alert($t('service.update.fw.error'), "Cosmoiler")
         }
       })
     }
@@ -92,7 +93,7 @@
         () => {
           //store.dispatch('cmdReset')
           f7.preloader.show();
-          f7.request.get('http://192.168.4.1/clear')
+          f7.request.get('http://192.168.4.1/clear')//http://192.168.4.1/clear
           .then((res) => {
               f7.preloader.hide()
               log('192.168.4.1/status', res.data)

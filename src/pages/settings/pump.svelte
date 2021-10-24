@@ -109,7 +109,7 @@
         value: tmpPump.dpms * 100 / T,
        // name_value: "%",
         minValue: (ver.hw[0] == 'C')? 2 : 1,
-        maxValue: 90,
+        maxValue: 98,
         stepValue: 1,
         scale: false,
         icon: "icon-drop",

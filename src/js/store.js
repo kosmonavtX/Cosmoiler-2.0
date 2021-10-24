@@ -96,7 +96,7 @@ const store = createStore({
     },
     pump: {
       id: "/pump.json",
-      dpms: null, dpdp: null, period: 2000,
+      dpms: null, dpdp: null, period: 3000,
       usr: false // пользовательский насос
     },
     system: {
@@ -140,17 +140,24 @@ const store = createStore({
           lon: 0.000000 // Долгота
         },
         { // 5 - voltage
-          v: 0,      // Напряжение бортовое
-          k: 5303   // Коэфф корректировка значений с АЦП = 0.053030303...
+          v: 0,       // Напряжение бортовое
+          r: 4095,    // Разрешение АЦП
+          max: 3.3,    // Максимальное напряжение на входе АЦП
+          R1: 200000,
+          R2: 49900
         },
       ]
     },
-    versw: "v4.0",
+    versw: "v4.2",
 
     OILER_SETTINGS: 2,
     OILER_MANUAL: 1,
     OILER_AUTO: 0,
 
+/*     voltage: {
+      max: 3.3,
+      resolution: 4095
+    } */
   },
   getters: {
     gnssPresent:  ({state}) => state.system,
