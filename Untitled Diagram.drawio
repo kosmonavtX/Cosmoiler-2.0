@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-12-15T21:58:50.140Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.93 Safari/537.36 Edg/96.0.1054.53" etag="r7HJ9BFe81eDKbZrJfD-" version="15.5.4" type="github" pages="8">
+<mxfile host="app.diagrams.net" modified="2021-12-15T22:00:49.429Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.93 Safari/537.36 Edg/96.0.1054.53" etag="UVPhCbR0eXW2UXiU91dU" version="15.5.4" type="github" pages="8">
   <diagram id="G5NGnM2GY4aykBmWEyZv" name="Main">
     <mxGraphModel dx="812" dy="571" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
@@ -188,7 +188,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="M2GkOYfckAP8KD4HQ3nS-38" value="&lt;b style=&quot;font-size: 9px&quot;&gt;FS OK&lt;/b&gt; /&lt;br style=&quot;font-size: 9px&quot;&gt;&lt;div style=&quot;font-size: 9px&quot;&gt;{FSM Cosm init,&lt;/div&gt;FSM Tele init,&lt;br style=&quot;font-size: 9px&quot;&gt;FSM Flasher set params,&lt;br style=&quot;font-size: 9px&quot;&gt;save /system.json}" style="edgeLabel;html=1;align=left;verticalAlign=middle;resizable=0;points=[];fontSize=9;fontColor=#1A1A1A;labelBackgroundColor=#EEEEEE;" parent="M2GkOYfckAP8KD4HQ3nS-37" vertex="1" connectable="0">
+        <mxCell id="M2GkOYfckAP8KD4HQ3nS-38" value="&lt;b style=&quot;font-size: 9px&quot;&gt;FS OK&lt;/b&gt; /&lt;br style=&quot;font-size: 9px&quot;&gt;&lt;div style=&quot;font-size: 9px&quot;&gt;{FSM Cosm init,&lt;/div&gt;FSM Tele init,&lt;br style=&quot;font-size: 9px&quot;&gt;FSM Flasher bright,&lt;br style=&quot;font-size: 9px&quot;&gt;save /system.json}" style="edgeLabel;html=1;align=left;verticalAlign=middle;resizable=0;points=[];fontSize=9;fontColor=#1A1A1A;labelBackgroundColor=#EEEEEE;" parent="M2GkOYfckAP8KD4HQ3nS-37" vertex="1" connectable="0">
           <mxGeometry x="-0.4507" relative="1" as="geometry">
             <mxPoint x="-19" y="-30" as="offset" />
           </mxGeometry>
