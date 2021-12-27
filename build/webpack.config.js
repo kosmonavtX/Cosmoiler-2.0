@@ -9,6 +9,7 @@ const TerserPlugin = require('terser-webpack-plugin');
 const CompressionPlugin = require("compression-webpack-plugin");
 const zlib = require("zlib");
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+var WebpackPwaManifest = require('webpack-pwa-manifest')
 
 const path = require('path');
 
@@ -195,14 +196,60 @@ module.exports = {
       filename: './index.html',
       template: './src/index.html',
       inject: true,
-      minify: env === 'production' ? {
+      minify: false /* env === 'production' ? {
         collapseWhitespace: true,
         removeComments: true,
         removeRedundantAttributes: true,
         removeScriptTypeAttributes: true,
         removeStyleLinkTypeAttributes: true,
         useShortDoctype: true
-      } : false,
+      } : false, */
+    }),
+    new WebpackPwaManifest({
+      name: 'Cosmoiler',
+      short_name: 'Cosmoiler',
+      description: 'Smart automatic motorcycle chain oiler',
+      background_color: '#ecece0',
+      theme_color: '#5e3e29',
+      crossorigin: 'use-credentials', //can be null, use-credentials or anonymous
+      display: "standalone",
+      orientation: "portrait",
+      fingerprints: false,
+      inject: false,
+      ios: false,
+      icons: [
+        {
+          src: path.resolve('src/assets/img/icon2.png'),
+          sizes: [192, 512], // multiple sizes
+          //destination: path.join('icons', 'android')
+          ios: false,
+          purpose: 'maskable'
+        }/* ,
+        {
+          src: path.resolve('src/assets/img/icon2.png'),
+          sizes: [120, 180], // multiple sizes
+          //destination: path.join('icons', 'android')
+          ios: true,
+          purpose: 'maskable'
+        }, */
+/*         {
+          src: path.resolve('src/assets/img/ios.png'),
+          sizes: [120, 180], // multiple sizes
+          //destination: path.join('icons', 'ios')
+          //ios: 'default'
+        },
+        {
+          src: path.resolve('src/assets/img/splash.png'),
+          size: 1024, // multiple sizes
+          purpose: 'maskable'
+        } */
+/*         {
+          src: path.resolve('src/assets/img/splash.png'),
+          size: 1024, // multiple sizes
+          ios: 'startup',
+          purpose: 'maskable'
+        } */
+      ]
     }),
     new MiniCssExtractPlugin({
       filename: '[name].css',// 'css/[name].css'

@@ -106,6 +106,9 @@ Framework7 app created with following options:
   }
 }
 ```
+## Update formware
+
+Загрузить файл самой последней версии в ручном режиме: `http://cosmoiler.ru/services/download?sn=&verfw=0[&verfs=0]`
 
 ## NPM Scripts
 

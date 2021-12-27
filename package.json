@@ -1,7 +1,7 @@
 {
   "name": "cosmoiler",
   "private": true,
-  "version": "4.2.0",
+  "version": "4.4.0",
   "description": "Cosmoiler - automatic chain oiler",
   "repository": "",
   "license": "FREE",
@@ -10,10 +10,11 @@
   "scripts": {
     "start": "npm run dev",
     "dev": "cross-env NODE_ENV=development webpack serve --config ./build/webpack.config.js",
-    "build": "cross-env NODE_ENV=production node ./build/build.js && npm run postinstall",
+    "buildcpx": "cross-env NODE_ENV=production node ./build/build.js && npm run postinstall",
+    "build": "cross-env NODE_ENV=production node ./build/build.js",
     "build-capacitor-ios": "cross-env NODE_ENV=production node ./build/build.js && npx cap copy ios",
     "build-capacitor-android": "cross-env NODE_ENV=production node ./build/build.js && npx cap copy android",
-    "postinstall": "cpx ./www/*.{html,gz,woff,png} ./%USERPROFILE%/Documents/PlatformIO/Projects/Cosmoiler/Firmware/ESP32/Main/data/"
+    "postinstall": "cpx ./www/*.{json,html,gz,woff,png} ./%USERPROFILE%/Documents/PlatformIO/Projects/Cosmoiler/Firmware/ESP32/Main/data/"
   },
   "browserslist": [
     "Android >= 7",
@@ -70,6 +71,7 @@
     "webpack": "^5.19.0",
     "webpack-bundle-analyzer": "^4.4.2",
     "webpack-cli": "^4.4.0",
-    "webpack-dev-server": "^3.11.2"
+    "webpack-dev-server": "^3.11.2",
+    "webpack-pwa-manifest": "^4.3.0"
   }
 }

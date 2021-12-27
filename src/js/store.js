@@ -148,7 +148,7 @@ const store = createStore({
         },
       ]
     },
-    versw: "v4.2",
+    verfs: "4.2",
 
     OILER_SETTINGS: 2,
     OILER_MANUAL: 1,
@@ -170,6 +170,7 @@ const store = createStore({
     mode:         ({state}) => state.mode,
     system:       ({state}) => state.system,
     ver:          ({state}) => state.ver,
+    verfs:        ({state}) => state.verfs,
     chngSettings: ({state}) => state.fChngSettings,
     mapSettings:  ({state}) => state.mapSettings,
   },
@@ -202,13 +203,24 @@ const store = createStore({
           }
           else if (value.id == '/ver.json') {
             state.ver = value
+            localStorage.setItem('ver', JSON.stringify(state.ver))
+            //log('Local storage ver = ', localStorage.getItem(ver))
             if (state.ver.hw[0] == 'B' || state.ver.hw[0] == 'A') state.pump.period = 3000
             else if (state.ver.hw[0] == 'C') state.pump.period = 2000
+            // парсинг версии
+            let fs = state.ver.fw.slice(-2);
+            state.verfs = fs.match(/\d{1}/g).join('.');
           }
           else if (value.id == 'telemetry')
             state.telemetry = value
 
           log('Store state', state)
+      }
+      if (value.type == 'error') {
+        state.ver = JSON.parse(localStorage.getItem('ver'))
+        // парсинг версии
+        let fs = state.ver.fw.slice(-2);
+        state.verfs = fs.match(/\d{1}/g).join('.');
       }
     })
     },
