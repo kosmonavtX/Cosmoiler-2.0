@@ -56,7 +56,11 @@
           sacaleSubSteps: 2, */
           icon: "icon-drop",
           icon2: "icon-dropfill",
-          rangeChange: (e)=>{dpms_rel = e}
+          rangeChange: (e)=>{
+            dpms_rel = e;
+            tmpManual.pump.dpms = tmpManual.pump.dpdp * (e / 100);
+            store.dispatch('sendManual', tmpManual);
+          }
       },
       {
           title: "Таймер",
@@ -72,6 +76,7 @@
           /*        icon2: "icon-drop", */
           rangeChange: (e)=>{
               tmpManual.pump.dpdp = Math.trunc(e * 1000)//.toFixed(0);
+              store.dispatch('sendManual', tmpManual);
           }
       }
   ]
