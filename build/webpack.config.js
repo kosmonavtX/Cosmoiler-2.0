@@ -9,7 +9,7 @@ const TerserPlugin = require('terser-webpack-plugin');
 const CompressionPlugin = require("compression-webpack-plugin");
 const zlib = require("zlib");
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-var WebpackPwaManifest = require('webpack-pwa-manifest')
+//var WebpackPwaManifest = require('webpack-pwa-manifest')
 
 const path = require('path');
 
@@ -205,7 +205,7 @@ module.exports = {
         useShortDoctype: true
       } : false, */
     }),
-    new WebpackPwaManifest({
+/*     new WebpackPwaManifest({
       name: 'Cosmoiler',
       short_name: 'Cosmoiler',
       description: 'Smart automatic motorcycle chain oiler',
@@ -224,33 +224,9 @@ module.exports = {
           //destination: path.join('icons', 'android')
           ios: false,
           purpose: 'maskable'
-        }/* ,
-        {
-          src: path.resolve('src/assets/img/icon2.png'),
-          sizes: [120, 180], // multiple sizes
-          //destination: path.join('icons', 'android')
-          ios: true,
-          purpose: 'maskable'
-        }, */
-/*         {
-          src: path.resolve('src/assets/img/ios.png'),
-          sizes: [120, 180], // multiple sizes
-          //destination: path.join('icons', 'ios')
-          //ios: 'default'
-        },
-        {
-          src: path.resolve('src/assets/img/splash.png'),
-          size: 1024, // multiple sizes
-          purpose: 'maskable'
-        } */
-/*         {
-          src: path.resolve('src/assets/img/splash.png'),
-          size: 1024, // multiple sizes
-          ios: 'startup',
-          purpose: 'maskable'
-        } */
+        }
       ]
-    }),
+    }), */
     new MiniCssExtractPlugin({
       filename: '[name].css',// 'css/[name].css'
     }),

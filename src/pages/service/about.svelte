@@ -19,7 +19,7 @@
     </Block>
   </Block>
 
-  <Block >
+<!--   <Block >
     <Row tag="p">
       <Col tag="span">
         <Button outline back>Назад</Button>
@@ -28,7 +28,7 @@
         <Button fill on:click={Save}>Сохранить</Button>
       </Col>
     </Row>
-  </Block>
+  </Block> -->
 
 </Page>
 

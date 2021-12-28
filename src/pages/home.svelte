@@ -76,9 +76,6 @@
   import { fade, fly } from 'svelte/transition';
   import log from '../js/debug.js'
 
-//import { debug } from 'console';
-  //logHome('kdsjhfkjshks')
-  log('123124234234')
 
   let gnssPresent = useStore('gnssPresent', (value) => gnssPresent = value);
   let connected = useStore('connected', (value) => connected = value);

@@ -1,26 +1,26 @@
 <Page
-  name="system"
-  class={`page`}
-  pageContent={true}
-  on:pageBeforeIn={pageBeforeIn}
-  on:pageAfterOut={pageAfteOut} >
+    name="system"
+    class={`page`}
+    pageContent={true}
+    on:pageBeforeIn={pageBeforeIn}
+    on:pageAfterOut={pageAfteOut} >
 
-  <Navbar title={$t('service.system.title')} backLink="Back" />
+    <Navbar title={$t('service.system.title')} backLink="Back" />
 
-{#if connected}
-  <BlockTitle ><span>{$t('service.system.pumping.title')}</span></BlockTitle>
-  <List >
-    <ListItem style="background-color: var(--f7-theme-color-bg-tint-color)">
-      <ListItemCell class="width-auto flex-shrink-0 list-input__label list-input__label-text_color">{$t('service.system.pumping.text_toggle')}</ListItemCell>
-      <ListItemCell class="width-auto flex-shrink-4"><Toggle bind:checked={ctrlpump}  /></ListItemCell>
-    </ListItem>
-  </List>
+    {#if connected}
+        <BlockTitle ><span>{$t('service.system.pumping.title')}</span></BlockTitle>
+        <List >
+            <ListItem style="background-color: var(--f7-theme-color-bg-tint-color)">
+                <ListItemCell class="width-auto flex-shrink-0 list-input__label list-input__label-text_color">{$t('service.system.pumping.text_toggle')}</ListItemCell>
+                <ListItemCell class="width-auto flex-shrink-4"><Toggle bind:checked={ctrlpump}  /></ListItemCell>
+            </ListItem>
+        </List>
 
-<!-- Управление яркостью светодиода -->
-  {#each rangeValues[0] as rangeValue}
-    <Ranges {...rangeValue} />
-  {/each}
-{/if}
+    <!-- Управление яркостью светодиода -->
+        {#each rangeValues[0] as rangeValue}
+        <Ranges {...rangeValue} />
+        {/each}
+    {/if}
 
 </Page>
 
@@ -82,9 +82,10 @@
 
     function pageAfteOut() {
       //console.log('pageAfterOut', tmpOdometer);
-      mapSettings.set("bright", tmpSystem.bright)
+
       /* включить автоматический режим работы смазчика */
       store.dispatch('modeWork', store.state.OILER_AUTO)
+      mapSettings.set("bright", tmpSystem.bright)
       store.dispatch('sendSystem', tmpSystem)
     }
 
