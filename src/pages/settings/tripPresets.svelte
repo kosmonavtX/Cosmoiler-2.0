@@ -47,27 +47,12 @@
   import Ranges from '../../components/range-param.svelte'
   import store from '../../js/store.js';
   import log from '../../js/debug.js'
-//import { object_without_properties } from 'svelte/internal';
 
   let connected = useStore('connected', (value) => connected = value);
   let odometer = useStore('odometer', (value) => odometer = value);
-  //let fChngSettings = useStore('chngSettings', (value) => fChngSettings = value);
   let mapSettings = useStore('mapSettings', (value) => mapSettings = value);
- // let chngSettings = useStore('chngSettings', (value) => chngSettings = value)
 
   let tmpOdometer = odometer
-
-/*   tmpTrip = new Proxy(tmpTrip, {
-      set: (target, prop, value) => {
-        console.log("PROXY obj PUMP ===> ", target, prop, value)
-        //target[prop] = value
-       // prx = target[prop]
-       // prx[prop] = value
-        prx = {...{[prop]: value}}
-        console.log("PROXY obj PUMP prx ===> ", prx)
-        return Reflect.set(target, prop, value);
-      }
-    }) */
 
   $: if (!connected) document.location.reload()
 
@@ -87,6 +72,8 @@
           tmpOdometer.presets[0].dst_m = e * 1000
           let arr = mapSettings.get('presets')
           mapSettings.set("presets", [tmpOdometer.presets[0], (arr)?arr[1]:null, (arr)?arr[2]:null]);
+          store.dispatch('calcDistance', tmpOdometer);
+          store.dispatch('sendDistance', tmpOdometer);
           log(mapSettings)
         }
       },
@@ -103,6 +90,8 @@
           tmpOdometer.presets[0].num = e
           let arr = mapSettings.get('presets')
           mapSettings.set("presets", [tmpOdometer.presets[0], (arr)?arr[1]:null, (arr)?arr[2]:null]);
+          //store.dispatch('calcDistance', tmpOdometer);
+          store.dispatch('sendDistance', tmpOdometer);
           log(mapSettings)
         }
       }],
@@ -120,6 +109,8 @@
           tmpOdometer.presets[1].dst_m = e * 1000
           let arr = mapSettings.get('presets')
           mapSettings.set("presets", [(arr)?arr[0]:null, tmpOdometer.presets[1], (arr)?arr[2]:null]);
+          store.dispatch('calcDistance', tmpOdometer);
+          store.dispatch('sendDistance', tmpOdometer);
           log(mapSettings)
         }
       },
@@ -136,6 +127,8 @@
           tmpOdometer.presets[1].num = e
           let arr = mapSettings.get('presets')
           mapSettings.set("presets", [(arr)?arr[0]:null, tmpOdometer.presets[1], (arr)?arr[2]:null]);
+          //store.dispatch('calcDistance', tmpOdometer);
+          store.dispatch('sendDistance', tmpOdometer);
           log(mapSettings)
         }
       },
@@ -152,6 +145,8 @@
         rangeChange: (e)=>{
           tmpOdometer.smart.maxsp = e
           mapSettings.set("smart", tmpOdometer.smart);
+          //store.dispatch('calcDistance', tmpOdometer);
+          store.dispatch('sendDistance', tmpOdometer);
           log(mapSettings)
         }
       }],
@@ -170,6 +165,8 @@
           tmpOdometer.presets[2].dst_m = e * 1000
           let arr = mapSettings.get('presets')
           mapSettings.set("presets", [(arr)?arr[0]:null, (arr)?arr[1]:null, tmpOdometer.presets[2]]);
+          store.dispatch('calcDistance', tmpOdometer);
+          store.dispatch('sendDistance', tmpOdometer);
           log(mapSettings)
         }
       },
@@ -186,6 +183,8 @@
           tmpOdometer.presets[2].num = e
           let arr = mapSettings.get('presets')
           mapSettings.set("presets", [(arr)?arr[0]:null, (arr)?arr[1]:null, tmpOdometer.presets[2]]);
+          //store.dispatch('calcDistance', tmpOdometer);
+          store.dispatch('sendDistance', tmpOdometer);
           log(mapSettings)
         }
       },
@@ -202,6 +201,8 @@
           tmpOdometer.presets[2].cycles = e
           let arr = mapSettings.get('presets')
           mapSettings.set("presets", [(arr)?arr[0]:null, (arr)?arr[1]:null, tmpOdometer.presets[2]]);
+          //store.dispatch('calcDistance', tmpOdometer);
+          store.dispatch('sendDistance', tmpOdometer);
           log(mapSettings)
         }
       }]
@@ -209,8 +210,8 @@
 
   function pageAfteOut() {
     //console.log('pageAfterOut', tmpOdometer);
-    store.dispatch('calcDistance', tmpOdometer)
-    store.dispatch('sendDistance', tmpOdometer)
+    //store.dispatch('calcDistance', tmpOdometer)
+    //store.dispatch('sendDistance', tmpOdometer)
   }
 
 </script>

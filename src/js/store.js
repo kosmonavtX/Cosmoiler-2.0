@@ -47,6 +47,8 @@ const wsStore = websocketStore('ws://' + uri() + '/ws', {}, [],
     connectionTimeout: 2000,
   })
 
+let timeoutId;
+
 const store = createStore({
   state: {
     wsStore: wsStore,//websocketStore('ws://' + uri(), {"initial": 0}, [], {debug: true}),
@@ -255,34 +257,48 @@ const store = createStore({
     sendDistance({state}, data) {
       state.odometer = data
       state.odometer = state.odometer
-      wsStore.set({cmd: "post", param: [state.odometer.id, Object.fromEntries(state.mapSettings)]}) // отправляем в БУ
-      state.mapSettings.clear()
-                                                        // Данная запись прдотвращает попадание в массив повторяющихся значений id
-      state.fChngSettings = { status: true, id: [...new Set([...state.fChngSettings.id, state.odometer.id])]}
-      log('Change Settings = ', state.fChngSettings)
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => {
+        wsStore.set({cmd: "post", param: [state.odometer.id, Object.fromEntries(state.mapSettings)]}); // отправляем в БУ
+        state.mapSettings.clear();
+                                                          // Данная запись прдотвращает попадание в массив повторяющихся значений id
+        state.fChngSettings = { status: true, id: [...new Set([...state.fChngSettings.id, state.odometer.id])]};
+        log("send Dist = ", state.odometer)
+      }, 2000)
+
     },
     sendTime({state}, data) {
       state.timer = data
       state.timer = state.timer
-      wsStore.set({cmd: "post", param: [state.timer.id, Object.fromEntries(state.mapSettings)]})
-      state.mapSettings.clear()
-      state.fChngSettings = { status: true, id: [...new Set([...state.fChngSettings.id, state.timer.id])]}
-      log("send Time = ", state.timer)
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => {
+        wsStore.set({cmd: "post", param: [state.timer.id, Object.fromEntries(state.mapSettings)]})
+        state.mapSettings.clear()
+        state.fChngSettings = { status: true, id: [...new Set([...state.fChngSettings.id, state.timer.id])]}
+        log("send Time = ", state.timer)
+      }, 2000)
     },
     sendManual({state}, data) {
       state.manual = data
       state.manual = state.manual
-      wsStore.set({cmd: "post", param: [state.manual.id, state.manual]})
-      state.fChngSettings = { status: true, id: [...new Set([...state.fChngSettings.id, state.manual.id])]}
-      log("send Pump = ", state.manual)
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => {
+          wsStore.set({cmd: "post", param: [state.manual.id, state.manual]});
+          state.fChngSettings = { status: true, id: [...new Set([...state.fChngSettings.id, state.manual.id])]};
+          log("send Pump = ", state.manual);
+      }, 2000)
     },
     sendPump({state}, data) {
       //console.log("sendPump: ", prop)
-      state.pump = data
-      state.pump = state.pump
-      wsStore.set({cmd: "post", param: [state.pump.id, {dpms: data.dpms}]}) // отправляем в БУ только свойство dpms
-      state.fChngSettings = { status: true, id: [...new Set([...state.fChngSettings.id, state.pump.id])]}
-      log("send Pump = ", state.pump)
+      state.pump = data;
+      state.pump = state.pump;
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => {
+          wsStore.set({cmd: "post", param: [state.pump.id, {dpms: data.dpms}]}); // отправляем в БУ только свойство dpms
+          state.fChngSettings = { status: true, id: [...new Set([...state.fChngSettings.id, state.pump.id])]};
+          log("send Pump = ", state.pump);
+      }, 2000);
+
     },
     sendMode({state}, data) {
         state.mode.m = data.m

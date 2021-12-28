@@ -8,7 +8,7 @@
   <BlockTitle>{$t('settings.sensor.selectsensor')}</BlockTitle>
 
   <List>
-    {#if gnssPresent.gps}
+    {#if gnssPresent.gps} <!-- если модуль GNSS установлен -->
       <ListItem
         radio
         name="sensor"
@@ -57,7 +57,15 @@
         label={$t('settings.sensor.wheel.width')}
         type="number"
         placeholder={`[${$t('all.mm')}]`}
+        required
+        clearButton
+        validate
         bind:value={tmpOdometer.wheel.w}
+        on:change={() =>{
+          log('Ширина = ', tmpOdometer.wheel.w)
+          if (!tmpOdometer.sensor.gnss) mapSettings.set("wheel", tmpOdometer.wheel)
+          store.dispatch('sendDistance', tmpOdometer)
+        }}
         class={`sensor__list-item`}>
       </ListInput>
       <!-- Профиль -->
@@ -112,6 +120,7 @@
 
     $: fGPS = (tmpOdometer.sensor.gnss && gnssPresent.gps) ? true : false
     $: fIMP = (!tmpOdometer.sensor.gnss || !gnssPresent.gps) ? true : false
+
     $: if (!connected) document.location.reload()
 
     function clearImp() {

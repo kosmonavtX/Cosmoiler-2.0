@@ -94,12 +94,13 @@
 
     let T = pump.period // используется для режима настройки - пауза между каплями (фиксированное)
     if (ver.hw[0] == 'A') T = 500 // для версии [0HW: Ax] период меньше, чтобы dpms был от 5 мс (1%) до 450 мс (90%)
-    if (ver.hw[0] == 'C') T = 300 // для версии [0HW: Ax] период меньше, чтобы dpms был от 5 мс (1%) до 450 мс (90%)
+    if (ver.hw[0] == 'C') T = 300 // для версии [0HW: Cx] период меньше, чтобы dpms был от 5 мс (1%) до 450 мс (90%)
     let tmpPump = pump
     let fToggle = false
     let fOnOffPump = false
 
     $: if (!connected) document.location.reload()
+
     $: fStd = (!tmpPump.usr)? true : false
     $: fUsr = (tmpPump.usr)? true : false
 
@@ -115,8 +116,8 @@
         icon: "icon-drop",
         icon2: "icon-dropfill",
         rangeChange: (e)=>{
-          tmpPump.dpms = T * e/100
-          //log(tmpPump.dpms)
+          tmpPump.dpms = T * e/100;
+          store.dispatch('sendPump', tmpPump);
         },
         toggle: true,
         toggleCheck: fOnOffPump,
@@ -129,17 +130,18 @@
         title: "Время вкл.",
         value: tmpPump.dpms,
         name_value: $t('ms'),
-        minValue: 10,
-        maxValue: 1000,
-        stepValue: 10,
+        minValue: 0,
+        maxValue: 5000,
+        stepValue: 50,
         scale: true,
 /*         scaleStep: 6,
         sacaleSubSteps: 2, */
 /*         icon: "icon-drop",
         icon2: "icon-dropfill", */
         rangeChange: (e)=>{
-          tmpPump.dpms = e
-          //log(tmpPump.dpms)
+          if (e == 0) e = 10;
+          tmpPump.dpms = e;
+          store.dispatch('sendPump', tmpPump);
         },
         toggle: true,
         toggleCheck: fOnOffPump,
@@ -153,15 +155,16 @@
         value: tmpPump.dpdp,
         name_value: $t('ms'),
        // name_value: "%",
-        minValue: 10,
+        minValue: 0,
         maxValue: 1000,
-        stepValue: 10,
+        stepValue: 50,
         scale: true,
 /*         icon: "icon-drop",
         icon2: "icon-dropfill", */
         rangeChange: (e)=>{
-          tmpPump.dpdp = e
-          //log(tmpPump.dpms)
+          if (e == 0) e = 10;
+          tmpPump.dpdp = e;
+          store.dispatch('sendPump', tmpPump);
         },
       }],
     ]
@@ -169,20 +172,26 @@
     $: store.dispatch('ctrlPump', [fToggle, 0, {dpms: tmpPump.dpms, dpdp: 2000}])
 
     function pageBeforeIn() {
-    //log('pageBeforeIn', pump)
       /* включить режим настройки вязкости */
       store.dispatch('modeWork', store.state.OILER_SETTINGS)
     }
 
     function pageAfterOut() {
-     // log('pageAfterOut', tmpPump);
       fOnOffPump = false
       /* Отключить режим управления насосом */
       store.dispatch('ctrlPump', [false, 0, {dpms: tmpPump.dpms, dpdp: 800}])
       /* включить автоматический режим работы смазчика */
       store.dispatch('modeWork', store.state.OILER_AUTO)
       /* сохранить настройки */
-      store.dispatch('sendPump', tmpPump)
+      //store.dispatch('sendPump', tmpPump)
     }
+
+/*     const dispatchTime = (type, data) => {
+      intervalId = setTimeout(() => {
+        store.dispatch(type, data);
+        //intervalId = null;
+      }, 5000);
+      //return intervalId;
+    } */
 
   </script>
