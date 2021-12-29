@@ -5,7 +5,7 @@ var log = debug('cosmoiler:log')
 
 //debug.enable('connection')
 //debug.enable('test')
-//debug.disable()
+debug.disable()
 
 localStorage.debug = 'cosmoiler:*'
 //localStorage.debug = 'home:*'
