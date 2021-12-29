@@ -28,18 +28,17 @@ function getUrlVar() {
  */
 function uri() {
     if (document.location.host.indexOf('localhost') + 1) {
-        /*store.state.connect = true;*/
         if (!getUrlVar()['ws'])
-            return '192.168.4.1/ws'
+            return '192.168.4.1'
         else
             return getUrlVar()['ws']
     } else if (document.location.host === "")
-        return '192.168.4.1/ws'
+        return '192.168.4.1'
     else
         return document.location.host
 }
 
-const wsStore = websocketStore('ws://' + uri(), {}, [],
+const wsStore = websocketStore('ws://' + uri() + '/ws', {}, [],
   {
     debug: false,
     reconnectionDelayGrowFactor: 1,
@@ -47,6 +46,8 @@ const wsStore = websocketStore('ws://' + uri(), {}, [],
     minReconnectionDelay: 3000,
     connectionTimeout: 2000,
   })
+
+let timeoutId;
 
 const store = createStore({
   state: {
@@ -76,9 +77,9 @@ const store = createStore({
       smart: { predict: 5, avgsp: 80, maxsp: 150 },
       sensor: { gnss: true, imp: 16, hdop: 5000 },
       presets: [
-          { dst_m: 4000, num: 5, imp_m: 0, n: 5, cycles: 0 },
-          { dst_m: 7000, num: 2, imp_m: 0, n: 10, cycles: 0 },
-          { dst_m: 3000, num: 3, imp_m: 0, n: 3, cycles: 0 }
+          { dst_m: 4000, num: 2, imp_m: 0, n: 5, cycles: 0 },
+          { dst_m: 7000, num: 5, imp_m: 0, n: 10, cycles: 0 },
+          { dst_m: 3000, num: 1, imp_m: 0, n: 3, cycles: 0 }
       ],
       wheel: { d: 17, w: 150, h: 70, l: 2016 }
     },
@@ -86,9 +87,9 @@ const store = createStore({
       id: "/time.json",
       smart: { trail: true, predict: 600 },
       presets: [
-          { time: 120, num: 3, cycles: 0 },
+          { time: 120, num: 2, cycles: 0 },
           { time: 0, num: 0, cycles: 0 },
-          { time: 60, num: 3, cycles: 0 }
+          { time: 60, num: 1, cycles: 0 }
       ]
     },
     manual: {
@@ -97,7 +98,8 @@ const store = createStore({
     },
     pump: {
       id: "/pump.json",
-      dpms: null, dpdp: null, period: 2000
+      dpms: null, dpdp: null, period: 3000,
+      usr: false // пользовательский насос
     },
     system: {
       id: "/system.json",
@@ -140,17 +142,24 @@ const store = createStore({
           lon: 0.000000 // Долгота
         },
         { // 5 - voltage
-          v: 0,      // Напряжение бортовое
-          k: 5303   // Коэфф корректировка значений с АЦП = 0.053030303...
+          v: 0,       // Напряжение бортовое
+          r: 4095,    // Разрешение АЦП
+          max: 3.3,    // Максимальное напряжение на входе АЦП
+          R1: 200000,
+          R2: 49900
         },
       ]
     },
-    versw: "v4.0",
+    verfs: "4.5",
 
     OILER_SETTINGS: 2,
     OILER_MANUAL: 1,
     OILER_AUTO: 0,
 
+/*     voltage: {
+      max: 3.3,
+      resolution: 4095
+    } */
   },
   getters: {
     gnssPresent:  ({state}) => state.system,
@@ -163,6 +172,7 @@ const store = createStore({
     mode:         ({state}) => state.mode,
     system:       ({state}) => state.system,
     ver:          ({state}) => state.ver,
+    verfs:        ({state}) => state.verfs,
     chngSettings: ({state}) => state.fChngSettings,
     mapSettings:  ({state}) => state.mapSettings,
   },
@@ -173,8 +183,8 @@ const store = createStore({
 
         if (value) {
           //console.log('wsStore value', value)
-          //state.connect = value.connect
-         // state.connect = true //debug.enabled('test') ? true : value.connect
+          state.connect = value.connect
+          //state.connect = true //debug.enabled('test') ? true : value.connect
           delete value.connect
           //let obj = value.data
 
@@ -195,13 +205,24 @@ const store = createStore({
           }
           else if (value.id == '/ver.json') {
             state.ver = value
+            localStorage.setItem('ver', JSON.stringify(state.ver))
+            //log('Local storage ver = ', localStorage.getItem(ver))
             if (state.ver.hw[0] == 'B' || state.ver.hw[0] == 'A') state.pump.period = 3000
             else if (state.ver.hw[0] == 'C') state.pump.period = 2000
+            // парсинг версии
+            let fs = state.ver.fw.slice(-2);
+            state.verfs = fs.match(/\d{1}/g).join('.');
           }
           else if (value.id == 'telemetry')
             state.telemetry = value
 
           log('Store state', state)
+      }
+      if (value.type == 'error') {
+        state.ver = JSON.parse(localStorage.getItem('ver'))
+        // парсинг версии
+        let fs = state.ver.fw.slice(-2);
+        state.verfs = fs.match(/\d{1}/g).join('.');
       }
     })
     },
@@ -236,34 +257,48 @@ const store = createStore({
     sendDistance({state}, data) {
       state.odometer = data
       state.odometer = state.odometer
-      wsStore.set({cmd: "post", param: [state.odometer.id, Object.fromEntries(state.mapSettings)]}) // отправляем в БУ
-      state.mapSettings.clear()
-                                                        // Данная запись прдотвращает попадание в массив повторяющихся значений id
-      state.fChngSettings = { status: true, id: [...new Set([...state.fChngSettings.id, state.odometer.id])]}
-      log('Change Settings = ', state.fChngSettings)
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => {
+        wsStore.set({cmd: "post", param: [state.odometer.id, Object.fromEntries(state.mapSettings)]}); // отправляем в БУ
+        state.mapSettings.clear();
+                                                          // Данная запись прдотвращает попадание в массив повторяющихся значений id
+        state.fChngSettings = { status: true, id: [...new Set([...state.fChngSettings.id, state.odometer.id])]};
+        log("send Dist = ", state.odometer)
+      }, 2000)
+
     },
     sendTime({state}, data) {
       state.timer = data
       state.timer = state.timer
-      wsStore.set({cmd: "post", param: [state.timer.id, Object.fromEntries(state.mapSettings)]})
-      state.mapSettings.clear()
-      state.fChngSettings = { status: true, id: [...new Set([...state.fChngSettings.id, state.timer.id])]}
-      log("send Time = ", state.timer)
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => {
+        wsStore.set({cmd: "post", param: [state.timer.id, Object.fromEntries(state.mapSettings)]})
+        state.mapSettings.clear()
+        state.fChngSettings = { status: true, id: [...new Set([...state.fChngSettings.id, state.timer.id])]}
+        log("send Time = ", state.timer)
+      }, 2000)
     },
     sendManual({state}, data) {
       state.manual = data
       state.manual = state.manual
-      wsStore.set({cmd: "post", param: [state.manual.id, state.manual]})
-      state.fChngSettings = { status: true, id: [...new Set([...state.fChngSettings.id, state.manual.id])]}
-      log("send Pump = ", state.manual)
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => {
+          wsStore.set({cmd: "post", param: [state.manual.id, state.manual]});
+          state.fChngSettings = { status: true, id: [...new Set([...state.fChngSettings.id, state.manual.id])]};
+          log("send Pump = ", state.manual);
+      }, 2000)
     },
     sendPump({state}, data) {
       //console.log("sendPump: ", prop)
-      state.pump = data
-      state.pump = state.pump
-      wsStore.set({cmd: "post", param: [state.pump.id, {dpms: data.dpms}]}) // отправляем в БУ только свойство dpms
-      state.fChngSettings = { status: true, id: [...new Set([...state.fChngSettings.id, state.pump.id])]}
-      log("send Pump = ", state.pump)
+      state.pump = data;
+      state.pump = state.pump;
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => {
+          wsStore.set({cmd: "post", param: [state.pump.id, {dpms: data.dpms}]}); // отправляем в БУ только свойство dpms
+          state.fChngSettings = { status: true, id: [...new Set([...state.fChngSettings.id, state.pump.id])]};
+          log("send Pump = ", state.pump);
+      }, 2000);
+
     },
     sendMode({state}, data) {
         state.mode.m = data.m

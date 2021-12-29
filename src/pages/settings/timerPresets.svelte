@@ -1,7 +1,6 @@
 <Page
   name="timepresets"
-  class={`page`}
-  on:pageAfterOut={pageAfteOut}>
+  class={`page`}>
 
   <Navbar title={$t('settings.presets.title')} backLink="Back" />
 
@@ -47,11 +46,6 @@
 
   let tmpTimer = timer;
 
-  function pageAfteOut() {
-    log('pageAfterOut', tmpTimer);
-    store.dispatch('sendTime', tmpTimer)
-  }
-
   $: if (!connected) document.location.reload()
 
   $: rangeValues = [
@@ -63,7 +57,7 @@
       minValue: 10,
       maxValue: 600,
       stepValue: 10,
-      scaleStep: 3,
+      scaleStep: 4,
       sacaleSubSteps: 2,
       icon: "icon-clock",
       frmtScaleLabel: outScaleLabel,
@@ -71,23 +65,25 @@
         tmpTimer.presets[0].time = e
         let arr = mapSettings.get('presets')
         mapSettings.set("presets", [tmpTimer.presets[0], (arr)?arr[1]:null, (arr)?arr[2]:null]);
-      log(mapSettings)
+        store.dispatch('sendTime', tmpTimer)
+        log(mapSettings)
       }
     },
     {
-      title: "Количество",
+      title: $t('all.count'),
       value: tmpTimer.presets[0].num,
-      minValue: 0,
-      maxValue: 10,
+      minValue: 1,
+      maxValue: 5,
       stepValue: 1,
-      scaleStep: 5,
-      scaleSubSteps: 2,
+      scaleStep: 4,
+      scaleSubSteps: 1,
       icon: "icon-drop",
       rangeChange: (e)=>{
         tmpTimer.presets[0].num = e
         let arr = mapSettings.get('presets')
         mapSettings.set("presets", [tmpTimer.presets[0], (arr)?arr[1]:null, (arr)?arr[2]:null]);
-      log(mapSettings)
+        store.dispatch('sendTime', tmpTimer)
+        log(mapSettings)
       }
     }],
     /* ОФФРОАД */
@@ -106,22 +102,24 @@
         tmpTimer.presets[2].time = e
         let arr = mapSettings.get('presets')
         mapSettings.set("presets", [(arr)?arr[0]:null, (arr)?arr[1]:null, tmpTimer.presets[2]]);
+        store.dispatch('sendTime', tmpTimer);
       log(mapSettings)
       }
     },
     {
-      title: "Количество",
+      title: $t('all.count'),
       value: tmpTimer.presets[2].num,
-      minValue: 0,
-      maxValue: 10,
+      minValue: 1,
+      maxValue: 5,
       stepValue: 1,
-      scaleStep: 5,
-      scaleSubSteps: 2,
+      scaleStep: 4,
+      scaleSubSteps: 1,
       icon: "icon-drop",
       rangeChange: (e)=>{
         tmpTimer.presets[2].num = e
         let arr = mapSettings.get('presets')
         mapSettings.set("presets", [(arr)?arr[0]:null, (arr)?arr[1]:null, tmpTimer.presets[2]]);
+        store.dispatch('sendTime', tmpTimer);
       log(mapSettings)
       }
     },
@@ -138,6 +136,7 @@
         tmpTimer.presets[2].cycles = e
         let arr = mapSettings.get('presets')
         mapSettings.set("presets", [(arr)?arr[0]:null, (arr)?arr[1]:null, tmpTimer.presets[2]]);
+        store.dispatch('sendTime', tmpTimer);
       log(mapSettings)
       }
     }]

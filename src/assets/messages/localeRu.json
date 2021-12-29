@@ -76,6 +76,8 @@
     "service.system.pumping.text_toggle": "Заполнение системы",
 
     "service.update.fw.title": "Обновление ПО блока",
+    "service.update.fw.success": "Обновлено успешно.",
+    "service.update.fw.error": "Ошибка обновления. Повторите  попытку.",
     "service.update.cnfg.title": "Заводские настройки",
     "service.update.cnfg.button.title": "Сброс",
     "service.update.cnfg.confirm.text": "Все текущие настройки будут заменены заводскими. Вы уверены?",
@@ -83,6 +85,7 @@
     "service.diag.title": "Диагностика",
     "service.diag.acord.title1": "Возможные неисправности",
     "service.diag.acord.title2": "Обратная связь",
+    "service.diag.acord.title3": "Файлы для обновления ПО",
 
     "button.reset": "Сброс",
     "button.start": "Старт",

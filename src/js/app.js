@@ -21,6 +21,12 @@ Framework7.use(Framework7Svelte)
 
 setupi18n();
 
+/* if('serviceWorker' in navigator){
+  navigator.serviceWorker.register('/sw.js')
+    .then(reg => console.log('service worker registered'))
+    .catch(err => console.log('service worker not registered', err));
+} */
+
 // Mount Svelte App
 const app = new App({
   target: document.getElementById('app'),

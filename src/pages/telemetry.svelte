@@ -5,16 +5,17 @@
   on:pageTabHide={pageTabHide}>
 
   <Navbar title="Телеметрия" />
-  <Button on:click={() => { store.state.connect =  !store.state.connect}}>Connect = {store.state.connect}</Button>
+  <!-- <Button on:click={() => { store.state.connect =  !store.state.connect}}>Connect = {store.state.connect}</Button> -->
 
 {#if !connected}
 <!--   <div transition:fade="{{delay: 250, duration: 30}}"> -->
+  <div in:fade="{{delay: 50, duration: 300}}" out:fly="{{duration: 300}}">
     <BlockTitle class={`block-title-noconnection__text`} >{$t('home.noconnect')}</BlockTitle>
-<!--   </div> -->
+  </div>
   {/if}
 {#if connected}
 <!--   <CardTelemetry {...dataCardTele[telemetry.params[3].m]}  /> -->
-<div transition:fade="{{delay: 50, duration: 300}}">
+<div in:fade="{{delay: 50, duration: 300}}" out:fly="{{duration: 300}}">
     <CardTelemetry {...dataCardTele[md]}  />
   </div>
 {/if}
@@ -33,7 +34,7 @@
   import {t} from '../services/i18n.js';
   import CardTelemetry from '../components/tele-card.svelte'
   import store from '../js/store';
-  import { fade } from 'svelte/transition';
+  import { fade, fly } from 'svelte/transition';
   import log from '../js/debug.js'
 
   let telemetry = useStore('telemetry', (value) => telemetry = value)
@@ -78,6 +79,7 @@
 
   let remainsTrip = (odometer, gnssPresent, params) => {
     //console.log(trip)
+    return params.dst
     if (!odometer.sensor.gnss || !gnssPresent) {
       let imp = params.imp;
       let sensor = odometer.sensor.imp;
@@ -91,10 +93,13 @@
 //$:  console.log('remainsTrip = ', remainsTrip(trip, gnssPresent, params))
 
   let voltage = (data) => {
-    let tmp = (data.v) / 1024;
+    //let tmp = (data.v) / 1024;
+/*     let tmp = (data.v) / 4095;
     if (tmp < 0) tmp = 0;
     tmp = tmp / (data.k / 100000);
-    tmp = 0.838 * tmp + 0.354;
+    tmp = 0.838 * tmp + 0.354; */
+    let k = (data.R1 + data.R2) / data.R2;
+    let tmp = (data.max * data.v * k)/data.r
     return Number(tmp).toFixed(1);
   }
 
@@ -119,17 +124,35 @@
     }
     return {
       icon: "icon-sensor",
-      value: telemetry.params[nameParams.ODOMETER].imp
+      value: "" //telemetry.params[nameParams.ODOMETER].imp
     }
   }
 
-$:  md = (!telemetry.params[nameParams.GPS].fix && telemetry.params[nameParams.MODE].m == 1) ? 5 : telemetry.params[nameParams.MODE].m
+  let indexDataCardTele = (odometer, telemetry) => {
+    md = telemetry.params[nameParams.MODE].m
+    if (md == 1) // Режим "Одометер"
+      if (odometer.sensor.gnss) { // сенсор GPS?
+        if (!telemetry.params[nameParams.GPS].fix) md =  5 // TimerGPS
+      }
+    return md
+  }
+
+$:  md = indexDataCardTele(odometer, telemetry) // (!telemetry.params[nameParams.GPS].fix && telemetry.params[nameParams.MODE].m == 1) ? 5 : telemetry.params[nameParams.MODE].m
 //$:  md = telemetry.params[nameParams.MODE].m
 
+//let md
+
+/* $: {
+    md = telemetry.params[nameParams.MODE].m
+    if (md == 1) // Режим "Одометер"
+      if (odometer.sensor.gnss) { // сенсор GPS?
+        if (!telemetry.params[nameParams.GPS].fix) md =  5 // TimerGPS
+      }
+} */
+
 $:  dataCardTele = [
-    /** Выключено (mode = 0) */
     { //#0
-      title: "ВЫКЛЮЧЕНО",
+      title: "ВЫКЛЮЧЕНО", // 0
       gauge: [],
       icons: [
         (gnssPresent.gps) ? {icon: "icon-gps", value: telemetry.params[nameParams.GPS].sat} : null,
@@ -141,7 +164,7 @@ $:  dataCardTele = [
       ]
     },
     { //#1
-      title: "ОДОМЕТР",
+      title: "ОДОМЕТР", // 1
       gauge: [
         {
           value: telemetry.params[nameParams.ODOMETER].spd/MAXSPEED,
@@ -157,17 +180,18 @@ $:  dataCardTele = [
           units: $t("all.km") }
       ],
       icons: [
-        {
+        { // 1-я иконка
           icon: iconsPreset[telemetry.params[nameParams.MODE].p],
           value: (odometer.presets[telemetry.params[nameParams.MODE].p].dst_m/1000).toFixed() + $t("all.km")
         },
-        {
-          icon: "icon-pump",
+        { // 2-я иконка
+          icon: "icon-pump", // насос
           value: telemetry.params[nameParams.PUMP].v
         },
-        iconOdometerSensor(),
-        {
-          icon: "icon-accum",
+        // 3-я иконка
+        iconOdometerSensor(), // часы спутник сенсор
+        { // 4-я иконка
+          icon: "icon-accum", // аккумулятор
           value: voltage(telemetry.params[nameParams.VOLTAGE]) + $t("all.voltage"),
           alarm: voltAlarm(voltage(telemetry.params[nameParams.VOLTAGE]))
         }
@@ -188,7 +212,7 @@ $:  dataCardTele = [
       ]
     }, */
     { //#2
-      title: "ТАЙМЕР",
+      title: "ТАЙМЕР", // 2
       gauge: [
         {
           value: telemetry.params[nameParams.TIMER].v/(timer.presets[telemetry.params[nameParams.MODE].p].time*1000),
@@ -209,7 +233,7 @@ $:  dataCardTele = [
     },
     {},{},
     { //#5
-      title: "ТАЙМЕР (поиск спутников)",
+      title: "ТАЙМЕР (поиск спутников)", // 5
       gauge: [
         {
           value: telemetry.params[nameParams.TIMER].v/(timer.presets[telemetry.params[nameParams.MODE].p].time*1000),

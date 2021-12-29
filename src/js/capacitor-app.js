@@ -8,7 +8,7 @@ var capacitorApp = {
     if (!window.Capacitor || f7.device.electron) return;
     setTimeout(() => {
       window.Capacitor.Plugins.SplashScreen.hide();
-    }, 2000);
+    }, 1500);
   },
   /*
   This method prevents back button tap to exit from app on android.

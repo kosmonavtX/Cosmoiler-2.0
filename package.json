@@ -1,17 +1,20 @@
 {
   "name": "cosmoiler",
   "private": true,
-  "version": "4.0.0",
+  "version": "4.5.0",
   "description": "Cosmoiler - automatic chain oiler",
   "repository": "",
   "license": "FREE",
+  "homepage": "./",
+  "author": "Sergey Borisov <cosmoiler@gmail.com> (https://cosmoiler.com)",
   "scripts": {
     "start": "npm run dev",
     "dev": "cross-env NODE_ENV=development webpack serve --config ./build/webpack.config.js",
+    "buildcpx": "cross-env NODE_ENV=production node ./build/build.js && npm run postinstall",
     "build": "cross-env NODE_ENV=production node ./build/build.js",
     "build-capacitor-ios": "cross-env NODE_ENV=production node ./build/build.js && npx cap copy ios",
     "build-capacitor-android": "cross-env NODE_ENV=production node ./build/build.js && npx cap copy android",
-    "postinstall": "cpy ./node_modules/framework7-icons/fonts/*.* ./src/fonts/"
+    "postinstall": "cpx ./www/*.{json,html,gz,woff,png} ./%USERPROFILE%/Documents/PlatformIO/Projects/Cosmoiler/Firmware/ESP32/Main/data/"
   },
   "browserslist": [
     "Android >= 7",
@@ -25,6 +28,7 @@
     "@capacitor/android": "^2.4.6",
     "@capacitor/core": "^2.4.6",
     "@capacitor/ios": "^2.4.6",
+    "cpx": "^1.5.0",
     "debug": "^4.3.1",
     "dom7": "^3.0.0",
     "framework7": "^6.0.17",
@@ -44,6 +48,7 @@
     "@capacitor/cli": "^2.4.6",
     "babel-loader": "^8.2.2",
     "chalk": "^4.1.0",
+    "compression-webpack-plugin": "^8.0.0",
     "copy-webpack-plugin": "^7.0.0",
     "cordova-res": "^0.15.3",
     "cpy-cli": "^3.1.1",
@@ -64,7 +69,9 @@
     "terser-webpack-plugin": "^5.1.1",
     "url-loader": "^4.1.1",
     "webpack": "^5.19.0",
+    "webpack-bundle-analyzer": "^4.4.2",
     "webpack-cli": "^4.4.0",
-    "webpack-dev-server": "^3.11.2"
+    "webpack-dev-server": "^3.11.2",
+    "webpack-pwa-manifest": "^4.3.0"
   }
 }

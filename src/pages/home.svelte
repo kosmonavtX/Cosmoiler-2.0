@@ -15,14 +15,15 @@
 
   {#if connected}
     <BlockTitle style='background-color: var( --f7-theme-color-bg-color)'>{$t('home.selectmode')}</BlockTitle>
-    <Button on:click={() => { store.state.connect =  !store.state.connect}}>Connect = {store.state.connect}</Button>
+    <!-- <Button on:click={() => { store.state.connect =  !store.state.connect}}>Connect = {store.state.connect}</Button> -->
   {:else}
     <BlockTitle class={`block-title-noconnection__text`} >{$t('home.noconnect')}</BlockTitle>
-    <Button on:click={() => { store.state.connect =  !store.state.connect}}>Connect = {store.state.connect}</Button>
+    <!-- <Button on:click={() => { store.state.connect =  !store.state.connect}}>Connect = {store.state.connect}</Button> -->
   {/if}
 
 {#if !connected}
-  <div transition:fade="{{delay: 100, duration: 200}}">
+ <!--  <div transition:fade="{{delay: 1, duration: 1}}"> -->
+   <div in:fade="{{delay: 300, duration: 300}}" out:fly="{{duration: 300}}">
     <List mediaList class={`skeleton-text skeleton-effect-wave`}>
       {#each [1,2] as n}
         <ListItem class={`home-list-item`} >
@@ -46,7 +47,8 @@
     </List>
   </div>
 {:else}
-  <div transition:fade="{{delay: 250, duration: 300}}">
+  <!-- <div transition:fade="{{delay: 250, duration: 300}}"> -->
+    <div in:fade="{{delay: 300, duration: 300}}" out:fly="{{duration: 300}}">
     <List mediaList class='elevation-0'>
         <ModeItem {...items[0]} />
         <ModeItem {...items[1]} />
@@ -71,12 +73,9 @@
   import {t} from '../services/i18n.js';
   import store from '../js/store';
   import ModeItem from '../components/home-listitem.svelte'
-  import { fade } from 'svelte/transition';
+  import { fade, fly } from 'svelte/transition';
   import log from '../js/debug.js'
 
-//import { debug } from 'console';
-  //logHome('kdsjhfkjshks')
-  log('123124234234')
 
   let gnssPresent = useStore('gnssPresent', (value) => gnssPresent = value);
   let connected = useStore('connected', (value) => connected = value);

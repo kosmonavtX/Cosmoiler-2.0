@@ -1,0 +1,45 @@
+{
+	"masterPicture": "resources/icon_512x512.png",
+	"iconsPath": "/",
+	"design": {
+		"ios": {
+			"pictureAspect": "backgroundAndMargin",
+			"backgroundColor": "#f9f9f9",
+			"margin": "11%",
+			"assets": {
+				"ios6AndPriorIcons": false,
+				"ios7AndLaterIcons": true,
+				"precomposedIcons": false,
+				"declareOnlyDefaultIcon": true
+			}
+		},
+		"desktopBrowser": {
+			"design": "raw"
+		},
+		"androidChrome": {
+			"pictureAspect": "backgroundAndMargin",
+			"margin": "10%",
+			"backgroundColor": "#f9f9f9",
+			"themeColor": "#f9f9f9",
+			"manifest": {
+				"startUrl": "http://192.168.4.1",
+				"display": "standalone",
+				"orientation": "portrait",
+				"onConflict": "override",
+				"declared": true
+			},
+			"assets": {
+				"legacyIcon": false,
+				"lowResolutionIcons": false
+			}
+		}
+	},
+	"settings": {
+		"compression": 1,
+		"scalingAlgorithm": "Mitchell",
+		"errorOnImageTooSmall": false,
+		"readmeFile": false,
+		"htmlCodeFile": true,
+		"usePathAsIs": false
+	}
+}

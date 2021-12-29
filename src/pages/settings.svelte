@@ -18,9 +18,10 @@
     <Tabs >
       <Tab id="tab-trip" tabActive >
         <List>
-          {#each items_odo.slice(0,2) as {link, title, icon, size}}
+          {#each items_odo.slice(0,2) as {link, title, icon, size, footer}}
             <ListItem link={link} title={title} class={`settings-main__list-item`}>
               <div slot='media'><Icon icon={icon} style="font-size: {size}px" /></div>
+              <div slot='footer'>{footer}</div>
             </ListItem>
           {/each}
           <ListItem title={items_odo[2].title} link={items_odo[2].link} class={`settings-main__list-item`}>
@@ -31,9 +32,10 @@
       </Tab>
       <Tab id="tab-time" >
         <List>
-          {#each items_timer as {link, title, icon, size}}
+          {#each items_timer as {link, title, icon, size, footer}}
             <ListItem link={link} title={title} class={`settings-main__list-item`}>
               <div slot='media'><Icon icon={icon} style="font-size: {size}px" /></div>
+              <div slot='footer'>{footer}</div>
             </ListItem>
           {/each}
         </List>
@@ -82,14 +84,37 @@
 
 
   let items_odo = [
-    {link: '/settings/odometer/presets/', title: $t('settings.presets.title'), icon: 'icon-preset', size: 24},
-    {link: '/settings/pump/', title: 'Насос', icon: 'icon-pump', size: 28},
-    {link: '/settings/odometer/sensor/', title: 'Датчик', icon: 'icon-sensor', size: 28},
+    {
+      link: '/settings/odometer/presets/',
+      title: $t('settings.presets.title'),
+      footer: $t("Установка расстояния между подачами масла на цепь."),
+      icon: 'icon-preset',
+      size: 24
+    },
+    {
+      link: '/settings/pump/',
+      title: 'Насос',
+      footer: $t("Настройка насоса под вязкость залитого масла"),
+      icon: 'icon-pump', size: 28
+    },
+    {link: '/settings/odometer/sensor/', title: 'Датчик',  footer: "", icon: 'icon-sensor', size: 28},
   ]
 
   let items_timer = [
-    {link: '/settings/timer/presets/', title: $t('settings.presets.title'), icon: 'icon-preset', size: 24},
-    {link: '/settings/pump/', title: 'Насос', icon: 'icon-pump', size: 28},
+    {
+      link: '/settings/timer/presets/',
+      title: $t('settings.presets.title'),
+      footer: $t("Установка времени между подачами масла на цепь."),
+      icon: 'icon-preset',
+      size: 24
+    },
+    {
+      link: '/settings/pump/',
+      title: 'Насос',
+      footer: $t("Настройка насоса под вязкость залитого масла"),
+      icon: 'icon-pump',
+      size: 28
+    },
   ]
 
   let items_manual = [
