@@ -65,7 +65,6 @@
     BlockTitle,
     List,
     ListItem,
-    Button,
     useStore,
     SkeletonBlock
   } from 'framework7-svelte';
@@ -184,7 +183,6 @@
     }
 
   function pageTabShow() {
-    //console.log('Change Settings = ', store.state.fChngSettings)
     if (store.state.fChngSettings.status) {
       // Если были изменения настроек, то запросить нужный файл
       store.dispatch('requestConfig', store.state.fChngSettings.id);

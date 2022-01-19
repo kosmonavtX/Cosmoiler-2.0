@@ -44,7 +44,6 @@
     useStore
   } from 'framework7-svelte';
   import {t} from '../services/i18n.js';
-//  import store from '../js/store';
 
   let connected = useStore('connected', (value) => connected = value);
   $: system = useStore('system', (value) => system = value);

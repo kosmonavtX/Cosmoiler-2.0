@@ -98,7 +98,7 @@ const store = createStore({
     },
     pump: {
       id: "/pump.json",
-      dpms: null, dpdp: null, period: 3000,
+      dpms: null, dpdp: null,
       usr: false // пользовательский насос
     },
     system: {
@@ -196,8 +196,10 @@ const store = createStore({
             state.timer = value
           else if (value.id == '/manual.json')
             state.manual = value
-          else if (value.id == '/pump.json')
+          else if (value.id == '/pump.json') {
             state.pump = value
+            state.pump.period = 3000
+          }
           else if (value.id == '/system.json') {
             state.system = value
             // Если модуль GPS в блоке управления остуствует

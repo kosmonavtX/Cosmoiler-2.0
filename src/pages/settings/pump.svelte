@@ -72,7 +72,6 @@
   <script>
     import {
       Block,
-      BlockHeader,
       BlockTitle,
       Page,
       Navbar,
@@ -104,10 +103,11 @@
     $: fStd = (!tmpPump.usr)? true : false
     $: fUsr = (tmpPump.usr)? true : false
 
+    //$: if ()
     $: rangeValues = [
       [{
         title: "Объем масла",
-        value: tmpPump.dpms * 100 / T,
+        value: (tmpPump.dpms * 100 / T > 98)? 98 : tmpPump.dpms * 100 / T,
        // name_value: "%",
         minValue: (ver.hw[0] == 'C')? 2 : 1,
         maxValue: 98,
@@ -174,6 +174,8 @@
     function pageBeforeIn() {
       /* включить режим настройки вязкости */
       store.dispatch('modeWork', store.state.OILER_SETTINGS)
+      //log('[TmpPump = ]', pump.period)
+      //tmpPump = pump
     }
 
     function pageAfterOut() {
