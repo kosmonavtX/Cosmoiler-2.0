@@ -150,7 +150,7 @@ const store = createStore({
         },
       ]
     },
-    verfs: "4.5",
+    verfs: "4.7",
 
     OILER_SETTINGS: 2,
     OILER_MANUAL: 1,

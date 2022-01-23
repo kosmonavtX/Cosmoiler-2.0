@@ -98,7 +98,6 @@
       if (ver.hw[0] == 'A') T = 500 // для версии [0HW: Ax] период меньше, чтобы dpms был от 5 мс (1%) до 450 мс (90%)
       if (ver.hw[0] == 'C') T = 300 // для версии [0HW: Cx] период меньше, чтобы dpms был от 3 мс (1%) до 300 мс (90%)
     }
-
     let tmpPump = pump
     let fToggle = false
     let fOnOffPump = false
@@ -192,4 +191,8 @@
       /* сохранить настройки */
       //store.dispatch('sendPump', tmpPump)
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> new features
   </script>
