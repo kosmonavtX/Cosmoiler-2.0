@@ -58,8 +58,8 @@
     let browseInput;
     let nameFile;
 
-    //$: if (!connected) document.location.reload()
-    //$:  f_connected = connected
+   // $: if (!connected) document.location.reload()
+    $:  f_connected = connected
 
     $: if (files) {
         nameFile = files[0].name
