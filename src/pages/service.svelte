@@ -44,7 +44,6 @@
     useStore
   } from 'framework7-svelte';
   import {t} from '../services/i18n.js';
-//  import store from '../js/store';
 
   let connected = useStore('connected', (value) => connected = value);
   $: system = useStore('system', (value) => system = value);
@@ -55,7 +54,7 @@
   $: items = [
     {link: '/service/wifi/',    title: $t('service.wifi.title'),    view: connected},
     {link: '/service/system/',  title: $t('service.system.title'),  view: connected},
-    {link: '/service/update/',  title: $t('service.update.title'),  view: connected},
+    {link: '/service/update/',  title: $t('service.update.title'),  view: true},
     {link: '/service/diag/',    title: $t('service.diag.title'),    view: true},
     {link: '/service/about/',   title: $t('service.about.title'),   view: true},
   ]

@@ -98,7 +98,7 @@ const store = createStore({
     },
     pump: {
       id: "/pump.json",
-      dpms: null, dpdp: null, period: 3000,
+      dpms: null, dpdp: null,
       usr: false // пользовательский насос
     },
     system: {
@@ -196,8 +196,11 @@ const store = createStore({
             state.timer = value
           else if (value.id == '/manual.json')
             state.manual = value
-          else if (value.id == '/pump.json')
+          else if (value.id == '/pump.json') {
             state.pump = value
+            /* if (state.ver.hw[0] == 'B' || state.ver.hw[0] == 'A') state.pump.period = 5000
+            else if (state.ver.hw[0] == 'C') state.pump.period = 2000 */
+          }
           else if (value.id == '/system.json') {
             state.system = value
             // Если модуль GPS в блоке управления остуствует
@@ -207,8 +210,8 @@ const store = createStore({
             state.ver = value
             localStorage.setItem('ver', JSON.stringify(state.ver))
             //log('Local storage ver = ', localStorage.getItem(ver))
-            if (state.ver.hw[0] == 'B' || state.ver.hw[0] == 'A') state.pump.period = 3000
-            else if (state.ver.hw[0] == 'C') state.pump.period = 2000
+            /* if (state.ver.hw[0] == 'B' || state.ver.hw[0] == 'A') state.pump.period = 5000
+            else if (state.ver.hw[0] == 'C') state.pump.period = 2000 */
             // парсинг версии
             let fs = state.ver.fw.slice(-2);
             state.verfs = fs.match(/\d{1}/g).join('.');

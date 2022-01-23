@@ -75,11 +75,12 @@
     "service.system.pumping.title": "Прокачка",
     "service.system.pumping.text_toggle": "Заполнение системы",
 
-    "service.update.fw.title": "Обновление ПО блока",
+    "service.update.fw.title1": "Загрузка файлов ПО блока",
+    "service.update.fw.title2": "Обновление ПО блока",
     "service.update.fw.success": "Обновлено успешно.",
     "service.update.fw.error": "Ошибка обновления. Повторите  попытку.",
     "service.update.cnfg.title": "Заводские настройки",
-    "service.update.cnfg.button.title": "Сброс",
+    "service.update.cnfg.button.title": "Установить",
     "service.update.cnfg.confirm.text": "Все текущие настройки будут заменены заводскими. Вы уверены?",
 
     "service.diag.title": "Диагностика",

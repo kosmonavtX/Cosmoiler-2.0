@@ -134,6 +134,7 @@
       if (odometer.sensor.gnss) { // сенсор GPS?
         if (!telemetry.params[nameParams.GPS].fix) md =  5 // TimerGPS
       }
+    log("md = ", md)
     return md
   }
 

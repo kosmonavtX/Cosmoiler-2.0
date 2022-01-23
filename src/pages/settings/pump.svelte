@@ -72,7 +72,6 @@
   <script>
     import {
       Block,
-      BlockHeader,
       BlockTitle,
       Page,
       Navbar,
@@ -92,9 +91,14 @@
     //console.log('connect:', connected)
 /* TODO: максимальный объем выдаваемый насосом 2 мл/мин для KAMOER */
 
-    let T = pump.period // используется для режима настройки - пауза между каплями (фиксированное)
-    if (ver.hw[0] == 'A') T = 500 // для версии [0HW: Ax] период меньше, чтобы dpms был от 5 мс (1%) до 450 мс (90%)
-    if (ver.hw[0] == 'C') T = 300 // для версии [0HW: Cx] период меньше, чтобы dpms был от 5 мс (1%) до 450 мс (90%)
+    //let T = pump.period // используется для режима настройки - пауза между каплями (фиксированное)
+    let T = 0
+    $: {
+      if (ver.hw[0] == 'B') T = 5000 // для версии [0HW: Bx] период, чтобы dpms был от 500 мс (1%) до 5000 мс (90%)
+      if (ver.hw[0] == 'A') T = 500 // для версии [0HW: Ax] период меньше, чтобы dpms был от 5 мс (1%) до 450 мс (90%)
+      if (ver.hw[0] == 'C') T = 300 // для версии [0HW: Cx] период меньше, чтобы dpms был от 3 мс (1%) до 300 мс (90%)
+    }
+
     let tmpPump = pump
     let fToggle = false
     let fOnOffPump = false
@@ -104,10 +108,11 @@
     $: fStd = (!tmpPump.usr)? true : false
     $: fUsr = (tmpPump.usr)? true : false
 
+    //$: if ()
     $: rangeValues = [
       [{
         title: "Объем масла",
-        value: tmpPump.dpms * 100 / T,
+        value: (tmpPump.dpms * 100 / T > 98)? 98 : tmpPump.dpms * 100 / T,
        // name_value: "%",
         minValue: (ver.hw[0] == 'C')? 2 : 1,
         maxValue: 98,
@@ -174,6 +179,8 @@
     function pageBeforeIn() {
       /* включить режим настройки вязкости */
       store.dispatch('modeWork', store.state.OILER_SETTINGS)
+      //log('[TmpPump = ]', pump.period)
+      //tmpPump = pump
     }
 
     function pageAfterOut() {
@@ -185,13 +192,4 @@
       /* сохранить настройки */
       //store.dispatch('sendPump', tmpPump)
     }
-
-/*     const dispatchTime = (type, data) => {
-      intervalId = setTimeout(() => {
-        store.dispatch(type, data);
-        //intervalId = null;
-      }, 5000);
-      //return intervalId;
-    } */
-
   </script>
