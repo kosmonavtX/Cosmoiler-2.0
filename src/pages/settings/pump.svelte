@@ -191,8 +191,4 @@
       /* сохранить настройки */
       //store.dispatch('sendPump', tmpPump)
     }
-<<<<<<< HEAD
-=======
-
->>>>>>> new features
   </script>
