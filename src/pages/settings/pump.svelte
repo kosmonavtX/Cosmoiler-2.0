@@ -27,6 +27,7 @@
           checked={fStd}
           on:change={() => {
             tmpPump.usr = false
+            store.dispatch('sendPump', tmpPump);
             //mapSettings.set("sensor", tmpOdometer.sensor);
             //log(mapSettings)
           }}
@@ -42,6 +43,7 @@
         checked={fUsr}
         on:change={() => {
           tmpPump.usr = true
+          store.dispatch('sendPump', tmpPump);
           //mapSettings.set("sensor", tmpOdometer.sensor);
           //log(mapSettings)
         }}
@@ -96,7 +98,7 @@
     $: {
       if (ver.hw[0] == 'B') T = 5000 // для версии [0HW: Bx] период, чтобы dpms был от 500 мс (1%) до 5000 мс (90%)
       if (ver.hw[0] == 'A') T = 500 // для версии [0HW: Ax] период меньше, чтобы dpms был от 5 мс (1%) до 450 мс (90%)
-      if (ver.hw[0] == 'C') T = 300 // для версии [0HW: Cx] период меньше, чтобы dpms был от 3 мс (1%) до 300 мс (90%)
+      if (ver.hw[0] == 'C') T = 3000 // для версии [0HW: Cx] период меньше, чтобы dpms был от 300 мс (1%) до 300 мс (90%)
     }
     let tmpPump = pump
     let fToggle = false
@@ -113,7 +115,7 @@
         title: "Объем масла",
         value: (tmpPump.dpms * 100 / T > 98)? 98 : tmpPump.dpms * 100 / T,
        // name_value: "%",
-        minValue: (ver.hw[0] == 'C')? 2 : 1,
+        minValue: 1, //(ver.hw[0] == 'C')? 2 : 1,
         maxValue: 98,
         stepValue: 1,
         scale: false,

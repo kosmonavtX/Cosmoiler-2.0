@@ -115,6 +115,7 @@ Framework7 app created with following options:
 * 🔥 `start` - run development server
 * 🔧 `dev` - run development server
 * 🔧 `build` - build web app for production (см. также файл package.json)
+* 🔧 `buildcpx` - build web app for production and copy to folder DATA (см. также файл package.json)
 * 📱 `build-capacitor-ios` - build app and copy it to iOS capacitor project
 * 📱 `build-capacitor-android` - build app and copy it to Android capacitor project
 
