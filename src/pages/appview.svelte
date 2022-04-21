@@ -39,10 +39,10 @@
     let connected = useStore('connected', (value) => connected = value);
 
     let itemsToolbar = [
-        {link: '#view-home',      text: $t('Cosmoiler'),  icon: "icon-rocket",            tabLinkActive: true},
-        {link: '#view-telemetry', text: $t('Телеметрия'), icon: "icon-telemetry-outline", tabLinkActive: false},
-        {link: '#view-settings',  text: $t('Настройки'),  icon: "icon-settings",          tabLinkActive: false},
-        {link: '#view-service',   text: $t('Сервис'),     icon: "icon-service",           tabLinkActive: false},
+        {link: '#view-home',      text: $t('Cosmoiler'),      icon: "icon-rocket",            tabLinkActive: true},
+        {link: '#view-telemetry', text: $t('home.telemetry'), icon: "icon-telemetry-outline", tabLinkActive: false},
+        {link: '#view-settings',  text: $t('home.settings'),  icon: "icon-settings",          tabLinkActive: false},
+        {link: '#view-service',   text: $t('home.service'),   icon: "icon-service",           tabLinkActive: false},
     ]
 
     $: itemsViews = [

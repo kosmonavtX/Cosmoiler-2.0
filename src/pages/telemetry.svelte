@@ -4,7 +4,7 @@
   on:pageTabShow={pageTabShow}
   on:pageTabHide={pageTabHide}>
 
-  <Navbar title="Телеметрия" />
+  <Navbar title={$t('home.telemetry')} />
   <!-- <Button on:click={() => { store.state.connect =  !store.state.connect}}>Connect = {store.state.connect}</Button> -->
 
 {#if !connected}
@@ -28,7 +28,6 @@
     Page,
     Navbar,
     BlockTitle,
-    Button,
     useStore
   } from 'framework7-svelte';
   import {t} from '../services/i18n.js';
@@ -153,7 +152,7 @@ $:  md = indexDataCardTele(odometer, telemetry) // (!telemetry.params[nameParams
 
 $:  dataCardTele = [
     { //#0
-      title: "ВЫКЛЮЧЕНО", // 0
+      title: $t('telemetry.off.title').toUpperCase(), // 0
       gauge: [],
       icons: [
         (gnssPresent.gps) ? {icon: "icon-gps", value: telemetry.params[nameParams.GPS].sat} : null,
@@ -165,7 +164,7 @@ $:  dataCardTele = [
       ]
     },
     { //#1
-      title: "ОДОМЕТР", // 1
+      title: $t('telemetry.odo.title').toUpperCase(), // 1
       gauge: [
         {
           value: telemetry.params[nameParams.ODOMETER].spd/MAXSPEED,
@@ -213,7 +212,7 @@ $:  dataCardTele = [
       ]
     }, */
     { //#2
-      title: "ТАЙМЕР", // 2
+      title: $t('telemetry.tmr.title').toUpperCase(), // 2
       gauge: [
         {
           value: telemetry.params[nameParams.TIMER].v/(timer.presets[telemetry.params[nameParams.MODE].p].time*1000),
@@ -234,7 +233,7 @@ $:  dataCardTele = [
     },
     {},{},
     { //#5
-      title: "ТАЙМЕР (поиск спутников)", // 5
+      title: $t('telemetry.tmr2.title'), // 5
       gauge: [
         {
           value: telemetry.params[nameParams.TIMER].v/(timer.presets[telemetry.params[nameParams.MODE].p].time*1000),

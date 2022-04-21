@@ -61,13 +61,7 @@
     export let toggleCheck = false
     export let onSelectModeToggle = undefined
 
-/*     let check = true
-
-    function fChecked() {
-        check = !check
-        console.log(check)
-    } */
-     let visbl = true
+    let visbl = true
 
 /*     setInterval(() => {
       visbl = !visbl

@@ -14,18 +14,11 @@
     "home.selectmode": "Выберите режим работы",
     "home.connect": "Соединение...",
     "home.noconnect": "Нет связи с блоком управления!",
-
     "home.telemetry": "Телеметрия",
     "home.settings": "Настройки",
-    "home.more": "Ещё",
-
-    "menu.ctrl": "Прокачка",
-    "menu.system": "Система",
-    "menu.about": "О Cosmoiler",
-
+    "home.service": "Сервис",
     "home.on": "Включено",
     "home.off": "Выключено",
-
     "home.trip.title": "Одометр",
     "home.trip.subtitle": "Смазывать через заданное расстояние",
     "home.gpsstatus": "GPS активен",
@@ -37,9 +30,18 @@
     "home.setting.time": "{p} сек",
     "home.setting.timer": "Таймер: {p} сек",
 
+    "menu.ctrl": "Прокачка",
+    "menu.system": "Система",
+    "menu.about": "О Cosmoiler",
+
+    "settings.tab.odo.title": "Одометр",
+    "settings.tab.tmr.title": "Таймер",
+    "settings.tab.man.title": "Вручную",
     "settings.pump.title": "Насос",
+    "settings.pump.on": "Вкл: {p}",
+    "settings.pump.off": "Пауза: {p}",
+    "settings.pump.description": "Настройка насоса под вязкость залитого масла",
     "settings.presets.title": "Предустановки",
-    "settings.sensor.title": "Датчик",
     "settings.presets.city": "Город",
     "settings.presets.way": "Трасса",
     "settings.presets.city_way": "Город/трасса",
@@ -52,8 +54,9 @@
     "settings.presets.placeholder_Distance": "Введите расстояние между включением",
     "settings.presets.placeholder_Drop": "Количество капель за цикл",
     "settings.presets.placeholder_Speed": "Максимальная скорость",
-    "settings.pump.on": "Вкл: {p}",
-    "settings.pump.off": "Пауза: {p}",
+    "settings.presets.odo.description": "Установка расстояния между подачами масла на цепь.",
+    "settings.presets.tmr.description": "Установка времени между подачами масла на цепь.",
+    "settings.sensor.title": "Датчик",
 
     "settings.sensor.selectsensor": "Выберите тип датчика",
     "settings.sensor.gnss": "GPS",
@@ -111,6 +114,9 @@
     "telemetry.pump.title": "Насос",
     "telemetry.manual.button": "Кнопка",
     "telemetry.sensorGNSS.footer": "ГНСС",
+    "telemetry.off.title": "Выключено",
+    "telemetry.tmr.title": "Таймер",
+    "telemetry.tmr2.title": "ТАЙМЕР (поиск спутников)",
 
     "system.psw": "Пароль",
     "system.title": "Системные настройки",

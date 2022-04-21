@@ -176,7 +176,6 @@
         if (!fmodeOdometer && !fmodeTimer) tmpMode.m = 0
         else if (fmodeOdometer) tmpMode.m = 1
         else tmpMode.m = 2
-        //console.log('mode = ', tmpMode)
         if (mode.m != tmpMode.m)
           store.dispatch('sendMode', tmpMode)
       }

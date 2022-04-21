@@ -57,21 +57,19 @@
     BlockTitle,
     Range,
     Icon,
-    Input,
-    Stepper,
     Toggle
   } from 'framework7-svelte';
 
   export let title = ""
   export let value = 0
-  export let  name_value = ""
+  export let name_value = ""
   export let view_value = true
-  export let  icon = undefined
+  export let icon = undefined
   export let minValue = 0
-  export let  maxValue = 10
-  export let  stepValue = 1
-  export let  scaleStep = undefined
-  export let  scaleSubSteps = undefined
+  export let maxValue = 10
+  export let stepValue = 1
+  export let scaleStep = undefined
+  export let scaleSubSteps = undefined
   export let frmtScaleLabel = undefined
   export let rangeChange = undefined
   export let scale = true

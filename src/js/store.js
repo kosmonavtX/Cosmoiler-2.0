@@ -198,8 +198,6 @@ const store = createStore({
             state.manual = value
           else if (value.id == '/pump.json') {
             state.pump = value
-            /* if (state.ver.hw[0] == 'B' || state.ver.hw[0] == 'A') state.pump.period = 5000
-            else if (state.ver.hw[0] == 'C') state.pump.period = 2000 */
           }
           else if (value.id == '/system.json') {
             state.system = value
@@ -209,9 +207,6 @@ const store = createStore({
           else if (value.id == '/ver.json') {
             state.ver = value
             localStorage.setItem('ver', JSON.stringify(state.ver))
-            //log('Local storage ver = ', localStorage.getItem(ver))
-            /* if (state.ver.hw[0] == 'B' || state.ver.hw[0] == 'A') state.pump.period = 5000
-            else if (state.ver.hw[0] == 'C') state.pump.period = 2000 */
             // парсинг версии
             let fs = state.ver.fw.slice(-2);
             state.verfs = fs.match(/\d{1}/g).join('.');

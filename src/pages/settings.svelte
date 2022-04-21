@@ -10,9 +10,9 @@
     <Navbar title={$t('home.settings')} />
 
     <Toolbar top tabbar >
-      <Link tabLink="#tab-trip" tabLinkActive>{$t('Одометр')}</Link>
-      <Link tabLink="#tab-time">{$t('Таймер')}</Link>
-      <Link tabLink="#tab-manual">{$t('Вручную')}</Link>
+      <Link tabLink="#tab-trip" tabLinkActive>{$t('settings.tab.odo.title')}</Link>
+      <Link tabLink="#tab-time">{$t('settings.tab.tmr.title')}</Link>
+      <Link tabLink="#tab-manual">{$t('settings.tab.man.title')}</Link>
     </Toolbar>
 
     <Tabs >
@@ -79,14 +79,14 @@
     {
       link: '/settings/odometer/presets/',
       title: $t('settings.presets.title'),
-      footer: $t("Установка расстояния между подачами масла на цепь."),
+      footer: $t('settings.presets.odo.description'),
       icon: 'icon-preset',
       size: 24
     },
     {
       link: '/settings/pump/',
       title: 'Насос',
-      footer: $t("Настройка насоса под вязкость залитого масла"),
+      footer: $t('settings.pump.description'),
       icon: 'icon-pump', size: 28
     },
     {link: '/settings/odometer/sensor/', title: 'Датчик',  footer: "", icon: 'icon-sensor', size: 28},
@@ -96,14 +96,14 @@
     {
       link: '/settings/timer/presets/',
       title: $t('settings.presets.title'),
-      footer: $t("Установка времени между подачами масла на цепь."),
+      footer: $t('settings.presets.tmr.description'),
       icon: 'icon-preset',
       size: 24
     },
     {
       link: '/settings/pump/',
       title: 'Насос',
-      footer: $t("Настройка насоса под вязкость залитого масла"),
+      footer: $t('settings.pump.description'),
       icon: 'icon-pump',
       size: 28
     },
