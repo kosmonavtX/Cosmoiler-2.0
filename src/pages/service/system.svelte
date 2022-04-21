@@ -47,12 +47,20 @@
     let connected = useStore('connected', (value) => connected = value);
     let system = useStore('system', (value) => system = value);
     let mapSettings = useStore('mapSettings', (value) => mapSettings = value);
+    let ver = useStore('ver', (value) => ver = value);
 
     let tmpSystem = system
     let ctrlpump = false
 
+    let Tdpms = 0
+    $: {
+      if (ver.hw[0] == 'B') Tdpms = 1000
+      if (ver.hw[0] == 'C') Tdpms = 30000 // 30 секунд работает насос
+    }
+
+
     $: if (!connected) document.location.reload()
-    $: store.dispatch('ctrlPump', [ctrlpump, 0, {dpms: 1000, dpdp: 100}])
+    $: store.dispatch('ctrlPump', [ctrlpump, 0, {dpms: Tdpms, dpdp: 100}])
 
     $: rangeValues = [
       [{

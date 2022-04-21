@@ -175,7 +175,10 @@
       }],
     ]
 
-    $: store.dispatch('ctrlPump', [fToggle, 0, {dpms: tmpPump.dpms, dpdp: 2000}])
+    let Tdpdp = 2000
+    $: if (tmpPump.usr) Tdpdp = tmpPump.dpdp
+    $: store.dispatch('ctrlPump', [fToggle, 0, {dpms: tmpPump.dpms, dpdp: Tdpdp}])
+    //$: if (!tmpPump.usr) Tdpdp = 2000
 
     function pageBeforeIn() {
       /* включить режим настройки вязкости */
