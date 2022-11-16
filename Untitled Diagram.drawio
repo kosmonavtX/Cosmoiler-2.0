@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-11-16T13:11:00.684Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.42" etag="skjFDAHfPFFY_aFgryrt" version="20.2.7" type="github" pages="10">
+<mxfile host="app.diagrams.net" modified="2022-11-16T13:11:33.517Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.42" etag="Ine1m2spkqGQCKGxYyG7" version="20.2.7" type="github" pages="10">
   <diagram id="G5NGnM2GY4aykBmWEyZv" name="Main">
     <mxGraphModel dx="916" dy="742" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
@@ -1126,8 +1126,8 @@
       </root>
     </mxGraphModel>
   </diagram>
-  <diagram id="B5gotehf2vD77rfGcC91" name="Страница 9">
-    <mxGraphModel dx="881" dy="695" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="1654" math="0" shadow="0">
+  <diagram id="B5gotehf2vD77rfGcC91" name="Class FSMCosmoiler">
+    <mxGraphModel dx="2114" dy="1668" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="1654" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -1553,7 +1553,7 @@
     </mxGraphModel>
   </diagram>
   <diagram name="Копия Страница 9" id="PeuoZLsX74JMQDGPwEH7">
-    <mxGraphModel dx="1510" dy="1191" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="881" dy="695" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="Z_SCdVBjqgUSNfzaP9oL-0" />
         <mxCell id="Z_SCdVBjqgUSNfzaP9oL-1" parent="Z_SCdVBjqgUSNfzaP9oL-0" />
