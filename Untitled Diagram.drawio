@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-11-17T10:59:59.404Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.42" etag="0FmPPlUUiq9XwDCFMf-z" version="20.5.3" type="github" pages="12">
+<mxfile host="app.diagrams.net" modified="2022-11-17T11:05:42.540Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.42" etag="Fr5q1FQ-AHdnmZsC0u-u" version="20.5.3" type="github" pages="12">
   <diagram id="G5NGnM2GY4aykBmWEyZv" name="Main">
     <mxGraphModel dx="1057" dy="834" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
@@ -1155,13 +1155,6 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="E5VSP37pPNaql7vNwmtm-6" value="begin()" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" edge="1" parent="2awHZieWLVAKrUNxr-tM-1">
-          <mxGeometry width="80" relative="1" as="geometry">
-            <mxPoint x="319.5000000000002" y="440" as="sourcePoint" />
-            <mxPoint x="-199.995" y="440" as="targetPoint" />
-            <Array as="points" />
-          </mxGeometry>
-        </mxCell>
         <mxCell id="E5VSP37pPNaql7vNwmtm-50" value="Off()" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" edge="1" parent="2awHZieWLVAKrUNxr-tM-1" source="2awHZieWLVAKrUNxr-tM-10">
           <mxGeometry width="80" relative="1" as="geometry">
             <mxPoint x="174.30999999999995" y="300" as="sourcePoint" />
@@ -1815,6 +1808,40 @@
             <mxPoint x="475.19181818181835" y="360" as="targetPoint" />
             <Array as="points">
               <mxPoint x="586.62" y="360" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="E5VSP37pPNaql7vNwmtm-6" value="send(server)" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="879.5000000000002" y="700" as="sourcePoint" />
+            <mxPoint x="360.005" y="700" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="E5VSP37pPNaql7vNwmtm-52" value="set = DataOdometerSp : int32" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="879.5" y="720" as="sourcePoint" />
+            <mxPoint x="359.92857142857144" y="720" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="731.32" y="720" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="E5VSP37pPNaql7vNwmtm-53" value="set = ParamsErr : {}" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" edge="1" parent="1" source="2awHZieWLVAKrUNxr-tM-10" target="rG7mjCi4eRINr5L9DsI6-1">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="884.57" y="640" as="sourcePoint" />
+            <mxPoint x="364.99857142857144" y="640" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="700" y="640" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="E5VSP37pPNaql7vNwmtm-54" value="set = Bright : int8" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint x="739.57" y="660" as="sourcePoint" />
+            <mxPoint x="479.9985714285713" y="660" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="700.07" y="660" />
             </Array>
           </mxGeometry>
         </mxCell>
