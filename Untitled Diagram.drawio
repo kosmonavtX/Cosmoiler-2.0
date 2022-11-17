@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-11-17T12:51:28.665Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.42" etag="nrBKo3oY6UcWj9m5YFCX" version="20.5.3" type="github" pages="12">
+<mxfile host="app.diagrams.net" modified="2022-11-17T12:52:43.790Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.42" etag="BpHcIQFVNMVb1CtPMYNl" version="20.5.3" type="github" pages="12">
   <diagram id="G5NGnM2GY4aykBmWEyZv" name="Main">
     <mxGraphModel dx="1057" dy="834" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
@@ -1127,7 +1127,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="B5gotehf2vD77rfGcC91" name="Class FSMCosmoiler">
-    <mxGraphModel dx="1626" dy="1283" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="2336" math="0" shadow="0">
+    <mxGraphModel dx="1510" dy="1191" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="2336" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -1330,7 +1330,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="E5VSP37pPNaql7vNwmtm-36" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;flipV=1;flipH=1;direction=east;" vertex="1" parent="IcIoZZVrLii81ebmNVBB-12">
-          <mxGeometry x="35" y="1790" width="10" height="20" as="geometry" />
+          <mxGeometry x="35" y="1700" width="10" height="20" as="geometry" />
         </mxCell>
         <mxCell id="E5VSP37pPNaql7vNwmtm-77" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;flipV=1;flipH=1;direction=east;" vertex="1" parent="IcIoZZVrLii81ebmNVBB-12">
           <mxGeometry x="35" y="1020" width="10" height="20" as="geometry" />
@@ -1474,7 +1474,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="E5VSP37pPNaql7vNwmtm-86" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;flipV=1;flipH=1;direction=east;" vertex="1" parent="2awHZieWLVAKrUNxr-tM-10">
-          <mxGeometry x="40" y="1533" width="10" height="20" as="geometry" />
+          <mxGeometry x="35" y="1340" width="10" height="20" as="geometry" />
         </mxCell>
         <mxCell id="2awHZieWLVAKrUNxr-tM-11" value="Async" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12;align=center;fillColor=#FFCC99;size=30;" parent="1" vertex="1">
           <mxGeometry x="840" y="40" width="80" height="1800" as="geometry" />
@@ -1785,12 +1785,12 @@
         </mxCell>
         <mxCell id="E5VSP37pPNaql7vNwmtm-37" value="get = PresentModuleGPS : bool" style="html=1;verticalAlign=bottom;endArrow=block;entryX=0.021;entryY=1;rounded=0;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" target="E5VSP37pPNaql7vNwmtm-36">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="879.5" y="1830" as="sourcePoint" />
+            <mxPoint x="879.5" y="1740" as="sourcePoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="E5VSP37pPNaql7vNwmtm-38" value="GPS is present" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;exitX=0.072;exitY=0.059;rounded=0;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="E5VSP37pPNaql7vNwmtm-36">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="879.5" y="1848.8200000000002" as="targetPoint" />
+            <mxPoint x="879.5" y="1758.8200000000002" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="E5VSP37pPNaql7vNwmtm-43" value="begin()" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" edge="1" parent="1" source="2awHZieWLVAKrUNxr-tM-10" target="lf_XDbJwSOqWHdBjvI8M-1">
@@ -1981,14 +1981,14 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="E5VSP37pPNaql7vNwmtm-87" value="get = StateOiler : enum" style="html=1;verticalAlign=bottom;endArrow=block;entryX=0.021;entryY=1;rounded=0;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" target="E5VSP37pPNaql7vNwmtm-86">
+        <mxCell id="E5VSP37pPNaql7vNwmtm-87" value="get = StateOiler : enum" style="html=1;verticalAlign=bottom;endArrow=block;entryX=0.021;entryY=1;rounded=0;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" target="E5VSP37pPNaql7vNwmtm-86" source="2awHZieWLVAKrUNxr-tM-11">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="879.5" y="1573" as="sourcePoint" />
+            <mxPoint x="874.5" y="1380" as="sourcePoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="E5VSP37pPNaql7vNwmtm-88" value="stateoiler" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;exitX=0.072;exitY=0.059;rounded=0;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="E5VSP37pPNaql7vNwmtm-86">
+        <mxCell id="E5VSP37pPNaql7vNwmtm-88" value="stateoiler" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;exitX=0.072;exitY=0.059;rounded=0;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="E5VSP37pPNaql7vNwmtm-86" target="2awHZieWLVAKrUNxr-tM-11">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="879.5" y="1591.8200000000002" as="targetPoint" />
+            <mxPoint x="874.5" y="1398.8200000000002" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="schrmW3NL_otS4B24oll-1" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" parent="1" vertex="1">
