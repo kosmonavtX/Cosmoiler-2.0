@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-11-23T15:03:52.295Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.56" etag="bBqFu65FusaJzW4Sg3k-" version="20.5.3" type="github" pages="12">
+<mxfile host="app.diagrams.net" modified="2022-11-23T15:05:21.416Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.56" etag="9aFjOXVPPSiFZAkw5jMb" version="20.5.3" type="github" pages="12">
   <diagram id="G5NGnM2GY4aykBmWEyZv" name="Main">
     <mxGraphModel dx="1057" dy="834" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
@@ -1127,7 +1127,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="B5gotehf2vD77rfGcC91" name="Class FSMCosmoiler">
-    <mxGraphModel dx="423" dy="334" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="2336" math="0" shadow="0">
+    <mxGraphModel dx="604" dy="477" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="2336" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -1475,7 +1475,7 @@
             <mxPoint x="179.5" y="480" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="E5VSP37pPNaql7vNwmtm-10" value="set = Params : {}" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" parent="2awHZieWLVAKrUNxr-tM-10" edge="1">
+        <mxCell id="E5VSP37pPNaql7vNwmtm-10" value="PUMP_PARAMS_SET : {}" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" parent="2awHZieWLVAKrUNxr-tM-10" edge="1">
           <mxGeometry width="80" relative="1" as="geometry">
             <mxPoint x="39.5" y="699" as="sourcePoint" />
             <mxPoint x="-101.31818181818153" y="699" as="targetPoint" />
@@ -1926,7 +1926,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="E5VSP37pPNaql7vNwmtm-6" value="send(server)" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" parent="1" edge="1">
+        <mxCell id="E5VSP37pPNaql7vNwmtm-6" value="action = send(server)" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" parent="1" edge="1">
           <mxGeometry width="80" relative="1" as="geometry">
             <mxPoint x="879.5000000000002" y="620" as="sourcePoint" />
             <mxPoint x="360.005" y="620" as="targetPoint" />
@@ -1954,7 +1954,7 @@
         <mxCell id="E5VSP37pPNaql7vNwmtm-99" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" parent="E5VSP37pPNaql7vNwmtm-67" vertex="1">
           <mxGeometry x="34.98000000000002" y="1340" width="10" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="E5VSP37pPNaql7vNwmtm-69" value="start()" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" parent="1" edge="1">
+        <mxCell id="E5VSP37pPNaql7vNwmtm-69" value="action = start()" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" parent="1" edge="1">
           <mxGeometry width="80" relative="1" as="geometry">
             <mxPoint x="879.6100000000001" y="640" as="sourcePoint" />
             <mxPoint x="479.81034482758605" y="640" as="targetPoint" />
@@ -1963,7 +1963,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="E5VSP37pPNaql7vNwmtm-70" value="set = Params : {}" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" parent="1" edge="1">
+        <mxCell id="E5VSP37pPNaql7vNwmtm-70" value="LED_PARAMS_SET : {}" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" parent="1" edge="1">
           <mxGeometry width="80" relative="1" as="geometry">
             <mxPoint x="880.8199999999999" y="759" as="sourcePoint" />
             <mxPoint x="480.0348837209302" y="759" as="targetPoint" />
@@ -1972,7 +1972,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="E5VSP37pPNaql7vNwmtm-71" value="set = Bright : int8" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" parent="1" edge="1">
+        <mxCell id="E5VSP37pPNaql7vNwmtm-71" value="LED_BRIGHT_SET : i8" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" parent="1" edge="1">
           <mxGeometry width="80" relative="1" as="geometry">
             <mxPoint x="879.5700000000002" y="778.75" as="sourcePoint" />
             <mxPoint x="480.0348837209302" y="778.75" as="targetPoint" />
