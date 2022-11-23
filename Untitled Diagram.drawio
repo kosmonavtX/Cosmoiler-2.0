@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-11-23T15:01:05.780Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.56" etag="XUsd3e3--UPurN9Cykpn" version="20.5.3" type="github" pages="12">
+<mxfile host="app.diagrams.net" modified="2022-11-23T15:03:52.295Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.56" etag="bBqFu65FusaJzW4Sg3k-" version="20.5.3" type="github" pages="12">
   <diagram id="G5NGnM2GY4aykBmWEyZv" name="Main">
     <mxGraphModel dx="1057" dy="834" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
@@ -1127,7 +1127,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="B5gotehf2vD77rfGcC91" name="Class FSMCosmoiler">
-    <mxGraphModel dx="1510" dy="1191" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="2336" math="0" shadow="0">
+    <mxGraphModel dx="423" dy="334" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="2336" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -1484,7 +1484,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="E5VSP37pPNaql7vNwmtm-53" value="set = ParamsErr : {}" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" parent="2awHZieWLVAKrUNxr-tM-10" edge="1">
+        <mxCell id="E5VSP37pPNaql7vNwmtm-53" value="LED_PARAMSERR_SET : {}" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" parent="2awHZieWLVAKrUNxr-tM-10" edge="1">
           <mxGeometry width="80" relative="1" as="geometry">
             <mxPoint x="39.5" y="659" as="sourcePoint" />
             <mxPoint x="-220.26923076923072" y="659" as="targetPoint" />
@@ -1493,7 +1493,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="E5VSP37pPNaql7vNwmtm-54" value="set = Bright : int8" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" parent="2awHZieWLVAKrUNxr-tM-10" edge="1">
+        <mxCell id="E5VSP37pPNaql7vNwmtm-54" value="LED_BRIGHT_SET : i8" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" parent="2awHZieWLVAKrUNxr-tM-10" edge="1">
           <mxGeometry width="80" relative="1" as="geometry">
             <mxPoint x="39.57000000000005" y="678.75" as="sourcePoint" />
             <mxPoint x="-220.00142857142868" y="678.75" as="targetPoint" />
@@ -2140,7 +2140,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="_0bz0rMx52GlQrNNUtjY-36" value="1) Доступ через функции посредника" style="html=1;dropTarget=0;fillStyle=solid;align=left;" vertex="1" parent="1">
-          <mxGeometry x="80" y="1820" width="320" height="50" as="geometry" />
+          <mxGeometry x="80" y="1820" width="240" height="50" as="geometry" />
         </mxCell>
         <mxCell id="_0bz0rMx52GlQrNNUtjY-37" value="" style="shape=module;jettyWidth=8;jettyHeight=4;fillStyle=solid;" vertex="1" parent="_0bz0rMx52GlQrNNUtjY-36">
           <mxGeometry x="1" width="20" height="20" relative="1" as="geometry">
