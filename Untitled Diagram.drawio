@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-11-23T14:52:37.633Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.56" etag="Mf3F8xXZ7JzACTL_6nJD" version="20.5.3" type="github" pages="12">
+<mxfile host="app.diagrams.net" modified="2022-11-23T14:53:04.901Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.56" etag="oE5SQkmjmLo5keVmUtLS" version="20.5.3" type="github" pages="12">
   <diagram id="G5NGnM2GY4aykBmWEyZv" name="Main">
     <mxGraphModel dx="1057" dy="834" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
@@ -1127,7 +1127,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="B5gotehf2vD77rfGcC91" name="Class FSMCosmoiler">
-    <mxGraphModel dx="1244" dy="981" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="2336" math="0" shadow="0">
+    <mxGraphModel dx="423" dy="334" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="2336" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -1526,12 +1526,12 @@
         <mxCell id="E5VSP37pPNaql7vNwmtm-89" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" parent="2awHZieWLVAKrUNxr-tM-11" vertex="1">
           <mxGeometry x="35.32999999999993" y="1300" width="10" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="E5VSP37pPNaql7vNwmtm-90" value="count clients" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;exitX=0;exitY=0.95;rounded=0;" parent="2awHZieWLVAKrUNxr-tM-11" source="E5VSP37pPNaql7vNwmtm-89" edge="1">
+        <mxCell id="E5VSP37pPNaql7vNwmtm-90" value="count clients : i8" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;exitX=0;exitY=0.95;rounded=0;" parent="2awHZieWLVAKrUNxr-tM-11" source="E5VSP37pPNaql7vNwmtm-89" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="-100.00333333333333" y="1319" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="E5VSP37pPNaql7vNwmtm-91" value="get = count : int8" style="html=1;verticalAlign=bottom;endArrow=block;entryX=0;entryY=0;rounded=0;" parent="2awHZieWLVAKrUNxr-tM-11" target="E5VSP37pPNaql7vNwmtm-89" edge="1">
+        <mxCell id="E5VSP37pPNaql7vNwmtm-91" value="ASYNC_GET" style="html=1;verticalAlign=bottom;endArrow=block;entryX=0;entryY=0;rounded=0;" parent="2awHZieWLVAKrUNxr-tM-11" target="E5VSP37pPNaql7vNwmtm-89" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="-100.00333333333333" y="1300" as="sourcePoint" />
           </mxGeometry>
