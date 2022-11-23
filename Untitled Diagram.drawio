@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-11-23T15:22:28.532Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.56" etag="G4AEsCfiv3lZmy3Wj9q3" version="20.5.3" type="github" pages="12">
+<mxfile host="app.diagrams.net" modified="2022-11-23T15:24:04.814Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.56" etag="y58sRLG4nJ1f72OLVkr5" version="20.5.3" type="github" pages="12">
   <diagram id="G5NGnM2GY4aykBmWEyZv" name="Main">
     <mxGraphModel dx="1057" dy="834" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
@@ -1127,7 +1127,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="B5gotehf2vD77rfGcC91" name="Class FSMCosmoiler">
-    <mxGraphModel dx="604" dy="477" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="2336" math="0" shadow="0">
+    <mxGraphModel dx="1510" dy="1191" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="2336" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -1339,7 +1339,7 @@
         <mxCell id="_0bz0rMx52GlQrNNUtjY-15" value="" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.annotation_2;align=left;labelPosition=right;pointerEvents=1;flipV=0;flipH=0;" vertex="1" parent="lf_XDbJwSOqWHdBjvI8M-1">
           <mxGeometry x="30" y="1071" width="10" height="120" as="geometry" />
         </mxCell>
-        <mxCell id="_0bz0rMx52GlQrNNUtjY-17" value="1)" style="whiteSpace=wrap;html=1;rounded=1;arcSize=50;align=center;verticalAlign=middle;strokeWidth=1;autosize=1;spacing=4;treeFolding=1;treeMoving=1;newEdgeStyle={&quot;edgeStyle&quot;:&quot;entityRelationEdgeStyle&quot;,&quot;startArrow&quot;:&quot;none&quot;,&quot;endArrow&quot;:&quot;none&quot;,&quot;segment&quot;:10,&quot;curved&quot;:1};flipH=1;" vertex="1" parent="lf_XDbJwSOqWHdBjvI8M-1">
+        <mxCell id="_0bz0rMx52GlQrNNUtjY-17" value="1)" style="whiteSpace=wrap;html=1;rounded=1;arcSize=21;align=center;verticalAlign=middle;strokeWidth=1;autosize=1;spacing=4;treeFolding=1;treeMoving=1;newEdgeStyle={&quot;edgeStyle&quot;:&quot;entityRelationEdgeStyle&quot;,&quot;startArrow&quot;:&quot;none&quot;,&quot;endArrow&quot;:&quot;none&quot;,&quot;segment&quot;:10,&quot;curved&quot;:1};flipH=1;" vertex="1" parent="lf_XDbJwSOqWHdBjvI8M-1">
           <mxGeometry x="-20" y="1331" width="40" height="20" as="geometry" />
         </mxCell>
         <mxCell id="_0bz0rMx52GlQrNNUtjY-18" value="" style="edgeStyle=entityRelationEdgeStyle;startArrow=none;endArrow=none;segment=10;curved=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="lf_XDbJwSOqWHdBjvI8M-1" target="_0bz0rMx52GlQrNNUtjY-17" source="_0bz0rMx52GlQrNNUtjY-14">
@@ -2089,20 +2089,6 @@
         <mxCell id="_0bz0rMx52GlQrNNUtjY-2" value="CONFIG_INIT" style="shape=umlFrame;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;width=90;height=25;flipH=1;" vertex="1" parent="1">
           <mxGeometry x="210" y="165" width="620" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="_0bz0rMx52GlQrNNUtjY-23" value="" style="group" vertex="1" connectable="0" parent="1">
-          <mxGeometry x="360" y="1551" width="80" height="160" as="geometry" />
-        </mxCell>
-        <mxCell id="_0bz0rMx52GlQrNNUtjY-11" value="" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.annotation_2;align=left;labelPosition=right;pointerEvents=1;flipV=1;flipH=1;" vertex="1" parent="_0bz0rMx52GlQrNNUtjY-23">
-          <mxGeometry width="10" height="160" as="geometry" />
-        </mxCell>
-        <mxCell id="_0bz0rMx52GlQrNNUtjY-12" value="1)" style="whiteSpace=wrap;html=1;rounded=1;arcSize=50;align=center;verticalAlign=middle;strokeWidth=1;autosize=1;spacing=4;treeFolding=1;treeMoving=1;newEdgeStyle={&quot;edgeStyle&quot;:&quot;entityRelationEdgeStyle&quot;,&quot;startArrow&quot;:&quot;none&quot;,&quot;endArrow&quot;:&quot;none&quot;,&quot;segment&quot;:10,&quot;curved&quot;:1};" vertex="1" parent="_0bz0rMx52GlQrNNUtjY-23">
-          <mxGeometry x="40" y="40" width="40" height="20" as="geometry" />
-        </mxCell>
-        <mxCell id="_0bz0rMx52GlQrNNUtjY-13" value="" style="edgeStyle=entityRelationEdgeStyle;startArrow=none;endArrow=none;segment=10;curved=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" target="_0bz0rMx52GlQrNNUtjY-12" parent="_0bz0rMx52GlQrNNUtjY-23" source="_0bz0rMx52GlQrNNUtjY-11">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint y="80" as="sourcePoint" />
-          </mxGeometry>
-        </mxCell>
         <mxCell id="_0bz0rMx52GlQrNNUtjY-28" value="" style="group" vertex="1" connectable="0" parent="1">
           <mxGeometry x="1120" y="1711" width="80" height="40" as="geometry" />
         </mxCell>
@@ -2170,6 +2156,23 @@
           <mxGeometry relative="1" as="geometry">
             <mxPoint as="sourcePoint" />
           </mxGeometry>
+        </mxCell>
+        <mxCell id="_0bz0rMx52GlQrNNUtjY-56" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="360" y="1390" width="80" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="_0bz0rMx52GlQrNNUtjY-57" value="" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.annotation_2;align=left;labelPosition=right;pointerEvents=1;flipV=1;flipH=1;" vertex="1" parent="_0bz0rMx52GlQrNNUtjY-56">
+          <mxGeometry width="10" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="_0bz0rMx52GlQrNNUtjY-58" value="1)" style="whiteSpace=wrap;html=1;rounded=1;arcSize=28;align=center;verticalAlign=middle;strokeWidth=1;autosize=1;spacing=4;treeFolding=1;treeMoving=1;newEdgeStyle={&quot;edgeStyle&quot;:&quot;entityRelationEdgeStyle&quot;,&quot;startArrow&quot;:&quot;none&quot;,&quot;endArrow&quot;:&quot;none&quot;,&quot;segment&quot;:10,&quot;curved&quot;:1};" vertex="1" parent="_0bz0rMx52GlQrNNUtjY-56">
+          <mxGeometry x="40" width="40" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="_0bz0rMx52GlQrNNUtjY-59" value="" style="edgeStyle=entityRelationEdgeStyle;startArrow=none;endArrow=none;segment=10;curved=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="_0bz0rMx52GlQrNNUtjY-56" source="_0bz0rMx52GlQrNNUtjY-57" target="_0bz0rMx52GlQrNNUtjY-58">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint y="20" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_0bz0rMx52GlQrNNUtjY-60" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="_0bz0rMx52GlQrNNUtjY-56" source="_0bz0rMx52GlQrNNUtjY-58" target="_0bz0rMx52GlQrNNUtjY-58">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
