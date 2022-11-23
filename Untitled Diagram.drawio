@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-11-23T15:24:04.814Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.56" etag="y58sRLG4nJ1f72OLVkr5" version="20.5.3" type="github" pages="12">
+<mxfile host="app.diagrams.net" modified="2022-11-23T15:28:01.983Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.56" etag="7DXt5vEcGkUu0Vw_mXHz" version="20.5.3" type="github" pages="12">
   <diagram id="G5NGnM2GY4aykBmWEyZv" name="Main">
     <mxGraphModel dx="1057" dy="834" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
@@ -1127,7 +1127,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="B5gotehf2vD77rfGcC91" name="Class FSMCosmoiler">
-    <mxGraphModel dx="1510" dy="1191" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="2336" math="0" shadow="0">
+    <mxGraphModel dx="423" dy="334" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="2336" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -1297,12 +1297,12 @@
         <mxCell id="lDC1LQerUzwoCTIlgsQ2-2" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;flipV=1;flipH=1;direction=east;" parent="lf_XDbJwSOqWHdBjvI8M-1" vertex="1">
           <mxGeometry x="35" y="1561" width="10" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="lDC1LQerUzwoCTIlgsQ2-3" value="mode" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;exitX=0.072;exitY=0.059;rounded=0;exitDx=0;exitDy=0;exitPerimeter=0;" parent="lf_XDbJwSOqWHdBjvI8M-1" source="lDC1LQerUzwoCTIlgsQ2-2" edge="1">
+        <mxCell id="lDC1LQerUzwoCTIlgsQ2-3" value="notify = MODE : modes" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;exitX=0.072;exitY=0.059;rounded=0;exitDx=0;exitDy=0;exitPerimeter=0;" parent="lf_XDbJwSOqWHdBjvI8M-1" source="lDC1LQerUzwoCTIlgsQ2-2" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="319.5000000000001" y="1579.82" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="lDC1LQerUzwoCTIlgsQ2-4" value="get = Mode : enum" style="html=1;verticalAlign=bottom;endArrow=block;entryX=0.021;entryY=1;rounded=0;entryDx=0;entryDy=0;entryPerimeter=0;" parent="lf_XDbJwSOqWHdBjvI8M-1" target="lDC1LQerUzwoCTIlgsQ2-2" edge="1">
+        <mxCell id="lDC1LQerUzwoCTIlgsQ2-4" value="get = Mode : modes" style="html=1;verticalAlign=bottom;endArrow=block;entryX=0.021;entryY=1;rounded=0;entryDx=0;entryDy=0;entryPerimeter=0;" parent="lf_XDbJwSOqWHdBjvI8M-1" target="lDC1LQerUzwoCTIlgsQ2-2" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="319.5000000000001" y="1561" as="sourcePoint" />
           </mxGeometry>
@@ -1310,12 +1310,12 @@
         <mxCell id="lDC1LQerUzwoCTIlgsQ2-5" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;flipV=1;flipH=1;direction=east;" parent="lf_XDbJwSOqWHdBjvI8M-1" vertex="1">
           <mxGeometry x="35" y="1601" width="10" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="lDC1LQerUzwoCTIlgsQ2-6" value="preset" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;exitX=0.072;exitY=0.059;rounded=0;exitDx=0;exitDy=0;exitPerimeter=0;" parent="lf_XDbJwSOqWHdBjvI8M-1" source="lDC1LQerUzwoCTIlgsQ2-5" edge="1">
+        <mxCell id="lDC1LQerUzwoCTIlgsQ2-6" value="notify = PRESET : modes" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;exitX=0.072;exitY=0.059;rounded=0;exitDx=0;exitDy=0;exitPerimeter=0;" parent="lf_XDbJwSOqWHdBjvI8M-1" source="lDC1LQerUzwoCTIlgsQ2-5" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="319.5000000000001" y="1619.82" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="lDC1LQerUzwoCTIlgsQ2-7" value="get = Preset : enum" style="html=1;verticalAlign=bottom;endArrow=block;entryX=0.021;entryY=1;rounded=0;entryDx=0;entryDy=0;entryPerimeter=0;" parent="lf_XDbJwSOqWHdBjvI8M-1" target="lDC1LQerUzwoCTIlgsQ2-5" edge="1">
+        <mxCell id="lDC1LQerUzwoCTIlgsQ2-7" value="get = Preset : modes" style="html=1;verticalAlign=bottom;endArrow=block;entryX=0.021;entryY=1;rounded=0;entryDx=0;entryDy=0;entryPerimeter=0;" parent="lf_XDbJwSOqWHdBjvI8M-1" target="lDC1LQerUzwoCTIlgsQ2-5" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="319.5000000000001" y="1601" as="sourcePoint" />
           </mxGeometry>
@@ -1354,6 +1354,9 @@
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="35" y="1131" as="sourcePoint" />
           </mxGeometry>
+        </mxCell>
+        <mxCell id="_0bz0rMx52GlQrNNUtjY-61" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;flipV=1;flipH=1;direction=west;" vertex="1" parent="lf_XDbJwSOqWHdBjvI8M-1">
+          <mxGeometry x="35" y="639" width="10" height="20" as="geometry" />
         </mxCell>
         <mxCell id="lf_XDbJwSOqWHdBjvI8M-17" value="LoadConfig()" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" parent="1" edge="1">
           <mxGeometry width="80" relative="1" as="geometry">
@@ -1711,7 +1714,7 @@
             <mxPoint x="80.00380952380941" y="1500" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="schrmW3NL_otS4B24oll-4" value="COSM_MODE_SET : modes" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" parent="1" edge="1">
+        <mxCell id="schrmW3NL_otS4B24oll-4" value="COSM_MODE_SET : modes" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;entryX=1.069;entryY=0.003;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" edge="1" target="_0bz0rMx52GlQrNNUtjY-61">
           <mxGeometry width="80" relative="1" as="geometry">
             <mxPoint x="739.5" y="679" as="sourcePoint" />
             <mxPoint x="80.03488372093022" y="679" as="targetPoint" />
@@ -2173,6 +2176,12 @@
         </mxCell>
         <mxCell id="_0bz0rMx52GlQrNNUtjY-60" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="_0bz0rMx52GlQrNNUtjY-56" source="_0bz0rMx52GlQrNNUtjY-58" target="_0bz0rMx52GlQrNNUtjY-58">
           <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_0bz0rMx52GlQrNNUtjY-62" value="notify = MODE" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;exitX=0.072;exitY=0.059;rounded=0;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="360.27" y="697.9999999999997" as="targetPoint" />
+            <mxPoint x="85.04999999999997" y="698.0000000000001" as="sourcePoint" />
+          </mxGeometry>
         </mxCell>
       </root>
     </mxGraphModel>
