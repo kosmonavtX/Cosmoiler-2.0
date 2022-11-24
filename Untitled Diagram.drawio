@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-11-24T14:24:07.756Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.56" etag="C5ltoA162TU5CU-UDRGg" version="20.6.0" type="github" pages="12">
+<mxfile host="app.diagrams.net" modified="2022-11-24T14:26:04.365Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.56" etag="x8ovQbFzBJkhiT2kNTwD" version="20.6.0" type="github" pages="12">
   <diagram id="G5NGnM2GY4aykBmWEyZv" name="Main">
     <mxGraphModel dx="1057" dy="834" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
@@ -1542,8 +1542,8 @@
         </mxCell>
         <mxCell id="E5VSP37pPNaql7vNwmtm-57" value="begin()" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" parent="2awHZieWLVAKrUNxr-tM-11" edge="1">
           <mxGeometry width="80" relative="1" as="geometry">
-            <mxPoint x="-100" y="560" as="sourcePoint" />
-            <mxPoint x="39.5" y="560" as="targetPoint" />
+            <mxPoint x="-100" y="480" as="sourcePoint" />
+            <mxPoint x="39.5" y="480" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="E5VSP37pPNaql7vNwmtm-59" value="EmergencyBegin()" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" parent="2awHZieWLVAKrUNxr-tM-11" edge="1">
@@ -1768,12 +1768,12 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="E5VSP37pPNaql7vNwmtm-44" value="Task::Start()" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" parent="1" edge="1">
+        <mxCell id="E5VSP37pPNaql7vNwmtm-44" value="action = COSM_TASK" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" parent="1" edge="1">
           <mxGeometry width="80" relative="1" as="geometry">
-            <mxPoint x="739.5" y="579" as="sourcePoint" />
-            <mxPoint x="80.22222222222223" y="579" as="targetPoint" />
+            <mxPoint x="739.28" y="500" as="sourcePoint" />
+            <mxPoint x="80.00222222222223" y="500" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="120.22999999999999" y="579" />
+              <mxPoint x="120.00999999999999" y="500" />
             </Array>
           </mxGeometry>
         </mxCell>
@@ -2070,21 +2070,21 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="y6rfKWDGL64xvSqzT74t-27" value="Task::Start()" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" edge="1" parent="1" source="2awHZieWLVAKrUNxr-tM-10" target="2awHZieWLVAKrUNxr-tM-12">
+        <mxCell id="y6rfKWDGL64xvSqzT74t-27" value="action = BUTTON_TASK" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" edge="1" parent="1">
           <mxGeometry width="80" relative="1" as="geometry">
-            <mxPoint x="680.0022222222221" y="540" as="sourcePoint" />
-            <mxPoint x="1059.28" y="540" as="targetPoint" />
+            <mxPoint x="739.810344827586" y="459" as="sourcePoint" />
+            <mxPoint x="999.5" y="459" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="889.78" y="540" />
+              <mxPoint x="889.78" y="459" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="E5VSP37pPNaql7vNwmtm-5" value="Task::Start()" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" parent="1" edge="1">
+        <mxCell id="E5VSP37pPNaql7vNwmtm-5" value="action = TELE_TASK" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" parent="1" edge="1">
           <mxGeometry width="80" relative="1" as="geometry">
-            <mxPoint x="739.6299999999998" y="560" as="sourcePoint" />
-            <mxPoint x="360.005" y="560" as="targetPoint" />
+            <mxPoint x="739.6199999999998" y="480" as="sourcePoint" />
+            <mxPoint x="359.995" y="480" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="660.13" y="560" />
+              <mxPoint x="660.12" y="480" />
             </Array>
           </mxGeometry>
         </mxCell>
