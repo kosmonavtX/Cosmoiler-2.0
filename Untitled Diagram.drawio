@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-11-24T14:29:10.020Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.56" etag="QIzouyI8VkXQzi12C6ty" version="20.6.0" type="github" pages="12">
+<mxfile host="app.diagrams.net" modified="2022-11-24T14:30:01.815Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.56" etag="zT6K90QBHnFeP_dsqVh2" version="20.6.0" type="github" pages="12">
   <diagram id="G5NGnM2GY4aykBmWEyZv" name="Main">
     <mxGraphModel dx="1057" dy="834" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
@@ -1798,7 +1798,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="E5VSP37pPNaql7vNwmtm-51" value="Task::Post()" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" parent="1" edge="1">
+        <mxCell id="E5VSP37pPNaql7vNwmtm-51" value="action = LED_POST" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" parent="1" edge="1">
           <mxGeometry width="80" relative="1" as="geometry">
             <mxPoint x="739.5" y="680.0000000000001" as="sourcePoint" />
             <mxPoint x="480.2222222222223" y="680.0000000000001" as="targetPoint" />
