@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-11-24T14:41:04.841Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.56" etag="VGqL45Jdhiz0YhVctZQY" version="20.6.0" type="github" pages="12">
+<mxfile host="app.diagrams.net" modified="2022-11-24T14:42:12.223Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.56" etag="KhDT8v5p8smAdSq2G2f5" version="20.6.0" type="github" pages="12">
   <diagram id="G5NGnM2GY4aykBmWEyZv" name="Main">
     <mxGraphModel dx="1057" dy="834" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
@@ -1127,7 +1127,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="B5gotehf2vD77rfGcC91" name="Class FSMCosmoiler">
-    <mxGraphModel dx="1321" dy="1043" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="2336" math="0" shadow="0">
+    <mxGraphModel dx="529" dy="417" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="2336" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -1683,7 +1683,7 @@
             <mxPoint x="80.00380952380941" y="1619" as="sourcePoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="QMI8zAP1Dhesbta1C3Y5-2" value="notify = Paramsled" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;exitX=0;exitY=0.95;rounded=0;" parent="1" source="QMI8zAP1Dhesbta1C3Y5-1" edge="1">
+        <mxCell id="QMI8zAP1Dhesbta1C3Y5-2" value="notify = LED_PARAMS : {}" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;exitX=0;exitY=0.95;rounded=0;" parent="1" source="QMI8zAP1Dhesbta1C3Y5-1" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="80.00380952380941" y="1638" as="targetPoint" />
           </mxGeometry>
@@ -1905,14 +1905,9 @@
         <mxCell id="schrmW3NL_otS4B24oll-1" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" parent="1" vertex="1">
           <mxGeometry x="595" y="1659" width="10" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="schrmW3NL_otS4B24oll-2" value="notify = state" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;exitX=0;exitY=0.95;rounded=0;" parent="1" source="schrmW3NL_otS4B24oll-1" edge="1">
+        <mxCell id="schrmW3NL_otS4B24oll-2" value="notify = PUMP_TRIGGER_STATE : bool" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;exitX=0;exitY=0.95;rounded=0;" parent="1" source="schrmW3NL_otS4B24oll-1" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="80.0238095238094" y="1678" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="schrmW3NL_otS4B24oll-3" value="get = ChangeState : ptr" style="html=1;verticalAlign=bottom;endArrow=block;entryX=0;entryY=0;rounded=0;" parent="1" target="schrmW3NL_otS4B24oll-1" edge="1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="80.0238095238094" y="1659" as="sourcePoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="E5VSP37pPNaql7vNwmtm-97" value="get = System : ptr" style="html=1;verticalAlign=bottom;endArrow=block;entryX=0.021;entryY=1;rounded=0;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" target="E5VSP37pPNaql7vNwmtm-96" edge="1">
