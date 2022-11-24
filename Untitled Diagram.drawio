@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-11-24T21:22:21.859Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.56" etag="XBeIiwt37SrB9inato_I" version="20.6.0" type="github" pages="12">
+<mxfile host="app.diagrams.net" modified="2022-11-24T21:22:36.601Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.56" etag="7HBynI5dOywSPl4oD2jt" version="20.6.0" type="github" pages="12">
   <diagram id="G5NGnM2GY4aykBmWEyZv" name="Main">
     <mxGraphModel dx="765" dy="571" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
@@ -1413,14 +1413,6 @@
         <mxCell id="lDC1LQerUzwoCTIlgsQ2-12" value="get = ptrState : ptr" style="html=1;verticalAlign=bottom;endArrow=block;entryX=0.021;entryY=1;rounded=0;entryDx=0;entryDy=0;entryPerimeter=0;" parent="lf_XDbJwSOqWHdBjvI8M-1" target="lDC1LQerUzwoCTIlgsQ2-1" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="319.5000000000001" y="1742" as="sourcePoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="lDC1LQerUzwoCTIlgsQ2-5" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;flipV=1;flipH=1;direction=east;" parent="lf_XDbJwSOqWHdBjvI8M-1" vertex="1">
-          <mxGeometry x="35" y="1781" width="10" height="20" as="geometry" />
-        </mxCell>
-        <mxCell id="lDC1LQerUzwoCTIlgsQ2-6" value="notify = PRESET : modes" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;exitX=0.072;exitY=0.059;rounded=0;exitDx=0;exitDy=0;exitPerimeter=0;" parent="lf_XDbJwSOqWHdBjvI8M-1" source="lDC1LQerUzwoCTIlgsQ2-5" edge="1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="319.5000000000001" y="1799.82" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="lDC1LQerUzwoCTIlgsQ2-8" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;flipV=1;flipH=1;direction=east;" parent="lf_XDbJwSOqWHdBjvI8M-1" vertex="1">
