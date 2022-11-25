@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-11-25T22:26:17.691Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.56" etag="USP6zz4PvqIjtZtZ28_k" version="20.6.0" type="github" pages="12">
+<mxfile host="app.diagrams.net" modified="2022-11-25T22:36:56.844Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.56" etag="E9K2_5QkkP6ljoGFatBn" version="20.6.0" type="github" pages="12">
   <diagram id="G5NGnM2GY4aykBmWEyZv" name="Main">
     <mxGraphModel dx="765" dy="571" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
@@ -1648,7 +1648,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="fKH_LjXG3_nITKA7alzQ-2" value="set = TimerRemainingMS(ms)" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" parent="1" edge="1">
+        <mxCell id="fKH_LjXG3_nITKA7alzQ-2" value="notify = TIMER_REMAINS : u32" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;dashed=1;" parent="1" edge="1">
           <mxGeometry width="80" relative="1" as="geometry">
             <mxPoint x="79.44736842105249" y="978" as="sourcePoint" />
             <mxPoint x="359.5" y="978" as="targetPoint" />
