@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-11-25T22:36:56.844Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.56" etag="E9K2_5QkkP6ljoGFatBn" version="20.6.0" type="github" pages="12">
+<mxfile host="app.diagrams.net" modified="2022-11-25T22:51:26.198Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.56" etag="Jalr3i1rk_K-4zIVZ6-4" version="20.6.0" type="github" pages="12">
   <diagram id="G5NGnM2GY4aykBmWEyZv" name="Main">
     <mxGraphModel dx="765" dy="571" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
@@ -1127,15 +1127,12 @@
     </mxGraphModel>
   </diagram>
   <diagram id="B5gotehf2vD77rfGcC91" name="Class FSMCosmoiler">
-    <mxGraphModel dx="414" dy="309" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="2336" math="0" shadow="0">
+    <mxGraphModel dx="494" dy="368" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="2336" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="rG7mjCi4eRINr5L9DsI6-1" value="Flasher" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12;align=center;fillColor=#FFCC99;size=30;" parent="1" vertex="1">
           <mxGeometry x="440" y="40" width="80" height="1980" as="geometry" />
-        </mxCell>
-        <mxCell id="QMI8zAP1Dhesbta1C3Y5-1" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" parent="rG7mjCi4eRINr5L9DsI6-1" vertex="1">
-          <mxGeometry x="35.17000000000006" y="1679" width="10" height="20" as="geometry" />
         </mxCell>
         <mxCell id="lf_XDbJwSOqWHdBjvI8M-2" value="Config" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12;align=center;fillColor=#FFCC99;size=30;" parent="1" vertex="1">
           <mxGeometry x="180" y="40" width="80" height="1980" as="geometry" />
@@ -1730,14 +1727,16 @@
             <mxPoint x="80.0238095238094" y="1399" as="sourcePoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="QMI8zAP1Dhesbta1C3Y5-3" value="get = ParamsLed : ptr" style="html=1;verticalAlign=bottom;endArrow=block;entryX=0;entryY=0;rounded=0;" parent="1" target="QMI8zAP1Dhesbta1C3Y5-1" edge="1">
+        <mxCell id="QMI8zAP1Dhesbta1C3Y5-3" value="action = LED_PARAMS_SAVE" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" parent="1" target="rG7mjCi4eRINr5L9DsI6-1" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="80.00380952380941" y="1719" as="sourcePoint" />
+            <mxPoint x="475.16999999999996" y="1719" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="QMI8zAP1Dhesbta1C3Y5-2" value="notify = LED_PARAMS : {}" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;exitX=0;exitY=0.95;rounded=0;" parent="1" source="QMI8zAP1Dhesbta1C3Y5-1" edge="1">
+        <mxCell id="QMI8zAP1Dhesbta1C3Y5-2" value="action = LED_PARAMS_LOAD" style="html=1;verticalAlign=bottom;endArrow=block;endSize=6;exitX=0;exitY=0.95;rounded=0;endFill=1;" parent="1" edge="1" target="rG7mjCi4eRINr5L9DsI6-1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="80.00380952380941" y="1738" as="targetPoint" />
+            <mxPoint x="475.1700000000001" y="1738" as="targetPoint" />
+            <mxPoint x="80.00380952380954" y="1737.9999999999995" as="sourcePoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="schrmW3NL_otS4B24oll-4" value="action = MODE_SET : modes" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;" parent="1" edge="1">
