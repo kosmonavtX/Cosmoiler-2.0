@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-11-27T22:41:38.178Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.56" etag="JeEPvNePFkeXMUZ7mcGT" version="20.6.0" type="github" pages="12">
+<mxfile host="app.diagrams.net" modified="2022-11-27T23:35:17.343Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.56" etag="6rj77dlnOE1OZrmkHDOY" version="20.6.0" type="github" pages="12">
   <diagram id="G5NGnM2GY4aykBmWEyZv" name="Main">
     <mxGraphModel dx="765" dy="571" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
@@ -1127,7 +1127,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="B5gotehf2vD77rfGcC91" name="Class FSMCosmoiler">
-    <mxGraphModel dx="437" dy="326" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="2336" math="0" shadow="0">
+    <mxGraphModel dx="425" dy="317" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="2336" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -2190,6 +2190,13 @@
             <Array as="points">
               <mxPoint x="110.07" y="820" />
             </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="gwr1AirXI0hxJ1XIKppZ-6" value="notify = ODOMETER_M : u32" style="html=1;verticalAlign=middle;endArrow=open;dashed=1;endSize=8;exitX=0;exitY=0.95;rounded=0;align=right;" edge="1" parent="1" target="IcIoZZVrLii81ebmNVBB-12">
+          <mxGeometry x="0.7455" relative="1" as="geometry">
+            <mxPoint x="355" y="1040" as="targetPoint" />
+            <mxPoint x="80" y="1040" as="sourcePoint" />
+            <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
       </root>
