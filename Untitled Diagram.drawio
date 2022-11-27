@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-11-27T23:45:25.473Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.56" etag="kZZvYkWSh4CZJw8D71gz" version="20.6.0" type="github" pages="12">
+<mxfile host="app.diagrams.net" modified="2022-11-27T23:45:56.374Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.56" etag="p3AWv1cQgKqV_YuvpZqK" version="20.6.0" type="github" pages="12">
   <diagram id="G5NGnM2GY4aykBmWEyZv" name="Main">
     <mxGraphModel dx="765" dy="571" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
@@ -1127,7 +1127,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="B5gotehf2vD77rfGcC91" name="Class FSMCosmoiler">
-    <mxGraphModel dx="729" dy="544" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="2336" math="0" shadow="0">
+    <mxGraphModel dx="356" dy="266" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="2336" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -1315,9 +1315,10 @@
         <mxCell id="_0bz0rMx52GlQrNNUtjY-53" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" parent="_0bz0rMx52GlQrNNUtjY-52" vertex="1">
           <mxGeometry x="275" width="10.33" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="_0bz0rMx52GlQrNNUtjY-54" value="notify = TELE_AVGSPEED : i16" style="html=1;verticalAlign=middle;endArrow=open;dashed=1;endSize=8;exitX=0;exitY=0.95;rounded=0;align=left;" parent="_0bz0rMx52GlQrNNUtjY-52" source="_0bz0rMx52GlQrNNUtjY-53" edge="1">
+        <mxCell id="_0bz0rMx52GlQrNNUtjY-54" value="notify = TELE_AVGSPEED : i16" style="html=1;verticalAlign=middle;endArrow=open;dashed=1;endSize=8;exitX=0;exitY=0.95;rounded=0;align=left;" parent="_0bz0rMx52GlQrNNUtjY-52" edge="1">
           <mxGeometry x="0.7067" y="1" relative="1" as="geometry">
-            <mxPoint y="19" as="targetPoint" />
+            <mxPoint y="9" as="targetPoint" />
+            <mxPoint x="275.00000000000006" y="9" as="sourcePoint" />
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
@@ -1981,9 +1982,10 @@
         <mxCell id="_0bz0rMx52GlQrNNUtjY-44" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" parent="_0bz0rMx52GlQrNNUtjY-43" vertex="1">
           <mxGeometry x="275" width="10.33" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="_0bz0rMx52GlQrNNUtjY-45" value="notify = TELE_FIX_GPS : bool" style="html=1;verticalAlign=middle;endArrow=open;dashed=1;endSize=8;exitX=0;exitY=0.95;rounded=0;align=left;" parent="_0bz0rMx52GlQrNNUtjY-43" source="_0bz0rMx52GlQrNNUtjY-44" edge="1">
+        <mxCell id="_0bz0rMx52GlQrNNUtjY-45" value="notify = TELE_FIX_GPS : bool" style="html=1;verticalAlign=middle;endArrow=open;dashed=1;endSize=8;exitX=0;exitY=0.95;rounded=0;align=left;" parent="_0bz0rMx52GlQrNNUtjY-43" edge="1">
           <mxGeometry x="0.7091" relative="1" as="geometry">
-            <mxPoint y="19" as="targetPoint" />
+            <mxPoint y="10" as="targetPoint" />
+            <mxPoint x="275" y="10" as="sourcePoint" />
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
@@ -1993,9 +1995,10 @@
         <mxCell id="_0bz0rMx52GlQrNNUtjY-48" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" parent="_0bz0rMx52GlQrNNUtjY-47" vertex="1">
           <mxGeometry x="275" width="10.33" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="_0bz0rMx52GlQrNNUtjY-49" value="notify = TELE_SPEED : i16" style="html=1;verticalAlign=middle;endArrow=open;dashed=1;endSize=8;exitX=0;exitY=0.95;rounded=0;align=left;" parent="_0bz0rMx52GlQrNNUtjY-47" source="_0bz0rMx52GlQrNNUtjY-48" edge="1">
+        <mxCell id="_0bz0rMx52GlQrNNUtjY-49" value="notify = TELE_SPEED : i16" style="html=1;verticalAlign=middle;endArrow=open;dashed=1;endSize=8;exitX=0;exitY=0.95;rounded=0;align=left;" parent="_0bz0rMx52GlQrNNUtjY-47" edge="1">
           <mxGeometry x="0.7018" y="1" relative="1" as="geometry">
-            <mxPoint y="19" as="targetPoint" />
+            <mxPoint y="10" as="targetPoint" />
+            <mxPoint x="275" y="10" as="sourcePoint" />
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
