@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-11-28T13:15:59.084Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.56" etag="bWQfS9Qik90MWNoT3sDr" version="20.6.0" type="github" pages="12">
+<mxfile host="app.diagrams.net" modified="2022-11-28T13:21:38.762Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.56" etag="z89bFj7GRhRxdF107SdO" version="20.6.0" type="github" pages="12">
   <diagram id="G5NGnM2GY4aykBmWEyZv" name="Main">
     <mxGraphModel dx="1057" dy="834" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
@@ -1127,7 +1127,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="B5gotehf2vD77rfGcC91" name="v6.0">
-    <mxGraphModel dx="729" dy="575" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="2336" math="0" shadow="0">
+    <mxGraphModel dx="1057" dy="834" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="2336" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -1607,31 +1607,34 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="fKH_LjXG3_nITKA7alzQ-1" value="notify = COSM_DISTANCE_END" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;dashed=1;" parent="1" edge="1">
-          <mxGeometry width="80" relative="1" as="geometry">
+        <mxCell id="fKH_LjXG3_nITKA7alzQ-1" value="notify = COSM_DISTANCE_END" style="html=1;verticalAlign=middle;endArrow=open;rounded=0;dashed=1;fontColor=#9933FF;fillColor=#6a00ff;strokeColor=#3700CC;align=right;endFill=0;endSize=8;" parent="1" edge="1">
+          <mxGeometry x="0.8607" width="80" relative="1" as="geometry">
             <mxPoint x="79.44736842105249" y="1000" as="sourcePoint" />
             <mxPoint x="359.5" y="1000" as="targetPoint" />
             <Array as="points">
               <mxPoint x="280" y="1000" />
             </Array>
+            <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="fKH_LjXG3_nITKA7alzQ-2" value="notify = COSM_TIMER_REMAINS : u32" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;dashed=1;" parent="1" edge="1">
-          <mxGeometry width="80" relative="1" as="geometry">
+        <mxCell id="fKH_LjXG3_nITKA7alzQ-2" value="notify = COSM_TIMER_REMAINS : u32" style="html=1;verticalAlign=middle;endArrow=open;rounded=0;dashed=1;fillColor=#6a00ff;strokeColor=#3700CC;fontColor=#9933FF;align=right;endFill=0;endSize=8;" parent="1" edge="1">
+          <mxGeometry x="0.8607" width="80" relative="1" as="geometry">
             <mxPoint x="79.44736842105249" y="1020" as="sourcePoint" />
             <mxPoint x="359.5" y="1020" as="targetPoint" />
             <Array as="points">
               <mxPoint x="300" y="1020" />
             </Array>
+            <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="BEQnszgd3_FjEl6Hdc2J-1" value="set = ChangeOdometer(...)" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;startArrow=oval;startFill=1;" parent="1" edge="1">
-          <mxGeometry width="80" relative="1" as="geometry">
+        <mxCell id="BEQnszgd3_FjEl6Hdc2J-1" value="notify = TELE_ODOMETER : u32" style="html=1;verticalAlign=middle;endArrow=open;rounded=0;startArrow=none;startFill=0;dashed=1;fillColor=#f0a30a;strokeColor=#BD7000;fontColor=#FF8000;align=left;endFill=0;endSize=8;" parent="1" edge="1">
+          <mxGeometry x="0.85" y="-1" width="80" relative="1" as="geometry">
             <mxPoint x="359.05" y="1041" as="sourcePoint" />
             <mxPoint x="78.99736842105249" y="1041" as="targetPoint" />
             <Array as="points">
               <mxPoint x="339.55" y="1041" />
             </Array>
+            <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
         <mxCell id="BEQnszgd3_FjEl6Hdc2J-8" value="action = PRESET_SET : presets" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;align=left;fillColor=#6a00ff;strokeColor=#3700CC;fontColor=#9933FF;startArrow=oval;startFill=1;" parent="1" edge="1">
@@ -1951,7 +1954,7 @@
         <mxCell id="_0bz0rMx52GlQrNNUtjY-44" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;fillColor=#f0a30a;fontColor=#000000;strokeColor=#BD7000;" parent="_0bz0rMx52GlQrNNUtjY-43" vertex="1">
           <mxGeometry x="275" width="10.33" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="_0bz0rMx52GlQrNNUtjY-45" value="notify = TELE_FIX_GPS : bool" style="html=1;verticalAlign=middle;endArrow=open;dashed=1;endSize=8;exitX=0;exitY=0.95;rounded=0;align=left;fillColor=#f0a30a;strokeColor=#BD7000;fontColor=#FF9933;" parent="_0bz0rMx52GlQrNNUtjY-43" edge="1">
+        <mxCell id="_0bz0rMx52GlQrNNUtjY-45" value="notify = TELE_FIX_GPS : bool" style="html=1;verticalAlign=middle;endArrow=open;dashed=1;endSize=8;exitX=0;exitY=0.95;rounded=0;align=left;fillColor=#f0a30a;strokeColor=#BD7000;fontColor=#FF9933;endFill=0;" parent="_0bz0rMx52GlQrNNUtjY-43" edge="1">
           <mxGeometry x="0.7091" relative="1" as="geometry">
             <mxPoint y="10" as="targetPoint" />
             <mxPoint x="275" y="10" as="sourcePoint" />
@@ -2132,8 +2135,8 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="gwr1AirXI0hxJ1XIKppZ-6" value="notify = COSM_ODOMETER_M : u32" style="html=1;verticalAlign=middle;endArrow=open;dashed=1;endSize=8;exitX=0;exitY=0.95;rounded=0;align=right;" parent="1" edge="1">
-          <mxGeometry x="0.7455" relative="1" as="geometry">
+        <mxCell id="gwr1AirXI0hxJ1XIKppZ-6" value="notify = COSM_ODOMETER_M : u32" style="html=1;verticalAlign=middle;endArrow=open;dashed=1;endSize=8;exitX=0;exitY=0.95;rounded=0;align=right;fillColor=#6a00ff;strokeColor=#3700CC;fontColor=#9933FF;" parent="1" edge="1">
+          <mxGeometry x="0.8605" relative="1" as="geometry">
             <mxPoint x="359.4999999999999" y="1060" as="targetPoint" />
             <mxPoint x="80" y="1060" as="sourcePoint" />
             <mxPoint as="offset" />
