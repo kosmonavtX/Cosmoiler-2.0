@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-11-28T14:44:35.355Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.56" etag="cKeBuvhZlakBUYSH3Ttj" version="20.6.0" type="github" pages="12">
+<mxfile host="app.diagrams.net" modified="2022-11-28T14:51:20.408Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.56" etag="nSBlNNVyDRbGu7jnw5_Y" version="20.6.0" type="github" pages="12">
   <diagram id="G5NGnM2GY4aykBmWEyZv" name="Main">
     <mxGraphModel dx="1057" dy="834" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
@@ -1127,7 +1127,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="B5gotehf2vD77rfGcC91" name="v6.0">
-    <mxGraphModel dx="755" dy="596" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="2336" math="0" shadow="0">
+    <mxGraphModel dx="641" dy="505" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="2336" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -1861,7 +1861,7 @@
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="E5VSP37pPNaql7vNwmtm-70" value="LED_PARAMS_SET : {}" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;align=left;" parent="1" edge="1">
+        <mxCell id="E5VSP37pPNaql7vNwmtm-70" value="LED_PARAMS_SET : {}" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;align=left;startArrow=oval;startFill=1;" parent="1" edge="1">
           <mxGeometry x="0.8954" width="80" relative="1" as="geometry">
             <mxPoint x="879.8199999999999" y="960" as="sourcePoint" />
             <mxPoint x="479.0348837209302" y="960" as="targetPoint" />
@@ -1871,7 +1871,7 @@
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="E5VSP37pPNaql7vNwmtm-71" value="LED_BRIGHT_SET : i8" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;align=left;" parent="1" edge="1">
+        <mxCell id="E5VSP37pPNaql7vNwmtm-71" value="LED_BRIGHT_SET : i8" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;align=left;startArrow=oval;startFill=1;" parent="1" edge="1" source="2awHZieWLVAKrUNxr-tM-11">
           <mxGeometry x="0.8951" width="80" relative="1" as="geometry">
             <mxPoint x="878.5700000000002" y="979.75" as="sourcePoint" />
             <mxPoint x="479.0348837209302" y="979.75" as="targetPoint" />
