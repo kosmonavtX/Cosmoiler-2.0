@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-11-28T13:51:19.966Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.56" etag="QyZcVP7C5v-EGx_HKiwb" version="20.6.0" type="github" pages="12">
+<mxfile host="app.diagrams.net" modified="2022-11-28T14:44:35.355Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.56" etag="cKeBuvhZlakBUYSH3Ttj" version="20.6.0" type="github" pages="12">
   <diagram id="G5NGnM2GY4aykBmWEyZv" name="Main">
     <mxGraphModel dx="1057" dy="834" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
@@ -1127,7 +1127,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="B5gotehf2vD77rfGcC91" name="v6.0">
-    <mxGraphModel dx="542" dy="428" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="2336" math="0" shadow="0">
+    <mxGraphModel dx="755" dy="596" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="2336" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -1150,14 +1150,16 @@
         <mxCell id="E5VSP37pPNaql7vNwmtm-89" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;" parent="2awHZieWLVAKrUNxr-tM-11" vertex="1">
           <mxGeometry x="35.32999999999993" y="1760" width="10" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="E5VSP37pPNaql7vNwmtm-90" value="notify = count clients : i8" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;exitX=0;exitY=0.95;rounded=0;" parent="2awHZieWLVAKrUNxr-tM-11" source="E5VSP37pPNaql7vNwmtm-89" edge="1">
-          <mxGeometry relative="1" as="geometry">
+        <mxCell id="E5VSP37pPNaql7vNwmtm-90" value="notify = ASYNC : i8" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;exitX=0;exitY=0.95;rounded=0;align=left;" parent="2awHZieWLVAKrUNxr-tM-11" source="E5VSP37pPNaql7vNwmtm-89" edge="1">
+          <mxGeometry x="0.7044" y="1" relative="1" as="geometry">
             <mxPoint x="-100.00333333333333" y="1779" as="targetPoint" />
+            <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="E5VSP37pPNaql7vNwmtm-91" value="action = ASYNC_GET" style="html=1;verticalAlign=bottom;endArrow=block;entryX=0;entryY=0;rounded=0;startArrow=oval;startFill=1;" parent="2awHZieWLVAKrUNxr-tM-11" target="E5VSP37pPNaql7vNwmtm-89" edge="1">
-          <mxGeometry relative="1" as="geometry">
+        <mxCell id="E5VSP37pPNaql7vNwmtm-91" value="action = ASYNC_CLIENTS_GET" style="html=1;verticalAlign=bottom;endArrow=block;entryX=0;entryY=0;rounded=0;startArrow=oval;startFill=1;align=right;" parent="2awHZieWLVAKrUNxr-tM-11" target="E5VSP37pPNaql7vNwmtm-89" edge="1">
+          <mxGeometry x="0.7734" relative="1" as="geometry">
             <mxPoint x="-100.00333333333333" y="1760" as="sourcePoint" />
+            <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
         <mxCell id="_0bz0rMx52GlQrNNUtjY-24" value="" style="group" parent="2awHZieWLVAKrUNxr-tM-11" vertex="1" connectable="0">
@@ -1447,7 +1449,7 @@
             <mxPoint x="44.27999999999997" y="1498.82" as="sourcePoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="E5VSP37pPNaql7vNwmtm-83" value="notify = PRESENT_GNSS : bool" style="html=1;verticalAlign=middle;endArrow=open;dashed=1;endSize=8;exitX=0.072;exitY=0.059;rounded=0;exitDx=0;exitDy=0;exitPerimeter=0;align=right;fillColor=#f0a30a;strokeColor=#BD7000;fontColor=#FF8000;startArrow=oval;startFill=1;" parent="IcIoZZVrLii81ebmNVBB-12" edge="1">
+        <mxCell id="E5VSP37pPNaql7vNwmtm-83" value="notify = TELE_PRESENT_GNSS : bool" style="html=1;verticalAlign=middle;endArrow=open;dashed=1;endSize=8;exitX=0.072;exitY=0.059;rounded=0;exitDx=0;exitDy=0;exitPerimeter=0;align=right;fillColor=#f0a30a;strokeColor=#BD7000;fontColor=#FF8000;startArrow=oval;startFill=1;" parent="IcIoZZVrLii81ebmNVBB-12" edge="1">
           <mxGeometry x="0.8961" relative="1" as="geometry">
             <mxPoint x="419.5" y="1559.8199999999997" as="targetPoint" />
             <mxPoint x="44.27999999999997" y="1559.8200000000004" as="sourcePoint" />
@@ -1785,7 +1787,7 @@
             <mxPoint x="234.86" y="1779.31" as="sourcePoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="E5VSP37pPNaql7vNwmtm-38" value="&lt;span style=&quot;&quot;&gt;notify = PRESENT_GNSS : bool&lt;/span&gt;" style="html=1;verticalAlign=middle;endArrow=open;dashed=1;endSize=8;exitX=0.072;exitY=0.059;rounded=0;exitDx=0;exitDy=0;exitPerimeter=0;align=right;fontColor=#FF8000;fillColor=#f0a30a;strokeColor=#BD7000;" parent="1" edge="1">
+        <mxCell id="E5VSP37pPNaql7vNwmtm-38" value="&lt;span style=&quot;&quot;&gt;notify = TELE_PRESENT_GNSS : bool&lt;/span&gt;" style="html=1;verticalAlign=middle;endArrow=open;dashed=1;endSize=8;exitX=0.072;exitY=0.059;rounded=0;exitDx=0;exitDy=0;exitPerimeter=0;align=right;fontColor=#FF8000;fillColor=#f0a30a;strokeColor=#BD7000;" parent="1" edge="1">
           <mxGeometry x="0.9243" relative="1" as="geometry">
             <mxPoint x="879.5" y="2107.82" as="targetPoint" />
             <mxPoint x="364.28" y="2107.82" as="sourcePoint" />
@@ -1841,7 +1843,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="E5VSP37pPNaql7vNwmtm-6" value="action = send(server)" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;align=left;" parent="1" edge="1">
+        <mxCell id="E5VSP37pPNaql7vNwmtm-6" value="action = TELE_SEND_SERVER : *server" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;align=left;" parent="1" edge="1">
           <mxGeometry x="0.923" width="80" relative="1" as="geometry">
             <mxPoint x="879.5000000000002" y="840" as="sourcePoint" />
             <mxPoint x="360.005" y="840" as="targetPoint" />
