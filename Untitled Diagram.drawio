@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-11-27T23:47:37.151Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.56" etag="uhZNr8PSztPKore2PfWt" version="20.6.0" type="github" pages="12">
+<mxfile host="app.diagrams.net" modified="2022-11-28T00:50:26.897Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.56" etag="c5rI4Ex_BzsJusl-ijPw" version="20.6.0" type="github" pages="12">
   <diagram id="G5NGnM2GY4aykBmWEyZv" name="Main">
     <mxGraphModel dx="765" dy="571" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
@@ -1126,8 +1126,8 @@
       </root>
     </mxGraphModel>
   </diagram>
-  <diagram id="B5gotehf2vD77rfGcC91" name="Class FSMCosmoiler">
-    <mxGraphModel dx="356" dy="266" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="2336" math="0" shadow="0">
+  <diagram id="B5gotehf2vD77rfGcC91" name="v6.0">
+    <mxGraphModel dx="729" dy="544" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="2336" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -1346,7 +1346,7 @@
         <mxCell id="y6rfKWDGL64xvSqzT74t-40" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;flipV=1;flipH=1;direction=east;" parent="2awHZieWLVAKrUNxr-tM-12" vertex="1">
           <mxGeometry x="34.999999999999886" y="1220" width="10" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="y6rfKWDGL64xvSqzT74t-42" value="action = MODE_SET : modes" style="html=1;verticalAlign=middle;endArrow=open;dashed=1;endSize=8;exitX=-0.002;exitY=0.001;rounded=0;exitDx=0;exitDy=0;exitPerimeter=0;align=left;" parent="2awHZieWLVAKrUNxr-tM-12" edge="1">
+        <mxCell id="y6rfKWDGL64xvSqzT74t-42" value="notify = MODE_SET : modes" style="html=1;verticalAlign=middle;endArrow=open;dashed=1;endSize=8;exitX=-0.002;exitY=0.001;rounded=0;exitDx=0;exitDy=0;exitPerimeter=0;align=left;" parent="2awHZieWLVAKrUNxr-tM-12" edge="1">
           <mxGeometry x="0.873" relative="1" as="geometry">
             <mxPoint x="-600.0128205128207" y="1240" as="targetPoint" />
             <mxPoint x="34.999999999999886" y="1240" as="sourcePoint" />
@@ -1356,7 +1356,7 @@
         <mxCell id="y6rfKWDGL64xvSqzT74t-45" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;flipV=1;flipH=1;direction=east;" parent="2awHZieWLVAKrUNxr-tM-12" vertex="1">
           <mxGeometry x="34.999999999999886" y="1300" width="10" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="y6rfKWDGL64xvSqzT74t-46" value="action = PRESET_SET : modes" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;labelPosition=right;verticalLabelPosition=bottom;align=left;" parent="2awHZieWLVAKrUNxr-tM-12" edge="1">
+        <mxCell id="y6rfKWDGL64xvSqzT74t-46" value="action = PRESET_SET : presets" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;labelPosition=right;verticalLabelPosition=bottom;align=left;" parent="2awHZieWLVAKrUNxr-tM-12" edge="1">
           <mxGeometry x="0.9123" width="80" relative="1" as="geometry">
             <mxPoint x="39.16999999999996" y="1300" as="sourcePoint" />
             <mxPoint x="-880.0128205128206" y="1300" as="targetPoint" />
@@ -1366,7 +1366,7 @@
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="y6rfKWDGL64xvSqzT74t-47" value="action = PRESET_SET : modes" style="html=1;verticalAlign=middle;endArrow=open;dashed=1;endSize=8;rounded=0;align=left;labelPosition=right;verticalLabelPosition=bottom;" parent="2awHZieWLVAKrUNxr-tM-12" edge="1">
+        <mxCell id="y6rfKWDGL64xvSqzT74t-47" value="notify = PRESET_SET : presets" style="html=1;verticalAlign=middle;endArrow=open;dashed=1;endSize=8;rounded=0;align=left;labelPosition=right;verticalLabelPosition=bottom;" parent="2awHZieWLVAKrUNxr-tM-12" edge="1">
           <mxGeometry x="0.8739" relative="1" as="geometry">
             <mxPoint x="-600.0128205128207" y="1320" as="targetPoint" />
             <mxPoint x="39.170000000000186" y="1320" as="sourcePoint" />
@@ -1532,7 +1532,7 @@
         <mxCell id="y6rfKWDGL64xvSqzT74t-39" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;flipV=1;flipH=1;direction=east;" parent="2awHZieWLVAKrUNxr-tM-11" vertex="1">
           <mxGeometry x="35.32999999999993" y="1180" width="10" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="y6rfKWDGL64xvSqzT74t-38" value="action = MODE_SET : modes" style="html=1;verticalAlign=middle;endArrow=open;dashed=1;endSize=8;exitX=-0.002;exitY=0.001;rounded=0;exitDx=0;exitDy=0;exitPerimeter=0;align=left;" parent="2awHZieWLVAKrUNxr-tM-11" edge="1">
+        <mxCell id="y6rfKWDGL64xvSqzT74t-38" value="notify = MODE_SET : modes" style="html=1;verticalAlign=middle;endArrow=open;dashed=1;endSize=8;exitX=-0.002;exitY=0.001;rounded=0;exitDx=0;exitDy=0;exitPerimeter=0;align=left;" parent="2awHZieWLVAKrUNxr-tM-11" edge="1">
           <mxGeometry x="0.8436" relative="1" as="geometry">
             <mxPoint x="-480.01282051282067" y="1200" as="targetPoint" />
             <mxPoint x="35.32999999999993" y="1200" as="sourcePoint" />
@@ -1638,7 +1638,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="BEQnszgd3_FjEl6Hdc2J-8" value="action = PRESET_SET : modes" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;align=left;" parent="1" edge="1">
+        <mxCell id="BEQnszgd3_FjEl6Hdc2J-8" value="action = PRESET_SET : presets" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;align=left;" parent="1" edge="1">
           <mxGeometry x="0.8999" width="80" relative="1" as="geometry">
             <mxPoint x="879.5" y="1300" as="sourcePoint" />
             <mxPoint x="79.98717948717945" y="1300" as="targetPoint" />
@@ -2019,7 +2019,7 @@
         <mxCell id="_0bz0rMx52GlQrNNUtjY-60" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="_0bz0rMx52GlQrNNUtjY-56" source="_0bz0rMx52GlQrNNUtjY-58" target="_0bz0rMx52GlQrNNUtjY-58" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="_0bz0rMx52GlQrNNUtjY-62" value="action = MODE_SET : modes" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;rounded=0;" parent="1" edge="1">
+        <mxCell id="_0bz0rMx52GlQrNNUtjY-62" value="notify = MODE_SET : modes" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;rounded=0;" parent="1" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="359.98717948717933" y="920" as="targetPoint" />
             <mxPoint x="739.4999999999998" y="920" as="sourcePoint" />
@@ -2108,7 +2108,7 @@
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="y6rfKWDGL64xvSqzT74t-32" value="action = PRESET_SET : modes" style="html=1;verticalAlign=middle;endArrow=open;dashed=1;endSize=8;rounded=0;align=left;labelPosition=center;verticalLabelPosition=middle;" parent="1" edge="1">
+        <mxCell id="y6rfKWDGL64xvSqzT74t-32" value="notify = PRESET_SET : presets" style="html=1;verticalAlign=middle;endArrow=open;dashed=1;endSize=8;rounded=0;align=left;labelPosition=center;verticalLabelPosition=middle;" parent="1" edge="1">
           <mxGeometry x="0.846" relative="1" as="geometry">
             <mxPoint x="360" y="1320" as="targetPoint" />
             <mxPoint x="879.5000000000002" y="1320" as="sourcePoint" />
