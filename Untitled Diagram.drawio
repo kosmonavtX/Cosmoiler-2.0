@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-12-07T22:26:55.152Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.62" etag="3kZpfKP2JsQV3tGH3u93" version="20.6.0" type="github" pages="9">
+<mxfile host="app.diagrams.net" modified="2022-12-07T22:29:08.302Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.62" etag="8lB93MrPtv3qyonRKGhl" version="20.6.0" type="github" pages="9">
   <diagram id="G5NGnM2GY4aykBmWEyZv" name="Main">
     <mxGraphModel dx="765" dy="571" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
@@ -1936,12 +1936,12 @@
     </mxGraphModel>
   </diagram>
   <diagram name="Class FSMTelemetry" id="PeuoZLsX74JMQDGPwEH7">
-    <mxGraphModel dx="326" dy="243" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="956" dy="714" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="Z_SCdVBjqgUSNfzaP9oL-0" />
         <mxCell id="Z_SCdVBjqgUSNfzaP9oL-1" parent="Z_SCdVBjqgUSNfzaP9oL-0" />
         <mxCell id="VO-uy_Gu10tXw6uLksPg-6" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;Interface&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;Mediator&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ notify(sender: ITaskSubject, event: int, data: Type)&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;" vertex="1" parent="Z_SCdVBjqgUSNfzaP9oL-1">
-          <mxGeometry x="320" y="85" width="290" height="70" as="geometry" />
+          <mxGeometry x="305" y="85" width="290" height="70" as="geometry" />
         </mxCell>
         <mxCell id="VO-uy_Gu10tXw6uLksPg-18" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=11;startArrow=none;startFill=0;endArrow=block;endFill=0;startSize=8;endSize=8;dashed=1;" edge="1" parent="Z_SCdVBjqgUSNfzaP9oL-1" source="VO-uy_Gu10tXw6uLksPg-9" target="VO-uy_Gu10tXw6uLksPg-6">
           <mxGeometry relative="1" as="geometry" />
