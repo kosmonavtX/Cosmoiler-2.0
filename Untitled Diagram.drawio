@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-12-08T12:19:42.603Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.62" etag="a3ImuMVTr8Iw_uao7aSI" version="20.6.0" type="github" pages="9">
+<mxfile host="app.diagrams.net" modified="2022-12-08T12:23:30.135Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.62" etag="KrzxwJVwlHH0ElzldnKk" version="20.6.0" type="github" pages="9">
   <diagram id="G5NGnM2GY4aykBmWEyZv" name="Main">
     <mxGraphModel dx="1057" dy="834" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
@@ -1936,17 +1936,17 @@
     </mxGraphModel>
   </diagram>
   <diagram name="Mediator" id="PeuoZLsX74JMQDGPwEH7">
-    <mxGraphModel dx="729" dy="575" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="503" dy="397" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="Z_SCdVBjqgUSNfzaP9oL-0" />
         <mxCell id="Z_SCdVBjqgUSNfzaP9oL-1" parent="Z_SCdVBjqgUSNfzaP9oL-0" />
-        <mxCell id="VO-uy_Gu10tXw6uLksPg-6" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;Interface&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;Mediator&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ notify(sender: ITaskSubject, event: int, data: variant)&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;" parent="Z_SCdVBjqgUSNfzaP9oL-1" vertex="1">
+        <mxCell id="VO-uy_Gu10tXw6uLksPg-6" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;Interface&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;Mediator&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ notify(sender: IBaseSubject, event: int, data: variant)&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;" parent="Z_SCdVBjqgUSNfzaP9oL-1" vertex="1">
           <mxGeometry x="485" y="245" width="309" height="70" as="geometry" />
         </mxCell>
         <mxCell id="VO-uy_Gu10tXw6uLksPg-18" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=11;startArrow=none;startFill=0;endArrow=block;endFill=0;startSize=8;endSize=8;dashed=1;" parent="Z_SCdVBjqgUSNfzaP9oL-1" source="VO-uy_Gu10tXw6uLksPg-9" target="VO-uy_Gu10tXw6uLksPg-6" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="VO-uy_Gu10tXw6uLksPg-9" value="&lt;p style=&quot;margin: 4px 0px 0px; text-align: center; font-size: 11px;&quot;&gt;&lt;b style=&quot;font-size: 11px;&quot;&gt;AppMediator&lt;/b&gt;&lt;/p&gt;&lt;hr style=&quot;font-size: 11px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 11px;&quot;&gt;+ Main: MainTask&amp;nbsp;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 11px;&quot;&gt;+ Cosmoiler: FSMCosmoiler&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 11px;&quot;&gt;+ Telemetry: FSMTelemetry&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 11px;&quot;&gt;+ Pump: DRVPump&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 11px;&quot;&gt;+ Flasher: DRVLed&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 11px;&quot;&gt;+ WiFi: DRVWiFi&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 11px;&quot;&gt;+&amp;nbsp;&lt;/p&gt;&lt;hr style=&quot;font-size: 11px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 11px;&quot;&gt;+ AppMediator()&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 11px;&quot;&gt;+ notify(sender, event, data)&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=11;fontFamily=Helvetica;html=1;" parent="Z_SCdVBjqgUSNfzaP9oL-1" vertex="1">
+        <mxCell id="VO-uy_Gu10tXw6uLksPg-9" value="&lt;p style=&quot;margin: 4px 0px 0px; text-align: center; font-size: 11px;&quot;&gt;&lt;b style=&quot;font-size: 11px;&quot;&gt;AppMediator&lt;/b&gt;&lt;/p&gt;&lt;hr style=&quot;font-size: 11px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 11px;&quot;&gt;+ Main: MainTask&amp;nbsp;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 11px;&quot;&gt;+ Cosmoiler: FSMCosmoiler&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 11px;&quot;&gt;+ Telemetry: FSMTelemetry&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 11px;&quot;&gt;+ Pump: DRVPump&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 11px;&quot;&gt;+ Flasher: DRVLed&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 11px;&quot;&gt;+ WiFi: DRVWiFi&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 11px;&quot;&gt;+ Config: Config&lt;/p&gt;&lt;hr style=&quot;font-size: 11px;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 11px;&quot;&gt;+ AppMediator()&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px; font-size: 11px;&quot;&gt;+ notify(sender, event, data)&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=11;fontFamily=Helvetica;html=1;" parent="Z_SCdVBjqgUSNfzaP9oL-1" vertex="1">
           <mxGeometry x="544.5" y="360" width="190" height="170" as="geometry" />
         </mxCell>
         <mxCell id="VO-uy_Gu10tXw6uLksPg-16" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=11;startArrow=open;startFill=0;endArrow=diamondThin;endFill=1;startSize=8;endSize=8;" parent="Z_SCdVBjqgUSNfzaP9oL-1" source="VO-uy_Gu10tXw6uLksPg-10" target="VO-uy_Gu10tXw6uLksPg-9" edge="1">
@@ -1957,18 +1957,18 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="VO-uy_Gu10tXw6uLksPg-23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=11;startArrow=none;startFill=0;endArrow=block;endFill=0;startSize=8;endSize=6;entryX=0.25;entryY=1;entryDx=0;entryDy=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" parent="Z_SCdVBjqgUSNfzaP9oL-1" source="VO-uy_Gu10tXw6uLksPg-10" target="VO-uy_Gu10tXw6uLksPg-11" edge="1">
+        <mxCell id="VO-uy_Gu10tXw6uLksPg-23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=11;startArrow=none;startFill=0;endArrow=block;endFill=0;startSize=8;endSize=6;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" parent="Z_SCdVBjqgUSNfzaP9oL-1" source="VO-uy_Gu10tXw6uLksPg-10" target="VO-uy_Gu10tXw6uLksPg-11" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="280" y="440" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="280" y="500" />
+              <mxPoint x="290" y="500" />
             </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="TC3vorImVIzm-9_FyrYR-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=0;" edge="1" parent="Z_SCdVBjqgUSNfzaP9oL-1" source="VO-uy_Gu10tXw6uLksPg-10" target="TC3vorImVIzm-9_FyrYR-2">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="190" y="510" />
+              <mxPoint x="180" y="510" />
             </Array>
           </mxGeometry>
         </mxCell>
@@ -2000,7 +2000,7 @@
         <mxCell id="TC3vorImVIzm-9_FyrYR-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=0;" edge="1" parent="Z_SCdVBjqgUSNfzaP9oL-1" source="VO-uy_Gu10tXw6uLksPg-12" target="TC3vorImVIzm-9_FyrYR-2">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="200" y="410" />
+              <mxPoint x="180" y="410" />
             </Array>
           </mxGeometry>
         </mxCell>
@@ -2017,7 +2017,7 @@
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="280" y="330" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="270" y="600" />
+              <mxPoint x="290" y="600" />
             </Array>
           </mxGeometry>
         </mxCell>
@@ -2051,7 +2051,7 @@
         <mxCell id="TC3vorImVIzm-9_FyrYR-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=0;" edge="1" parent="Z_SCdVBjqgUSNfzaP9oL-1" source="VO-uy_Gu10tXw6uLksPg-30" target="TC3vorImVIzm-9_FyrYR-2">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="170" y="720" />
+              <mxPoint x="180" y="720" />
             </Array>
           </mxGeometry>
         </mxCell>
@@ -2069,7 +2069,7 @@
         <mxCell id="TC3vorImVIzm-9_FyrYR-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=0;" edge="1" parent="Z_SCdVBjqgUSNfzaP9oL-1" source="VO-uy_Gu10tXw6uLksPg-32" target="TC3vorImVIzm-9_FyrYR-2">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="160" y="820" />
+              <mxPoint x="180" y="820" />
             </Array>
           </mxGeometry>
         </mxCell>
@@ -2081,7 +2081,7 @@
             <mxPoint x="300" y="600" as="sourcePoint" />
             <mxPoint x="280" y="320" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="260" y="705" />
+              <mxPoint x="290" y="705" />
             </Array>
           </mxGeometry>
         </mxCell>
@@ -2090,7 +2090,7 @@
             <mxPoint x="300" y="760" as="sourcePoint" />
             <mxPoint x="280" y="320" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="250" y="810" />
+              <mxPoint x="290" y="810" />
             </Array>
           </mxGeometry>
         </mxCell>
@@ -2106,6 +2106,23 @@
         </mxCell>
         <mxCell id="TC3vorImVIzm-9_FyrYR-2" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Task&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ run()&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;" vertex="1" parent="Z_SCdVBjqgUSNfzaP9oL-1">
           <mxGeometry x="50" y="240" width="160" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="TC3vorImVIzm-9_FyrYR-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=0;endSize=6;" edge="1" parent="Z_SCdVBjqgUSNfzaP9oL-1" source="TC3vorImVIzm-9_FyrYR-9" target="VO-uy_Gu10tXw6uLksPg-11">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="290" y="920" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="TC3vorImVIzm-9_FyrYR-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=diamondThin;endFill=1;endSize=8;startArrow=open;startFill=0;startSize=8;" edge="1" parent="Z_SCdVBjqgUSNfzaP9oL-1" source="TC3vorImVIzm-9_FyrYR-9" target="VO-uy_Gu10tXw6uLksPg-9">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="600" y="920" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="TC3vorImVIzm-9_FyrYR-9" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Config&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+&amp;nbsp;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;" vertex="1" parent="Z_SCdVBjqgUSNfzaP9oL-1">
+          <mxGeometry x="325" y="880" width="160" height="80" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
