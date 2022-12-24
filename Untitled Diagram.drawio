@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-12-24T18:15:13.607Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36 Edg/108.0.1462.54" etag="Q9KSD3CwKxFVOlTRpBSk" version="20.7.4" type="github" pages="11">
+<mxfile host="app.diagrams.net" modified="2022-12-24T18:17:40.895Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36 Edg/108.0.1462.54" etag="4axnFfcGUUldTCesB4Tp" version="20.7.4" type="github" pages="11">
   <diagram id="G5NGnM2GY4aykBmWEyZv" name="Main">
     <mxGraphModel dx="777" dy="573" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
@@ -2358,7 +2358,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="AfHW_bE7-phtk9D-Jcfu" name="tsk Cosmoiler">
-    <mxGraphModel dx="311" dy="229" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="2336" math="0" shadow="0">
+    <mxGraphModel dx="239" dy="176" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="2336" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -3127,7 +3127,7 @@
         <mxCell id="KHkXD8revoonzvbVaaYL-27" value="F" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontColor=#FF0000;flipH=1;flipV=1;" vertex="1" parent="1">
           <mxGeometry x="1345" y="715" width="10" height="10" as="geometry" />
         </mxCell>
-        <mxCell id="KHkXD8revoonzvbVaaYL-34" value="L" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontColor=#FF0000;flipH=1;flipV=1;" vertex="1" parent="1">
+        <mxCell id="KHkXD8revoonzvbVaaYL-34" value="K" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontColor=#FF0000;flipH=1;flipV=1;" vertex="1" parent="1">
           <mxGeometry x="840" y="590" width="10" height="10" as="geometry" />
         </mxCell>
       </root>
