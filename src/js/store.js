@@ -1,6 +1,7 @@
 
 import { createStore } from 'framework7/lite';
 import websocketStore from './websocket.js';
+import { f7 } from 'framework7-svelte';
 import log from './debug.js'
 
 let testURI = 'ws://db39b18be10d.ngrok.io'
@@ -229,8 +230,16 @@ const store = createStore({
       log('requestGNSS')
     },
     requestTelemetry({state}) {
-      wsStore.set({cmd: "telemetry"})
-      //console.log('requestTelemetry')
+      //wsStore.set({cmd: "telemetry"})
+      f7.request.get('http://192.168.4.1/telemetry')
+        .then((res)=> {
+            log('192.168.4.1/telemetry = ', res.data)
+            state.telemetry = JSON.parse(res.data)
+          }
+        )
+        .catch((err) => {
+          log(err)
+        })
     },
     requestConfig ({state}, settings) {
       wsStore.set({cmd: "get", param: settings})
