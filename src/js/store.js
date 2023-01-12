@@ -54,6 +54,7 @@ const store = createStore({
   state: {
     wsStore: wsStore,//websocketStore('ws://' + uri(), {"initial": 0}, [], {debug: true}),
     connect: false,
+    trigg_connect: false; // триггер изменения статуса подключения
     locale: window.navigator.userLanguage || window.navigator.language,
     /**
      * ! Флаг изменения настроек
@@ -179,19 +180,34 @@ const store = createStore({
   },
   actions: {
     init({state}) {
+
+
+
       wsStore.subscribe((value) => {
         log('[wsStore init]=> ', value)
 
         if (value) {
           //console.log('wsStore value', value)
+          if (state.connect != value.connect)  {
+            //state.trigg_connect = true;
+            if (value.connect) {
+              setTimeout(() => {
+                f7.request.get(uri() + '/mode').then((response) => { state.mode = JSON.parse(response) });
+                f7.request.get(uri() + '/trip').then((response) => { state.odometer = JSON.parse(response) });
+
+              }, 500);
+            }
+          }
+
           state.connect = value.connect
+
           //state.connect = true //debug.enabled('test') ? true : value.connect
           delete value.connect
           //let obj = value.data
 
-          if (value.id == '/mode.json')
+          /* if (value.id == '/mode.json')
             state.mode = value
-          else if (value.id == '/trip.json')
+          else */ if (value.id == '/trip.json')
             state.odometer = value
           else if (value.id == '/time.json')
             state.timer = value
@@ -225,6 +241,7 @@ const store = createStore({
       }
     })
     },
+
     requestGNSS({state}) {
       wsStore.set({cmd: "get", param: ["gnss"]})
       log('requestGNSS')
