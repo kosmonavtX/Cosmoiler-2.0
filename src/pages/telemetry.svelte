@@ -265,7 +265,7 @@ $:  dataCardTele = [
     store.dispatch('requestTelemetry')
     interval = setInterval(() => {
                       store.dispatch('requestTelemetry')
-                    }, 500);
+                    }, 330);
   }
   function pageTabHide() {
     clearInterval(interval)
