@@ -191,13 +191,14 @@
         () => {
           //store.dispatch('cmdReset')
           f7.preloader.show();
-          f7.request.get('http://192.168.4.1/clear')//http://192.168.4.1/clear
+          f7.request.get('http://192.168.4.1/reset/cnfg')//http://192.168.4.1/clear
           .then((res) => {
               f7.preloader.hide()
               log('192.168.4.1/status', res.data)
           })
           .catch((err) => {
             log(err)
+            f7.dialog.alert($t('service.update.cnfg.confirm.error'), "Cosmoiler")
           })
         })
     }

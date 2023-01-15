@@ -54,7 +54,7 @@ const store = createStore({
   state: {
     wsStore: wsStore,//websocketStore('ws://' + uri(), {"initial": 0}, [], {debug: true}),
     connect: false,
-    trigg_connect: false; // триггер изменения статуса подключения
+   // trigg_connect: false; // триггер изменения статуса подключения
     locale: window.navigator.userLanguage || window.navigator.language,
     /**
      * ! Флаг изменения настроек
@@ -181,33 +181,42 @@ const store = createStore({
   actions: {
     init({state}) {
 
+      log("INIT")
 
+      setInterval(() => {
+        f7.request.get('http://192.168.4.1' + '/ping')
+          .then((response) => {
+            if (!state.connect)
+              f7.request.get('http://192.168.4.1' + '/mode').then((response) => { state.mode = JSON.parse(response.data) });
+            state.connect = true
+          })
+          .catch((err) => { state.connect = false })
+      }, 2000)
 
       wsStore.subscribe((value) => {
         log('[wsStore init]=> ', value)
 
         if (value) {
           //console.log('wsStore value', value)
-          if (state.connect != value.connect)  {
+/*           if (state.connect != value.connect)  {
             //state.trigg_connect = true;
             if (value.connect) {
               setTimeout(() => {
-                f7.request.get(uri() + '/mode').then((response) => { state.mode = JSON.parse(response) });
-                f7.request.get(uri() + '/trip').then((response) => { state.odometer = JSON.parse(response) });
+               // f7.request.get('http://192.168.4.1' + '/mode').then((response) => { state.mode = JSON.parse(response.data) });
 
-              }, 500);
+              }, 10);
             }
-          }
+          } */
 
-          state.connect = value.connect
+         // state.connect = value.connect
 
           //state.connect = true //debug.enabled('test') ? true : value.connect
-          delete value.connect
+         // delete value.connect
           //let obj = value.data
 
           /* if (value.id == '/mode.json')
             state.mode = value
-          else */ if (value.id == '/trip.json')
+          else */ /* if (value.id == '/trip.json')
             state.odometer = value
           else if (value.id == '/time.json')
             state.timer = value
@@ -228,7 +237,8 @@ const store = createStore({
             let fs = state.ver.fw.slice(-2);
             state.verfs = fs.match(/\d{1}/g).join('.');
           }
-          else if (value.id == 'telemetry')
+          else  */
+          if (value.id == 'telemetry')
             state.telemetry = value
 
           log('Store state', state)
@@ -242,13 +252,44 @@ const store = createStore({
     })
     },
 
+    getMode({state}) {
+      f7.request.get('http://192.168.4.1' + '/mode')
+        .then((response) => { state.mode = JSON.parse(response.data) })
+        .catch((err) => { state.connect = false })
+    },
+    getSettings({state}){
+      f7.request.get('http://192.168.4.1' + '/trip').then((response) => { state.odometer = JSON.parse(response.data) });
+      f7.request.get('http://192.168.4.1' + '/time').then((response) => { state.timer = JSON.parse(response.data) });
+      f7.request.get('http://192.168.4.1' + '/manual').then((response) => { state.manual = JSON.parse(response.data) });
+      f7.request.get('http://192.168.4.1' + '/pump').then((response) => { state.pump = JSON.parse(response.data) });
+    },
+    getServiceInfo({state}) {
+      f7.request.get('http://192.168.4.1' + '/system').then((response) => {
+        state.system = JSON.parse(response.data)
+        if (!state.system.gps) state.odometer.sensor.gnss = false
+      });
+      f7.request.get('http://192.168.4.1' + '/ver').then((response) => {
+        state.ver = JSON.parse(response.data)
+        localStorage.setItem('ver', response.data)
+        // парсинг версии
+        let fs = state.ver.fw.slice(-2);
+        state.verfs = fs.match(/\d{1}/g).join('.');
+      })
+      .catch((err) => {
+        state.ver = JSON.parse(localStorage.getItem('ver'))
+        // парсинг версии
+        let fs = state.ver.fw.slice(-2);
+        state.verfs = fs.match(/\d{1}/g).join('.');
+      });
+    },
+
     requestGNSS({state}) {
       wsStore.set({cmd: "get", param: ["gnss"]})
       log('requestGNSS')
     },
-    requestTelemetry({state}) {
+/*     requestTelemetry({state}) {
       //wsStore.set({cmd: "telemetry"})
-      f7.request.get('http://192.168.4.1/telemetry')
+      f7.request.get('http://192.168.4.1/telemetry/start')
         .then((res)=> {
             log('192.168.4.1/telemetry = ', res.data)
             state.telemetry = JSON.parse(res.data)
@@ -257,6 +298,18 @@ const store = createStore({
         .catch((err) => {
           log(err)
         })
+    }, */
+    requestTelemetryStart({state}) {
+      //wsStore.set({cmd: "telemetry"})
+      f7.request.get('http://192.168.4.1/telemetry/start')
+        .then((res)=> { log(res) } )
+        .catch((err) => { state.connect = false })
+    },
+    requestTelemetryStop({state}) {
+      //wsStore.set({cmd: "telemetry"})
+      f7.request.get('http://192.168.4.1/telemetry/stop')
+        .then((res)=> { log(res) })
+        .catch((err) => { log(err) })
     },
     requestConfig ({state}, settings) {
       wsStore.set({cmd: "get", param: settings})
@@ -278,6 +331,7 @@ const store = createStore({
       }
       state.odometer = state.odometer
     },
+    // TODO: add rest api
     sendDistance({state}, data) {
       state.odometer = data
       state.odometer = state.odometer
@@ -285,12 +339,14 @@ const store = createStore({
       timeoutId = setTimeout(() => {
         wsStore.set({cmd: "post", param: [state.odometer.id, Object.fromEntries(state.mapSettings)]}); // отправляем в БУ
         state.mapSettings.clear();
+        log("ws send: ", {cmd: "post", param: [state.odometer.id, Object.fromEntries(state.mapSettings)]})
                                                           // Данная запись прдотвращает попадание в массив повторяющихся значений id
         state.fChngSettings = { status: true, id: [...new Set([...state.fChngSettings.id, state.odometer.id])]};
         log("send Dist = ", state.odometer)
       }, 2000)
 
     },
+        // TODO: add rest api
     sendTime({state}, data) {
       state.timer = data
       state.timer = state.timer
@@ -302,6 +358,7 @@ const store = createStore({
         log("send Time = ", state.timer)
       }, 2000)
     },
+        // TODO: add rest api
     sendManual({state}, data) {
       state.manual = data
       state.manual = state.manual
@@ -312,6 +369,7 @@ const store = createStore({
           log("send Pump = ", state.manual);
       }, 2000)
     },
+        // TODO: add rest api
     sendPump({state}, data) {
       //console.log("sendPump: ", prop)
       state.pump = data;
@@ -327,10 +385,34 @@ const store = createStore({
     sendMode({state}, data) {
         state.mode.m = data.m
         state.mode = state.mode
-        wsStore.set({cmd: "post", param: [state.mode.id, {m: data.m}]}) // отправляем в БУ только свойство m
+        //wsStore.set({cmd: "post", param: [state.mode.id, {m: data.m}]}) // отправляем в БУ только свойство m
         log("send Mode = ", state.mode)
+        //log("uri = ", uri())
+        f7.request.postJSON('http://' + uri() + '/mode', state.mode, 'json')
+          .catch((err) => {
+            f7.dialog.alert("Команда не выполнена!", "Cosmoiler")
+            f7.request.get('http://' + uri() + '/mode')
+              .then((response) => { state.mode = JSON.parse(response.data) })
+              .catch((err) => { state.connect = false })
+          })
+/*         f7.request({
+          url: 'http://192.168.4.1/mode',
+          method: 'POST',
+          data: state.mode,
+          dataType: 'json',
+          contentType: 'application/json',
+          //crossDomain: true,
+          error: function(err) {
+            f7.dialog.alert("Команда не выполнена!", "Cosmoiler")
+            f7.request.get('http://192.168.4.1' + '/mode')
+              .then((response) => { state.mode = JSON.parse(response.data) })
+              .catch((err) => { state.connect = false })
+          }
+        }) */
+
      // }
     },
+        // TODO: add rest api
     sendSystem({state}, data) {
       state.system = data
       state.system = state.system
@@ -339,21 +421,51 @@ const store = createStore({
       state.fChngSettings = { status: true, id: [...new Set([...state.fChngSettings.id, state.system.id])]}
       log("send System = ", state.system)
     },
+        // TODO: add rest api ( /state/ctrl, /state/auto )
     modeWork({state}, mode) {
-      state.wsStore.set({cmd: "work", param: mode})
+      //state.wsStore.set({cmd: "work", param: mode})
+      let rest_str;
+      if (mode == store.state.OILER_AUTO) {
+        rest_str = '/state/auto'
+      }
+      if (mode == store.state.OILER_SETTINGS) {
+        rest_str = '/state/ctrl'
+      }
+      f7.request.get('http://' + uri() + rest_str)
+      .catch(() => {
+        f7.alert('Нет связи с блоком управеления. Команда не выполнена','Cosmoiler')
+      })
     },
+        // TODO: add rest api ( /pump/ctrl?state=1[0]&dir=1[0] )
     ctrlPump({state}, settings) {
       state.wsStore.set({cmd: "pump", param: settings})
+
     },
+        // TODO: add rest api (POST /bright?v=X)
     ctrlBright({state}, data) {
-      state.wsStore.set({cmd: "bright", param: data})
+      //state.wsStore.set({cmd: "bright", param: data})
+      f7.request.post('http://' + uri() + '/bright?v='+ data)
+        .catch(() => {
+          f7.alert('Нет связи с блоком управеления. Команда не выполнена.','Cosmoiler')
+        })
+/*         f7.request({
+          url: 'http://' + uri() + '/bright',
+          method: 'POST',
+          data: data,
+          dataType: 'json',
+          contentType: 'application/json',
+          //crossDomain: true,
+          error: function(err) {
+            f7.dialog.alert("Команда не выполнена!", "Cosmoiler")
+          }
+        }) */
     },
-    cmdUpdate({state}) {
+/*     cmdUpdate({state}) {
       state.wsStore.set({cmd: "update"})
-    },
-    cmdReset({state}) {
+    }, */
+/*     cmdReset({state}) {
       state.wsStore.set({cmd: "resetCnfg"})
-    }
+    } */
   },
 })
 
