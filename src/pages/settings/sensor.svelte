@@ -118,7 +118,7 @@
     let telemetry = useStore('telemetry', (value) => telemetry = value);
     let mapSettings = useStore('mapSettings', (value) => mapSettings = value);
 
-    let interval
+   // let interval
     let tmpOdometer = odometer
 
     $: fGPS = (tmpOdometer.sensor.gnss && gnssPresent.gps) ? true : false
@@ -129,17 +129,19 @@
     function clearImp() {
         tmpOdometer.sensor.imp = 0
         store.dispatch('modeWork', store.state.OILER_MANUAL)
-        interval = setInterval(() => {
+        store.dispatch('requestTelemetryStart')
+/*         interval = setInterval(() => {
             store.dispatch('requestTelemetry')
             tmpOdometer.sensor.imp = telemetry.sp
             //trip = trip
             log('clearImp ', tmpOdometer)
-        }, 1500);
+        }, 1500); */
     }
 
     function pageAfterOut () {
         log('pageAfterOut', tmpOdometer);
-        clearInterval(interval)
+        //clearInterval(interval)
+        store.dispatch('requestTelemetryStop')
         store.dispatch('modeWork', store.state.OILER_AUTO)
         if (tmpOdometer.sensor.imp == 0) tmpOdometer.sensor.imp = 16
         store.dispatch('calcDistance', tmpOdometer)

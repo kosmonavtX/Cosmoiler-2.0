@@ -257,18 +257,17 @@ $:  dataCardTele = [
 ]
 
 
-//$:  console.log('Data Telemetry', dataCardTele)
-
-  let interval;
+ // let interval;
 
   function pageTabShow() {
-    store.dispatch('requestTelemetry')
-    interval = setInterval(() => {
+    store.dispatch('requestTelemetryStart')
+/*     interval = setInterval(() => {
                       store.dispatch('requestTelemetry')
-                    }, 330);
+                    }, 330); */
   }
   function pageTabHide() {
-    clearInterval(interval)
+    store.dispatch('requestTelemetryStop')
+    //clearInterval(interval)
   }
 
 /*     icons = []

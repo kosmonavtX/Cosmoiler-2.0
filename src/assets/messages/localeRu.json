@@ -81,10 +81,11 @@
     "service.update.fw.title1": "Загрузка файлов ПО блока",
     "service.update.fw.title2": "Обновление ПО блока",
     "service.update.fw.success": "Обновлено успешно.",
-    "service.update.fw.error": "Ошибка обновления. Повторите  попытку.",
+    "service.update.fw.error": "Ошибка обновления. Повторите попытку.",
     "service.update.cnfg.title": "Заводские настройки",
     "service.update.cnfg.button.title": "Установить",
     "service.update.cnfg.confirm.text": "Все текущие настройки будут заменены заводскими. Вы уверены?",
+    "service.update.cnfg.confirm.error": "Ошибка сброса настроек. Повторите попытку.",
 
     "service.diag.title": "Диагностика",
     "service.diag.acord.title1": "Возможные неисправности",

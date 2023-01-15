@@ -64,7 +64,7 @@
       rangeChange: (e)=>{
         tmpTimer.presets[0].time = e
         let arr = mapSettings.get('presets')
-        mapSettings.set("presets", [tmpTimer.presets[0], (arr)?arr[1]:null, (arr)?arr[2]:null]);
+        mapSettings.set("presets", [tmpTimer.presets[0], (arr)?arr[1]:null]);
         store.dispatch('sendTime', tmpTimer)
         log(mapSettings)
       }
@@ -81,7 +81,7 @@
       rangeChange: (e)=>{
         tmpTimer.presets[0].num = e
         let arr = mapSettings.get('presets')
-        mapSettings.set("presets", [tmpTimer.presets[0], (arr)?arr[1]:null, (arr)?arr[2]:null]);
+        mapSettings.set("presets", [tmpTimer.presets[0], (arr)?arr[1]:null]);
         store.dispatch('sendTime', tmpTimer)
         log(mapSettings)
       }
@@ -89,7 +89,7 @@
     /* ОФФРОАД */
     [{
       title: "Таймер",
-      value: tmpTimer.presets[2].time,
+      value: tmpTimer.presets[1].time,
       name_value: "сек",
       minValue: 10,
       maxValue: 600,
@@ -101,7 +101,7 @@
       rangeChange: (e)=>{
         tmpTimer.presets[2].time = e
         let arr = mapSettings.get('presets')
-        mapSettings.set("presets", [(arr)?arr[0]:null, (arr)?arr[1]:null, tmpTimer.presets[2]]);
+        mapSettings.set("presets", [(arr)?arr[0]:null, tmpTimer.presets[1]]);
         store.dispatch('sendTime', tmpTimer);
       log(mapSettings)
       }
@@ -118,7 +118,7 @@
       rangeChange: (e)=>{
         tmpTimer.presets[2].num = e
         let arr = mapSettings.get('presets')
-        mapSettings.set("presets", [(arr)?arr[0]:null, (arr)?arr[1]:null, tmpTimer.presets[2]]);
+        mapSettings.set("presets", [(arr)?arr[0]:null, tmpTimer.presets[1]]);
         store.dispatch('sendTime', tmpTimer);
       log(mapSettings)
       }
@@ -135,7 +135,7 @@
       rangeChange: (e)=>{
         tmpTimer.presets[2].cycles = e
         let arr = mapSettings.get('presets')
-        mapSettings.set("presets", [(arr)?arr[0]:null, (arr)?arr[1]:null, tmpTimer.presets[2]]);
+        mapSettings.set("presets", [(arr)?arr[0]:null, tmpTimer.presets[1]]);
         store.dispatch('sendTime', tmpTimer);
       log(mapSettings)
       }

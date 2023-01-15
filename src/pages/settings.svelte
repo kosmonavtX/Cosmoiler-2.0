@@ -1,6 +1,7 @@
 <Page
   name="settings"
-  class={`page`}>
+  class={`page`}
+  on:pageTabShow={pageTabShow}>
 
 {#if !connected}
     <Navbar title={$t('home.settings')} />
@@ -69,6 +70,7 @@
     useStore
   } from 'framework7-svelte';
   import {t} from '../services/i18n.js';
+  import store from '../js/store.js';
 
   let connected = useStore('connected', (value) => connected = value);
   let odometer = useStore('odometer', (value) => odometer = value);
@@ -114,5 +116,9 @@
   ]
 
   $: gnss = (odometer.sensor.gnss && gnssPresent.gps) ? "GPS" : $t("settings.sensor.impulse")
+
+  function pageTabShow() {
+    store.dispatch('getSettings')
+  }
 
   </script>

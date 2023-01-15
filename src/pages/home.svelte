@@ -154,7 +154,7 @@
         icons: [
           {name: "icon-city", text: $t('home.setting.time', {values: {p: timer.presets[0].time}})},
          /*  {name: "icon-way", text: $t('home.setting.time', {values: {p: time.presets[1].dp_time}})}, */
-          {name: "icon-off-road", text: $t('home.setting.time', {values: {p: timer.presets[2].time}})},
+          {name: "icon-off-road", text: $t('home.setting.time', {values: {p: timer.presets[1].time}})},
         ],
         toggleCheck: fmodeTimer,
         onSelectModeToggle: (e) => {
@@ -188,6 +188,7 @@
       store.state.fChngSettings.status = false
       store.state.fChngSettings.id = []
     }
+    store.dispatch('getMode')
   }
 
   function loadMore(e, done) {

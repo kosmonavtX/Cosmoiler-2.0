@@ -1,7 +1,8 @@
 <Page
   name="service"
   class={`page`}
-  pageContent={true}>
+  pageContent={true}
+  on:pageTabShow={pageTabShow}>
 
   <Navbar title={$t('service.title')} />
 
@@ -44,6 +45,7 @@
     useStore
   } from 'framework7-svelte';
   import {t} from '../services/i18n.js';
+  import store from '../js/store.js';
 
   let connected = useStore('connected', (value) => connected = value);
   $: system = useStore('system', (value) => system = value);
@@ -58,5 +60,9 @@
     {link: '/service/diag/',    title: $t('service.diag.title'),    view: true},
     {link: '/service/about/',   title: $t('service.about.title'),   view: true},
   ]
+
+  function pageTabShow() {
+    store.dispatch('getServiceInfo')
+  }
 
 </script>
