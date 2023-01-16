@@ -184,10 +184,10 @@ const store = createStore({
       log("INIT")
 
       setInterval(() => {
-        f7.request.get('http://192.168.4.1' + '/ping')
+        f7.request.get('http://' + uri() + '/ping')
           .then((response) => {
             if (!state.connect)
-              f7.request.get('http://192.168.4.1' + '/mode').then((response) => { state.mode = JSON.parse(response.data) });
+              f7.request.get('http://' + uri() + '/mode').then((response) => { state.mode = JSON.parse(response.data) });
             state.connect = true
           })
           .catch((err) => { state.connect = false })
@@ -253,22 +253,22 @@ const store = createStore({
     },
 
     getMode({state}) {
-      f7.request.get('http://192.168.4.1' + '/mode')
+      f7.request.get('http://' + uri() + '/mode')
         .then((response) => { state.mode = JSON.parse(response.data) })
         .catch((err) => { state.connect = false })
     },
     getSettings({state}){
-      f7.request.get('http://192.168.4.1' + '/trip').then((response) => { state.odometer = JSON.parse(response.data) });
-      f7.request.get('http://192.168.4.1' + '/time').then((response) => { state.timer = JSON.parse(response.data) });
-      f7.request.get('http://192.168.4.1' + '/manual').then((response) => { state.manual = JSON.parse(response.data) });
-      f7.request.get('http://192.168.4.1' + '/pump').then((response) => { state.pump = JSON.parse(response.data) });
+      f7.request.get('http://' + uri() + '/trip').then((response) => { state.odometer = JSON.parse(response.data) });
+      f7.request.get('http://' + uri() + '/time').then((response) => { state.timer = JSON.parse(response.data) });
+      f7.request.get('http://' + uri() + '/manual').then((response) => { state.manual = JSON.parse(response.data) });
+      f7.request.get('http://' + uri() + '/pump').then((response) => { state.pump = JSON.parse(response.data) });
     },
     getServiceInfo({state}) {
-      f7.request.get('http://192.168.4.1' + '/system').then((response) => {
+      f7.request.get('http://' + uri() + '/system').then((response) => {
         state.system = JSON.parse(response.data)
         if (!state.system.gps) state.odometer.sensor.gnss = false
       });
-      f7.request.get('http://192.168.4.1' + '/ver').then((response) => {
+      f7.request.get('http://' + uri() + '/ver').then((response) => {
         state.ver = JSON.parse(response.data)
         localStorage.setItem('ver', response.data)
         // парсинг версии
@@ -301,13 +301,13 @@ const store = createStore({
     }, */
     requestTelemetryStart({state}) {
       //wsStore.set({cmd: "telemetry"})
-      f7.request.get('http://192.168.4.1/telemetry/start')
+      f7.request.get('http://' + uri() + '/telemetry/start')
         .then((res)=> { log(res) } )
         .catch((err) => { state.connect = false })
     },
     requestTelemetryStop({state}) {
       //wsStore.set({cmd: "telemetry"})
-      f7.request.get('http://192.168.4.1/telemetry/stop')
+      f7.request.get('http://' + uri() + '/telemetry/stop')
         .then((res)=> { log(res) })
         .catch((err) => { log(err) })
     },
@@ -390,6 +390,7 @@ const store = createStore({
         //log("uri = ", uri())
         f7.request.postJSON('http://' + uri() + '/mode', state.mode, 'json')
           .catch((err) => {
+            log(err)
             f7.dialog.alert("Команда не выполнена!", "Cosmoiler")
             f7.request.get('http://' + uri() + '/mode')
               .then((response) => { state.mode = JSON.parse(response.data) })
