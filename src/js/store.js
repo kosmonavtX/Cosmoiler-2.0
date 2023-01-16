@@ -39,6 +39,15 @@ function uri() {
         return document.location.host
 }
 
+const checkOnlineStatus = async () => {
+  try {
+    const online = await fetch("http://"+uri()+'/ping');
+    return online.status >= 200 && online.status < 300; // either true or false
+  } catch (err) {
+    return false; // definitely offline
+  }
+};
+
 const wsStore = websocketStore('ws://' + uri() + '/ws', {}, [],
   {
     debug: false,
@@ -166,6 +175,8 @@ const store = createStore({
   getters: {
     gnssPresent:  ({state}) => state.system,
     connected:    ({state}) => state.connect,
+    //connected:    async () => await checkOnlineStatus(),
+
     odometer:     ({state}) => state.odometer,
     timer:        ({state}) => state.timer,
     manual:       ({state}) => state.manual,
@@ -177,21 +188,54 @@ const store = createStore({
     verfs:        ({state}) => state.verfs,
     chngSettings: ({state}) => state.fChngSettings,
     mapSettings:  ({state}) => state.mapSettings,
+/*     telecard ({state}) {
+      let md = state.telemetry.params[3].m
+      if (md == 1) // Режим "Одометер"
+        if (state.odometer.sensor.gnss) { // сенсор GPS?
+          if (!state.telemetry.params[4].fix) md =  5 // TimerGPS
+        }
+      log("md = ", md)
+      return md
+    } */
   },
   actions: {
     init({state}) {
 
       log("INIT")
 
-      setInterval(() => {
-        f7.request.get('http://' + uri() + '/ping')
+      //state.connect = true
+
+      setInterval(async () => {
+        const result = await checkOnlineStatus();
+        state.connect = result
+/*         f7.request.get('http://' + uri() + '/ping')
           .then((response) => {
             if (!state.connect)
               f7.request.get('http://' + uri() + '/mode').then((response) => { state.mode = JSON.parse(response.data) });
             state.connect = true
           })
-          .catch((err) => { state.connect = false })
+          .catch((err) => { state.connect = false }) */
       }, 2000)
+
+      window.addEventListener("load", async (event) => {
+        //const statusDisplay = document.getElementById("status");
+        const online = await checkOnlineStatus()
+        if (online) {
+          f7.request.get('http://' + uri() + '/mode').then((response) => { state.mode = JSON.parse(response.data) });
+          f7.request.get('http://' + uri() + '/trip').then((response) => { state.odometer = JSON.parse(response.data) });
+          f7.request.get('http://' + uri() + '/time').then((response) => { state.timer = JSON.parse(response.data) });
+          f7.request.get('http://' + uri() + '/manual').then((response) => { state.manual = JSON.parse(response.data) });
+          f7.request.get('http://' + uri() + '/pump').then((response) => { state.pump = JSON.parse(response.data) });
+          f7.request.get('http://' + uri() + '/telemetry/start')
+            .then((res)=> {
+              setTimeout(() => {
+                f7.request.get('http://' + uri() + '/telemetry/stop')
+              }, 1000)
+            })
+            .catch((err) => { /* state.connect = false */ })
+        }
+        log("ONLINE = ", online)
+      });
 
       wsStore.subscribe((value) => {
         log('[wsStore init]=> ', value)
@@ -246,8 +290,10 @@ const store = createStore({
       if (value.type == 'error') {
         state.ver = JSON.parse(localStorage.getItem('ver'))
         // парсинг версии
-        let fs = state.ver.fw.slice(-2);
-        state.verfs = fs.match(/\d{1}/g).join('.');
+        if (state.ver) {
+          let fs = state.ver.fw.slice(-2);
+          state.verfs = fs.match(/\d{1}/g).join('.');
+        }
       }
     })
     },
@@ -255,13 +301,13 @@ const store = createStore({
     getMode({state}) {
       f7.request.get('http://' + uri() + '/mode')
         .then((response) => { state.mode = JSON.parse(response.data) })
-        .catch((err) => { state.connect = false })
+        .catch((err) => { /* state.connect = false */ })
     },
     getSettings({state}){
-      f7.request.get('http://' + uri() + '/trip').then((response) => { state.odometer = JSON.parse(response.data) });
+/*       f7.request.get('http://' + uri() + '/trip').then((response) => { state.odometer = JSON.parse(response.data) });
       f7.request.get('http://' + uri() + '/time').then((response) => { state.timer = JSON.parse(response.data) });
       f7.request.get('http://' + uri() + '/manual').then((response) => { state.manual = JSON.parse(response.data) });
-      f7.request.get('http://' + uri() + '/pump').then((response) => { state.pump = JSON.parse(response.data) });
+      f7.request.get('http://' + uri() + '/pump').then((response) => { state.pump = JSON.parse(response.data) }); */
     },
     getServiceInfo({state}) {
       f7.request.get('http://' + uri() + '/system').then((response) => {
@@ -303,7 +349,7 @@ const store = createStore({
       //wsStore.set({cmd: "telemetry"})
       f7.request.get('http://' + uri() + '/telemetry/start')
         .then((res)=> { log(res) } )
-        .catch((err) => { state.connect = false })
+        .catch((err) => { /* state.connect = false */ })
     },
     requestTelemetryStop({state}) {
       //wsStore.set({cmd: "telemetry"})
@@ -388,13 +434,18 @@ const store = createStore({
         //wsStore.set({cmd: "post", param: [state.mode.id, {m: data.m}]}) // отправляем в БУ только свойство m
         log("send Mode = ", state.mode)
         //log("uri = ", uri())
-        f7.request.postJSON('http://' + uri() + '/mode', state.mode, 'json')
+        f7.request.postJSON('http://' + uri() + '/mode', state.mode)
+          .then((res) => {
+            log(res)
+          })
           .catch((err) => {
-            log(err)
+            log(err.xhr)
+            log(err.status)
+            log(err.message)
             f7.dialog.alert("Команда не выполнена!", "Cosmoiler")
             f7.request.get('http://' + uri() + '/mode')
               .then((response) => { state.mode = JSON.parse(response.data) })
-              .catch((err) => { state.connect = false })
+              .catch((err) => { /* state.connect = false */ })
           })
 /*         f7.request({
           url: 'http://192.168.4.1/mode',
