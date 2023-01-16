@@ -41,8 +41,10 @@
   let timer = useStore('timer', (value) => timer = value)
   let gnssPresent = useStore('gnssPresent', (value) => gnssPresent = value)
   let connected = useStore('connected', (value) => connected = value);
+  //let m = useStore('telecard', (value) => m = value);
 
   //console.log('params', odometer)
+ // log("M = ", m)
 
   const MAXSPEED = 250
   const iconsPreset = ["icon-city", "icon-way", "icon-off-road"]
@@ -138,17 +140,6 @@
   }
 
 $:  md = indexDataCardTele(odometer, telemetry) // (!telemetry.params[nameParams.GPS].fix && telemetry.params[nameParams.MODE].m == 1) ? 5 : telemetry.params[nameParams.MODE].m
-//$:  md = telemetry.params[nameParams.MODE].m
-
-//let md
-
-/* $: {
-    md = telemetry.params[nameParams.MODE].m
-    if (md == 1) // Режим "Одометер"
-      if (odometer.sensor.gnss) { // сенсор GPS?
-        if (!telemetry.params[nameParams.GPS].fix) md =  5 // TimerGPS
-      }
-} */
 
 $:  dataCardTele = [
     { //#0

@@ -3,6 +3,8 @@
   class={`page`}
   on:pageTabShow={pageTabShow}>
 
+
+
 {#if !connected}
     <Navbar title={$t('home.settings')} />
     <BlockTitle class={`block-title-noconnection__text`} >{$t('home.noconnect')}</BlockTitle>
@@ -118,7 +120,7 @@
   $: gnss = (odometer.sensor.gnss && gnssPresent.gps) ? "GPS" : $t("settings.sensor.impulse")
 
   function pageTabShow() {
-    store.dispatch('getSettings')
+    //store.dispatch('getSettings')
   }
 
   </script>
