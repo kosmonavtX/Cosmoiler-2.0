@@ -47,6 +47,14 @@ const checkOnlineStatus = async () => {
     return false; // definitely offline
   }
 };
+const checkOnlineStatusTest = async () => {
+  try {
+    const online = await fetch('http://ya.ru');
+    return true ;//online.status >= 200 && online.status < 300; // either true or false
+  } catch (err) {
+    return false; // definitely offline
+  }
+};
 
 const wsStore = websocketStore('ws://' + uri() + '/ws', {}, [],
   {
@@ -203,7 +211,7 @@ const store = createStore({
 
       log("INIT")
 
-      //state.connect = true
+      state.connect = true
 
       setInterval(async () => {
         const result = await checkOnlineStatus();
@@ -226,6 +234,27 @@ const store = createStore({
           f7.request.get('http://' + uri() + '/time').then((response) => { state.timer = JSON.parse(response.data) });
           f7.request.get('http://' + uri() + '/manual').then((response) => { state.manual = JSON.parse(response.data) });
           f7.request.get('http://' + uri() + '/pump').then((response) => { state.pump = JSON.parse(response.data) });
+          f7.request.get('http://' + uri() + '/system').then((response) => {
+            state.system = JSON.parse(response.data)
+            if (!state.system.gps)
+              state.odometer.sensor.gnss = false
+          });
+          f7.request.get('http://' + uri() + '/ver')
+            .then((response) => {
+              state.ver = JSON.parse(response.data)
+              localStorage.setItem('ver', response.data)
+              // парсинг версии
+              let fs = state.ver.fw.slice(-2);
+              state.verfs = fs.match(/\d{1}/g).join('.');
+            })
+            .catch((err) => {
+              state.ver = JSON.parse(localStorage.getItem('ver'))
+              // парсинг версии
+              if (state.ver) {
+                let fs = state.ver.fw.slice(-2);
+                state.verfs = fs.match(/\d{1}/g).join('.');
+              }
+            });
           f7.request.get('http://' + uri() + '/telemetry/start')
             .then((res)=> {
               setTimeout(() => {
@@ -238,7 +267,7 @@ const store = createStore({
       });
 
       wsStore.subscribe((value) => {
-        log('[wsStore init]=> ', value)
+        log('[wsStore value]=> ', value)
 
         if (value) {
           //console.log('wsStore value', value)
@@ -282,51 +311,64 @@ const store = createStore({
             state.verfs = fs.match(/\d{1}/g).join('.');
           }
           else  */
-          if (value.id == 'telemetry')
+          if (value.id == 'telemetry') {
             state.telemetry = value
+          }
+
 
           log('Store state', state)
       }
-      if (value.type == 'error') {
+/*       if (value.type == 'error') {
         state.ver = JSON.parse(localStorage.getItem('ver'))
         // парсинг версии
         if (state.ver) {
           let fs = state.ver.fw.slice(-2);
           state.verfs = fs.match(/\d{1}/g).join('.');
         }
-      }
+      } */
     })
     },
 
-    getMode({state}) {
-      f7.request.get('http://' + uri() + '/mode')
-        .then((response) => { state.mode = JSON.parse(response.data) })
-        .catch((err) => { /* state.connect = false */ })
+    async getMode({state}) {
+      //(async () => {
+        const online = await checkOnlineStatus();
+        if (online) {
+          f7.request.get('http://' + uri() + '/mode')
+            .then((response) => { state.mode = JSON.parse(response.data) })
+        }
+      //})()
     },
-    getSettings({state}){
-/*       f7.request.get('http://' + uri() + '/trip').then((response) => { state.odometer = JSON.parse(response.data) });
-      f7.request.get('http://' + uri() + '/time').then((response) => { state.timer = JSON.parse(response.data) });
-      f7.request.get('http://' + uri() + '/manual').then((response) => { state.manual = JSON.parse(response.data) });
-      f7.request.get('http://' + uri() + '/pump').then((response) => { state.pump = JSON.parse(response.data) }); */
-    },
-    getServiceInfo({state}) {
-      f7.request.get('http://' + uri() + '/system').then((response) => {
-        state.system = JSON.parse(response.data)
-        if (!state.system.gps) state.odometer.sensor.gnss = false
-      });
-      f7.request.get('http://' + uri() + '/ver').then((response) => {
-        state.ver = JSON.parse(response.data)
-        localStorage.setItem('ver', response.data)
-        // парсинг версии
-        let fs = state.ver.fw.slice(-2);
-        state.verfs = fs.match(/\d{1}/g).join('.');
-      })
-      .catch((err) => {
-        state.ver = JSON.parse(localStorage.getItem('ver'))
-        // парсинг версии
-        let fs = state.ver.fw.slice(-2);
-        state.verfs = fs.match(/\d{1}/g).join('.');
-      });
+//     getSettings({state}){
+// /*       f7.request.get('http://' + uri() + '/trip').then((response) => { state.odometer = JSON.parse(response.data) });
+//       f7.request.get('http://' + uri() + '/time').then((response) => { state.timer = JSON.parse(response.data) });
+//       f7.request.get('http://' + uri() + '/manual').then((response) => { state.manual = JSON.parse(response.data) });
+//       f7.request.get('http://' + uri() + '/pump').then((response) => { state.pump = JSON.parse(response.data) }); */
+//     },
+    async getServiceInfo({state}) {
+      log("getServiceInfo")
+      //async () => {
+        const online = await checkOnlineStatus();
+        if (online) {
+          f7.request.get('http://' + uri() + '/system').then((response) => {
+            state.system = JSON.parse(response.data)
+            if (!state.system.gps) state.odometer.sensor.gnss = false
+          });
+          f7.request.get('http://' + uri() + '/ver')
+            .then((response) => {
+              state.ver = JSON.parse(response.data)
+              localStorage.setItem('ver', response.data)
+              // парсинг версии
+              let fs = state.ver.fw.slice(-2);
+              state.verfs = fs.match(/\d{1}/g).join('.');
+            })
+            .catch((err) => {
+              state.ver = JSON.parse(localStorage.getItem('ver'))
+              // парсинг версии
+              let fs = state.ver.fw.slice(-2);
+              state.verfs = fs.match(/\d{1}/g).join('.');
+            });
+        }
+      //}
     },
 
     requestGNSS({state}) {
@@ -345,17 +387,19 @@ const store = createStore({
           log(err)
         })
     }, */
-    requestTelemetryStart({state}) {
+    async requestTelemetryStart({state}) {
       //wsStore.set({cmd: "telemetry"})
-      f7.request.get('http://' + uri() + '/telemetry/start')
-        .then((res)=> { log(res) } )
-        .catch((err) => { /* state.connect = false */ })
+      const online = await checkOnlineStatus();
+      if (online) {
+        f7.request.get('http://' + uri() + '/telemetry/start')
+      }
     },
-    requestTelemetryStop({state}) {
+    async requestTelemetryStop({state}) {
       //wsStore.set({cmd: "telemetry"})
-      f7.request.get('http://' + uri() + '/telemetry/stop')
-        .then((res)=> { log(res) })
-        .catch((err) => { log(err) })
+      const online = await checkOnlineStatus();
+      if (online) {
+        f7.request.get('http://' + uri() + '/telemetry/stop')
+      }
     },
     requestConfig ({state}, settings) {
       wsStore.set({cmd: "get", param: settings})
@@ -383,7 +427,16 @@ const store = createStore({
       state.odometer = state.odometer
       clearTimeout(timeoutId);
       timeoutId = setTimeout(() => {
-        wsStore.set({cmd: "post", param: [state.odometer.id, Object.fromEntries(state.mapSettings)]}); // отправляем в БУ
+//        wsStore.set({cmd: "post", param: [state.odometer.id, Object.fromEntries(state.mapSettings)]}); // отправляем в БУ
+        f7.request.postJSON('http://' + uri() + '/trip', Object.fromEntries(state.mapSettings))
+        .then((res) => {
+          log(res)
+        })
+        .catch((err) => {
+          f7.dialog.alert("Команда не выполнена!", "Cosmoiler")
+          f7.request.get('http://' + uri() + '/trip')
+            .then((response) => { state.odometer = JSON.parse(response.data) })
+        })
         state.mapSettings.clear();
         log("ws send: ", {cmd: "post", param: [state.odometer.id, Object.fromEntries(state.mapSettings)]})
                                                           // Данная запись прдотвращает попадание в массив повторяющихся значений id
@@ -439,9 +492,6 @@ const store = createStore({
             log(res)
           })
           .catch((err) => {
-            log(err.xhr)
-            log(err.status)
-            log(err.message)
             f7.dialog.alert("Команда не выполнена!", "Cosmoiler")
             f7.request.get('http://' + uri() + '/mode')
               .then((response) => { state.mode = JSON.parse(response.data) })

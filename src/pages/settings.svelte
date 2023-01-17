@@ -1,7 +1,6 @@
 <Page
   name="settings"
-  class={`page`}
-  on:pageTabShow={pageTabShow}>
+  class={`page`}>
 
 
 
@@ -119,8 +118,8 @@
 
   $: gnss = (odometer.sensor.gnss && gnssPresent.gps) ? "GPS" : $t("settings.sensor.impulse")
 
-  function pageTabShow() {
+/*   function pageTabShow() {
     //store.dispatch('getSettings')
-  }
+  } */
 
   </script>
