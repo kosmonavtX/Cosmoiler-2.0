@@ -1,8 +1,7 @@
 <Page
   name="service"
   class={`page`}
-  pageContent={true}
-  on:pageTabShow={pageTabShow}>
+  pageContent={true}>
 
   <Navbar title={$t('service.title')} />
 
@@ -61,8 +60,8 @@
     {link: '/service/about/',   title: $t('service.about.title'),   view: true},
   ]
 
-  function pageTabShow() {
+/*   function pageTabShow() {
     store.dispatch('getServiceInfo')
-  }
+  } */
 
 </script>

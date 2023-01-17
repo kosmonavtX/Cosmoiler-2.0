@@ -77,7 +77,7 @@
 
 
   let gnssPresent = useStore('gnssPresent', (value) => gnssPresent = value);
-  let connected = useStore('connected', (value) => connected = value);
+  $: connected = useStore('connected', (value) => connected = value);
   let odometer = useStore('odometer', (value) => odometer = value);
   let timer = useStore('timer', (value) => timer = value);
   let mode = useStore('mode', (value) => mode = value);
