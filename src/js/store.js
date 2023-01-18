@@ -451,7 +451,16 @@ const store = createStore({
       state.timer = state.timer
       clearTimeout(timeoutId);
       timeoutId = setTimeout(() => {
-        wsStore.set({cmd: "post", param: [state.timer.id, Object.fromEntries(state.mapSettings)]})
+        //wsStore.set({cmd: "post", param: [state.timer.id, Object.fromEntries(state.mapSettings)]})
+        f7.request.postJSON('http://' + uri() + '/time', Object.fromEntries(state.mapSettings))
+        .then((res) => {
+          log(res)
+        })
+        .catch((err) => {
+          f7.dialog.alert("Команда не выполнена!", "Cosmoiler")
+          f7.request.get('http://' + uri() + '/time')
+            .then((response) => { state.odometer = JSON.parse(response.data) })
+        })
         state.mapSettings.clear()
         state.fChngSettings = { status: true, id: [...new Set([...state.fChngSettings.id, state.timer.id])]}
         log("send Time = ", state.timer)
@@ -463,7 +472,16 @@ const store = createStore({
       state.manual = state.manual
       clearTimeout(timeoutId);
       timeoutId = setTimeout(() => {
-          wsStore.set({cmd: "post", param: [state.manual.id, state.manual]});
+          //wsStore.set({cmd: "post", param: [state.manual.id, state.manual]});
+          f7.request.postJSON('http://' + uri() + '/manual', state.manual)
+          .then((res) => {
+            log(res)
+          })
+          .catch((err) => {
+            f7.dialog.alert("Команда не выполнена!", "Cosmoiler")
+            f7.request.get('http://' + uri() + '/manual')
+              .then((response) => { state.odometer = JSON.parse(response.data) })
+          })
           state.fChngSettings = { status: true, id: [...new Set([...state.fChngSettings.id, state.manual.id])]};
           log("send Pump = ", state.manual);
       }, 2000)
@@ -475,7 +493,16 @@ const store = createStore({
       state.pump = state.pump;
       clearTimeout(timeoutId);
       timeoutId = setTimeout(() => {
-          wsStore.set({cmd: "post", param: [state.pump.id, {dpms: data.dpms}]}); // отправляем в БУ только свойство dpms
+          //wsStore.set({cmd: "post", param: [state.pump.id, {dpms: data.dpms}]}); // отправляем в БУ только свойство dpms
+          f7.request.postJSON('http://' + uri() + '/pump', {dpms: data.dpms})
+          .then((res) => {
+            log(res)
+          })
+          .catch((err) => {
+            f7.dialog.alert("Команда не выполнена!", "Cosmoiler")
+            f7.request.get('http://' + uri() + '/pump')
+              .then((response) => { state.odometer = JSON.parse(response.data) })
+          })
           state.fChngSettings = { status: true, id: [...new Set([...state.fChngSettings.id, state.pump.id])]};
           log("send Pump = ", state.pump);
       }, 2000);
@@ -514,16 +541,25 @@ const store = createStore({
 
      // }
     },
-        // TODO: add rest api
+
     sendSystem({state}, data) {
       state.system = data
       state.system = state.system
-      wsStore.set({cmd: "post", param: [state.system.id, Object.fromEntries(state.mapSettings)]}) // TODO проверить!
+      //wsStore.set({cmd: "post", param: [state.system.id, Object.fromEntries(state.mapSettings)]}) // TODO проверить!
+      f7.request.postJSON('http://' + uri() + '/system', Object.fromEntries(state.mapSettings))
+      .then((res) => {
+        log(res)
+      })
+      .catch((err) => {
+        f7.dialog.alert("Команда не выполнена!", "Cosmoiler")
+        f7.request.get('http://' + uri() + '/system')
+          .then((response) => { state.odometer = JSON.parse(response.data) })
+      })
       state.mapSettings.clear()
       state.fChngSettings = { status: true, id: [...new Set([...state.fChngSettings.id, state.system.id])]}
       log("send System = ", state.system)
     },
-        // TODO: add rest api ( /state/ctrl, /state/auto )
+        // /state/ctrl, /state/auto
     modeWork({state}, mode) {
       //state.wsStore.set({cmd: "work", param: mode})
       let rest_str;
@@ -538,29 +574,24 @@ const store = createStore({
         f7.alert('Нет связи с блоком управеления. Команда не выполнена','Cosmoiler')
       })
     },
-        // TODO: add rest api ( /pump/ctrl?state=1[0]&dir=1[0] )
+        // /pump/ctrl?state=1[0]&dir=1[0]
     ctrlPump({state}, settings) {
       state.wsStore.set({cmd: "pump", param: settings})
-
+      f7.request.postJSON('http://' + uri() + '/pump/ctrl?state=' + (settings[0]>>0) + '&dir=' + settings[1], settings[2])
+      .then((res) => {
+        log(res)
+      })
+      .catch((err) => {
+        f7.dialog.alert("Команда не выполнена!", "Cosmoiler")
+      })
     },
-        // TODO: add rest api (POST /bright?v=X)
+        //(POST /bright?v=X)
     ctrlBright({state}, data) {
       //state.wsStore.set({cmd: "bright", param: data})
       f7.request.post('http://' + uri() + '/bright?v='+ data)
         .catch(() => {
           f7.alert('Нет связи с блоком управеления. Команда не выполнена.','Cosmoiler')
         })
-/*         f7.request({
-          url: 'http://' + uri() + '/bright',
-          method: 'POST',
-          data: data,
-          dataType: 'json',
-          contentType: 'application/json',
-          //crossDomain: true,
-          error: function(err) {
-            f7.dialog.alert("Команда не выполнена!", "Cosmoiler")
-          }
-        }) */
     },
 /*     cmdUpdate({state}) {
       state.wsStore.set({cmd: "update"})
