@@ -236,6 +236,9 @@ const store = createStore({
           f7.request.get('http://' + uri() + '/pump').then((response) => { state.pump = JSON.parse(response.data) });
           f7.request.get('http://' + uri() + '/system').then((response) => {
             state.system = JSON.parse(response.data)
+            var str_pn = state.system.pn.toString('base64')
+            state.system.pn = str_pn
+            //TODO add decoding pn
             if (!state.system.gps)
               state.odometer.sensor.gnss = false
           });
