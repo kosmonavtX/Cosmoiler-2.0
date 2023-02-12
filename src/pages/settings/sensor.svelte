@@ -32,8 +32,6 @@
         checked={fIMP}
         on:change={() => {
         tmpOdometer.sensor.gnss = false
-        //mapSettings.set("sensor", tmpOdometer.sensor);
-        //log(mapSettings)
         }}
         class={`sensor__list-item`}>
     </ListItem>
