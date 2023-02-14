@@ -116,7 +116,7 @@
       if (!telemetry.params[nameParams.GPS].fix)
         return {
           icon: "icon-clock",
-          value: timer.presets[telemetry.params[nameParams.MODE].p].time + $t("all.seconds")
+          value: timer.presets[--(telemetry.params[nameParams.MODE].p)].time + $t("all.seconds")
         }
       return {
           icon: "icon-gps",
@@ -164,7 +164,7 @@ $:  dataCardTele = [
           text: $t("all.speed"),
           units: $t("all.kmh") },
         {
-          value: remainsTrip(odometer, gnssPresent.gps, telemetry.params[nameParams.ODOMETER])/odometer.presets[telemetry.params[nameParams.MODE].p].dst_m,
+          value: remainsTrip(odometer, gnssPresent.gps, telemetry.params[nameParams.ODOMETER])/odometer.presets[--(telemetry.params[nameParams.MODE].p)].dst_m,
           valueText: (remainsTrip(odometer, gnssPresent.gps, telemetry.params[nameParams.ODOMETER])/1000).toFixed(1),
           labelText: (telemetry.params[nameParams.ODOMETER].v / 1000).toFixed(1),
           text: $t("all.distance"),
@@ -173,7 +173,7 @@ $:  dataCardTele = [
       icons: [
         { // 1-я иконка
           icon: iconsPreset[telemetry.params[nameParams.MODE].p],
-          value: (odometer.presets[telemetry.params[nameParams.MODE].p].dst_m/1000).toFixed() + $t("all.km")
+          value: (odometer.presets[--(telemetry.params[nameParams.MODE].p)].dst_m/1000).toFixed() + $t("all.km")
         },
         { // 2-я иконка
           icon: "icon-pump", // насос
@@ -206,14 +206,14 @@ $:  dataCardTele = [
       title: $t('telemetry.tmr.title').toUpperCase(), // 2
       gauge: [
         {
-          value: telemetry.params[nameParams.TIMER].v/(timer.presets[telemetry.params[nameParams.MODE].p].time*1000),
+          value: telemetry.params[nameParams.TIMER].v/(timer.presets[--(telemetry.params[nameParams.MODE].p)].time*1000),
           valueText: valueTimer(telemetry.params[nameParams.TIMER]),
           labelText: "",
           text: "",
           units: "" }
       ],
       icons: [
-        {icon: iconsPreset[telemetry.params[nameParams.MODE].p], value: timer.presets[telemetry.params[nameParams.MODE].p].time + $t("all.seconds")},
+        {icon: iconsPreset[telemetry.params[nameParams.MODE].p], value: timer.presets[--(telemetry.params[nameParams.MODE].p)].time + $t("all.seconds")},
         {icon: "icon-pump", value: telemetry.params[nameParams.PUMP].v},
         {
           icon: "icon-accum",
@@ -227,14 +227,14 @@ $:  dataCardTele = [
       title: $t('telemetry.tmr2.title'), // 5
       gauge: [
         {
-          value: telemetry.params[nameParams.TIMER].v/(timer.presets[telemetry.params[nameParams.MODE].p].time*1000),
+          value: telemetry.params[nameParams.TIMER].v/(timer.presets[--(telemetry.params[nameParams.MODE].p)].time*1000),
           valueText: valueTimer(telemetry.params[nameParams.TIMER]),
           labelText: "",
           text: "",
           units: "" }
       ],
       icons: [
-        {icon: iconsPreset[telemetry.params[nameParams.MODE].p], value: timer.presets[telemetry.params[nameParams.MODE].p].time + $t("all.seconds")},
+        {icon: iconsPreset[telemetry.params[nameParams.MODE].p], value: timer.presets[--(telemetry.params[nameParams.MODE].p)].time + $t("all.seconds")},
         {icon: "icon-pump", value: telemetry.params[nameParams.PUMP].v},
         (gnssPresent.gps) ? {icon: "icon-gps", value: telemetry.params[nameParams.GPS].sat} : null,
         {
