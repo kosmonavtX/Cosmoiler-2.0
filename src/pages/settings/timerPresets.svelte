@@ -48,7 +48,7 @@
 
   const presets = {
     CITY: 0,
-    OFFROAD: 1,
+    OFFROAD: 2,
   }
 
   $: if (!connected) document.location.reload()

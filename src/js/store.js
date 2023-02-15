@@ -152,7 +152,7 @@ const store = createStore({
           v: 0,      // Количество включений насоса
         },
         { // 3 - mode
-          m: 0, p: 1
+          m: 0, p: 0
         },
         { // 4 - gps
           fix: false,   // 3D Fix GPS
@@ -233,7 +233,7 @@ const store = createStore({
           f7.request.get('http://' + uri() + '/trip').then((response) => { state.odometer = JSON.parse(response.data) });
           f7.request.get('http://' + uri() + '/time').then((response) => {
             state.timer = JSON.parse(response.data)
-            //state.timer.presets.splice(1, 0, { time: 0, num: 0, cycles: 0 })
+            state.timer.presets.splice(1, 0, { time: 0, num: 0, cycles: 0 })
           });
           f7.request.get('http://' + uri() + '/manual').then((response) => { state.manual = JSON.parse(response.data) });
           f7.request.get('http://' + uri() + '/pump').then((response) => { state.pump = JSON.parse(response.data) });
@@ -271,7 +271,7 @@ const store = createStore({
       });
 
       wsStore.subscribe((value) => {
-        log('[wsStore value]=> ', value)
+        log('[ws value]=> ', value)
 
         if (value) {
           //console.log('wsStore value', value)
@@ -317,7 +317,7 @@ const store = createStore({
           else  */
           if (value.id == 'telemetry') {
             state.telemetry = value
-            state.telemetry.params[3].p++
+            //state.telemetry.params[3].p++
             log('Telemetry: ', state.telemetry)
           }
 
