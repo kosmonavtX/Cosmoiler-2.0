@@ -171,6 +171,7 @@ const store = createStore({
     },
     verfs: "4.8",
 
+    OILER_PUMPING: 3,
     OILER_SETTINGS: 2,
     OILER_MANUAL: 1,
     OILER_AUTO: 0,
@@ -569,6 +570,9 @@ const store = createStore({
       }
       if (mode == store.state.OILER_SETTINGS) {
         rest_str = '/state/ctrl'
+      }
+      if (mode == store.state.OILER_PUMPING) {
+        rest_str = '/state/pumping'
       }
       f7.request.get('http://' + uri() + rest_str)
       .catch(() => {

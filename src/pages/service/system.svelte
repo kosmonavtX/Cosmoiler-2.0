@@ -85,7 +85,7 @@
     function pageBeforeIn() {
     //log('pageBeforeIn', pump)
       /* включить режим настройки вязкости */
-      store.dispatch('modeWork', store.state.OILER_SETTINGS)
+      store.dispatch('modeWork', store.state.OILER_PUMPING)
     }
 
     function pageAfteOut() {
