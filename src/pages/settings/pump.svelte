@@ -33,23 +33,20 @@
           }}
           class={`sensor__list-item`}>
         </ListItem>
-
-{#if true} <!-- TODO Сделать настройки пользовательского насоса (версия 4.1) -->
-      <ListItem
-        radio
-        name="user"
-        value="usr"
-        title={$t('Дополнительный насос')}
-        checked={fUsr}
-        on:change={() => {
-          tmpPump.usr = true
-          store.dispatch('sendPump', tmpPump);
-          //mapSettings.set("sensor", tmpOdometer.sensor);
-          //log(mapSettings)
-        }}
-        class={`sensor__list-item`}>
-      </ListItem>
-{/if}
+        <ListItem
+          radio
+          name="user"
+          value="usr"
+          title={$t('Дополнительный насос')}
+          checked={fUsr}
+          on:change={() => {
+            tmpPump.usr = true
+            store.dispatch('sendPump', tmpPump);
+            //mapSettings.set("sensor", tmpOdometer.sensor);
+            //log(mapSettings)
+          }}
+          class={`sensor__list-item`}>
+        </ListItem>
     </List>
 
 
@@ -113,10 +110,10 @@
     $: rangeValues = [
       [{
         title: "Объем масла",
-        value: (tmpPump.dpms * 100 / T > 98)? 98 : tmpPump.dpms * 100 / T,
+        value: (tmpPump.dpms * 100 / T > 20)? 20 : tmpPump.dpms * 100 / T,
        // name_value: "%",
         minValue: 1, //(ver.hw[0] == 'C')? 2 : 1,
-        maxValue: 98,
+        maxValue: 20,
         stepValue: 1,
         scale: false,
         icon: "icon-drop",
