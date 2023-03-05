@@ -18,6 +18,7 @@
       <Col>
         <input
           type='file'
+          accept='.bin'
           bind:files
           bind:this={browseInput}
           class={`hidden`}
@@ -112,7 +113,10 @@
                   complete: function() {
                     fEndDownloadFW = true;
                     log("Complete request FW")
-                    f7.request({
+                    if ((statusFW != 200))
+                              f7.dialog.alert("Текущая версия последняя", "Cosmoiler")
+                    // Запрос ФС
+/*                     f7.request({
                         url: 'http://cosmoiler.ru/services/download',
                         method: 'GET',
                         data: {sn: ver.sn, verfs: ver.fw.slice(-2)},
@@ -139,13 +143,10 @@
                         complete: function() {
                           fEndDownloadFW = true;
                           log("Complete request FS: ", statusFS)
-/*                           if ((statusFW == 0) || (statusFS == 0))
-                            f7.dialog.alert("Нет связи с сервером обновлений. Включите интернет и попробуйте снова.", "Cosmoiler")
-                          else */
                             if ((statusFW != 200) && (statusFS != 200))
                               f7.dialog.alert("Текущая версия последняя", "Cosmoiler")
                         }
-                      })
+                      }) */
                   }
               })
           }
