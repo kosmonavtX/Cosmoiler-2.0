@@ -7,16 +7,8 @@
     <Navbar title={$t('settings.pump.title')} backLink="Back" />
 
 <!--     <BlockTitle>Настройка насоса под вязкость залитого масла</BlockTitle> -->
-    <Block mediumInset>
-      <p><i>
-        Оптимальная настройка заключается в
-        задании такого объема масла, чтобы при срабатывании насоса из форсунки вытекала одна капля.
-        </i>
-      </p>
-    </Block>
-
-    <BlockTitle>
-        {$t('Выберите тип насоса')}
+    <BlockTitle class='block-title-text_settings'>
+        {$t('Тип насоса')}
     </BlockTitle>
     <List>
         <ListItem
@@ -51,19 +43,25 @@
 
 
     {#if !tmpPump.usr}
-    <BlockTitle>
-      {$t('Тип масла')}
+    <BlockTitle class='block-title-text_settings'>
+      {$t('Вязкость масла')}
     </BlockTitle>
+    <Block mediumInset>
+      <p><i>
+        Выбор вязкости используется только для упрощения настройки выдачи насосом капли масла.
+        </i>
+      </p>
+    </Block>
         <List>
           <ListItem
             radio
             name="atf"
             value="atf"
-            title={$t('АТФ')}
+            title={$t('Жидкое (АТФ, моторное)')}
             checked={is_atf}
             on:change={() => {
               Oil = typesOil.ATF
-              T = 500
+             // T = 500
               localStorage.setItem('oil', Oil)
             }}
             class={`sensor__list-item`}>
@@ -72,16 +70,25 @@
             radio
             name="tad17"
             value="tad17"
-            title={$t('Трансмиссионное')}
+            title={$t('Густое (трансмиссионное)')}
             checked={is_tad17}
             on:change={() => {
               Oil = typesOil.TAD
-              T = 2000
+             // T = 2000
               localStorage.setItem('oil', Oil)
             }}
             class={`sensor__list-item`}>
           </ListItem>
       </List>
+      <BlockTitle class='block-title-text_settings'>
+        {$t('Объем масла')}
+      </BlockTitle>
+      <Block mediumInset>
+        <i>
+          Оптимальная настройка заключается в
+          задании такого объема масла, чтобы при срабатывании насоса из форсунки вытекала одна капля.
+          </i>
+      </Block>
       {#if is_atf}
         <Ranges {...rangeValues[0][0]} />
       {:else if is_tad17}
@@ -147,28 +154,24 @@
     $: is_atf = (Oil == typesOil.ATF)? true : false
     $: is_tad17 = (Oil == typesOil.TAD)? true : false
 
-/*     $: if (is_atf) {
-        T = 500
-        localStorage.setItem('oil', typesOil.ATF)
-    }
-    $: if (is_tad17) {
-        T = 2000
-        localStorage.setItem('oil', typesOil.TAD)
-    } */
+    $: if (is_atf) T = 500
+    $: if (is_tad17) T = 2000
 
     //$: if ()
     $: rangeValues = [
       [{
-        title: "Объем масла",
+
         value: (tmpPump.dpms * 100 / T > maxProcentT)? maxProcentT : tmpPump.dpms * 100 / T,
        // name_value: "%",
-        minValue: 1, //(ver.hw[0] == 'C')? 2 : 1,
-        maxValue: maxProcentT,
-        stepValue: 1,
+        minValue: 0, //(ver.hw[0] == 'C')? 2 : 1,
+        maxValue: 100,
+        stepValue: 5,
         scale: false,
+        scaleStep: 4,
         icon: "icon-drop",
         icon2: "icon-dropfill",
         rangeChange: (e)=>{
+          if (e == 0) e = 1;
           tmpPump.dpms = T * e/100;
           store.dispatch('sendPump', tmpPump);
         },
@@ -180,16 +183,17 @@
         }
       },
       {
-        title: "Объем масла",
+/*         title: "Объем масла", */
         value: (tmpPump.dpms * 100 / T > maxProcentT)? maxProcentT : tmpPump.dpms * 100 / T,
        // name_value: "%",
-        minValue: 1, //(ver.hw[0] == 'C')? 2 : 1,
-        maxValue: maxProcentT,
-        stepValue: 1,
+        minValue: 0, //(ver.hw[0] == 'C')? 2 : 1,
+        maxValue: 100,
+        stepValue: 5,
         scale: false,
         icon: "icon-drop",
         icon2: "icon-dropfill",
         rangeChange: (e)=>{
+          if (e == 0) e = 1;
           tmpPump.dpms = T * e/100;
           store.dispatch('sendPump', tmpPump);
         },
