@@ -35,7 +35,6 @@
       Navbar,
       BlockTitle,
       Toggle,
-      AccordionContent,
       useStore
     } from 'framework7-svelte';
     import {t} from '../../services/i18n.js';
@@ -55,12 +54,12 @@
     let Tdpms = 0
     $: {
       if (ver.hw[0] == 'B') Tdpms = 1000
-      if (ver.hw[0] == 'C') Tdpms = 10000 // 10 секунд работает насос
+      if (ver.hw[0] == 'C') Tdpms = 1000 // 10 секунд работает насос
     }
 
 
     $: if (!connected) document.location.reload()
-    $: store.dispatch('ctrlPump', [ctrlpump, 0, {dpms: Tdpms, dpdp: 800}])
+    $: store.dispatch('ctrlPump', [ctrlpump, 0, {dpms: Tdpms, dpdp: 1}])
 
     $: rangeValues = [
       [{
