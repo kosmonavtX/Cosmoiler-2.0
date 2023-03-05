@@ -217,13 +217,7 @@ const store = createStore({
       setInterval(async () => {
         const result = await checkOnlineStatus();
         state.connect = result
-/*         f7.request.get('http://' + uri() + '/ping')
-          .then((response) => {
-            if (!state.connect)
-              f7.request.get('http://' + uri() + '/mode').then((response) => { state.mode = JSON.parse(response.data) });
-            state.connect = true
-          })
-          .catch((err) => { state.connect = false }) */
+        //state.connect = true
       }, 2000)
 
       window.addEventListener("load", async (event) => {
@@ -275,54 +269,10 @@ const store = createStore({
         log('[ws value]=> ', value)
 
         if (value) {
-          //console.log('wsStore value', value)
-/*           if (state.connect != value.connect)  {
-            //state.trigg_connect = true;
-            if (value.connect) {
-              setTimeout(() => {
-               // f7.request.get('http://192.168.4.1' + '/mode').then((response) => { state.mode = JSON.parse(response.data) });
-
-              }, 10);
-            }
-          } */
-
-         // state.connect = value.connect
-
-          //state.connect = true //debug.enabled('test') ? true : value.connect
-         // delete value.connect
-          //let obj = value.data
-
-          /* if (value.id == '/mode.json')
-            state.mode = value
-          else */ /* if (value.id == '/trip.json')
-            state.odometer = value
-          else if (value.id == '/time.json')
-            state.timer = value
-          else if (value.id == '/manual.json')
-            state.manual = value
-          else if (value.id == '/pump.json') {
-            state.pump = value
-          }
-          else if (value.id == '/system.json') {
-            state.system = value
-            // Если модуль GPS в блоке управления остуствует
-            if (!state.system.gps) state.odometer.sensor.gnss = false
-          }
-          else if (value.id == '/ver.json') {
-            state.ver = value
-            localStorage.setItem('ver', JSON.stringify(state.ver))
-            // парсинг версии
-            let fs = state.ver.fw.slice(-2);
-            state.verfs = fs.match(/\d{1}/g).join('.');
-          }
-          else  */
           if (value.id == 'telemetry') {
             state.telemetry = value
-            //state.telemetry.params[3].p++
             log('Telemetry: ', state.telemetry)
           }
-
-
           log('Store state', state)
       }
 /*       if (value.type == 'error') {
