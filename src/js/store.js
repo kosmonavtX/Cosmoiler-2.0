@@ -217,6 +217,7 @@ const store = createStore({
       setInterval(async () => {
         const result = await checkOnlineStatus();
         state.connect = result
+        log("CONNECT: ", state.connect)
         //state.connect = true
       }, 2000)
 
@@ -224,21 +225,21 @@ const store = createStore({
         //const statusDisplay = document.getElementById("status");
         const online = await checkOnlineStatus()
         if (online) {
-          f7.request.get('http://' + uri() + '/mode').then((response) => { state.mode = JSON.parse(response.data) });
-          f7.request.get('http://' + uri() + '/trip').then((response) => { state.odometer = JSON.parse(response.data) });
-          f7.request.get('http://' + uri() + '/time').then((response) => {
+          f7.request.get('http://' + uri() + '/settings/mode').then((response) => { state.mode = JSON.parse(response.data) });
+          f7.request.get('http://' + uri() + '/settings/trip').then((response) => { state.odometer = JSON.parse(response.data) });
+          f7.request.get('http://' + uri() + '/settings/time').then((response) => {
             state.timer = JSON.parse(response.data)
             state.timer.presets.splice(1, 0, { time: 0, num: 0, cycles: 0 })
           });
-          f7.request.get('http://' + uri() + '/manual').then((response) => { state.manual = JSON.parse(response.data) });
-          f7.request.get('http://' + uri() + '/pump').then((response) => { state.pump = JSON.parse(response.data) });
-          f7.request.get('http://' + uri() + '/system').then((response) => {
+          f7.request.get('http://' + uri() + '/settings/manual').then((response) => { state.manual = JSON.parse(response.data) });
+          f7.request.get('http://' + uri() + '/settings/pump').then((response) => { state.pump = JSON.parse(response.data) });
+          f7.request.get('http://' + uri() + '/settings/system').then((response) => {
             state.system = JSON.parse(response.data)
             //state.system.pn = Buffer.from(state.system.pn, 'base64').toString()
             if (!state.system.gps)
               state.odometer.sensor.gnss = false
           });
-          f7.request.get('http://' + uri() + '/ver')
+          f7.request.get('http://' + uri() + '/settings/ver')
             .then((response) => {
               state.ver = JSON.parse(response.data)
               localStorage.setItem('ver', response.data)
@@ -290,7 +291,7 @@ const store = createStore({
       //(async () => {
         const online = await checkOnlineStatus();
         if (online) {
-          f7.request.get('http://' + uri() + '/mode')
+          f7.request.get('http://' + uri() + '/settings/mode')
             .then((response) => { state.mode = JSON.parse(response.data) })
         }
       //})()
@@ -306,11 +307,11 @@ const store = createStore({
       //async () => {
         const online = await checkOnlineStatus();
         if (online) {
-          f7.request.get('http://' + uri() + '/system').then((response) => {
+          f7.request.get('http://' + uri() + '/settings/system').then((response) => {
             state.system = JSON.parse(response.data)
             if (!state.system.gps) state.odometer.sensor.gnss = false
           });
-          f7.request.get('http://' + uri() + '/ver')
+          f7.request.get('http://' + uri() + '/settings/ver')
             .then((response) => {
               state.ver = JSON.parse(response.data)
               localStorage.setItem('ver', response.data)
@@ -385,13 +386,13 @@ const store = createStore({
       clearTimeout(timeoutId);
       timeoutId = setTimeout(() => {
 //        wsStore.set({cmd: "post", param: [state.odometer.id, Object.fromEntries(state.mapSettings)]}); // отправляем в БУ
-        f7.request.postJSON('http://' + uri() + '/trip', Object.fromEntries(state.mapSettings))
+        f7.request.postJSON('http://' + uri() + '/settings/trip', Object.fromEntries(state.mapSettings))
         .then((res) => {
           log(res)
         })
         .catch((err) => {
           f7.dialog.alert("Команда не выполнена!", "Cosmoiler")
-          f7.request.get('http://' + uri() + '/trip')
+          f7.request.get('http://' + uri() + '/settings/trip')
             .then((response) => { state.odometer = JSON.parse(response.data) })
         })
         state.mapSettings.clear();
@@ -409,13 +410,13 @@ const store = createStore({
       clearTimeout(timeoutId);
       timeoutId = setTimeout(() => {
         //wsStore.set({cmd: "post", param: [state.timer.id, Object.fromEntries(state.mapSettings)]})
-        f7.request.postJSON('http://' + uri() + '/time', Object.fromEntries(state.mapSettings))
+        f7.request.postJSON('http://' + uri() + '/settings/time', Object.fromEntries(state.mapSettings))
         .then((res) => {
           log(res)
         })
         .catch((err) => {
           f7.dialog.alert("Команда не выполнена!", "Cosmoiler")
-          f7.request.get('http://' + uri() + '/time')
+          f7.request.get('http://' + uri() + '/settings/time')
             .then((response) => { state.odometer = JSON.parse(response.data) })
         })
         state.mapSettings.clear()
@@ -430,13 +431,13 @@ const store = createStore({
       clearTimeout(timeoutId);
       timeoutId = setTimeout(() => {
           //wsStore.set({cmd: "post", param: [state.manual.id, state.manual]});
-          f7.request.postJSON('http://' + uri() + '/manual', state.manual)
+          f7.request.postJSON('http://' + uri() + '/settings/manual', state.manual)
           .then((res) => {
             log(res)
           })
           .catch((err) => {
             f7.dialog.alert("Команда не выполнена!", "Cosmoiler")
-            f7.request.get('http://' + uri() + '/manual')
+            f7.request.get('http://' + uri() + '/settings/manual')
               .then((response) => { state.odometer = JSON.parse(response.data) })
           })
           state.fChngSettings = { status: true, id: [...new Set([...state.fChngSettings.id, state.manual.id])]};
@@ -451,13 +452,13 @@ const store = createStore({
       clearTimeout(timeoutId);
       timeoutId = setTimeout(() => {
           //wsStore.set({cmd: "post", param: [state.pump.id, {dpms: data.dpms}]}); // отправляем в БУ только свойство dpms
-          f7.request.postJSON('http://' + uri() + '/pump', {dpms: data.dpms})
+          f7.request.postJSON('http://' + uri() + '/settings/pump', {dpms: data.dpms})
           .then((res) => {
             log(res)
           })
           .catch((err) => {
             f7.dialog.alert("Команда не выполнена!", "Cosmoiler")
-            f7.request.get('http://' + uri() + '/pump')
+            f7.request.get('http://' + uri() + '/settings/pump')
               .then((response) => { state.odometer = JSON.parse(response.data) })
           })
           state.fChngSettings = { status: true, id: [...new Set([...state.fChngSettings.id, state.pump.id])]};
@@ -471,13 +472,13 @@ const store = createStore({
         //wsStore.set({cmd: "post", param: [state.mode.id, {m: data.m}]}) // отправляем в БУ только свойство m
         log("send Mode = ", state.mode)
         //log("uri = ", uri())
-        f7.request.postJSON('http://' + uri() + '/mode', state.mode)
+        f7.request.postJSON('http://' + uri() + '/settings/mode', state.mode)
           .then((res) => {
             log(res)
           })
           .catch((err) => {
             f7.dialog.alert("Команда не выполнена!", "Cosmoiler")
-            f7.request.get('http://' + uri() + '/mode')
+            f7.request.get('http://' + uri() + '/settings/mode')
               .then((response) => { state.mode = JSON.parse(response.data) })
               .catch((err) => { /* state.connect = false */ })
           })
@@ -503,13 +504,13 @@ const store = createStore({
       state.system = data
       state.system = state.system
       //wsStore.set({cmd: "post", param: [state.system.id, Object.fromEntries(state.mapSettings)]}) // TODO проверить!
-      f7.request.postJSON('http://' + uri() + '/system', Object.fromEntries(state.mapSettings))
+      f7.request.postJSON('http://' + uri() + '/settings/system', Object.fromEntries(state.mapSettings))
       .then((res) => {
         log(res)
       })
       .catch((err) => {
         f7.dialog.alert("Команда не выполнена!", "Cosmoiler")
-        f7.request.get('http://' + uri() + '/system')
+        f7.request.get('http://' + uri() + '/settings/system')
           .then((response) => { state.odometer = JSON.parse(response.data) })
       })
       state.mapSettings.clear()
@@ -548,7 +549,7 @@ const store = createStore({
         //(POST /bright?v=X)
     ctrlBright({state}, data) {
       //state.wsStore.set({cmd: "bright", param: data})
-      f7.request.post('http://' + uri() + '/bright?v='+ data)
+      f7.request.post('http://' + uri() + '/settings/bright?v='+ data)
         .catch(() => {
           f7.alert('Нет связи с блоком управеления. Команда не выполнена.','Cosmoiler')
         })
