@@ -63,6 +63,8 @@ const wsStore = websocketStore('ws://' + uri() + '/ws', {}, [],
     maxReconnectionDelay: 6000,
     minReconnectionDelay: 3000,
     connectionTimeout: 2000,
+    automaticOpen: false,
+    //maxReconnectAttempts: 1
   })
 
 let timeoutId;
@@ -70,6 +72,7 @@ let timeoutId;
 const store = createStore({
   state: {
     wsStore: wsStore,//websocketStore('ws://' + uri(), {"initial": 0}, [], {debug: true}),
+    telemetryInterval: 0,
     connect: false,
    // trigg_connect: false; // триггер изменения статуса подключения
     locale: window.navigator.userLanguage || window.navigator.language,
@@ -255,11 +258,12 @@ const store = createStore({
                 state.verfs = fs.match(/\d{1}/g).join('.');
               }
             });
-          f7.request.get('http://' + uri() + '/telemetry/start')
-            .then((res)=> {
-              setTimeout(() => {
+          f7.request.get('http://' + uri() + '/telemetry/get')
+            .then((response)=> {
+              state.telemetry = JSON.parse(response.data)
+/*               setTimeout(() => {
                 f7.request.get('http://' + uri() + '/telemetry/stop')
-              }, 1000)
+              }, 1000) */
             })
             .catch((err) => { /* state.connect = false */ })
         }
@@ -275,16 +279,8 @@ const store = createStore({
             log('Telemetry: ', state.telemetry)
           }
           log('Store state', state)
-      }
-/*       if (value.type == 'error') {
-        state.ver = JSON.parse(localStorage.getItem('ver'))
-        // парсинг версии
-        if (state.ver) {
-          let fs = state.ver.fw.slice(-2);
-          state.verfs = fs.match(/\d{1}/g).join('.');
         }
-      } */
-    })
+      })
     },
 
     async getMode({state}) {
@@ -330,7 +326,7 @@ const store = createStore({
     },
 
     requestGNSS({state}) {
-      wsStore.set({cmd: "get", param: ["gnss"]})
+      //wsStore.set({cmd: "get", param: ["gnss"]})
       log('requestGNSS')
     },
 /*     requestTelemetry({state}) {
@@ -345,22 +341,32 @@ const store = createStore({
           log(err)
         })
     }, */
+
     async requestTelemetryStart({state}) {
       //wsStore.set({cmd: "telemetry"})
       const online = await checkOnlineStatus();
       if (online) {
         f7.request.get('http://' + uri() + '/telemetry/start')
+        //wsStore.open()
+/*         state.telemetryInterval = setInterval(() => {
+          f7.request.get('http://' + uri() + '/telemetry/get')
+                    .then((response) => {
+                      state.telemetry = JSON.parse(response.data)
+                      log('Telemetry: ', state.telemetry)
+                    })
+        }, 300) */
       }
     },
     async requestTelemetryStop({state}) {
-      //wsStore.set({cmd: "telemetry"})
+      //clearInterval(state.telemetryInterval);
       const online = await checkOnlineStatus();
       if (online) {
         f7.request.get('http://' + uri() + '/telemetry/stop')
+        //wsStore.close()
       }
     },
     requestConfig ({state}, settings) {
-      wsStore.set({cmd: "get", param: settings})
+      //wsStore.set({cmd: "get", param: settings})
     },
   // TODO: проверить правильность заполнения поля imp_m
     calcDistance({state}, _trip) {
