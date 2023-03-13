@@ -180,15 +180,17 @@
           store.dispatch('sendMode', tmpMode)
       }
     }
-
+    $: {
+      if (connected) store.dispatch('getMode')
+    }
   function pageTabShow() {
     if (store.state.fChngSettings.status) {
       // Если были изменения настроек, то запросить нужный файл
-      store.dispatch('requestConfig', store.state.fChngSettings.id);
+      //store.dispatch('requestConfig', store.state.fChngSettings.id);
       store.state.fChngSettings.status = false
       store.state.fChngSettings.id = []
     }
-    store.dispatch('getMode')
+    //store.dispatch('getMode')
   }
 
   function loadMore(e, done) {

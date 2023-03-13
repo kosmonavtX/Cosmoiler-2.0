@@ -58,11 +58,13 @@ const checkOnlineStatusTest = async () => {
 
 const wsStore = websocketStore('ws://' + uri() + '/ws', {}, [],
   {
-    debug: false,
+    debug: true,
     reconnectionDelayGrowFactor: 1,
     maxReconnectionDelay: 6000,
     minReconnectionDelay: 3000,
+    reconnectInterval: 1000,
     connectionTimeout: 2000,
+    maxReconnectAttempts: 0,
     automaticOpen: false,
     //maxReconnectAttempts: 1
   })
@@ -348,6 +350,7 @@ const store = createStore({
       if (online) {
         f7.request.get('http://' + uri() + '/telemetry/start')
         //wsStore.open()
+        //wsStore.open()
 /*         state.telemetryInterval = setInterval(() => {
           f7.request.get('http://' + uri() + '/telemetry/get')
                     .then((response) => {
@@ -361,13 +364,13 @@ const store = createStore({
       //clearInterval(state.telemetryInterval);
       const online = await checkOnlineStatus();
       if (online) {
-        f7.request.get('http://' + uri() + '/telemetry/stop')
+        //f7.request.get('http://' + uri() + '/telemetry/stop')
         //wsStore.close()
       }
     },
-    requestConfig ({state}, settings) {
+/*     requestConfig ({state}, settings) {
       //wsStore.set({cmd: "get", param: settings})
-    },
+    }, */
   // TODO: проверить правильность заполнения поля imp_m
     calcDistance({state}, _trip) {
       log("_trip", _trip)
