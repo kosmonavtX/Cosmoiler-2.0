@@ -43,7 +43,7 @@ export function websocketStore(url, initialValue, protocols, socketOptions) {
   })
 
     socket.addEventListener('close', () => {
-      socket.reconnect()
+     socket.reconnect()
     })
 
     socket.addEventListener('error', event => {

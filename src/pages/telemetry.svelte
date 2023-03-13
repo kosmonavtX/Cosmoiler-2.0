@@ -261,6 +261,10 @@ $:  dataCardTele = [
 ]
 
 
+    $: {
+      if (connected) store.dispatch('requestTelemetryStart')
+    }
+
  // let interval;
 
   function pageTabShow() {
@@ -270,7 +274,7 @@ $:  dataCardTele = [
                     }, 330); */
   }
   function pageTabHide() {
-    store.dispatch('requestTelemetryStop')
+   // store.dispatch('requestTelemetryStop')
     //clearInterval(interval)
   }
 
