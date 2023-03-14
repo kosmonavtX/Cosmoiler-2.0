@@ -546,8 +546,8 @@ const store = createStore({
     },
         // /pump/ctrl?state=1[0]&dir=1[0]
     ctrlPump({state}, settings) {
-      state.wsStore.set({cmd: "pump", param: settings})
-      f7.request.postJSON('http://' + uri() + '/pump/ctrl?state=' + (settings[0]>>0) + '&dir=' + settings[1], settings[2])
+      //state.wsStore.set({cmd: "pump", param: settings})
+      f7.request.postJSON('http://' + uri() + '/settings/pump/ctrl?state=' + (settings[0]>>0) + '&dir=' + settings[1], settings[2])
       .then((res) => {
         log(res)
       })
