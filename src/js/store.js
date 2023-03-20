@@ -58,7 +58,7 @@ const checkOnlineStatusTest = async () => {
 
 const wsStore = websocketStore('ws://' + uri() + '/ws', {}, [],
   {
-    debug: true,
+    debug: false,
     reconnectionDelayGrowFactor: 1,
     maxReconnectionDelay: 6000,
     minReconnectionDelay: 3000,
