@@ -31,7 +31,7 @@
         title={$t('settings.sensor.impulse')}
         checked={fIMP}
         on:change={() => {
-        tmpOdometer.sensor.gnss = false
+            tmpOdometer.sensor.gnss = false
         }}
         class={`sensor__list-item`}>
     </ListItem>
@@ -119,8 +119,8 @@
    // let interval
     let tmpOdometer = odometer
 
-    $: fGPS = (tmpOdometer.sensor.gnss && gnssPresent.gps) ? true : false
-    $: fIMP = (!tmpOdometer.sensor.gnss || !gnssPresent.gps) ? true : false
+    $: fGPS = (gnssPresent.gps) ? true : false
+    $: fIMP = (!gnssPresent.gps) ? true : false
 
     $: if (!connected) document.location.reload()
 
@@ -128,12 +128,12 @@
         tmpOdometer.sensor.imp = 0
         store.dispatch('modeWork', store.state.OILER_MANUAL)
         store.dispatch('requestTelemetryStart')
-/*         interval = setInterval(() => {
+        interval = setInterval(() => {
             store.dispatch('requestTelemetry')
             tmpOdometer.sensor.imp = telemetry.sp
             //trip = trip
             log('clearImp ', tmpOdometer)
-        }, 1500); */
+        }, 1500);
     }
 
     function pageAfterOut () {
