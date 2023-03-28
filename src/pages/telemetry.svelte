@@ -101,7 +101,7 @@
     tmp = 0.838 * tmp + 0.354; */
     let k = (data.R1 + data.R2) / data.R2;
     let tmp = (data.max * data.v * k)/data.r
-    return Number(tmp).toFixed(1);
+    return Number(tmp/1000).toFixed(1);
   }
 
   let voltAlarm = (data) => {

@@ -157,7 +157,7 @@
 
     function update() {
       //var progress_dialog = f7.dialog.progress("Обновление...");
-      var preload_dialog = f7.dialog.preloader("Обновление...");
+      var preload_dialog = f7.dialog.preloader("Обновление ПО...");
       var formData = new FormData();
       formData.append('fw', files[0]);
 /*       f7.request.post('http://192.168.4.1/update', { data: formData, async: false, cache: false,

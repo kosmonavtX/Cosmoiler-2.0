@@ -217,13 +217,13 @@ const store = createStore({
 
       log("INIT")
 
-      state.connect = true
+      //state.connect = true
 
       setInterval(async () => {
         const result = await checkOnlineStatus();
         state.connect = result
         log("CONNECT: ", state.connect)
-        state.connect = true
+        //state.connect = true
       }, 2000)
 
       window.addEventListener("load", async (event) => {
