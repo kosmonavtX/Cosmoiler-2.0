@@ -4,8 +4,8 @@ import websocketStore from './websocket.js';
 import { f7 } from 'framework7-svelte';
 import log from './debug.js'
 
-let testURI = 'ws://db39b18be10d.ngrok.io'
-let URI = testURI
+/* let testURI = 'ws://db39b18be10d.ngrok.io'
+let URI = testURI */
 
 function getUrlVar() {
    // debug("document.location.host")
@@ -58,12 +58,12 @@ const checkOnlineStatusTest = async () => {
 
 const wsStore = websocketStore('ws://' + uri() + '/ws', {}, [],
   {
-    debug: false,
+    debug: true,
     reconnectionDelayGrowFactor: 1,
     maxReconnectionDelay: 6000,
     minReconnectionDelay: 3000,
     reconnectInterval: 1000,
-    connectionTimeout: 2000,
+    connectionTimeout: 5000,
     maxReconnectAttempts: 0,
     automaticOpen: false,
     //maxReconnectAttempts: 1

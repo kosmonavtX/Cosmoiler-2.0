@@ -94,14 +94,9 @@
 //$:  console.log('remainsTrip = ', remainsTrip(trip, gnssPresent, params))
 
   let voltage = (data) => {
-    //let tmp = (data.v) / 1024;
-/*     let tmp = (data.v) / 4095;
-    if (tmp < 0) tmp = 0;
-    tmp = tmp / (data.k / 100000);
-    tmp = 0.838 * tmp + 0.354; */
-    let k = (data.R1 + data.R2) / data.R2;
-    let tmp = (data.max * data.v * k)/data.r
-    return Number(tmp/1000).toFixed(1);
+    //let k = (data.R1 + data.R2) / data.R2;
+    //let tmp = (data.max * data.v * k)/data.r
+    return Number(data/1000).toFixed(1);
   }
 
   let voltAlarm = (data) => {

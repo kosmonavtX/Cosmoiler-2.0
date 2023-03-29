@@ -22,7 +22,7 @@
         }}
         class={`sensor__list-item`}>
         </ListItem>
-    {/if}
+    {:else}
 
     <ListItem
         radio
@@ -35,7 +35,9 @@
         }}
         class={`sensor__list-item`}>
     </ListItem>
+    {/if}
     </List>
+
 
 <!--   Настройки импульсного режима -->
     {#if fIMP}
@@ -116,7 +118,7 @@
     let telemetry = useStore('telemetry', (value) => telemetry = value);
     let mapSettings = useStore('mapSettings', (value) => mapSettings = value);
 
-   // let interval
+    let interval
     let tmpOdometer = odometer
 
     $: fGPS = (gnssPresent.gps) ? true : false
@@ -129,7 +131,7 @@
         store.dispatch('modeWork', store.state.OILER_MANUAL)
         store.dispatch('requestTelemetryStart')
         interval = setInterval(() => {
-            store.dispatch('requestTelemetry')
+            //store.dispatch('requestTelemetry')
             tmpOdometer.sensor.imp = telemetry.sp
             //trip = trip
             log('clearImp ', tmpOdometer)
@@ -137,15 +139,17 @@
     }
 
     function pageAfterOut () {
-        log('pageAfterOut', tmpOdometer);
-        //clearInterval(interval)
-        store.dispatch('requestTelemetryStop')
-        store.dispatch('modeWork', store.state.OILER_AUTO)
-        if (tmpOdometer.sensor.imp == 0) tmpOdometer.sensor.imp = 16
-        store.dispatch('calcDistance', tmpOdometer)
-        mapSettings.set("sensor", tmpOdometer.sensor)
-        if (!tmpOdometer.sensor.gnss) mapSettings.set("wheel", tmpOdometer.wheel)
-        store.dispatch('sendDistance', tmpOdometer)
+        if (!gnssPresent) {
+            log('pageAfterOut', tmpOdometer);
+            clearInterval(interval)
+            //store.dispatch('requestTelemetryStop')
+            store.dispatch('modeWork', store.state.OILER_AUTO)
+            if (tmpOdometer.sensor.imp == 0) tmpOdometer.sensor.imp = 16
+            store.dispatch('calcDistance', tmpOdometer)
+            mapSettings.set("sensor", tmpOdometer.sensor)
+            mapSettings.set("wheel", tmpOdometer.wheel)
+            store.dispatch('sendDistance', tmpOdometer)
+        }
     }
 
 </script>
