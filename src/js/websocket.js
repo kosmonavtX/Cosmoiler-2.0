@@ -44,6 +44,8 @@ export function websocketStore(url, initialValue, protocols, socketOptions) {
 
     socket.addEventListener('close', () => {
      socket.reconnect()
+     log('WEBSOCKET: close');
+     //socket.open();
     })
 
     socket.addEventListener('error', event => {
