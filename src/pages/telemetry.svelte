@@ -12,8 +12,7 @@
   <div in:fade="{{delay: 50, duration: 300}}" out:fly="{{duration: 300}}">
     <BlockTitle class={`block-title-noconnection__text`} >{$t('home.noconnect')}</BlockTitle>
   </div>
-  {/if}
-{#if connected}
+{:else}
 <!--   <CardTelemetry {...dataCardTele[telemetry.params[3].m]}  /> -->
 <div in:fade="{{delay: 50, duration: 300}}" out:fly="{{duration: 300}}">
     <CardTelemetry {...dataCardTele[md]}  />
@@ -96,7 +95,7 @@
   let voltage = (data) => {
     //let k = (data.R1 + data.R2) / data.R2;
     //let tmp = (data.max * data.v * k)/data.r
-    return Number(data/1000).toFixed(1);
+    return Number(data.v/1000).toFixed(1);
   }
 
   let voltAlarm = (data) => {
