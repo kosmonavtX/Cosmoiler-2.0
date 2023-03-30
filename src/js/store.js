@@ -58,12 +58,12 @@ const checkOnlineStatusTest = async () => {
 
 const wsStore = websocketStore('ws://' + uri() + '/ws', {}, [],
   {
-    debug: true,
+    debug: false,
     reconnectionDelayGrowFactor: 1,
     maxReconnectionDelay: 6000,
     minReconnectionDelay: 3000,
     reconnectInterval: 1000,
-    connectionTimeout: 5000,
+    connectionTimeout: 2000,
     maxReconnectAttempts: 0,
     automaticOpen: false,
     //maxReconnectAttempts: 1
@@ -90,7 +90,7 @@ const store = createStore({
      * ! Данные настроек */
     mapSettings: new Map(),
 
-    gnssPresent: false,
+    //gnssPresent: false,
     mode: {
       id: "/mode.json",
       m: 0,
@@ -273,7 +273,7 @@ const store = createStore({
       });
 
       wsStore.subscribe((value) => {
-        log('[ws value]=> ', value)
+        //log('[ws value]=> ', value)
 
         if (value) {
           if (value.id == 'telemetry') {

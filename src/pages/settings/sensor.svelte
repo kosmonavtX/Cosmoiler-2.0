@@ -23,18 +23,17 @@
         class={`sensor__list-item`}>
         </ListItem>
     {:else}
-
-    <ListItem
-        radio
-        name="sensor"
-        value="imp"
-        title={$t('settings.sensor.impulse')}
-        checked={fIMP}
-        on:change={() => {
-            tmpOdometer.sensor.gnss = false
-        }}
-        class={`sensor__list-item`}>
-    </ListItem>
+        <ListItem
+            radio
+            name="sensor"
+            value="imp"
+            title={$t('settings.sensor.impulse')}
+            checked={fIMP}
+            on:change={() => {
+                tmpOdometer.sensor.gnss = false
+            }}
+            class={`sensor__list-item`}>
+        </ListItem>
     {/if}
     </List>
 
@@ -128,18 +127,18 @@
 
     function clearImp() {
         tmpOdometer.sensor.imp = 0
-        store.dispatch('modeWork', store.state.OILER_MANUAL)
-        store.dispatch('requestTelemetryStart')
+        store.dispatch('modeWork', store.state.OILER_SETTINGS)
+        //store.dispatch('requestTelemetryStart')
         interval = setInterval(() => {
             //store.dispatch('requestTelemetry')
-            tmpOdometer.sensor.imp = telemetry.sp
+            tmpOdometer.sensor.imp = telemetry.params[0].sp
             //trip = trip
             log('clearImp ', tmpOdometer)
         }, 1500);
     }
 
     function pageAfterOut () {
-        if (!gnssPresent) {
+        if (!gnssPresent.gps) {
             log('pageAfterOut', tmpOdometer);
             clearInterval(interval)
             //store.dispatch('requestTelemetryStop')
@@ -149,6 +148,7 @@
             mapSettings.set("sensor", tmpOdometer.sensor)
             mapSettings.set("wheel", tmpOdometer.wheel)
             store.dispatch('sendDistance', tmpOdometer)
+            //log(tmpOdometer);
         }
     }
 

@@ -21,40 +21,40 @@
     <!-- <Button on:click={() => { store.state.connect =  !store.state.connect}}>Connect = {store.state.connect}</Button> -->
   {/if}
 
-{#if !connected}
- <!--  <div transition:fade="{{delay: 1, duration: 1}}"> -->
-   <div in:fade="{{delay: 300, duration: 300}}" out:fly="{{duration: 300}}">
-    <List mediaList class={`skeleton-text skeleton-effect-wave`}>
-      {#each [1,2] as n}
-        <ListItem class={`home-list-item`} >
-          <div slot='title' class="home-list-item__title home-list-item__title_up-color">
-            <SkeletonBlock tag="div" width="80px" height="20px" borderRadius="8px" />
-          </div>
-          <div slot="subtitle" class="home-list-item__text home-list-item__text_margin-03rem">
-            <SkeletonBlock tag="div" width="195px" height="14px" borderRadius="7px" />
-          </div>
-          <div slot='text' class="home-list-item__text home-list-item__text_margin-03rem">
-            <SkeletonBlock tag="div" width="250px" height="20px" borderRadius="10px" />
-          </div>
-          <div slot='media'>
-            <SkeletonBlock width="36px" height="36px" borderRadius="50%" />
-          </div>
-          <div slot="after">
-            <SkeletonBlock tag="div" width="36px" height="18px" borderRadius="10px" />
-          </div>
-        </ListItem>
-      {/each}
-    </List>
-  </div>
-{:else}
-  <!-- <div transition:fade="{{delay: 250, duration: 300}}"> -->
+  {#if !connected}
+  <!--  <div transition:fade="{{delay: 1, duration: 1}}"> -->
     <div in:fade="{{delay: 300, duration: 300}}" out:fly="{{duration: 300}}">
-    <List mediaList class='elevation-0'>
-        <ModeItem {...items[0]} />
-        <ModeItem {...items[1]} />
-    </List>
-  </div>
-{/if}
+      <List mediaList class={`skeleton-text skeleton-effect-wave`}>
+        {#each [1,2] as n}
+          <ListItem class={`home-list-item`} >
+            <div slot='title' class="home-list-item__title home-list-item__title_up-color">
+              <SkeletonBlock tag="div" width="80px" height="20px" borderRadius="8px" />
+            </div>
+            <div slot="subtitle" class="home-list-item__text home-list-item__text_margin-03rem">
+              <SkeletonBlock tag="div" width="195px" height="14px" borderRadius="7px" />
+            </div>
+            <div slot='text' class="home-list-item__text home-list-item__text_margin-03rem">
+              <SkeletonBlock tag="div" width="250px" height="20px" borderRadius="10px" />
+            </div>
+            <div slot='media'>
+              <SkeletonBlock width="36px" height="36px" borderRadius="50%" />
+            </div>
+            <div slot="after">
+              <SkeletonBlock tag="div" width="36px" height="18px" borderRadius="10px" />
+            </div>
+          </ListItem>
+        {/each}
+      </List>
+    </div>
+  {:else}
+    <!-- <div transition:fade="{{delay: 250, duration: 300}}"> -->
+    <div in:fade="{{delay: 300, duration: 300}}" out:fly="{{duration: 300}}">
+      <List mediaList class='elevation-0'>
+          <ModeItem {...items[0]} />
+          <ModeItem {...items[1]} />
+      </List>
+    </div>
+  {/if}
 
 </Page>
 

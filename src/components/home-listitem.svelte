@@ -7,12 +7,12 @@
       <div class="home-list-item__subtitle-text home-list-item__subtitle-text_color">{subtitle}</div>
       <div >
         {#if gnss}
-        <div transition:fade="{{delay: 500, duration: 600}}">
-          <!-- <Icon icon={gpsIcon} size=20 class={`home-media__icon2`}/> -->
-          <!-- <Badge class={`home-list-item__badge_color home-media__text-icon2`}>Модуль GPS активен</Badge> -->
-          <!-- <span class="home-media__text-icon2">Модуль GPS активен</span> -->
-        </div>
-      {/if}
+          <div transition:fade="{{delay: 500, duration: 600}}">
+            <!-- <Icon icon={gpsIcon} size=20 class={`home-media__icon2`}/> -->
+            <!-- <Badge class={`home-list-item__badge_color home-media__text-icon2`}>Модуль GPS активен</Badge> -->
+            <!-- <span class="home-media__text-icon2">Модуль GPS активен</span> -->
+          </div>
+        {/if}
            <!-- <Badge color='green'>GPS</Badge> -->
           <!--  <Icon icon="icon-gps" size="26px" class={`card-footer-tele__icon`}/> -->
         <!-- <Chip text="активен" media="GPS" mediaBgColor="blue"  ></Chip> -->
