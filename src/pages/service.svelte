@@ -19,7 +19,7 @@
       <div slot="subtitle">
         <div class="home-list-item__subtitle-text home-list-item__subtitle-text_color">FW: {ver.fw}   HW: {ver.hw}</div>
       </div>
-      <div slot='text' class="home-list-item__text">S/N: {system.pn}</div>
+      <div slot='text' class="home-list-item__text">S/N: {ver.sn}</div>
       <img slot="media" src="icon.png" width="64" />
     </ListItem>
   </List>
@@ -44,6 +44,7 @@
     useStore
   } from 'framework7-svelte';
   import {t} from '../services/i18n.js';
+  import store from '../js/store.js';
 
   let connected = useStore('connected', (value) => connected = value);
   $: system = useStore('system', (value) => system = value);
@@ -58,5 +59,9 @@
     {link: '/service/diag/',    title: $t('service.diag.title'),    view: true},
     {link: '/service/about/',   title: $t('service.about.title'),   view: true},
   ]
+
+/*   function pageTabShow() {
+    store.dispatch('getServiceInfo')
+  } */
 
 </script>

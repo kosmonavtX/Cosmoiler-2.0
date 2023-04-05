@@ -18,6 +18,7 @@
       <Col>
         <input
           type='file'
+          accept='.bin'
           bind:files
           bind:this={browseInput}
           class={`hidden`}
@@ -44,6 +45,7 @@
       BlockTitle,
       Button,
       Col,
+      Progressbar,
       useStore
     } from 'framework7-svelte';
     import {t} from '../../services/i18n.js';
@@ -112,7 +114,10 @@
                   complete: function() {
                     fEndDownloadFW = true;
                     log("Complete request FW")
-                    f7.request({
+                    if ((statusFW != 200))
+                              f7.dialog.alert("Текущая версия последняя", "Cosmoiler")
+                    // Запрос ФС
+/*                     f7.request({
                         url: 'http://cosmoiler.ru/services/download',
                         method: 'GET',
                         data: {sn: ver.sn, verfs: ver.fw.slice(-2)},
@@ -139,13 +144,10 @@
                         complete: function() {
                           fEndDownloadFW = true;
                           log("Complete request FS: ", statusFS)
-/*                           if ((statusFW == 0) || (statusFS == 0))
-                            f7.dialog.alert("Нет связи с сервером обновлений. Включите интернет и попробуйте снова.", "Cosmoiler")
-                          else */
                             if ((statusFW != 200) && (statusFS != 200))
                               f7.dialog.alert("Текущая версия последняя", "Cosmoiler")
                         }
-                      })
+                      }) */
                   }
               })
           }
@@ -154,7 +156,8 @@
     }
 
     function update() {
-      f7.dialog.progress();
+      //var progress_dialog = f7.dialog.progress("Обновление...");
+      var preload_dialog = f7.dialog.preloader("Обновление ПО...");
       var formData = new FormData();
       formData.append('fw', files[0]);
 /*       f7.request.post('http://192.168.4.1/update', { data: formData, async: false, cache: false,
@@ -163,15 +166,65 @@
         function (data) {
           f7.dialog.close();
         }); */
+      const xhr = new XMLHttpRequest();
 
-      f7.request({
+      xhr.onload = xhr.onerror = function() {
+        if (this.status == 200) {
+          log("success");
+          //f7.dialog.close()
+          preload_dialog.close()
+          f7.dialog.alert($t('service.update.fw.success'), "Cosmoiler")
+        } else {
+          log(this.status)
+          //f7.dialog.close()
+          preload_dialog.close()
+          f7.dialog.alert($t('service.update.fw.error'), "Cosmoiler")
+        }
+      };
+
+
+/*       xhr.upload.addEventListener('progress', (event) => {
+        log(event.loaded + ' / ' + event.total);
+        log("%d", Math.round((event.loaded / event.total) * 100))
+        //dialog_progress.setProgress(Math.round((event.loaded / event.total) * 100), 100)
+        f7.progressbar.set(progressBarEl, Math.round(event.loaded / event.total) * 100);
+      }, false); */
+
+      xhr.open("POST", "http://192.168.4.1/update", true);
+
+/*       xhr.upload.onprogress = function(event) {
+        log(event.loaded + ' / ' + event.total);
+        log("%d", Math.round((event.loaded / event.total) * 100))
+        //dialog_progress.setProgress(Math.round((event.loaded / event.total) * 100), 100)
+        //f7.progressbar.set(progressBarEl, Math.round(event.loaded / event.total) * 100);
+      }; */
+
+      xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+/*       xhr.onreadystatechange = function () {
+        if(xhr.readyState === XMLHttpRequest.DONE) {
+          var status = xhr.status;
+          if (status >= 200 && status < 400)
+          {
+              log(response)
+              f7.dialog.close()
+              f7.dialog.alert($t('service.update.fw.success'), "Cosmoiler")
+          } else {
+              log(status)
+              f7.dialog.close()
+              f7.dialog.alert($t('service.update.fw.error'), "Cosmoiler")
+          }
+        }
+      }; */
+
+      xhr.send(files[0]);
+
+/*       f7.request({
         url: 'http://192.168.4.1/update',
         method: 'POST',
         contentType: 'multipart/form-data',
         data: formData,
         async: true,
         cache: false,
-        //processData: false,
         success: function(response) {
           log(response)
           f7.dialog.close()
@@ -182,7 +235,7 @@
           f7.dialog.close()
           f7.dialog.alert($t('service.update.fw.error'), "Cosmoiler")
         }
-      })
+      }) */
     }
 
     function clickReset() {
@@ -191,13 +244,14 @@
         () => {
           //store.dispatch('cmdReset')
           f7.preloader.show();
-          f7.request.get('http://192.168.4.1/clear')//http://192.168.4.1/clear
+          f7.request.get('http://192.168.4.1/reset/cnfg')//http://192.168.4.1/clear
           .then((res) => {
               f7.preloader.hide()
               log('192.168.4.1/status', res.data)
           })
           .catch((err) => {
             log(err)
+            f7.dialog.alert($t('service.update.cnfg.confirm.error'), "Cosmoiler")
           })
         })
     }

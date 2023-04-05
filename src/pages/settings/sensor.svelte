@@ -22,22 +22,21 @@
         }}
         class={`sensor__list-item`}>
         </ListItem>
+    {:else}
+        <ListItem
+            radio
+            name="sensor"
+            value="imp"
+            title={$t('settings.sensor.impulse')}
+            checked={fIMP}
+            on:change={() => {
+                tmpOdometer.sensor.gnss = false
+            }}
+            class={`sensor__list-item`}>
+        </ListItem>
     {/if}
-
-    <ListItem
-        radio
-        name="sensor"
-        value="imp"
-        title={$t('settings.sensor.impulse')}
-        checked={fIMP}
-        on:change={() => {
-        tmpOdometer.sensor.gnss = false
-        //mapSettings.set("sensor", tmpOdometer.sensor);
-        //log(mapSettings)
-        }}
-        class={`sensor__list-item`}>
-    </ListItem>
     </List>
+
 
 <!--   Настройки импульсного режима -->
     {#if fIMP}
@@ -121,31 +120,36 @@
     let interval
     let tmpOdometer = odometer
 
-    $: fGPS = (tmpOdometer.sensor.gnss && gnssPresent.gps) ? true : false
-    $: fIMP = (!tmpOdometer.sensor.gnss || !gnssPresent.gps) ? true : false
+    $: fGPS = (gnssPresent.gps) ? true : false
+    $: fIMP = (!gnssPresent.gps) ? true : false
 
     $: if (!connected) document.location.reload()
 
     function clearImp() {
         tmpOdometer.sensor.imp = 0
-        store.dispatch('modeWork', store.state.OILER_MANUAL)
+        store.dispatch('modeWork', store.state.OILER_SETTINGS)
+        //store.dispatch('requestTelemetryStart')
         interval = setInterval(() => {
-            store.dispatch('requestTelemetry')
-            tmpOdometer.sensor.imp = telemetry.sp
+            //store.dispatch('requestTelemetry')
+            tmpOdometer.sensor.imp = telemetry.params[0].sp
             //trip = trip
             log('clearImp ', tmpOdometer)
         }, 1500);
     }
 
     function pageAfterOut () {
-        log('pageAfterOut', tmpOdometer);
-        clearInterval(interval)
-        store.dispatch('modeWork', store.state.OILER_AUTO)
-        if (tmpOdometer.sensor.imp == 0) tmpOdometer.sensor.imp = 16
-        store.dispatch('calcDistance', tmpOdometer)
-        mapSettings.set("sensor", tmpOdometer.sensor)
-        if (!tmpOdometer.sensor.gnss) mapSettings.set("wheel", tmpOdometer.wheel)
-        store.dispatch('sendDistance', tmpOdometer)
+        if (!gnssPresent.gps) {
+            log('pageAfterOut', tmpOdometer);
+            clearInterval(interval)
+            //store.dispatch('requestTelemetryStop')
+            store.dispatch('modeWork', store.state.OILER_AUTO)
+            if (tmpOdometer.sensor.imp == 0) tmpOdometer.sensor.imp = 16
+            store.dispatch('calcDistance', tmpOdometer)
+            mapSettings.set("sensor", tmpOdometer.sensor)
+            mapSettings.set("wheel", tmpOdometer.wheel)
+            store.dispatch('sendDistance', tmpOdometer)
+            //log(tmpOdometer);
+        }
     }
 
 </script>

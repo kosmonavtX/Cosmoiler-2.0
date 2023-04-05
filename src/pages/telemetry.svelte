@@ -12,8 +12,7 @@
   <div in:fade="{{delay: 50, duration: 300}}" out:fly="{{duration: 300}}">
     <BlockTitle class={`block-title-noconnection__text`} >{$t('home.noconnect')}</BlockTitle>
   </div>
-  {/if}
-{#if connected}
+{:else}
 <!--   <CardTelemetry {...dataCardTele[telemetry.params[3].m]}  /> -->
 <div in:fade="{{delay: 50, duration: 300}}" out:fly="{{duration: 300}}">
     <CardTelemetry {...dataCardTele[md]}  />
@@ -41,8 +40,10 @@
   let timer = useStore('timer', (value) => timer = value)
   let gnssPresent = useStore('gnssPresent', (value) => gnssPresent = value)
   let connected = useStore('connected', (value) => connected = value);
+  //let m = useStore('telecard', (value) => m = value);
 
   //console.log('params', odometer)
+ // log("M = ", m)
 
   const MAXSPEED = 250
   const iconsPreset = ["icon-city", "icon-way", "icon-off-road"]
@@ -92,14 +93,9 @@
 //$:  console.log('remainsTrip = ', remainsTrip(trip, gnssPresent, params))
 
   let voltage = (data) => {
-    //let tmp = (data.v) / 1024;
-/*     let tmp = (data.v) / 4095;
-    if (tmp < 0) tmp = 0;
-    tmp = tmp / (data.k / 100000);
-    tmp = 0.838 * tmp + 0.354; */
-    let k = (data.R1 + data.R2) / data.R2;
-    let tmp = (data.max * data.v * k)/data.r
-    return Number(tmp).toFixed(1);
+    //let k = (data.R1 + data.R2) / data.R2;
+    //let tmp = (data.max * data.v * k)/data.r
+    return Number(data.v/1000).toFixed(1);
   }
 
   let voltAlarm = (data) => {
@@ -114,7 +110,7 @@
       if (!telemetry.params[nameParams.GPS].fix)
         return {
           icon: "icon-clock",
-          value: timer.presets[telemetry.params[nameParams.MODE].p].time + $t("all.seconds")
+          value: timer.presets[indexPreset(telemetry)].time + $t("all.seconds")
         }
       return {
           icon: "icon-gps",
@@ -137,18 +133,20 @@
     return md
   }
 
+  let indexPreset = (telemetry) => {
+/*     var pr = telemetry.params[nameParams.MODE].p - 1
+    if (pr < 0) pr = 0
+    if (pr > 2) pr = 2 */
+    return telemetry.params[nameParams.MODE].p
+  }
+
+  log(telemetry)
+  log(odometer)
+  log(timer)
+
 $:  md = indexDataCardTele(odometer, telemetry) // (!telemetry.params[nameParams.GPS].fix && telemetry.params[nameParams.MODE].m == 1) ? 5 : telemetry.params[nameParams.MODE].m
-//$:  md = telemetry.params[nameParams.MODE].m
 
-//let md
-
-/* $: {
-    md = telemetry.params[nameParams.MODE].m
-    if (md == 1) // Режим "Одометер"
-      if (odometer.sensor.gnss) { // сенсор GPS?
-        if (!telemetry.params[nameParams.GPS].fix) md =  5 // TimerGPS
-      }
-} */
+//$:  preset = indexPreset(telemetry)
 
 $:  dataCardTele = [
     { //#0
@@ -173,7 +171,7 @@ $:  dataCardTele = [
           text: $t("all.speed"),
           units: $t("all.kmh") },
         {
-          value: remainsTrip(odometer, gnssPresent.gps, telemetry.params[nameParams.ODOMETER])/odometer.presets[telemetry.params[nameParams.MODE].p].dst_m,
+          value: remainsTrip(odometer, gnssPresent.gps, telemetry.params[nameParams.ODOMETER])/odometer.presets[indexPreset(telemetry)].dst_m,
           valueText: (remainsTrip(odometer, gnssPresent.gps, telemetry.params[nameParams.ODOMETER])/1000).toFixed(1),
           labelText: (telemetry.params[nameParams.ODOMETER].v / 1000).toFixed(1),
           text: $t("all.distance"),
@@ -181,8 +179,8 @@ $:  dataCardTele = [
       ],
       icons: [
         { // 1-я иконка
-          icon: iconsPreset[telemetry.params[nameParams.MODE].p],
-          value: (odometer.presets[telemetry.params[nameParams.MODE].p].dst_m/1000).toFixed() + $t("all.km")
+          icon: iconsPreset[indexPreset(telemetry)],
+          value: (odometer.presets[indexPreset(telemetry)].dst_m/1000).toFixed() + $t("all.km")
         },
         { // 2-я иконка
           icon: "icon-pump", // насос
@@ -215,14 +213,14 @@ $:  dataCardTele = [
       title: $t('telemetry.tmr.title').toUpperCase(), // 2
       gauge: [
         {
-          value: telemetry.params[nameParams.TIMER].v/(timer.presets[telemetry.params[nameParams.MODE].p].time*1000),
+          value: telemetry.params[nameParams.TIMER].v/(timer.presets[indexPreset(telemetry)].time*1000),
           valueText: valueTimer(telemetry.params[nameParams.TIMER]),
           labelText: "",
           text: "",
           units: "" }
       ],
       icons: [
-        {icon: iconsPreset[telemetry.params[nameParams.MODE].p], value: timer.presets[telemetry.params[nameParams.MODE].p].time + $t("all.seconds")},
+        {icon: iconsPreset[indexPreset(telemetry)], value: timer.presets[indexPreset(telemetry)].time + $t("all.seconds")},
         {icon: "icon-pump", value: telemetry.params[nameParams.PUMP].v},
         {
           icon: "icon-accum",
@@ -236,14 +234,14 @@ $:  dataCardTele = [
       title: $t('telemetry.tmr2.title'), // 5
       gauge: [
         {
-          value: telemetry.params[nameParams.TIMER].v/(timer.presets[telemetry.params[nameParams.MODE].p].time*1000),
+          value: telemetry.params[nameParams.TIMER].v/(timer.presets[indexPreset(telemetry)].time*1000),
           valueText: valueTimer(telemetry.params[nameParams.TIMER]),
           labelText: "",
           text: "",
           units: "" }
       ],
       icons: [
-        {icon: iconsPreset[telemetry.params[nameParams.MODE].p], value: timer.presets[telemetry.params[nameParams.MODE].p].time + $t("all.seconds")},
+        {icon: iconsPreset[indexPreset(telemetry)], value: timer.presets[indexPreset(telemetry)].time + $t("all.seconds")},
         {icon: "icon-pump", value: telemetry.params[nameParams.PUMP].v},
         (gnssPresent.gps) ? {icon: "icon-gps", value: telemetry.params[nameParams.GPS].sat} : null,
         {
@@ -257,18 +255,21 @@ $:  dataCardTele = [
 ]
 
 
-//$:  console.log('Data Telemetry', dataCardTele)
+    $: {
+      if (connected) store.dispatch('requestTelemetryStart')
+    }
 
-  let interval;
+ // let interval;
 
   function pageTabShow() {
-    store.dispatch('requestTelemetry')
-    interval = setInterval(() => {
+    store.dispatch('requestTelemetryStart')
+/*     interval = setInterval(() => {
                       store.dispatch('requestTelemetry')
-                    }, 500);
+                    }, 330); */
   }
   function pageTabHide() {
-    clearInterval(interval)
+   // store.dispatch('requestTelemetryStop')
+    //clearInterval(interval)
   }
 
 /*     icons = []

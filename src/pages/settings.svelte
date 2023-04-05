@@ -2,6 +2,8 @@
   name="settings"
   class={`page`}>
 
+
+
 {#if !connected}
     <Navbar title={$t('home.settings')} />
     <BlockTitle class={`block-title-noconnection__text`} >{$t('home.noconnect')}</BlockTitle>
@@ -27,6 +29,7 @@
           <ListItem title={items_odo[2].title} link={items_odo[2].link} class={`settings-main__list-item`}>
             <div slot='media'><Icon icon={items_odo[2].icon} style="font-size: {items_odo[2].size}px" /></div>
             <div slot='after'><span>{gnss}</span></div>
+            <!-- <div slot='after'><span>GPS</span></div> -->
           </ListItem>
         </List>
       </Tab>
@@ -69,9 +72,10 @@
     useStore
   } from 'framework7-svelte';
   import {t} from '../services/i18n.js';
+  //import store from '../js/store.js';
 
   let connected = useStore('connected', (value) => connected = value);
-  let odometer = useStore('odometer', (value) => odometer = value);
+  //let odometer = useStore('odometer', (value) => odometer = value);
   let gnssPresent = useStore('gnssPresent', (value) => gnssPresent = value);
 
 
@@ -89,7 +93,14 @@
       footer: $t('settings.pump.description'),
       icon: 'icon-pump', size: 28
     },
-    {link: '/settings/odometer/sensor/', title: 'Датчик',  footer: "", icon: 'icon-sensor', size: 28},
+    //{link: '#', title: 'Датчик',  footer: "", icon: 'icon-sensor', size: 28},
+    {
+      link: '/settings/odometer/sensor/',
+      title: 'Датчик',
+      footer: "",
+      icon: 'icon-sensor',
+      size: 28
+    },
   ]
 
   let items_timer = [
@@ -113,6 +124,6 @@
     {link: '/settings/manual/', title: $t('settings.presets.title'), icon: 'icon-preset', size: 24},
   ]
 
-  $: gnss = (odometer.sensor.gnss && gnssPresent.gps) ? "GPS" : $t("settings.sensor.impulse")
+  $: gnss = (gnssPresent.gps) ? "GPS" : $t("settings.sensor.impulse")
 
-  </script>
+</script>
