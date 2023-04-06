@@ -4,9 +4,6 @@ import websocketStore from './websocket.js';
 import { f7 } from 'framework7-svelte';
 import log from './debug.js'
 
-/* let testURI = 'ws://db39b18be10d.ngrok.io'
-let URI = testURI */
-
 function getUrlVar() {
    // debug("document.location.host")
     var urlVar = window.location.search; // получаем параметры из урла
@@ -181,16 +178,10 @@ const store = createStore({
     OILER_MANUAL: 1,
     OILER_AUTO: 0,
 
-/*     voltage: {
-      max: 3.3,
-      resolution: 4095
-    } */
   },
   getters: {
     gnssPresent:  ({state}) => state.system,
     connected:    ({state}) => state.connect,
-    //connected:    async () => await checkOnlineStatus(),
-
     odometer:     ({state}) => state.odometer,
     timer:        ({state}) => state.timer,
     manual:       ({state}) => state.manual,
@@ -202,15 +193,6 @@ const store = createStore({
     verfs:        ({state}) => state.verfs,
     chngSettings: ({state}) => state.fChngSettings,
     mapSettings:  ({state}) => state.mapSettings,
-/*     telecard ({state}) {
-      let md = state.telemetry.params[3].m
-      if (md == 1) // Режим "Одометер"
-        if (state.odometer.sensor.gnss) { // сенсор GPS?
-          if (!state.telemetry.params[4].fix) md =  5 // TimerGPS
-        }
-      log("md = ", md)
-      return md
-    } */
   },
   actions: {
     init({state}) {
@@ -240,7 +222,6 @@ const store = createStore({
           f7.request.get('http://' + uri() + '/settings/pump').then((response) => { state.pump = JSON.parse(response.data) });
           f7.request.get('http://' + uri() + '/settings/system').then((response) => {
             state.system = JSON.parse(response.data)
-            //state.system.pn = Buffer.from(state.system.pn, 'base64').toString()
             if (!state.system.gps)
               state.odometer.sensor.gnss = false
           });
