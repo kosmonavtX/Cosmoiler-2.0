@@ -126,7 +126,7 @@
         icons: [
           {name: "icon-city", text: $t('home.setting.time', {values: {p: timer.presets[store.state.presets.CITY].time}})},
          /*  {name: "icon-way", text: $t('home.setting.time', {values: {p: time.presets[1].dp_time}})}, */
-          {name: "icon-off-road", text: $t('home.setting.time', {values: {p: timer.presets[store.state.presets.WAY].time}})},
+          {name: "icon-off-road", text: $t('home.setting.time', {values: {p: timer.presets[store.state.presets.OFFROAD].time}})},
         ],
         toggleCheck: fmodeTimer,
         onSelectModeToggle: (e) => {
