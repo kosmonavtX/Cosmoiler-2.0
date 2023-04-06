@@ -92,32 +92,6 @@
       fmodeTimer = (mode.m === 2) ? true : false
   }
 
-  //$: $connecting = connected
-/*   function onPageInit() {
-    console.log('OnPageInit')
-    fmodeTrip = (mode.m === 1) ? true : false
-    fmodeTime = (mode.m === 2) ? true : false
-  } */
-
-/*   let check = false
-
-  function fChecked() {
-    check = !check
-    console.log(check)
-    store.dispatch('requestGNSS')
-    //$wsStore = {cmd: "get", param: ["gnss"]}
-  } */
-/* for style */
- // let mediaIconSize = 36;
-/*   $: modeTripToggle = () => {
-    return (mode.m === 1) ? true : false
-  } */
-/*   $: modeTimeToggle = () => {
-    return (mode.m === 2) ? true : false
-  } */
-/*   $: fmodeTrip = (mode.m === 1) ? true : false
-  $: fmodeTime = (mode.m === 2) ? true : false */
-
   $: items = [
     /**
      * ! Одометер
@@ -140,8 +114,6 @@
           if (fmodeOdometer) {
             fmodeTimer = false
           }
-
-          //store.state.obj = 45
         }
       },
       /**
@@ -185,12 +157,9 @@
     }
   function pageTabShow() {
     if (store.state.fChngSettings.status) {
-      // Если были изменения настроек, то запросить нужный файл
-      //store.dispatch('requestConfig', store.state.fChngSettings.id);
       store.state.fChngSettings.status = false
       store.state.fChngSettings.id = []
     }
-    //store.dispatch('getMode')
   }
 
   function loadMore(e, done) {

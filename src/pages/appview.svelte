@@ -16,10 +16,6 @@
         {#each itemsViews as {id, name, main, tab, tabActive, url}}
           <View id={id} name={name} main={main} tab={tab} tabActive={tabActive} url={url} animate={true} class="safe-areas"/>
         {/each}
-<!--         <View id="view-home" name="main" main tab tabActive url="/" animate={false} />
-        <View id={idtele} name="telemetry" tab url="/telemetry/" />
-        <View id="view-settings" name="settings" tab url="/settings/" />
-        <View id="view-service" name="service" tab url="/service/" /> -->
     </Views>
 </Page>
 
