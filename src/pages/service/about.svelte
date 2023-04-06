@@ -19,17 +19,6 @@
     </Block>
   </Block>
 
-<!--   <Block >
-    <Row tag="p">
-      <Col tag="span">
-        <Button outline back>Назад</Button>
-      </Col>
-      <Col tag="span">
-        <Button fill on:click={Save}>Сохранить</Button>
-      </Col>
-    </Row>
-  </Block> -->
-
 </Page>
 
 <script>
@@ -38,8 +27,6 @@
       Link,
       Navbar,
       Block,
-      Button,
-      Row, Col
     } from 'framework7-svelte';
     import {t} from '../../services/i18n.js';
 
