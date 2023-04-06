@@ -27,8 +27,8 @@
 <script>
     import {
       Page,
-      Button,
-      Block,
+     // Button,
+     // Block,
       List,
       ListItem,
       ListItemCell,
@@ -75,21 +75,17 @@
         rangeChange: (e)=>{
           tmpSystem.bright = Math.trunc(e * 255 / 100)
           store.dispatch('ctrlBright', tmpSystem.bright)
-          //log(tmpPump.dpms)
         },
         toggle: false,
       }],
     ]
 
     function pageBeforeIn() {
-    //log('pageBeforeIn', pump)
       /* включить режим настройки вязкости */
       store.dispatch('modeWork', store.state.OILER_PUMPING)
     }
 
     function pageAfteOut() {
-      //console.log('pageAfterOut', tmpOdometer);
-
       /* включить автоматический режим работы смазчика */
       store.dispatch('modeWork', store.state.OILER_AUTO)
       mapSettings.set("bright", tmpSystem.bright)
