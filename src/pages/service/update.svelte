@@ -45,7 +45,7 @@
       BlockTitle,
       Button,
       Col,
-      Progressbar,
+     // Progressbar,
       useStore
     } from 'framework7-svelte';
     import {t} from '../../services/i18n.js';
@@ -116,38 +116,6 @@
                     log("Complete request FW")
                     if ((statusFW != 200))
                               f7.dialog.alert("Текущая версия последняя", "Cosmoiler")
-                    // Запрос ФС
-/*                     f7.request({
-                        url: 'http://cosmoiler.ru/services/download',
-                        method: 'GET',
-                        data: {sn: ver.sn, verfs: ver.fw.slice(-2)},
-                        async: true,
-                        cache: false,
-                        xhrFields: {responseType: "blob"},
-                        success: function(response, status, xhr) {
-                          log("Succes request FS")
-                          var url = window.URL || window.webkitURL;
-                          const link = document.createElement('a');
-                          var blob = new Blob([response])
-                          link.href = url.createObjectURL(blob);
-                          const fileName = xhr.getResponseHeader('Filename')
-                          const downloadFileName = decodeURIComponent(escape(fileName))
-                          log(downloadFileName)
-                          link.setAttribute('download', downloadFileName);
-                          link.click();
-                          statusFS = status
-                        },
-                        error: function(xhr, status) {
-                          statusFS = status
-                          log(status)
-                        },
-                        complete: function() {
-                          fEndDownloadFW = true;
-                          log("Complete request FS: ", statusFS)
-                            if ((statusFW != 200) && (statusFS != 200))
-                              f7.dialog.alert("Текущая версия последняя", "Cosmoiler")
-                        }
-                      }) */
                   }
               })
           }
@@ -164,12 +132,10 @@
       xhr.onload = xhr.onerror = function() {
         if (this.status == 200) {
           log("success");
-          //f7.dialog.close()
           preload_dialog.close()
           f7.dialog.alert($t('service.update.fw.success'), "Cosmoiler")
         } else {
           log(this.status)
-          //f7.dialog.close()
           preload_dialog.close()
           f7.dialog.alert($t('service.update.fw.error'), "Cosmoiler")
         }
