@@ -16,10 +16,6 @@
         {#each itemsViews as {id, name, main, tab, tabActive, url}}
           <View id={id} name={name} main={main} tab={tab} tabActive={tabActive} url={url} animate={true} class="safe-areas"/>
         {/each}
-<!--         <View id="view-home" name="main" main tab tabActive url="/" animate={false} />
-        <View id={idtele} name="telemetry" tab url="/telemetry/" />
-        <View id="view-settings" name="settings" tab url="/settings/" />
-        <View id="view-service" name="service" tab url="/service/" /> -->
     </Views>
 </Page>
 
@@ -39,10 +35,10 @@
     let connected = useStore('connected', (value) => connected = value);
 
     let itemsToolbar = [
-        {link: '#view-home',      text: $t('Cosmoiler'),  icon: "icon-rocket",            tabLinkActive: true},
-        {link: '#view-telemetry', text: $t('Телеметрия'), icon: "icon-telemetry-outline", tabLinkActive: false},
-        {link: '#view-settings',  text: $t('Настройки'),  icon: "icon-settings",          tabLinkActive: false},
-        {link: '#view-service',   text: $t('Сервис'),     icon: "icon-service",           tabLinkActive: false},
+        {link: '#view-home',      text: $t('Cosmoiler'),      icon: "icon-rocket",            tabLinkActive: true},
+        {link: '#view-telemetry', text: $t('home.telemetry'), icon: "icon-telemetry-outline", tabLinkActive: false},
+        {link: '#view-settings',  text: $t('home.settings'),  icon: "icon-settings",          tabLinkActive: false},
+        {link: '#view-service',   text: $t('home.service'),   icon: "icon-service",           tabLinkActive: false},
     ]
 
     $: itemsViews = [

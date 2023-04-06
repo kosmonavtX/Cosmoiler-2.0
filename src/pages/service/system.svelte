@@ -27,15 +27,14 @@
 <script>
     import {
       Page,
-      Button,
-      Block,
+     // Button,
+     // Block,
       List,
       ListItem,
       ListItemCell,
       Navbar,
       BlockTitle,
       Toggle,
-      AccordionContent,
       useStore
     } from 'framework7-svelte';
     import {t} from '../../services/i18n.js';
@@ -47,12 +46,20 @@
     let connected = useStore('connected', (value) => connected = value);
     let system = useStore('system', (value) => system = value);
     let mapSettings = useStore('mapSettings', (value) => mapSettings = value);
+    let ver = useStore('ver', (value) => ver = value);
 
     let tmpSystem = system
     let ctrlpump = false
 
+    let Tdpms = 0
+    $: {
+      if (ver.hw[0] == 'B') Tdpms = 1000
+      if (ver.hw[0] == 'C') Tdpms = 1000 // 10 секунд работает насос
+    }
+
+
     $: if (!connected) document.location.reload()
-    $: store.dispatch('ctrlPump', [ctrlpump, 0, {dpms: 1000, dpdp: 100}])
+    $: store.dispatch('ctrlPump', [ctrlpump, 0, {dpms: Tdpms, dpdp: 1}])
 
     $: rangeValues = [
       [{
@@ -68,21 +75,17 @@
         rangeChange: (e)=>{
           tmpSystem.bright = Math.trunc(e * 255 / 100)
           store.dispatch('ctrlBright', tmpSystem.bright)
-          //log(tmpPump.dpms)
         },
         toggle: false,
       }],
     ]
 
     function pageBeforeIn() {
-    //log('pageBeforeIn', pump)
       /* включить режим настройки вязкости */
-      store.dispatch('modeWork', store.state.OILER_SETTINGS)
+      store.dispatch('modeWork', store.state.OILER_PUMPING)
     }
 
     function pageAfteOut() {
-      //console.log('pageAfterOut', tmpOdometer);
-
       /* включить автоматический режим работы смазчика */
       store.dispatch('modeWork', store.state.OILER_AUTO)
       mapSettings.set("bright", tmpSystem.bright)

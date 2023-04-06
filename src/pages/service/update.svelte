@@ -18,6 +18,7 @@
       <Col>
         <input
           type='file'
+          accept='.bin'
           bind:files
           bind:this={browseInput}
           class={`hidden`}
@@ -44,6 +45,7 @@
       BlockTitle,
       Button,
       Col,
+     // Progressbar,
       useStore
     } from 'framework7-svelte';
     import {t} from '../../services/i18n.js';
@@ -112,40 +114,8 @@
                   complete: function() {
                     fEndDownloadFW = true;
                     log("Complete request FW")
-                    f7.request({
-                        url: 'http://cosmoiler.ru/services/download',
-                        method: 'GET',
-                        data: {sn: ver.sn, verfs: ver.fw.slice(-2)},
-                        async: true,
-                        cache: false,
-                        xhrFields: {responseType: "blob"},
-                        success: function(response, status, xhr) {
-                          log("Succes request FS")
-                          var url = window.URL || window.webkitURL;
-                          const link = document.createElement('a');
-                          var blob = new Blob([response])
-                          link.href = url.createObjectURL(blob);
-                          const fileName = xhr.getResponseHeader('Filename')
-                          const downloadFileName = decodeURIComponent(escape(fileName))
-                          log(downloadFileName)
-                          link.setAttribute('download', downloadFileName);
-                          link.click();
-                          statusFS = status
-                        },
-                        error: function(xhr, status) {
-                          statusFS = status
-                          log(status)
-                        },
-                        complete: function() {
-                          fEndDownloadFW = true;
-                          log("Complete request FS: ", statusFS)
-/*                           if ((statusFW == 0) || (statusFS == 0))
-                            f7.dialog.alert("Нет связи с сервером обновлений. Включите интернет и попробуйте снова.", "Cosmoiler")
-                          else */
-                            if ((statusFW != 200) && (statusFS != 200))
+                    if ((statusFW != 200))
                               f7.dialog.alert("Текущая версия последняя", "Cosmoiler")
-                        }
-                      })
                   }
               })
           }
@@ -154,35 +124,25 @@
     }
 
     function update() {
-      f7.dialog.progress();
-      var formData = new FormData();
-      formData.append('fw', files[0]);
-/*       f7.request.post('http://192.168.4.1/update', { data: formData, async: false, cache: false,
-        contentType: false, enctype: 'multipart/form-data', processData: false,
-        headers:{'Access-Control-Allow-Origin': '*'}},
-        function (data) {
-          f7.dialog.close();
-        }); */
+      //var progress_dialog = f7.dialog.progress("Обновление...");
+      var preload_dialog = f7.dialog.preloader("Обновление ПО...");
 
-      f7.request({
-        url: 'http://192.168.4.1/update',
-        method: 'POST',
-        contentType: 'multipart/form-data',
-        data: formData,
-        async: true,
-        cache: false,
-        //processData: false,
-        success: function(response) {
-          log(response)
-          f7.dialog.close()
+      const xhr = new XMLHttpRequest();
+
+      xhr.onload = xhr.onerror = function() {
+        if (this.status == 200) {
+          log("success");
+          preload_dialog.close()
           f7.dialog.alert($t('service.update.fw.success'), "Cosmoiler")
-        },
-        error: function(xhr, status) {
-          log(status)
-          f7.dialog.close()
+        } else {
+          log(this.status)
+          preload_dialog.close()
           f7.dialog.alert($t('service.update.fw.error'), "Cosmoiler")
         }
-      })
+      };
+      xhr.open("POST", "http://192.168.4.1/update", true);
+      xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+      xhr.send(files[0]);
     }
 
     function clickReset() {
@@ -191,13 +151,14 @@
         () => {
           //store.dispatch('cmdReset')
           f7.preloader.show();
-          f7.request.get('http://192.168.4.1/clear')//http://192.168.4.1/clear
+          f7.request.get('http://192.168.4.1/reset/cnfg')//http://192.168.4.1/clear
           .then((res) => {
               f7.preloader.hide()
               log('192.168.4.1/status', res.data)
           })
           .catch((err) => {
             log(err)
+            f7.dialog.alert($t('service.update.cnfg.confirm.error'), "Cosmoiler")
           })
         })
     }

@@ -78,7 +78,6 @@
         Col,
         Icon
     } from 'framework7-svelte';
-    import { fly, fade } from 'svelte/transition';
 
     export let title = undefined
     export let gauge = undefined
