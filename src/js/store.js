@@ -275,12 +275,7 @@ const store = createStore({
         }
       //})()
     },
-//     getSettings({state}){
-// /*       f7.request.get('http://' + uri() + '/trip').then((response) => { state.odometer = JSON.parse(response.data) });
-//       f7.request.get('http://' + uri() + '/time').then((response) => { state.timer = JSON.parse(response.data) });
-//       f7.request.get('http://' + uri() + '/manual').then((response) => { state.manual = JSON.parse(response.data) });
-//       f7.request.get('http://' + uri() + '/pump').then((response) => { state.pump = JSON.parse(response.data) }); */
-//     },
+
     async getServiceInfo({state}) {
       log("getServiceInfo")
       //async () => {
@@ -312,33 +307,12 @@ const store = createStore({
       //wsStore.set({cmd: "get", param: ["gnss"]})
       log('requestGNSS')
     },
-/*     requestTelemetry({state}) {
-      //wsStore.set({cmd: "telemetry"})
-      f7.request.get('http://192.168.4.1/telemetry/start')
-        .then((res)=> {
-            log('192.168.4.1/telemetry = ', res.data)
-            state.telemetry = JSON.parse(res.data)
-          }
-        )
-        .catch((err) => {
-          log(err)
-        })
-    }, */
 
     async requestTelemetryStart({state}) {
       //wsStore.set({cmd: "telemetry"})
       const online = await checkOnlineStatus();
       if (online) {
         f7.request.get('http://' + uri() + '/telemetry/start')
-        //wsStore.open()
-        //wsStore.open()
-/*         state.telemetryInterval = setInterval(() => {
-          f7.request.get('http://' + uri() + '/telemetry/get')
-                    .then((response) => {
-                      state.telemetry = JSON.parse(response.data)
-                      log('Telemetry: ', state.telemetry)
-                    })
-        }, 300) */
       }
     },
     async requestTelemetryStop({state}) {
@@ -349,10 +323,7 @@ const store = createStore({
         //wsStore.close()
       }
     },
-/*     requestConfig ({state}, settings) {
-      //wsStore.set({cmd: "get", param: settings})
-    }, */
-  // TODO: проверить правильность заполнения поля imp_m
+
     calcDistance({state}, _trip) {
       log("_trip", _trip)
       state.odometer.wheel.d = Number(_trip.wheel.d)
@@ -369,13 +340,12 @@ const store = createStore({
       }
       state.odometer = state.odometer
     },
-    // TODO: add rest api
+
     sendDistance({state}, data) {
       state.odometer = data
       state.odometer = state.odometer
       clearTimeout(timeoutId);
       timeoutId = setTimeout(() => {
-//        wsStore.set({cmd: "post", param: [state.odometer.id, Object.fromEntries(state.mapSettings)]}); // отправляем в БУ
         f7.request.postJSON('http://' + uri() + '/settings/trip', Object.fromEntries(state.mapSettings))
         .then((res) => {
           log(res)
@@ -393,13 +363,12 @@ const store = createStore({
       }, 2000)
 
     },
-        // TODO: add rest api
+
     sendTime({state}, data) {
       state.timer = data
       state.timer = state.timer
       clearTimeout(timeoutId);
       timeoutId = setTimeout(() => {
-        //wsStore.set({cmd: "post", param: [state.timer.id, Object.fromEntries(state.mapSettings)]})
         f7.request.postJSON('http://' + uri() + '/settings/time', Object.fromEntries(state.mapSettings))
         .then((res) => {
           log(res)
@@ -414,13 +383,12 @@ const store = createStore({
         log("send Time = ", state.timer)
       }, 2000)
     },
-        // TODO: add rest api
+
     sendManual({state}, data) {
       state.manual = data
       state.manual = state.manual
       clearTimeout(timeoutId);
       timeoutId = setTimeout(() => {
-          //wsStore.set({cmd: "post", param: [state.manual.id, state.manual]});
           f7.request.postJSON('http://' + uri() + '/settings/manual', state.manual)
           .then((res) => {
             log(res)
@@ -434,14 +402,12 @@ const store = createStore({
           log("send Pump = ", state.manual);
       }, 2000)
     },
-        // TODO: add rest api
+
     sendPump({state}, data) {
-      //console.log("sendPump: ", prop)
       state.pump = data;
       state.pump = state.pump;
       clearTimeout(timeoutId);
       timeoutId = setTimeout(() => {
-          //wsStore.set({cmd: "post", param: [state.pump.id, {dpms: data.dpms}]}); // отправляем в БУ только свойство dpms
           f7.request.postJSON('http://' + uri() + '/settings/pump', {dpms: data.dpms})
           .then((res) => {
             log(res)
@@ -456,12 +422,11 @@ const store = createStore({
       }, 2000);
 
     },
+
     sendMode({state}, data) {
         state.mode.m = data.m
         state.mode = state.mode
-        //wsStore.set({cmd: "post", param: [state.mode.id, {m: data.m}]}) // отправляем в БУ только свойство m
         log("send Mode = ", state.mode)
-        //log("uri = ", uri())
         f7.request.postJSON('http://' + uri() + '/settings/mode', state.mode)
           .then((res) => {
             log(res)
@@ -472,28 +437,11 @@ const store = createStore({
               .then((response) => { state.mode = JSON.parse(response.data) })
               .catch((err) => { /* state.connect = false */ })
           })
-/*         f7.request({
-          url: 'http://192.168.4.1/mode',
-          method: 'POST',
-          data: state.mode,
-          dataType: 'json',
-          contentType: 'application/json',
-          //crossDomain: true,
-          error: function(err) {
-            f7.dialog.alert("Команда не выполнена!", "Cosmoiler")
-            f7.request.get('http://192.168.4.1' + '/mode')
-              .then((response) => { state.mode = JSON.parse(response.data) })
-              .catch((err) => { state.connect = false })
-          }
-        }) */
-
-     // }
     },
 
     sendSystem({state}, data) {
       state.system = data
       state.system = state.system
-      //wsStore.set({cmd: "post", param: [state.system.id, Object.fromEntries(state.mapSettings)]}) // TODO проверить!
       f7.request.postJSON('http://' + uri() + '/settings/system', Object.fromEntries(state.mapSettings))
       .then((res) => {
         log(res)
@@ -507,9 +455,8 @@ const store = createStore({
       state.fChngSettings = { status: true, id: [...new Set([...state.fChngSettings.id, state.system.id])]}
       log("send System = ", state.system)
     },
-        // /state/ctrl, /state/auto
+
     modeWork({state}, mode) {
-      //state.wsStore.set({cmd: "work", param: mode})
       let rest_str;
       if (mode == store.state.OILER_AUTO) {
         rest_str = '/state/auto'
@@ -525,9 +472,8 @@ const store = createStore({
         f7.alert('Нет связи с блоком управеления. Команда не выполнена','Cosmoiler')
       })
     },
-        // /pump/ctrl?state=1[0]&dir=1[0]
+
     ctrlPump({state}, settings) {
-      //state.wsStore.set({cmd: "pump", param: settings})
       f7.request.postJSON('http://' + uri() + '/settings/pump/ctrl?state=' + (settings[0]>>0) + '&dir=' + settings[1], settings[2])
       .then((res) => {
         log(res)
@@ -536,20 +482,13 @@ const store = createStore({
         f7.dialog.alert("Команда не выполнена!", "Cosmoiler")
       })
     },
-        //(POST /bright?v=X)
+
     ctrlBright({state}, data) {
-      //state.wsStore.set({cmd: "bright", param: data})
       f7.request.post('http://' + uri() + '/settings/bright?v='+ data)
         .catch(() => {
           f7.alert('Нет связи с блоком управеления. Команда не выполнена.','Cosmoiler')
         })
     },
-/*     cmdUpdate({state}) {
-      state.wsStore.set({cmd: "update"})
-    }, */
-/*     cmdReset({state}) {
-      state.wsStore.set({cmd: "resetCnfg"})
-    } */
   },
 })
 
