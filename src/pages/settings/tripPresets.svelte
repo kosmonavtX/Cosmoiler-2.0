@@ -60,7 +60,7 @@
       /* ГОРОД */
       [{ // Расстояние
         title: $t('all.distance'),
-        value: tmpOdometer.presets[0].dst_m/1000,
+        value: tmpOdometer.presets[store.state.presets.CITY].dst_m/1000,
         name_value: $t('all.km'),
         minValue: 1,
         maxValue: 15,
@@ -69,9 +69,9 @@
         sacaleSubSteps: 2,
         icon: "icon-route",
         rangeChange: (e)=>{
-          tmpOdometer.presets[0].dst_m = e * 1000
+          tmpOdometer.presets[store.state.presets.CITY].dst_m = e * 1000
           let arr = mapSettings.get('presets')
-          mapSettings.set("presets", [tmpOdometer.presets[0], (arr)?arr[1]:null, (arr)?arr[2]:null]);
+          mapSettings.set("presets", [tmpOdometer.presets[store.state.presets.CITY], (arr)?arr[1]:null, (arr)?arr[2]:null]);
           store.dispatch('calcDistance', tmpOdometer);
           store.dispatch('sendDistance', tmpOdometer);
           log(mapSettings)
@@ -79,7 +79,7 @@
       },
       { // Количество
         title: $t('all.count'),
-        value: tmpOdometer.presets[0].num,
+        value: tmpOdometer.presets[store.state.presets.CITY].num,
         minValue: 1,
         maxValue: 8,
         stepValue: 1,
@@ -87,9 +87,9 @@
         scaleSubSteps: 1,
         icon: "icon-drop",
         rangeChange: (e)=>{
-          tmpOdometer.presets[0].num = e
+          tmpOdometer.presets[store.state.presets.CITY].num = e
           let arr = mapSettings.get('presets')
-          mapSettings.set("presets", [tmpOdometer.presets[0], (arr)?arr[1]:null, (arr)?arr[2]:null]);
+          mapSettings.set("presets", [tmpOdometer.presets[store.state.presets.CITY], (arr)?arr[1]:null, (arr)?arr[2]:null]);
           //store.dispatch('calcDistance', tmpOdometer);
           store.dispatch('sendDistance', tmpOdometer);
           log(mapSettings)
@@ -98,7 +98,7 @@
       /* ТРАССА */
       [{ // Расстояние
         title: $t('all.distance'),
-        value: tmpOdometer.presets[1].dst_m/1000,
+        value: tmpOdometer.presets[store.state.presets.WAY].dst_m/1000,
         name_value: $t('all.km'),
         minValue: 2,
         maxValue: 20,
@@ -106,9 +106,9 @@
         scaleStep: 9,
         icon: "icon-route",
         rangeChange: (e)=>{
-          tmpOdometer.presets[1].dst_m = e * 1000
+          tmpOdometer.presets[store.state.presets.WAY].dst_m = e * 1000
           let arr = mapSettings.get('presets')
-          mapSettings.set("presets", [(arr)?arr[0]:null, tmpOdometer.presets[1], (arr)?arr[2]:null]);
+          mapSettings.set("presets", [(arr)?arr[0]:null, tmpOdometer.presets[store.state.presets.WAY], (arr)?arr[2]:null]);
           store.dispatch('calcDistance', tmpOdometer);
           store.dispatch('sendDistance', tmpOdometer);
           log(mapSettings)
@@ -116,7 +116,7 @@
       },
       { // Количество
         title:  $t('all.count'),
-        value: tmpOdometer.presets[1].num,
+        value: tmpOdometer.presets[store.state.presets.WAY].num,
         minValue: 1,
         maxValue: 5,
         stepValue: 1,
@@ -124,9 +124,9 @@
         scaleSubSteps: 1,
         icon: "icon-drop",
         rangeChange: (e)=>{
-          tmpOdometer.presets[1].num = e
+          tmpOdometer.presets[store.state.presets.WAY].num = e
           let arr = mapSettings.get('presets')
-          mapSettings.set("presets", [(arr)?arr[0]:null, tmpOdometer.presets[1], (arr)?arr[2]:null]);
+          mapSettings.set("presets", [(arr)?arr[0]:null, tmpOdometer.presets[store.state.presets.WAY], (arr)?arr[2]:null]);
           //store.dispatch('calcDistance', tmpOdometer);
           store.dispatch('sendDistance', tmpOdometer);
           log(mapSettings)
@@ -153,7 +153,7 @@
       /* ОФФРОАД */
       [{ // Расстояние
         title: $t('all.distance'),
-        value: tmpOdometer.presets[2].dst_m/1000,
+        value: tmpOdometer.presets[store.state.presets.OFFROAD].dst_m/1000,
         name_value: $t('all.km'),
         minValue: 1,
         maxValue: 7,
@@ -162,9 +162,9 @@
         sacaleSubSteps: 1,
         icon: "icon-route",
         rangeChange: (e)=>{
-          tmpOdometer.presets[2].dst_m = e * 1000
+          tmpOdometer.presets[store.state.presets.OFFROAD].dst_m = e * 1000
           let arr = mapSettings.get('presets')
-          mapSettings.set("presets", [(arr)?arr[0]:null, (arr)?arr[1]:null, tmpOdometer.presets[2]]);
+          mapSettings.set("presets", [(arr)?arr[0]:null, (arr)?arr[1]:null, tmpOdometer.presets[store.state.presets.OFFROAD]]);
           store.dispatch('calcDistance', tmpOdometer);
           store.dispatch('sendDistance', tmpOdometer);
           log(mapSettings)
@@ -172,7 +172,7 @@
       },
       { // Количество
         title:  $t('all.count'),
-        value: tmpOdometer.presets[2].num,
+        value: tmpOdometer.presets[store.state.presets.OFFROAD].num,
         minValue: 1,
         maxValue: 8,
         stepValue: 1,
@@ -180,9 +180,9 @@
         scaleSubSteps: 1,
         icon: "icon-drop",
         rangeChange: (e)=>{
-          tmpOdometer.presets[2].num = e
+          tmpOdometer.presets[store.state.presets.OFFROAD].num = e
           let arr = mapSettings.get('presets')
-          mapSettings.set("presets", [(arr)?arr[0]:null, (arr)?arr[1]:null, tmpOdometer.presets[2]]);
+          mapSettings.set("presets", [(arr)?arr[0]:null, (arr)?arr[1]:null, tmpOdometer.presets[store.state.presets.OFFROAD]]);
           //store.dispatch('calcDistance', tmpOdometer);
           store.dispatch('sendDistance', tmpOdometer);
           log(mapSettings)
@@ -190,7 +190,7 @@
       },
       { // Циклы
         title: $t('all.count.cycles'),
-        value: tmpOdometer.presets[2].cycles,
+        value: tmpOdometer.presets[store.state.presets.OFFROAD].cycles,
         minValue: 0,
         maxValue: 10,
         stepValue: 1,
@@ -198,9 +198,9 @@
         scaleSubSteps: 2,
         icon: "icon-repeat",
         rangeChange: (e)=>{
-          tmpOdometer.presets[2].cycles = e
+          tmpOdometer.presets[store.state.presets.OFFROAD].cycles = e
           let arr = mapSettings.get('presets')
-          mapSettings.set("presets", [(arr)?arr[0]:null, (arr)?arr[1]:null, tmpOdometer.presets[2]]);
+          mapSettings.set("presets", [(arr)?arr[0]:null, (arr)?arr[1]:null, tmpOdometer.presets[store.state.presets.OFFROAD]]);
           //store.dispatch('calcDistance', tmpOdometer);
           store.dispatch('sendDistance', tmpOdometer);
           log(mapSettings)

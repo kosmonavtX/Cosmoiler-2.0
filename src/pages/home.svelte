@@ -103,9 +103,9 @@
         gpsIcon: "icon-gps",
         gnss: gnssPresent.gps,
         icons: [
-          {name: "icon-city", text: $t('home.setting.trip', {values: {p: odometer.presets[0].dst_m / 1000}})},
-          {name: "icon-way", text: $t('home.setting.trip', {values: {p: odometer.presets[1].dst_m / 1000}})},
-          {name: "icon-off-road", text: $t('home.setting.trip', {values: {p: odometer.presets[2].dst_m / 1000}})},
+          {name: "icon-city", text: $t('home.setting.trip', {values: {p: odometer.presets[store.state.presets.CITY].dst_m / 1000}})},
+          {name: "icon-way", text: $t('home.setting.trip', {values: {p: odometer.presets[store.state.presets.WAY].dst_m / 1000}})},
+          {name: "icon-off-road", text: $t('home.setting.trip', {values: {p: odometer.presets[store.state.presets.OFFROAD].dst_m / 1000}})},
          /*  {name: "icon-gps", text: ""}, */
         ],
         toggleCheck: fmodeOdometer,
@@ -124,9 +124,9 @@
         subtitle: $t("home.time.subtitle"),
         titleIcon: "icon-timer",
         icons: [
-          {name: "icon-city", text: $t('home.setting.time', {values: {p: timer.presets[0].time}})},
+          {name: "icon-city", text: $t('home.setting.time', {values: {p: timer.presets[store.state.presets.CITY].time}})},
          /*  {name: "icon-way", text: $t('home.setting.time', {values: {p: time.presets[1].dp_time}})}, */
-          {name: "icon-off-road", text: $t('home.setting.time', {values: {p: timer.presets[1].time}})},
+          {name: "icon-off-road", text: $t('home.setting.time', {values: {p: timer.presets[store.state.presets.WAY].time}})},
         ],
         toggleCheck: fmodeTimer,
         onSelectModeToggle: (e) => {

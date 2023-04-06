@@ -46,10 +46,10 @@
 
   let tmpTimer = timer;
 
-  const presets = {
+/*   const presets = {
     CITY: 0,
     OFFROAD: 2,
-  }
+  } */
 
   $: if (!connected) document.location.reload()
 
@@ -57,7 +57,7 @@
     /* ГОРОД */
     [{
       title: "Таймер",
-      value: tmpTimer.presets[presets.CITY].time,
+      value: tmpTimer.presets[store.state.presets.CITY].time,
       name_value: "сек",
       minValue: 10,
       maxValue: 600,
@@ -67,16 +67,16 @@
       icon: "icon-clock",
       frmtScaleLabel: outScaleLabel,
       rangeChange: (e)=>{
-        tmpTimer.presets[presets.CITY].time = e
+        tmpTimer.presets[store.state.presets.CITY].time = e
         let arr = mapSettings.get('presets')
-        mapSettings.set("presets", [tmpTimer.presets[presets.CITY], (arr)?arr[presets.OFFROAD]:null]);
+        mapSettings.set("presets", [tmpTimer.presets[store.state.presets.CITY], (arr)?arr[store.state.presets.OFFROAD]:null]);
         store.dispatch('sendTime', tmpTimer)
         log(mapSettings)
       }
     },
     {
       title: $t('all.count'),
-      value: tmpTimer.presets[presets.CITY].num,
+      value: tmpTimer.presets[store.state.presets.CITY].num,
       minValue: 1,
       maxValue: 5,
       stepValue: 1,
@@ -84,9 +84,9 @@
       scaleSubSteps: 1,
       icon: "icon-drop",
       rangeChange: (e)=>{
-        tmpTimer.presets[presets.CITY].num = e
+        tmpTimer.presets[store.state.presets.CITY].num = e
         let arr = mapSettings.get('presets')
-        mapSettings.set("presets", [tmpTimer.presets[presets.CITY], (arr)?arr[presets.OFFROAD]:null]);
+        mapSettings.set("presets", [tmpTimer.presets[store.state.presets.CITY], (arr)?arr[store.state.presets.OFFROAD]:null]);
         store.dispatch('sendTime', tmpTimer)
         log(mapSettings)
       }
@@ -94,7 +94,7 @@
     /* ОФФРОАД */
     [{
       title: "Таймер",
-      value: tmpTimer.presets[presets.OFFROAD].time,
+      value: tmpTimer.presets[store.state.presets.OFFROAD].time,
       name_value: "сек",
       minValue: 10,
       maxValue: 600,
@@ -104,16 +104,16 @@
       icon: "icon-clock",
       frmtScaleLabel: outScaleLabel,
       rangeChange: (e)=>{
-        tmpTimer.presets[presets.OFFROAD].time = e
+        tmpTimer.presets[store.state.presets.OFFROAD].time = e
         let arr = mapSettings.get('presets')
-        mapSettings.set("presets", [(arr)?arr[presets.CITY]:null, tmpTimer.presets[presets.OFFROAD]]);
+        mapSettings.set("presets", [(arr)?arr[store.state.presets.CITY]:null, tmpTimer.presets[store.state.presets.OFFROAD]]);
         store.dispatch('sendTime', tmpTimer);
       log(mapSettings)
       }
     },
     {
       title: $t('all.count'),
-      value: tmpTimer.presets[presets.OFFROAD].num,
+      value: tmpTimer.presets[store.state.presets.OFFROAD].num,
       minValue: 1,
       maxValue: 5,
       stepValue: 1,
@@ -121,16 +121,16 @@
       scaleSubSteps: 1,
       icon: "icon-drop",
       rangeChange: (e)=>{
-        tmpTimer.presets[presets.OFFROAD].num = e
+        tmpTimer.presets[store.state.presets.OFFROAD].num = e
         let arr = mapSettings.get('presets')
-        mapSettings.set("presets", [(arr)?arr[presets.CITY]:null, tmpTimer.presets[presets.OFFROAD]]);
+        mapSettings.set("presets", [(arr)?arr[store.state.presets.CITY]:null, tmpTimer.presets[store.state.presets.OFFROAD]]);
         store.dispatch('sendTime', tmpTimer);
       log(mapSettings)
       }
     },
     {
       title: "Количество циклов",
-      value: tmpTimer.presets[presets.OFFROAD].cycles,
+      value: tmpTimer.presets[store.state.presets.OFFROAD].cycles,
       minValue: 0,
       maxValue: 10,
       stepValue: 1,
@@ -138,9 +138,9 @@
       scaleSubSteps: 2,
       icon: "icon-repeat",
       rangeChange: (e)=>{
-        tmpTimer.presets[presets.OFFROAD].cycles = e
+        tmpTimer.presets[store.state.presets.OFFROAD].cycles = e
         let arr = mapSettings.get('presets')
-        mapSettings.set("presets", [(arr)?arr[presets.CITY]:null, tmpTimer.presets[presets.OFFROAD]]);
+        mapSettings.set("presets", [(arr)?arr[store.state.presets.CITY]:null, tmpTimer.presets[store.state.presets.OFFROAD]]);
         store.dispatch('sendTime', tmpTimer);
       log(mapSettings)
       }

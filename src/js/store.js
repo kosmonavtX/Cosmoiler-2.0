@@ -178,6 +178,12 @@ const store = createStore({
     OILER_MANUAL: 1,
     OILER_AUTO: 0,
 
+    presets: {
+      CITY: 0,
+      WAY: 1,
+      OFFROAD: 2
+    },
+
   },
   getters: {
     gnssPresent:  ({state}) => state.system,
