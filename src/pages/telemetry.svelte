@@ -40,10 +40,7 @@
   let timer = useStore('timer', (value) => timer = value)
   let gnssPresent = useStore('gnssPresent', (value) => gnssPresent = value)
   let connected = useStore('connected', (value) => connected = value);
-  //let m = useStore('telecard', (value) => m = value);
 
-  //console.log('params', odometer)
- // log("M = ", m)
 
   const MAXSPEED = 250
   const iconsPreset = ["icon-city", "icon-way", "icon-off-road"]
@@ -55,30 +52,13 @@
     GPS: 4,
     VOLTAGE: 5
   }
-/* let  icons = [
-      {icon: iconsPreset[params.preset], value: "xxx"},
-      {icon: "icon-pump", value: params.non}
-    ] */
-/*   if (trip.trip.sensor.gnss)
-      icons.push({icon: "icon-gps", value: params.sat})
-    else
-      icons.push({icon: "icon-sensor", value: params.imp}) */
-
- // gnssPresent = false;
 
   let valueTimer = (data) => {
-    //console.log('timer = ',data)
-   // let myDate
-    //if (data.v != 0)
     let  myDate = new Date(0, 0, 0, 0, 0, 0, data.v);
-    //else
-    //  myDate = new Date(0, 0, 0, 0, 0, 0, timer.presets[telemetry.params[3].p].time);
     return myDate.toTimeString().replace(/.*(\d{2}:\d{2}).*/, "$1");
   }
-  //console.log('timer = ',valueTimer(params.time), params.time)
 
   let remainsTrip = (odometer, gnssPresent, params) => {
-    //console.log(trip)
     return params.dst
     if (!odometer.sensor.gnss || !gnssPresent) {
       let imp = params.imp;
@@ -90,17 +70,13 @@
       return params.dst;
     }
   }
-//$:  console.log('remainsTrip = ', remainsTrip(trip, gnssPresent, params))
 
   let voltage = (data) => {
-    //let k = (data.R1 + data.R2) / data.R2;
-    //let tmp = (data.max * data.v * k)/data.r
     return Number(data.v/1000).toFixed(1);
   }
 
   let voltAlarm = (data) => {
     if (data <= 11.3) return true
-/*     if (data > 11.3 && data <= 11.9) return "yellow" */
     if (data > 11.9 && data <= 14.8) return false
     if (data > 14.8) return true
   }
@@ -134,9 +110,6 @@
   }
 
   let indexPreset = (telemetry) => {
-/*     var pr = telemetry.params[nameParams.MODE].p - 1
-    if (pr < 0) pr = 0
-    if (pr > 2) pr = 2 */
     return telemetry.params[nameParams.MODE].p
   }
 
@@ -145,8 +118,6 @@
   log(timer)
 
 $:  md = indexDataCardTele(odometer, telemetry) // (!telemetry.params[nameParams.GPS].fix && telemetry.params[nameParams.MODE].m == 1) ? 5 : telemetry.params[nameParams.MODE].m
-
-//$:  preset = indexPreset(telemetry)
 
 $:  dataCardTele = [
     { //#0
@@ -195,20 +166,6 @@ $:  dataCardTele = [
         }
       ]
     },
-/*     {
-      title: "СКОРОСТЬ",
-      gauge: [
-        {
-          value: telemetry.params[nameParams.ODOMETER].spd/MAXSPEED,
-          valueText: (telemetry.params[nameParams.ODOMETER].spd).toFixed(0),
-          labelText: (telemetry.params[nameParams.ODOMETER].avgsp).toFixed(0),
-          text: $t("all.speed"),
-          units: $t("all.kmh") },
-      ],
-      icons: [
-
-      ]
-    }, */
     { //#2
       title: $t('telemetry.tmr.title').toUpperCase(), // 2
       gauge: [
@@ -259,38 +216,13 @@ $:  dataCardTele = [
       if (connected) store.dispatch('requestTelemetryStart')
     }
 
- // let interval;
-
   function pageTabShow() {
     store.dispatch('requestTelemetryStart')
-/*     interval = setInterval(() => {
-                      store.dispatch('requestTelemetry')
-                    }, 330); */
   }
+
   function pageTabHide() {
    // store.dispatch('requestTelemetryStop')
     //clearInterval(interval)
   }
 
-/*     icons = []
-    if (gnssPresent) icons. */
-/* $:  timeTele = {
-      title: "ТАЙМЕР",
-      gauge: [
-        {value: 0.5, valueText: "100", labelText: "0", text: "Speed, km/h" }
-      ],
-      icons: [
-        ...icons,
-        {icon: "icon-accum", value: params.voltage}
-      ]
-} */
-  //console.log(tripTele[0].icons[2].view)
-/*   const products = useStore('products');
-  const productId = f7route.params.id;
-  let currentProduct;
-  products.forEach(function (product) {
-    if (product.id === productId) {
-      currentProduct = product;
-    }
-  }); */
 </script>
