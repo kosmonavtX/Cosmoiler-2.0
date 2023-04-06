@@ -158,14 +158,7 @@
     function update() {
       //var progress_dialog = f7.dialog.progress("Обновление...");
       var preload_dialog = f7.dialog.preloader("Обновление ПО...");
-      var formData = new FormData();
-      formData.append('fw', files[0]);
-/*       f7.request.post('http://192.168.4.1/update', { data: formData, async: false, cache: false,
-        contentType: false, enctype: 'multipart/form-data', processData: false,
-        headers:{'Access-Control-Allow-Origin': '*'}},
-        function (data) {
-          f7.dialog.close();
-        }); */
+
       const xhr = new XMLHttpRequest();
 
       xhr.onload = xhr.onerror = function() {
@@ -181,61 +174,9 @@
           f7.dialog.alert($t('service.update.fw.error'), "Cosmoiler")
         }
       };
-
-
-/*       xhr.upload.addEventListener('progress', (event) => {
-        log(event.loaded + ' / ' + event.total);
-        log("%d", Math.round((event.loaded / event.total) * 100))
-        //dialog_progress.setProgress(Math.round((event.loaded / event.total) * 100), 100)
-        f7.progressbar.set(progressBarEl, Math.round(event.loaded / event.total) * 100);
-      }, false); */
-
       xhr.open("POST", "http://192.168.4.1/update", true);
-
-/*       xhr.upload.onprogress = function(event) {
-        log(event.loaded + ' / ' + event.total);
-        log("%d", Math.round((event.loaded / event.total) * 100))
-        //dialog_progress.setProgress(Math.round((event.loaded / event.total) * 100), 100)
-        //f7.progressbar.set(progressBarEl, Math.round(event.loaded / event.total) * 100);
-      }; */
-
       xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-/*       xhr.onreadystatechange = function () {
-        if(xhr.readyState === XMLHttpRequest.DONE) {
-          var status = xhr.status;
-          if (status >= 200 && status < 400)
-          {
-              log(response)
-              f7.dialog.close()
-              f7.dialog.alert($t('service.update.fw.success'), "Cosmoiler")
-          } else {
-              log(status)
-              f7.dialog.close()
-              f7.dialog.alert($t('service.update.fw.error'), "Cosmoiler")
-          }
-        }
-      }; */
-
       xhr.send(files[0]);
-
-/*       f7.request({
-        url: 'http://192.168.4.1/update',
-        method: 'POST',
-        contentType: 'multipart/form-data',
-        data: formData,
-        async: true,
-        cache: false,
-        success: function(response) {
-          log(response)
-          f7.dialog.close()
-          f7.dialog.alert($t('service.update.fw.success'), "Cosmoiler")
-        },
-        error: function(xhr, status) {
-          log(status)
-          f7.dialog.close()
-          f7.dialog.alert($t('service.update.fw.error'), "Cosmoiler")
-        }
-      }) */
     }
 
     function clickReset() {
