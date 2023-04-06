@@ -10,8 +10,7 @@
   {/if}
 
   <List mediaList inset class='elevation-3' style="border-radius: 6px;">
-    <ListItem class={`settings-main__list-item`}
-      after="v{verfs}">
+    <ListItem class={`settings-main__list-item`}>
 
       <div slot='title' class="home-list-item__title home-list-item__title_up-color">
         COSMOILER
@@ -44,13 +43,9 @@
     useStore
   } from 'framework7-svelte';
   import {t} from '../services/i18n.js';
-  import store from '../js/store.js';
 
   let connected = useStore('connected', (value) => connected = value);
-  $: system = useStore('system', (value) => system = value);
   $: ver = useStore('ver', (value) => ver = value);
-  let verfs = useStore('verfs', (value) => verfs = value);
-
 
   $: items = [
     {link: '/service/wifi/',    title: $t('service.wifi.title'),    view: connected},
@@ -59,9 +54,5 @@
     {link: '/service/diag/',    title: $t('service.diag.title'),    view: true},
     {link: '/service/about/',   title: $t('service.about.title'),   view: true},
   ]
-
-/*   function pageTabShow() {
-    store.dispatch('getServiceInfo')
-  } */
 
 </script>
