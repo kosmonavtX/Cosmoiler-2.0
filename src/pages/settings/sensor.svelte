@@ -22,7 +22,8 @@
         }}
         class={`sensor__list-item`}>
         </ListItem>
-    {:else}
+    {/if}
+   <!--  {:else} -->
         <ListItem
             radio
             name="sensor"
@@ -34,7 +35,7 @@
             }}
             class={`sensor__list-item`}>
         </ListItem>
-    {/if}
+    <!-- {/if} -->
     </List>
 
 
@@ -122,6 +123,10 @@
 
     $: fGPS = (gnssPresent.gps) ? true : false
     $: fIMP = (!gnssPresent.gps) ? true : false
+
+/*     $: fGPS = (tmpOdometer.sensor.gnss && gnssPresent.gps) ? true : false
+    $: fIMP = (!tmpOdometer.sensor.gnss || !gnssPresent.gps) ? true : false */
+
 
     $: if (!connected) document.location.reload()
 

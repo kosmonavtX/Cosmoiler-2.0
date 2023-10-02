@@ -10,7 +10,7 @@
   <BlockTitle ><span>{$t('service.update.fw.title1')}</span></BlockTitle>
   <Block strong style="background-color: var(--f7-theme-color-bg-tint-color)">
       <Col>
-        <Button outline lager on:click = {downloadFW}>Скачать файлы</Button>
+        <Button outline lager on:click = {downloadFW}>{$t('button.download')}</Button>
       </Col>
   </Block>
   <BlockTitle ><span>{$t('service.update.fw.title2')}</span></BlockTitle>
@@ -26,7 +26,7 @@
         <Button outline lager on:click={selectFile}>{nameFile}</Button>
       </Col>
       <Col>
-        <Button disabled={!files | !f_connected} fill on:click={update} class={`margin-top__20px`}>Обновить</Button>
+        <Button disabled={!files | !f_connected} fill on:click={update} class={`margin-top__20px`}>{$t('button.update')}</Button>
       </Col>
   </Block>
 
@@ -125,7 +125,7 @@
 
     function update() {
       //var progress_dialog = f7.dialog.progress("Обновление...");
-      var preload_dialog = f7.dialog.preloader("Обновление ПО...");
+      var preload_dialog = f7.dialog.preloader($t('service.update.fw.preload'));
 
       const xhr = new XMLHttpRequest();
 

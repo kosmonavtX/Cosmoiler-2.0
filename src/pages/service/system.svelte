@@ -63,7 +63,7 @@
 
     $: rangeValues = [
       [{
-        title: "Яркость светодиода",
+        title: $t('service.system.led.title'),
         value: tmpSystem.bright * 100 / 255,
        // name_value: "%",
         minValue: 1,

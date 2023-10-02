@@ -89,14 +89,14 @@
     },
     {
       link: '/settings/pump/',
-      title: 'Насос',
+      title: $t('settings.pump.title'),
       footer: $t('settings.pump.description'),
       icon: 'icon-pump', size: 28
     },
     //{link: '#', title: 'Датчик',  footer: "", icon: 'icon-sensor', size: 28},
     {
       link: '/settings/odometer/sensor/',
-      title: 'Датчик',
+      title: $t('settings.sensor.title'),
       footer: "",
       icon: 'icon-sensor',
       size: 28
@@ -113,7 +113,7 @@
     },
     {
       link: '/settings/pump/',
-      title: 'Насос',
+      title: $t('settings.pump.title'),
       footer: $t('settings.pump.description'),
       icon: 'icon-pump',
       size: 28
