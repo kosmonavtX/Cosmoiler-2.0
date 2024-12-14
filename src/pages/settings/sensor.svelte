@@ -132,7 +132,7 @@
 
     function clearImp() {
         tmpOdometer.sensor.imp = 0
-        store.dispatch('modeWork', store.state.OILER_SETTINGS)
+        store.dispatch('modeWork', store.state.OILER_VISCOSITY)
         //store.dispatch('requestTelemetryStart')
         interval = setInterval(() => {
             //store.dispatch('requestTelemetry')

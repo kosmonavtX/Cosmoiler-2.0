@@ -20,6 +20,18 @@
         {#each rangeValues[0] as rangeValue}
         <Ranges {...rangeValue} />
         {/each}
+
+        <BlockTitle ><span>{$t('service.system.onoff.title')}</span></BlockTitle>
+        <List >
+            <ListItem style="background-color: var(--f7-theme-color-bg-tint-color)">
+              {#if !AItraining}
+                <ListItemCell class="width-auto flex-shrink-0 list-input__label list-input__label-text_color">{$t('service.system.onoff.text_toggle1')}</ListItemCell>
+              {:else}
+                <ListItemCell class="width-auto flex-shrink-0 list-input__label list-input__label-text_color">{$t('service.system.onoff.text_toggle2')}</ListItemCell>
+              {/if}
+                <ListItemCell class="width-auto flex-shrink-4"><Toggle bind:checked={AItraining} bind:disabled={disabled}  /></ListItemCell>
+            </ListItem>
+        </List>
     {/if}
 
 </Page>
@@ -50,11 +62,14 @@
 
     let tmpSystem = system
     let ctrlpump = false
+    let AItraining = false
+    let disabled = false
 
     let Tdpms = 0
     $: {
       if (ver.hw[0] == 'B') Tdpms = 1000
       if (ver.hw[0] == 'C') Tdpms = 1000 // 10 секунд работает насос
+      if (ver.hw[0] == 'd') Tdpms = 1000 // hw: dev - 10 секунд работает насос
     }
 
 
@@ -79,6 +94,9 @@
         toggle: false,
       }],
     ]
+
+    $: if (AItraining) store.dispatch('modeWork', store.state.OILER_TRAINING)
+    $: disabled = AItraining || ctrlpump
 
     function pageBeforeIn() {
       /* включить режим настройки вязкости */

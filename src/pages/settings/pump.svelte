@@ -254,7 +254,7 @@
 
     function pageBeforeIn() {
       /* включить режим настройки вязкости */
-      store.dispatch('modeWork', store.state.OILER_SETTINGS)
+      store.dispatch('modeWork', store.state.OILER_VISCOSITY)
       Oil = localStorage.getItem('oil')
 /*       if (Oil == typesOil.ATF) {
         is_atf = true;

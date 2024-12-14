@@ -170,3 +170,10 @@ Check out [official cordova-res documentation](https://github.com/ionic-team/cor
 
 Love Framework7? Support project by donating or pledging on patreon:
 https://patreon.com/vladimirkharlampidi
+
+
+## CHANGES:
+
+v5.0.0
+
+1. Добавлена возможность обучения системы для определения параметров напряжения для обеспечения правильного вкл/выкл.

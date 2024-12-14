@@ -170,7 +170,8 @@ $:  dataCardTele = [
       title: $t('telemetry.tmr.title').toUpperCase(), // 2
       gauge: [
         {
-          value: telemetry.params[nameParams.TIMER].v/(timer.presets[indexPreset(telemetry)].time*1000),
+          //value: telemetry.params[nameParams.TIMER].v/(timer.presets[indexPreset(telemetry)].time*1000),
+          value: telemetry.params[nameParams.TIMER].v/(telemetry.params[nameParams.TIMER].max),
           valueText: valueTimer(telemetry.params[nameParams.TIMER]),
           labelText: "",
           text: "",
@@ -191,7 +192,7 @@ $:  dataCardTele = [
       title: $t('telemetry.tmr2.title'), // 5
       gauge: [
         {
-          value: telemetry.params[nameParams.TIMER].v/(timer.presets[indexPreset(telemetry)].time*1000),
+          value: telemetry.params[nameParams.TIMER].v/(telemetry.params[nameParams.TIMER].max),
           valueText: valueTimer(telemetry.params[nameParams.TIMER]),
           labelText: "",
           text: "",
@@ -212,16 +213,16 @@ $:  dataCardTele = [
 ]
 
 
-    $: {
+/*     $: {
       if (connected) store.dispatch('requestTelemetryStart')
-    }
+    } */
 
   function pageTabShow() {
     store.dispatch('requestTelemetryStart')
   }
 
   function pageTabHide() {
-   // store.dispatch('requestTelemetryStop')
+    store.dispatch('requestTelemetryStop')
     //clearInterval(interval)
   }
 

@@ -1,6 +1,6 @@
 
 import { createStore } from 'framework7/lite';
-import websocketStore from './websocket.js';
+//import websocketStore from './websocket.js';
 import { f7 } from 'framework7-svelte';
 import log from './debug.js'
 
@@ -44,16 +44,17 @@ const checkOnlineStatus = async () => {
     return false; // definitely offline
   }
 };
-const checkOnlineStatusTest = async () => {
+
+/* const checkOnlineStatusTest = async () => {
   try {
     const online = await fetch('http://ya.ru');
     return true ;//online.status >= 200 && online.status < 300; // either true or false
   } catch (err) {
     return false; // definitely offline
   }
-};
+}; */
 
-const wsStore = websocketStore('ws://' + uri() + '/ws', {}, [],
+/* const wsStore = websocketStore('ws://' + uri() + '/ws', {}, [],
   {
     debug: false,
     reconnectionDelayGrowFactor: 1,
@@ -64,13 +65,13 @@ const wsStore = websocketStore('ws://' + uri() + '/ws', {}, [],
     maxReconnectAttempts: 0,
     automaticOpen: false,
     //maxReconnectAttempts: 1
-  })
+  }) */
 
 let timeoutId;
 
 const store = createStore({
   state: {
-    wsStore: wsStore,//websocketStore('ws://' + uri(), {"initial": 0}, [], {debug: true}),
+   // wsStore: wsStore,
     telemetryInterval: 0,
     connect: false,
    // trigg_connect: false; // триггер изменения статуса подключения
@@ -148,7 +149,8 @@ const store = createStore({
           avgsp: 0  // Средняя скорость
         },
         { // 1 - timer
-          v: 110000  // Таймер, [мс]
+          v: 110000,  // Таймер, [мс]
+          max: 110000 // Интервал таймера, [мс]
         },
         { // 2 - pump
           v: 0,      // Количество включений насоса
@@ -163,18 +165,19 @@ const store = createStore({
           lon: 0.000000 // Долгота
         },
         { // 5 - voltage
-          v: 0,       // Напряжение бортовое
+          v: 0,       // Напряжение бортовое [мс]
           r: 4095,    // Разрешение АЦП
-          max: 3.3,    // Максимальное напряжение на входе АЦП
+          max: 3.3,    // Максимальное напряжение на входе АЦП [В]
           R1: 200000,
           R2: 49900
         },
       ]
     },
-    verfs: "4.8",
+    verfs: "5.0",
 
+    OILER_TRAINING: 4,
     OILER_PUMPING: 3,
-    OILER_SETTINGS: 2,
+    OILER_VISCOSITY: 2,
     OILER_MANUAL: 1,
     OILER_AUTO: 0,
 
@@ -250,16 +253,13 @@ const store = createStore({
           f7.request.get('http://' + uri() + '/telemetry/get')
             .then((response)=> {
               state.telemetry = JSON.parse(response.data)
-/*               setTimeout(() => {
-                f7.request.get('http://' + uri() + '/telemetry/stop')
-              }, 1000) */
             })
             .catch((err) => { /* state.connect = false */ })
         }
         log("ONLINE = ", online)
       });
 
-      wsStore.subscribe((value) => {
+/*       wsStore.subscribe((value) => {
         //log('[ws value]=> ', value)
 
         if (value) {
@@ -269,17 +269,15 @@ const store = createStore({
           }
           log('Store state', state)
         }
-      })
+      }) */
     },
 
     async getMode({state}) {
-      //(async () => {
         const online = await checkOnlineStatus();
         if (online) {
           f7.request.get('http://' + uri() + '/settings/mode')
             .then((response) => { state.mode = JSON.parse(response.data) })
         }
-      //})()
     },
 
     async getServiceInfo({state}) {
@@ -315,19 +313,37 @@ const store = createStore({
     },
 
     async requestTelemetryStart({state}) {
-      //wsStore.set({cmd: "telemetry"})
       const online = await checkOnlineStatus();
       if (online) {
         f7.request.get('http://' + uri() + '/telemetry/start')
+        f7.request.get('http://' + uri() + '/telemetry/get')
+          .then((response)=> {
+            state.telemetry = JSON.parse(response.data)
+          })
+          .catch((err) => {
+            /* state.connect = false */
+          })
       }
+
+      state.telemetryInterval = setInterval(async () => {
+        const online = await checkOnlineStatus();
+        if (online) {
+          f7.request.get('http://' + uri() + '/telemetry/get')
+            .then((response)=> {
+              state.telemetry = JSON.parse(response.data)
+            })
+            .catch((err) => { /* state.connect = false */ })
+        }
+      }, 500)
     },
-    async requestTelemetryStop({state}) {
-      //clearInterval(state.telemetryInterval);
-      const online = await checkOnlineStatus();
+
+    requestTelemetryStop({state}) {
+      clearInterval(state.telemetryInterval);
+/*       const online = await checkOnlineStatus();
       if (online) {
         //f7.request.get('http://' + uri() + '/telemetry/stop')
         //wsStore.close()
-      }
+      } */
     },
 
     calcDistance({state}, _trip) {
@@ -467,11 +483,14 @@ const store = createStore({
       if (mode == store.state.OILER_AUTO) {
         rest_str = '/state/auto'
       }
-      if (mode == store.state.OILER_SETTINGS) {
+      if (mode == store.state.OILER_VISCOSITY) {
         rest_str = '/state/ctrl'
       }
       if (mode == store.state.OILER_PUMPING) {
         rest_str = '/state/pumping'
+      }
+      if (mode == store.state.OILER_TRAINING) {
+        rest_str = '/state/training'
       }
       f7.request.get('http://' + uri() + rest_str)
       .catch(() => {
